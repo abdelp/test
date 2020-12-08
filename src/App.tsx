@@ -5,7 +5,7 @@ import CategoriesPage from './pages/Categories';
 import RegistUserPage from './pages/RegistUser';
 import TestTypesPage from './pages/TestTypes';
 import MultipleOptionsPage from './pages/MultipleOptions';
-import TutorialPage from './pages/Tutorial';
+import InstructionsPage from './pages/Instructions';
 import React from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -43,7 +43,7 @@ const App: React.FC = () => {
             <Route path="/page/regist-user" component={RegistUserPage} exact />
             <Route path="/page/test-types" component={TestTypesPage} exact />
             <Route path="/page/multiple-options" component={MultipleOptionsPage} exact />
-            <Route path="/page/tutorial" component={TutorialPage} exact />
+            <Route path="/page/tutorial" component={InstructionsPage} exact />
             <Redirect from="/" to="/page/Inbox" exact />
           </IonRouterOutlet>
         </IonSplitPane>
