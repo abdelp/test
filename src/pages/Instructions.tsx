@@ -5,14 +5,14 @@ import ExploreContainer from '../components/ExploreContainer';
 import { heart, trash, star, archive, ellipsisHorizontal, ellipsisVertical } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom';
 
-import './Tutorial.css';
+import './Instructions.css';
 
 const slideOpts = {
   initialSlide: 1,
   speed: 400
 };
 
-const TutorialPage: React.FC = () => {
+const InstructionsPage: React.FC = () => {
   const history = useHistory();
 
   const startTest = () => {
@@ -22,11 +22,11 @@ const TutorialPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Tutorial</IonTitle>
+          <IonTitle>Instrucciones</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -53,4 +53,4 @@ const TutorialPage: React.FC = () => {
   );
 };
 
-export default TutorialPage;
+export default InstructionsPage;

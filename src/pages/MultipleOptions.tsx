@@ -7,7 +7,7 @@ const MultipleOptionsPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonTitle>Test de Selección Múltiple</IonTitle>
         </IonToolbar>
       </IonHeader>
@@ -39,7 +39,7 @@ const MultipleOptionsPage: React.FC = () => {
           </IonItem>
 
           <IonItem>
-            <IonButton>
+            <IonButton size="default">
               Siguiente
             </IonButton>
           </IonItem>

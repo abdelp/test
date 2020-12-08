@@ -2,7 +2,6 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import React from 'react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
-import './Page.css';
 import { useHistory } from 'react-router-dom';
 
 const TestTypesPage: React.FC = () => {
@@ -23,7 +22,7 @@ const TestTypesPage: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen>
-        <div className="flex" style={{display: 'flex'}}>
+        <div className="flex" style={{display: 'flex', flexWrap: 'wrap'}}>
 
           <IonCard>
             <IonCardHeader>
