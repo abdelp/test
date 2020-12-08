@@ -2,7 +2,7 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import React from 'react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
-import './Page.css';
+import './Categories.css';
 import { useHistory } from 'react-router-dom';
 
 const CategoriesPage: React.FC = () => {
@@ -14,7 +14,7 @@ const CategoriesPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
@@ -22,7 +22,7 @@ const CategoriesPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen>
+      <IonContent fullscreen className="page">
         <div className="flex" style={{display: 'flex', flexWrap: 'wrap'}}>
           <IonCard>
             <IonCardHeader>
