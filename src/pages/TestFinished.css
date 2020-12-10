@@ -1,7 +1,7 @@
-.test-finished-content h1 {
+#test-finished-content h1 {
   text-align: center;
 }
 
-.test-finished-content ion-content {
+#test-finished-content {
   text-align: center;
 }

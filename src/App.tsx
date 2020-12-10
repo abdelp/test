@@ -45,7 +45,7 @@ const App: React.FC = () => {
             <Route path="/page/multiple-options" component={MultipleOptionsPage} exact />
             <Route path="/page/tutorial" component={InstructionsPage} exact />
             <Route path="/page/test-finished" component={TestFinishedPage} exact />
-            <Redirect from="/" to="/page/Inbox" exact />
+            <Redirect from="/" to="/login" exact />
           </IonRouterOutlet>
         </IonSplitPane>
         <Route path="/login" component={LoginPage} exact />
