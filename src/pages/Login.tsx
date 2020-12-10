@@ -6,7 +6,10 @@ import ExploreContainer from '../components/ExploreContainer';
 import './Login.css';
 import { useHistory } from 'react-router-dom';
 
+// import { set } from 'idb-keyval';
+
 const LoginPage: React.FC = () => {
+  const exportWorker: Worker = new Worker('../workers/export.js');
   const history = useHistory();
   const [username, setUsername] = useState<string>();
   const [password, setPassword] = useState<string>();
@@ -19,6 +22,23 @@ const LoginPage: React.FC = () => {
 
   const login = () => {
     history.push('/page/categories');
+  }
+
+  // async function saveUser() {
+  //   await set('username', username);
+  // }
+
+  useEffect(() => {
+    exportWorker.onmessage = ($event: MessageEvent) => {
+      if ($event && $event.data) {
+        console.log('changed2')
+      }
+    };
+  }, [username]);
+
+  function saveUser() {
+    exportWorker
+         .postMessage({msg: 'incApple', countApple: 1});
   }
 
   return (

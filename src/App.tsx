@@ -6,6 +6,7 @@ import RegistUserPage from './pages/RegistUser';
 import TestTypesPage from './pages/TestTypes';
 import MultipleOptionsPage from './pages/MultipleOptions';
 import InstructionsPage from './pages/Instructions';
+import TestFinishedPage from './pages/TestFinished';
 import React from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -31,7 +32,6 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App: React.FC = () => {
-
   return (
     <IonApp>
       <IonReactRouter>
@@ -44,6 +44,7 @@ const App: React.FC = () => {
             <Route path="/page/test-types" component={TestTypesPage} exact />
             <Route path="/page/multiple-options" component={MultipleOptionsPage} exact />
             <Route path="/page/tutorial" component={InstructionsPage} exact />
+            <Route path="/page/test-finished" component={TestFinishedPage} exact />
             <Redirect from="/" to="/page/Inbox" exact />
           </IonRouterOutlet>
         </IonSplitPane>

@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonRadioGroup, IonListHeader, IonLabel, IonItem, IonRadio, IonItemDivider, IonButton, IonInput } from '@ionic/react';
 import Timer from './Timer';
+import { useHistory } from 'react-router-dom';
 
 const MultipleOptionsPage: React.FC = () => {
   const [selected, setSelected] = useState<string>('biff');
+
+  const history = useHistory();
+
+  const finishTest = () => {
+    history.push('/page/test-finished');
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -39,7 +47,7 @@ const MultipleOptionsPage: React.FC = () => {
           </IonItem>
 
           <IonItem>
-            <IonButton size="default">
+            <IonButton size="default" onClick={finishTest}>
               Siguiente
             </IonButton>
           </IonItem>
