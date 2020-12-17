@@ -31,6 +31,8 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+import { loggedIn } from './utils/db';
+
 const App: React.FC = () => {
   return (
     <IonApp>
@@ -45,10 +47,14 @@ const App: React.FC = () => {
             <Route path="/page/multiple-options" component={MultipleOptionsPage} exact />
             <Route path="/page/tutorial" component={InstructionsPage} exact />
             <Route path="/page/test-finished" component={TestFinishedPage} exact />
-            <Redirect from="/" to="/login" exact />
+            <Route exact path="/">
+              { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage />}
+            </Route>
           </IonRouterOutlet>
         </IonSplitPane>
-        <Route path="/login" component={LoginPage} exact />
+        <Route path="/login" component={LoginPage} exact >
+          { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage />}
+        </Route>
       </IonReactRouter>
     </IonApp>
   );
