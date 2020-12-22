@@ -1,15 +1,20 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonButton } from '@ionic/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import './Categories.css';
 import { useHistory } from 'react-router-dom';
+import { getCategories } from '../APIs';
 
 const CategoriesPage: React.FC = () => {
   const history = useHistory();
 
   const goToCategory = (category: any) =>
     history.push(`/page/regist-user`);
+
+  useEffect(() => {
+    
+  }, []);
 
   return (
     <IonPage>

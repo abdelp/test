@@ -1,18 +1,25 @@
-import { IonButtons, IonContent, IonHeader, IonList, IonMenuButton, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonInput, IonButton, IonIcon } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonList, IonMenuButton, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonInput, IonButton, IonIcon, IonSpinner } from '@ionic/react';
 import { logIn } from 'ionicons/icons';
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import './Login.css';
 import { useHistory } from 'react-router-dom';
+import { signinUser } from '../APIs';
 
-// import { set } from 'idb-keyval';
+import GeolocationButton from '../components/GeolocationButton';
+import { set, get } from 'idb-keyval';
+
+import { useCookies } from "react-cookie";
 
 const LoginPage: React.FC = () => {
   const exportWorker: Worker = new Worker('../workers/export.js');
   const history = useHistory();
   const [username, setUsername] = useState<string>();
+  const [loading, setLoading] = useState<boolean>(false);
   const [password, setPassword] = useState<string>();
+  const [error, setError] = useState({message: ''});
+  const [cookies, setCookie] = useCookies(["user"]);
 
   const handleUserChange = (event: any) =>
     setUsername(event.target.value);
@@ -20,25 +27,67 @@ const LoginPage: React.FC = () => {
   const handlePasswordChange = (event: any) =>
     setPassword(event.target.value);
 
-  const login = () => {
-    history.push('/page/categories');
+  const login = (event:any) => {
+    setLoading(true);
+    event.preventDefault();
+
+    signinUser(username, password)
+      .then(async (res:any) => {
+        setLoading(false);
+
+        const autenticarExaminadorResult = res.responseXML.getElementsByTagName("AutenticarExaminadorResult")[0];
+        const codError = autenticarExaminadorResult.firstChild.innerHTML;
+        console.log(codError);
+        if (codError == 0) {
+          const ticket = autenticarExaminadorResult.getElementsByTagName("Ticket")[0].innerHTML;
+
+          setCookie("ticket", ticket, {
+            path: "/"
+          });
+
+          // await set("uid", username);
+          history.push('/page/categories');
+        } else {
+          let errMsg;
+
+          switch(codError) {
+            case '6':
+              errMsg = 'Usuario y/o contraseña incorrecta';
+              break;
+            default:
+              errMsg = 'Error desconocido'
+          }
+
+          setError({message: errMsg})
+        }
+      })
+      .catch(async error => {
+        // @ts-ignore
+        setLoading(false);
+        setError(error);
+        console.log('error');
+      });
   }
 
-  // async function saveUser() {
-  //   await set('username', username);
-  // }
+  // useEffect(() => {
+  //   exportWorker.onmessage = ($event: MessageEvent) => {
+  //     if ($event && $event.data) {
+  //       console.log('changed2')
+  //     }
+  //   };
 
-  useEffect(() => {
-    exportWorker.onmessage = ($event: MessageEvent) => {
-      if ($event && $event.data) {
-        console.log('changed2')
-      }
-    };
-  }, [username]);
+  //   getUid();
+  //   ////
+  // }, [username]);
 
   function saveUser() {
     exportWorker
          .postMessage({msg: 'incApple', countApple: 1});
+  }
+
+  async function getUid() {
+    const x = await get('user');
+    console.log(x);
   }
 
   return (
@@ -53,21 +102,23 @@ const LoginPage: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen className="ion-padding" color="light">
-        <IonList lines="none" className="login-list">
+        
+        <form className="ion-padding login-list" onSubmit={login}>
           <IonItem>
-            <IonLabel position="stacked">Usuario</IonLabel>
-            <IonInput value={username} onIonChange={handleUserChange} autofocus={true}> </IonInput>
+            <IonLabel position="floating">Usuario</IonLabel>
+            <IonInput value={username} onIonChange={handleUserChange} autofocus={true} />
           </IonItem>
           <IonItem>
-            <IonLabel position="stacked">Contraseña</IonLabel>
-            <IonInput value={password} type="password" onIonChange={handlePasswordChange}> </IonInput>
+            <IonLabel position="floating">Contraseña</IonLabel>
+            <IonInput value={password} type="password" onIonChange={handlePasswordChange} />
           </IonItem>
-          <IonItem>
-            <IonButton onClick={login} size="default" className="btn center">
-              Login
-            </IonButton>
-          </IonItem>
-        </IonList>
+          <IonButton size="default" className="btn center" type="submit">
+            { loading ? <IonSpinner/> : 'Login' }
+          </IonButton>
+          {error && <p className="error-msg">{error.message}</p>}
+        </form>
+
+        {/* <GeolocationButton /> */}
       </IonContent>
     </IonPage>
   );

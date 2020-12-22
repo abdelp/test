@@ -11,6 +11,7 @@ import React from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
+import { CookiesProvider } from "react-cookie";
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -35,28 +36,30 @@ import { loggedIn } from './utils/db';
 
 const App: React.FC = () => {
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          {/* <Menu /> */}
-          <IonRouterOutlet id="main">
-            <Route path="/page/:name" component={Page} exact />
-            <Route path="/page/categories" component={CategoriesPage} exact />
-            <Route path="/page/regist-user" component={RegistUserPage} exact />
-            <Route path="/page/test-types" component={TestTypesPage} exact />
-            <Route path="/page/multiple-options" component={MultipleOptionsPage} exact />
-            <Route path="/page/tutorial" component={InstructionsPage} exact />
-            <Route path="/page/test-finished" component={TestFinishedPage} exact />
-            <Route exact path="/">
-              { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage />}
-            </Route>
-          </IonRouterOutlet>
-        </IonSplitPane>
-        <Route path="/login" component={LoginPage} exact >
-          { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage />}
-        </Route>
-      </IonReactRouter>
-    </IonApp>
+    <CookiesProvider>
+      <IonApp>
+        <IonReactRouter>
+          <IonSplitPane contentId="main">
+            {/* <Menu /> */}
+            <IonRouterOutlet id="main">
+              <Route path="/page/:name" component={Page} exact />
+              <Route path="/page/categories" component={CategoriesPage} exact />
+              <Route path="/page/regist-user" component={RegistUserPage} exact />
+              <Route path="/page/test-types" component={TestTypesPage} exact />
+              <Route path="/page/multiple-options" component={MultipleOptionsPage} exact />
+              <Route path="/page/tutorial" component={InstructionsPage} exact />
+              <Route path="/page/test-finished" component={TestFinishedPage} exact />
+              <Route exact path="/">
+                { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage />}
+              </Route>
+            </IonRouterOutlet>
+          </IonSplitPane>
+          <Route path="/login" component={LoginPage} exact >
+            { !loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage />}
+          </Route>
+        </IonReactRouter>
+      </IonApp>
+    </CookiesProvider>
   );
 };
 
