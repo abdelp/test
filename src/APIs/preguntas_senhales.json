@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "img": "q1.jpg",
+    "pregunta": "La luz amarilla intermitente del semáforo significa",
+    "opciones": [
+      "Pare",
+      "Precaución",
+      "Continuar"
+    ],
+    "respuesta": 1
+  },
+  {
+    "id": 2,
+    "img": "q2.png",
+    "pregunta": "¿Qué indica esta señal?",
+    "opciones": [
+      "Disminuir la velocidad y ceder el paso a los demás vehículos",
+      "Detención completa, si el conductor considera necesario",
+      "Detención completa, en todos los casos"
+    ],
+    "respuesta": 2
+  },
+  {
+    "id": 3,
+    "img": "q3.png",
+    "pregunta": "La siguiente señal se denomina",
+    "opciones": [
+      "Disminuir la velocidad y ceder el paso a los demás vehículos",
+      "Detención completa, si el conductor considera necesario",
+      "Detención completa, en todos los casos"
+    ],
+    "respuesta": 2
+  }
+]

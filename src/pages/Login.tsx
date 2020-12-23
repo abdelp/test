@@ -37,7 +37,7 @@ const LoginPage: React.FC = () => {
 
         const autenticarExaminadorResult = res.responseXML.getElementsByTagName("AutenticarExaminadorResult")[0];
         const codError = autenticarExaminadorResult.firstChild.innerHTML;
-        console.log(codError);
+
         if (codError == 0) {
           const ticket = autenticarExaminadorResult.getElementsByTagName("Ticket")[0].innerHTML;
 
@@ -102,7 +102,6 @@ const LoginPage: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen className="ion-padding" color="light">
-        
         <form className="ion-padding login-list" onSubmit={login}>
           <IonItem>
             <IonLabel position="floating">Usuario</IonLabel>

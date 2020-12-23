@@ -31,40 +31,88 @@ const CategoriesPage: React.FC = () => {
         <div className="flex" style={{display: 'flex', flexWrap: 'wrap'}}>
           <IonCard>
             <IonCardHeader>
-              <IonCardTitle>Conductor B2</IonCardTitle>
+              <IonCardTitle>Motocicleta</IonCardTitle>
             </IonCardHeader>
-
             <IonCardContent>
-              Keep close to Nature's heart... and break clear away, once in awhile,
-              and climb a mountain or spend a week in the woods. Wash your spirit clean.
               <br/>
               <IonButton onClick={goToCategory}>Seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
-
-          <IonCard onClick={goToCategory}>
+          <IonCard>
             <IonCardHeader>
-              <IonCardTitle>Profesional</IonCardTitle>
+              <IonCardTitle>Particular</IonCardTitle>
             </IonCardHeader>
 
             <IonCardContent>
-              Keep close to Nature's heart... and break clear away, once in awhile,
-              and climb a mountain or spend a week in the woods. Wash your spirit clean.
+
               <br/>
-              <IonButton>Seleccionar</IonButton>
+              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
-
-          <IonCard onClick={goToCategory}>
+          <IonCard>
             <IonCardHeader>
-              <IonCardTitle>Card Title</IonCardTitle>
+              <IonCardTitle>Profesional a</IonCardTitle>
             </IonCardHeader>
 
             <IonCardContent>
-              Keep close to Nature's heart... and break clear away, once in awhile,
-              and climb a mountain or spend a week in the woods. Wash your spirit clean.
+
               <br/>
-              <IonButton>Seleccionar</IonButton>
+              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+            </IonCardContent>
+          </IonCard>
+          <IonCard>
+            <IonCardHeader>
+              <IonCardTitle>Profesional b</IonCardTitle>
+            </IonCardHeader>
+
+            <IonCardContent>
+
+              <br/>
+              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+            </IonCardContent>
+          </IonCard>
+          <IonCard>
+            <IonCardHeader>
+              <IonCardTitle>Profesional c</IonCardTitle>
+            </IonCardHeader>
+
+            <IonCardContent>
+
+              <br/>
+              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+            </IonCardContent>
+          </IonCard>
+          <IonCard>
+            <IonCardHeader>
+              <IonCardTitle>Profesional a superior</IonCardTitle>
+            </IonCardHeader>
+
+            <IonCardContent>
+
+              <br/>
+              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+            </IonCardContent>
+          </IonCard>
+          <IonCard>
+            <IonCardHeader>
+              <IonCardTitle>Profesional b superior</IonCardTitle>
+            </IonCardHeader>
+
+            <IonCardContent>
+
+              <br/>
+              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+            </IonCardContent>
+          </IonCard>
+          <IonCard>
+            <IonCardHeader>
+              <IonCardTitle>Extranjero</IonCardTitle>
+            </IonCardHeader>
+
+            <IonCardContent>
+
+              <br/>
+              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
         </div>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import preguntas_senhales from './preguntas_senhales.json';
 
 const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
 
@@ -31,53 +32,11 @@ const signinUser = (username: any, password: any) => {
   });
 };
 
-// const getTherapists = async (token: any) => {
-//   try {
-//     const headers = {
-//       'Content-Type': 'application/json',
-//       Authorization: `Bearer ${token}`,
-//     };
-
-//     const { data } = await axios
-//       .get(
-//         `${API_BASE}/therapists`,
-//         {
-//           headers,
-//         },
-//       );
-
-//     return data;
-//   } catch (e) {
-//     throw new Error(e);
-//   }
-// };
-
-// const sendResult = async ({
-//   userId, result, token,
-// }: any) => {
-//   try {
-//     const headers = {
-//       'Content-Type': 'application/json',
-//       Authorization: `Bearer ${token}`,
-//     };
-
-//     const res = await axios
-//       .post(
-//         `${API_BASE}/users/${userId}/appointments`,
-//         {
-//           user_id: userId,
-//           result,
-//         },
-//         {
-//           headers,
-//         },
-//       );
-
-//     return res;
-//   } catch (e) {
-//     throw new Error(e.response.data.error);
-//   }
-// };
+const getTestedUserData = (rut: any) => {
+  return new Promise((resolve, reject) => {
+    resolve({name: 'Abdel Omar Pérez Téllez', birthDate: '04/02/1992', ci: '4.484.595'})
+  });
+}
 
 const getCategories = async () =>
   // @ts-ignore
@@ -90,6 +49,12 @@ const getCategories = async () =>
     description: 'A description'
   });
 
+const getPreguntasSenhales = () => {
+  return new Promise((resolve, reject) => {
+    resolve(preguntas_senhales);
+  });
+}
+
 export {
-  signinUser, getCategories
+  signinUser, getCategories, getTestedUserData, getPreguntasSenhales
 };
