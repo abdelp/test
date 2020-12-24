@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -21,7 +21,7 @@ import { useHistory } from 'react-router-dom';
 import { getPreguntasSenhales } from '../APIs';
 
 const MultipleOptionsPage: React.FC = () => {
-  const [selected, setSelected] = useState<string>('biff');
+  const [selected, setSelected] = useState<string>();
   const [questions, setQuestions] = useState<any>([]);
   const [currentQuestion, setCurrentQuestion] = useState<any>();
   const [questionIdx, setQuestionIdx] = useState<number>(0);
@@ -32,9 +32,13 @@ const MultipleOptionsPage: React.FC = () => {
   const [statex, setState] = useState({min: 3, sec: 0});
   const [isActive, setIsActive] = useState(true);
 
+  const radioGroup = useRef<HTMLIonRadioGroupElement>(null);
+
   const nextQuestion = () => {
+    setSelected('');
     setQuestionIdx(idx => idx + 1);
     setState({min: 3, sec: 0});
+    console.log(radioGroup);
     // history.push('/page/test-finished');
   }
 
@@ -89,7 +93,7 @@ const MultipleOptionsPage: React.FC = () => {
       </IonHeader>
       <IonContent>
         <IonList lines="none">
-          <IonRadioGroup value={selected} onIonChange={e => setSelected(e.detail.value)}>
+          <IonRadioGroup ref={radioGroup} value={selected} onIonChange={e => setSelected(e.detail.value)}>
             <IonListHeader>
               <IonImg src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
               <IonLabel><strong>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>

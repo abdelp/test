@@ -34,7 +34,19 @@ const signinUser = (username: any, password: any) => {
 
 const getTestedUserData = (rut: any) => {
   return new Promise((resolve, reject) => {
-    resolve({name: 'Abdel Omar Pérez Téllez', birthDate: '04/02/1992', ci: '4.484.595'})
+    resolve(
+      {
+       nombre: 'Abdel Omar Pérez Téllez',
+       fechaNac: '04/02/1992',
+       ci: '4.484.595',
+       categoria: 1,
+       fecCatMotocicleta: {
+         ultimoExamen: '2020-12-23',
+         proximaHabilitacion: '30 dias',
+         catProfB: null,
+      }
+    }
+    )
   });
 }
 
