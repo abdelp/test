@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import { useHistory } from 'react-router-dom';
 import { getTestedUserData } from '../APIs';
+import './RegistUser.css';
 
 const RegistUserPage: React.FC = () => {
   const history = useHistory();
@@ -56,15 +57,22 @@ const RegistUserPage: React.FC = () => {
         </form>
 
         {user &&
-          <div>
-            <p>Nombre: {user.name}</p>
-            <p>C.I: {user.ci}</p>
-            <p>Fecha de nacimiento: {user.birthDate}</p>
-
-            <IonButton onClick={confirmUserTested}>
-              Confirmar
-            </IonButton>
-          </div>
+          <IonList>
+            <IonItem>
+              <IonLabel><strong>Nombre:</strong> {user.nombre}</IonLabel>
+            </IonItem>
+            <IonItem>
+              <IonLabel><strong>C.I.:</strong> {user.ci}</IonLabel>
+            </IonItem>
+            <IonItem>
+              <IonLabel><strong>Fecha de nacimiento:</strong> {user.fechaNac}</IonLabel>
+            </IonItem>
+            <IonItem>
+              <IonButton onClick={confirmUserTested} size="default" className="confirm-btn">
+                Confirmar
+              </IonButton>
+            </IonItem>
+          </IonList>
         }
       </IonContent>
     </IonPage>

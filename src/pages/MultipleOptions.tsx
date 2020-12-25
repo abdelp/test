@@ -29,7 +29,7 @@ const MultipleOptionsPage: React.FC = () => {
   const [showTimer, setShowTimer] = useState<any>(true);
   const history = useHistory();
 
-  const [statex, setState] = useState({min: 3, sec: 0});
+  const [statex, setState] = useState({min: 1, sec: 0});
   const [isActive, setIsActive] = useState(true);
 
   const radioGroup = useRef<HTMLIonRadioGroupElement>(null);
@@ -37,14 +37,14 @@ const MultipleOptionsPage: React.FC = () => {
   const nextQuestion = () => {
     setSelected('');
     setQuestionIdx(idx => idx + 1);
-    setState({min: 3, sec: 0});
-    console.log(radioGroup);
+    setState({min: 1, sec: 0});
     // history.push('/page/test-finished');
   }
 
   useEffect(() => {
     getPreguntasSenhales()
     .then((result: any) => {
+      setSelected('');
       setQuestions(result);
       setCurrentQuestion(result[questionIdx]);
     })
@@ -68,6 +68,11 @@ const MultipleOptionsPage: React.FC = () => {
 
         if (sec === 0) {
           if (min === 0) {
+            console.log(
+              'terminado'
+            )
+            // history.push('/page/time-out');
+            history.replace('/page/time-out');
           } else {
             setState(state => ({
                   min: state.min - 1,
@@ -79,7 +84,11 @@ const MultipleOptionsPage: React.FC = () => {
       }, 1000);
     }
 
-    return () => clearInterval(interval);
+    return () => {
+      console.log(`component closed`);
+      clearInterval(interval);
+      // setIsActive(false);
+    }
   }, [isActive, statex]);
 
   const { min, sec } = statex;
@@ -94,7 +103,7 @@ const MultipleOptionsPage: React.FC = () => {
       <IonContent>
         <IonList lines="none">
           <IonRadioGroup ref={radioGroup} value={selected} onIonChange={e => setSelected(e.detail.value)}>
-            <IonListHeader>
+            <IonListHeader className="list-header">
               <IonImg src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
               <IonLabel><strong>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
             </IonListHeader>
