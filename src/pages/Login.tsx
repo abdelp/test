@@ -1,4 +1,19 @@
-import { IonButtons, IonContent, IonHeader, IonList, IonMenuButton, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonInput, IonButton, IonIcon, IonSpinner } from '@ionic/react';
+import {
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonList,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonButton,
+  IonIcon,
+  IonSpinner
+} from '@ionic/react';
 import { logIn } from 'ionicons/icons';
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router';
@@ -45,7 +60,6 @@ const LoginPage: React.FC = () => {
             path: "/"
           });
 
-          // await set("uid", username);
           history.push('/page/categories');
         } else {
           let errMsg;

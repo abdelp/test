@@ -1,4 +1,23 @@
-import { IonButtons, IonButton, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonSlides, IonSlide, IonList, IonItemSliding, IonItem, IonLabel, IonItemOptions, IonItemOption, IonIcon, IonNote } from '@ionic/react';
+import {
+  IonButtons,
+  IonButton,
+  IonContent,
+  IonHeader,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonSlides,
+  IonSlide,
+  IonList,
+  IonItemSliding,
+  IonItem,
+  IonLabel,
+  IonItemOptions,
+  IonItemOption,
+  IonIcon,
+  IonNote
+} from '@ionic/react';
 import React from 'react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
@@ -28,7 +47,20 @@ const TestFinishedPage: React.FC = () => {
       <IonContent id="test-finished-content" fullscreen>
         <h1>El test ha finalizado</h1>
         <br/>
-        <IonButton onClick={returnMenu}>Pagina principal</IonButton>
+        <IonList>
+            <IonItem>
+              <IonLabel><strong>Correctas:</strong> 10/20</IonLabel>
+            </IonItem>
+            <IonItem>
+              <IonLabel><strong>Porcentaje:</strong> 50%</IonLabel>
+            </IonItem>
+            <IonItem>
+              <IonLabel><strong>No respondidas:</strong> 3/20</IonLabel>
+            </IonItem>
+            <IonItem>
+              <IonButton onClick={returnMenu} size="default" className="confirm-btn">Pagina principal</IonButton>
+            </IonItem>
+          </IonList>
       </IonContent>
   </IonPage>
   );

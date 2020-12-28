@@ -11,16 +11,20 @@ import {
   IonLabel,
   IonItem,
   IonRadio,
-  IonItemDivider,
   IonButton,
-  IonInput,
-  IonImg
+  IonImg,
+  IonSpinner,
+  IonAlert
 } from '@ionic/react';
 import Timer from './Timer';
 import { useHistory } from 'react-router-dom';
 import { getPreguntasSenhales } from '../APIs';
+import {set} from 'idb-keyval';
+import { sendResult } from '../APIs';
 
-const MultipleOptionsPage: React.FC = () => {
+import { withCookies, Cookies } from 'react-cookie';
+
+const MultipleOptionsPage: React.FC = (props: any) => {
   const [selected, setSelected] = useState<string>();
   const [questions, setQuestions] = useState<any>([]);
   const [currentQuestion, setCurrentQuestion] = useState<any>();
@@ -28,17 +32,50 @@ const MultipleOptionsPage: React.FC = () => {
   const [minutes, setMinutes] = useState<any>({val: 3});
   const [showTimer, setShowTimer] = useState<any>(true);
   const history = useHistory();
+  const [loading, setLoading] = useState<boolean>(false);
+  let continuar: boolean = false;
+  const [showAlert, setShowAlert] = useState(false);
 
-  const [statex, setState] = useState({min: 1, sec: 0});
+  const [statex, setState] = useState({min: 3, sec: 0});
   const [isActive, setIsActive] = useState(true);
 
   const radioGroup = useRef<HTMLIonRadioGroupElement>(null);
+  const examWorker: Worker = new Worker('../workers/export.js');
 
   const nextQuestion = () => {
-    setSelected('');
-    setQuestionIdx(idx => idx + 1);
-    setState({min: 1, sec: 0});
-    // history.push('/page/test-finished');
+    if(selected || continuar) {
+      continuar = false;
+      setSelected('');
+      setState({min: 3, sec: 0});
+      questions[questionIdx].selected = selected;
+    
+      if (questionIdx + 1 < questions.length) {
+        doSaveExamProgress(questions);
+        setQuestionIdx(idx => idx + 1);
+      } else {
+        setLoading(true);
+        setTimeout(() => {
+          const resultado = questions.filter((r: any) => r.selected === r.respuesta).length;
+    
+          const ticket = props.cookies.get('ticket');
+          const ci = '123';
+
+          sendResult(ticket, ci, resultado)
+          .then(result => {
+            setLoading(false);
+  
+            history.replace('/page/test-finished');
+          });
+
+        }, 1000);
+      }
+    } else {
+      setShowAlert(true)
+    }
+  }
+
+  async function doSaveExamProgress(exam: any) {
+    await set("exam", {exam});
   }
 
   useEffect(() => {
@@ -68,10 +105,6 @@ const MultipleOptionsPage: React.FC = () => {
 
         if (sec === 0) {
           if (min === 0) {
-            console.log(
-              'terminado'
-            )
-            // history.push('/page/time-out');
             history.replace('/page/time-out');
           } else {
             setState(state => ({
@@ -85,9 +118,7 @@ const MultipleOptionsPage: React.FC = () => {
     }
 
     return () => {
-      console.log(`component closed`);
       clearInterval(interval);
-      // setIsActive(false);
     }
   }, [isActive, statex]);
 
@@ -101,8 +132,35 @@ const MultipleOptionsPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        <IonAlert
+            isOpen={showAlert}
+            onDidDismiss={() => setShowAlert(false)}
+            cssClass='my-custom-class'
+            header={'Confirmación'}
+            message={'No has seleccionado ninguna opción. ¿Estás segurdo que deseas continuar?'}
+            buttons={[
+              {
+                text: 'Cancelar',
+                role: 'cancel',
+                cssClass: 'secondary',
+                handler: () => {
+                  console.log('Cancelado');
+                }
+              },
+              {
+                text: 'Ok',
+                handler: () => {
+                  continuar = true;
+                  nextQuestion();
+                }
+              }
+            ]}
+          />
+
         <IonList lines="none">
-          <IonRadioGroup ref={radioGroup} value={selected} onIonChange={e => setSelected(e.detail.value)}>
+          <IonRadioGroup ref={radioGroup} value={selected} onIonChange={e => {
+            setSelected(e.detail.value);
+          }}>
             <IonListHeader className="list-header">
               <IonImg src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
               <IonLabel><strong>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
@@ -111,7 +169,9 @@ const MultipleOptionsPage: React.FC = () => {
               return (
                 <IonItem key={opt}>
                   <IonLabel>{opt}</IonLabel>
-                  <IonRadio slot="start" value={idx} />
+                  <IonRadio slot="start" value={idx} onFocus={e => {
+                    setSelected(e.target.value);
+                  }}/>
                 </IonItem>
               )
               })
@@ -124,7 +184,7 @@ const MultipleOptionsPage: React.FC = () => {
 
           <IonItem>
             <IonButton size="default" onClick={nextQuestion}>
-              Siguiente
+            { loading ? <IonSpinner/> : 'Siguiente' }
             </IonButton>
           </IonItem>
         </IonList>
@@ -133,4 +193,4 @@ const MultipleOptionsPage: React.FC = () => {
   );
 };
 
-export default MultipleOptionsPage;
+export default withCookies(MultipleOptionsPage);

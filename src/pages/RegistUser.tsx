@@ -22,7 +22,6 @@ const RegistUserPage: React.FC = () => {
     event.preventDefault();
     getTestedUserData(rut)
     .then((result: any) => {
-      console.log(result);
       setUser(result);
       setLoading(false);
     })
