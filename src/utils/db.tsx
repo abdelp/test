@@ -6,4 +6,9 @@ async function loggedIn() {
   return user;
 }
 
-export { loggedIn }
+async function updateUserTestDate(ci: any, test: any) {
+  const date = new Date();
+  const result = await set(ci, {test, date});
+}
+
+export { loggedIn, updateUserTestDate }

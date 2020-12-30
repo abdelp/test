@@ -19,9 +19,9 @@ import {
 import Timer from './Timer';
 import { useHistory } from 'react-router-dom';
 import { getPreguntasSenhales } from '../APIs';
-import {set} from 'idb-keyval';
+import { set } from 'idb-keyval';
 import { sendResult } from '../APIs';
-
+import { updateUserTestDate } from '../utils/db';
 import { withCookies, Cookies } from 'react-cookie';
 
 const MultipleOptionsPage: React.FC = (props: any) => {
@@ -79,6 +79,15 @@ const MultipleOptionsPage: React.FC = (props: any) => {
   }
 
   useEffect(() => {
+
+    updateUserTestDate('123', 'multiple options')
+    .then(result => {
+      console.log(result);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
     getPreguntasSenhales()
     .then((result: any) => {
       setSelected('');

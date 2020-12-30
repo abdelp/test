@@ -1,14 +1,56 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonButton } from '@ionic/react';
-import React from 'react';
+import {
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCard,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonCardContent,
+  IonButton
+} from '@ionic/react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import { useHistory } from 'react-router-dom';
+import { get } from 'idb-keyval';
+import { today } from 'ionicons/icons';
 
 const TestTypesPage: React.FC = () => {
   const history = useHistory();
 
-  const goToTest = (test: any) =>
-    history.push(`/page/tutorial`);
+  const checkExamDate = () => {
+    return new Promise((resolve, reject) => {
+      const ci = '123';
+  
+      get(ci)
+      .then((result: any) => {
+        const enableDate = new Date();
+        enableDate.setDate(result.date.getDate()+30);
+
+        if(result.date < enableDate) {
+          reject(true);
+        } else {
+          resolve(true);
+        }
+      })
+      .catch(err => console.log(err));
+    })
+  }
+  
+  const goToTest = (test: any) => {
+    checkExamDate()
+    .then(() => 
+      history.push(`/page/tutorial`)
+    )
+    .catch(() => 
+      history.replace('/page/notice')
+    );
+  }
 
   return (
     <IonPage>
