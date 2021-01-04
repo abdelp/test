@@ -19,13 +19,18 @@ const RegistUserPage: React.FC = () => {
 
   const consultUserData = (event: any) => {
     setLoading(true);
+    setError({message: ''});
+    setUser(null);
     event.preventDefault();
     getTestedUserData(rut)
     .then((result: any) => {
       setUser(result);
       setLoading(false);
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      setError(err);
+      setLoading(false);
+    });
   }
   
   const confirmUserTested = () => {
@@ -36,9 +41,6 @@ const RegistUserPage: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
           <IonTitle>Indique el RUT del conductor</IonTitle>
         </IonToolbar>
       </IonHeader>
@@ -47,32 +49,31 @@ const RegistUserPage: React.FC = () => {
         <form className="ion-padding login-list" onSubmit={consultUserData}>
           <IonItem>
             <IonLabel position="floating">RUT</IonLabel>
-            <IonInput value={rut} onIonChange={handleRutChange} autofocus={true} />
+            <IonInput value={rut} onIonChange={handleRutChange} autofocus />
           </IonItem>
-          <IonButton size="default" className="btn center" type="submit">
-            { loading ? <IonSpinner/> : 'Consultar' }
-          </IonButton>
+          <input type="submit" className="submit-btn" value="Consultar" />
           {error && <p className="error-msg">{error.message}</p>}
         </form>
 
-        {user &&
-          <IonList>
-            <IonItem>
-              <IonLabel><strong>Nombre:</strong> {user.nombre}</IonLabel>
-            </IonItem>
-            <IonItem>
-              <IonLabel><strong>C.I.:</strong> {user.ci}</IonLabel>
-            </IonItem>
-            <IonItem>
-              <IonLabel><strong>Fecha de nacimiento:</strong> {user.fechaNac}</IonLabel>
-            </IonItem>
-            <IonItem>
-              <IonButton onClick={confirmUserTested} size="default" className="confirm-btn">
-                Confirmar
-              </IonButton>
-            </IonItem>
+        <IonList>
+        { loading && <IonItem><IonSpinner className="loading" /></IonItem> }
+            { user &&
+              <>
+                <IonItem>
+                  <IonLabel><strong>Nombre:</strong> {user.nombre}</IonLabel>
+                </IonItem>
+                <IonItem>
+                  <IonLabel><strong>C.I.:</strong> {user.ci}</IonLabel>
+                </IonItem>
+                <IonItem>
+                  <IonLabel><strong>Fecha de nacimiento:</strong> {user.fechaNac}</IonLabel>
+                </IonItem>
+                <IonItem>
+                  <input type="button" onClick={confirmUserTested} className="submit-btn confirm-btn" value="Confirmar" />
+                </IonItem>
+              </>
+          }
           </IonList>
-        }
       </IonContent>
     </IonPage>
   );

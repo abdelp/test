@@ -35,6 +35,7 @@ const LoginPage: React.FC = () => {
   const [password, setPassword] = useState<string>();
   const [error, setError] = useState({message: ''});
   const [cookies, setCookie] = useCookies(["user"]);
+  const userInput = useRef<HTMLIonInputElement>(null);
 
   const handleUserChange = (event: any) =>
     setUsername(event.target.value);
@@ -83,17 +84,6 @@ const LoginPage: React.FC = () => {
       });
   }
 
-  // useEffect(() => {
-  //   exportWorker.onmessage = ($event: MessageEvent) => {
-  //     if ($event && $event.data) {
-  //       console.log('changed2')
-  //     }
-  //   };
-
-  //   getUid();
-  //   ////
-  // }, [username]);
-
   function saveUser() {
     exportWorker
          .postMessage({msg: 'incApple', countApple: 1});
@@ -101,37 +91,35 @@ const LoginPage: React.FC = () => {
 
   async function getUid() {
     const x = await get('user');
-    console.log(x);
   }
 
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
           <IonTitle className="title">Login</IonTitle>
         </IonToolbar>
       </IonHeader>
-
       <IonContent fullscreen className="ion-padding" color="light">
         <form className="ion-padding login-list" onSubmit={login}>
           <IonItem>
             <IonLabel position="floating">Usuario</IonLabel>
-            <IonInput value={username} onIonChange={handleUserChange} autofocus={true} />
+            <IonInput value={username} onIonChange={handleUserChange} autofocus></IonInput>
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Contraseña</IonLabel>
             <IonInput value={password} type="password" onIonChange={handlePasswordChange} />
           </IonItem>
-          <IonButton size="default" className="btn center" type="submit">
-            { loading ? <IonSpinner/> : 'Login' }
-          </IonButton>
+          <input type="submit" className="submit-btn" value="Ingresar" />
+          {
+            loading &&
+
+            <IonItem>
+              <IonSpinner className="loading" />
+            </IonItem>
+          }
           {error && <p className="error-msg">{error.message}</p>}
         </form>
-
-        {/* <GeolocationButton /> */}
       </IonContent>
     </IonPage>
   );

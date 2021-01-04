@@ -45,7 +45,7 @@ const NoticePage: React.FC = () => {
             <IonLabel>La persona con CI 4.484.595, ha realizado el examen en fecha 28/12/2020 y necesita aguardar 30 días para poder volver a realizarlo, 28/01/2021</IonLabel>
           </IonItem>
           <IonItem>
-            <IonButton onClick={returnMenu} size="default" className="confirm-btn">Pagina principal</IonButton>
+            <IonButton onClick={returnMenu} size="default" className="confirm-btn">Volver a los tests</IonButton>
           </IonItem>
         </IonList>
       </IonContent>

@@ -21,7 +21,7 @@ const CategoriesPage: React.FC = () => {
       <IonHeader>
         <IonToolbar color="primary">
           <IonButtons slot="start">
-            <IonMenuButton />
+            <IonMenuButton autoHide={false} />
           </IonButtons>
           <IonTitle>Categorías</IonTitle>
         </IonToolbar>

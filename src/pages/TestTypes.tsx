@@ -11,7 +11,8 @@ import {
   IonCardSubtitle,
   IonCardTitle,
   IonCardContent,
-  IonButton
+  IonButton,
+  IonBackButton
 } from '@ionic/react';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
@@ -32,11 +33,11 @@ const TestTypesPage: React.FC = () => {
         const enableDate = new Date();
         enableDate.setDate(result.date.getDate()+30);
 
-        if(result.date < enableDate) {
-          reject(true);
-        } else {
+        // if(result.date < enableDate) {
+        //   reject(true);
+        // } else {
           resolve(true);
-        }
+        // }
       })
       .catch(err => console.log(err));
     })
@@ -57,7 +58,7 @@ const TestTypesPage: React.FC = () => {
       <IonHeader>
         <IonToolbar color="primary">
           <IonButtons slot="start">
-            <IonMenuButton />
+            <IonBackButton defaultHref="categories" text="Volver" icon="ios-arrow-back" />
           </IonButtons>
           <IonTitle>Tests</IonTitle>
         </IonToolbar>

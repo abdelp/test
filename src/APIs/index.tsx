@@ -34,21 +34,25 @@ const signinUser = (username: any, password: any) => {
 
 const getTestedUserData = (rut: any) => {
   return new Promise((resolve, reject) => {
-    setInterval(() =>
-      resolve(
-        {
-        nombre: 'Abdel Omar Pérez Téllez',
-        fechaNac: '04/02/1992',
-        ci: '4.484.595',
-        categoria: 1,
-        fecCatMotocicleta: {
-          ultimoExamen: '2020-12-23',
-          proximaHabilitacion: '30 dias',
-          catProfB: null,
+    setInterval(() => {
+      if(rut == 4484595) {
+        resolve(
+          {
+          nombre: 'Abdel Omar Pérez Téllez',
+          fechaNac: '04/02/1992',
+          ci: '4.484.595',
+          categoria: 1,
+          fecCatMotocicleta: {
+            ultimoExamen: '2020-12-23',
+            proximaHabilitacion: '30 dias',
+            catProfB: null,
+          }
         }
+        )
+      } else {
+        reject({codError: 1, message: 'Usuario no registrado, favor verifique que esté correcto.'})
       }
-      )
-    , 5000)
+    }, 2000)
   });
 }
 

@@ -1,5 +1,5 @@
 import Menu from './components/Menu';
-import Page from './pages/Page';
+
 import LoginPage from './pages/Login';
 import CategoriesPage from './pages/Categories';
 import RegistUserPage from './pages/RegistUser';
@@ -42,9 +42,8 @@ const App: React.FC = () => {
       <IonApp>
         <IonReactRouter>
           <IonSplitPane contentId="main">
-            {/* <Menu /> */}
+            <Menu />
             <IonRouterOutlet id="main">
-              <Route path="/page/:name" component={Page} exact />
               <Route path="/page/categories" component={CategoriesPage} exact />
               <Route path="/page/regist-user" component={RegistUserPage} exact />
               <Route path="/page/test-types" component={TestTypesPage} exact />
@@ -54,12 +53,12 @@ const App: React.FC = () => {
               <Route path="/page/time-out" component={TimeOutPage} exact />
               <Route path="/page/notice" component={NoticePage} exact />
               <Route exact path="/">
-                { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage />}
+                { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage /> }
               </Route>
             </IonRouterOutlet>
           </IonSplitPane>
           <Route path="/login" component={LoginPage} exact >
-            { !loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage />}
+            { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage /> }
           </Route>
         </IonReactRouter>
       </IonApp>

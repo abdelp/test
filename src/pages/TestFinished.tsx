@@ -16,7 +16,8 @@ import {
   IonItemOptions,
   IonItemOption,
   IonIcon,
-  IonNote
+  IonNote,
+  IonBackButton
 } from '@ionic/react';
 import React from 'react';
 import { useParams } from 'react-router';
@@ -58,7 +59,7 @@ const TestFinishedPage: React.FC = () => {
               <IonLabel><strong>No respondidas:</strong> 3/20</IonLabel>
             </IonItem>
             <IonItem>
-              <IonButton onClick={returnMenu} size="default" className="confirm-btn">Pagina principal</IonButton>
+              <IonButton onClick={returnMenu} size="default" className="confirm-btn">Volver a los tests</IonButton>
             </IonItem>
           </IonList>
       </IonContent>
