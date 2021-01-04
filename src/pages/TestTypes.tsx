@@ -8,7 +8,9 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardContent,
-  IonButton
+  IonButton,
+  IonButtons,
+  IonMenuButton
 } from '@ionic/react';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
@@ -26,8 +28,8 @@ const TestTypesPage: React.FC = () => {
   
       get(ci)
       .then((result: any) => {
-        const enableDate = new Date();
-        enableDate.setDate(result.date.getDate()+30);
+        // const enableDate = new Date();
+        // enableDate.setDate(result.date.getDate()+30);
 
         // if(result.date < enableDate) {
         //   reject(true);
@@ -53,6 +55,9 @@ const TestTypesPage: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
+          <IonButtons slot="start">
+            <IonMenuButton autoHide={false} />
+          </IonButtons>
           <IonTitle>Tests</IonTitle>
         </IonToolbar>
       </IonHeader>

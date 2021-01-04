@@ -10,11 +10,11 @@ import TestFinishedPage from './pages/TestFinished';
 import TimeOutPage from './pages/TimeOut';
 import NoticePage from './pages/Notice';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
-import { CookiesProvider } from "react-cookie";
+import { CookiesProvider, withCookies, Cookies } from "react-cookie";
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -36,14 +36,21 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 import { loggedIn } from './utils/db';
+import { useHistory } from 'react-router-dom';
 
-const App: React.FC = () => {
+const App: React.FC = (props: any) => {
+  const usuario = props.cookies.get('usuario');
+  const history = useHistory();
+  const menu = useRef();
+
+  useEffect(() => console.log('effect'));
+
   return (
     <CookiesProvider>
       <IonApp>
         <IonReactRouter>
-          <IonSplitPane contentId="main">
-            <Menu />
+          <IonSplitPane contentId="main" when={false}>
+             <Menu />
             <IonRouterOutlet id="main">
               <Route path="/page/categories" component={CategoriesPage} exact />
               <Route path="/page/regist-user" component={RegistUserPage} exact />
@@ -54,12 +61,12 @@ const App: React.FC = () => {
               <Route path="/page/time-out" component={TimeOutPage} exact />
               <Route path="/page/notice" component={NoticePage} exact />
               <Route exact path="/">
-                {/* { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage /> } */}
+                { usuario ? <Redirect to="/page/categories" /> : <LoginPage /> }
               </Route>
             </IonRouterOutlet>
           </IonSplitPane>
           <Route path="/login" component={LoginPage} exact >
-            {/* { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage /> } */}
+            { usuario ? <Redirect to="/page/categories" /> : <LoginPage /> }
           </Route>
         </IonReactRouter>
       </IonApp>
@@ -67,4 +74,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default withCookies(App);

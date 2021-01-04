@@ -48,9 +48,6 @@ const InstructionsPage: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
           <IonTitle>Instrucciones</IonTitle>
         </IonToolbar>
       </IonHeader>

@@ -1,19 +1,41 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonButton } from '@ionic/react';
+import {
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCard,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonCardContent,
+  IonButton,
+  IonMenuToggle
+} from '@ionic/react';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import './Categories.css';
 import { useHistory } from 'react-router-dom';
 import { getCategories } from '../APIs';
+import { withCookies, Cookies } from 'react-cookie';
 
-const CategoriesPage: React.FC = () => {
+const CategoriesPage: React.FC = (props: any) => {
+
   const history = useHistory();
 
   const goToCategory = (category: any) =>
     history.push(`/page/regist-user`);
 
   useEffect(() => {
-    
+    const usuario = props.cookies.get('usuario');
+    console.log(usuario);
+
+    if (!usuario || usuario === 'null') {
+      history.push('/login');
+    }
   }, []);
 
   return (
@@ -110,7 +132,6 @@ const CategoriesPage: React.FC = () => {
             </IonCardHeader>
 
             <IonCardContent>
-
               <br/>
               <IonButton onClick={goToCategory}>Seleccionar</IonButton>
             </IonCardContent>
@@ -121,4 +142,4 @@ const CategoriesPage: React.FC = () => {
   );
 };
 
-export default CategoriesPage;
+export default withCookies(CategoriesPage);

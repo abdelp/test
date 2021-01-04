@@ -85,6 +85,12 @@ const RegistUserPage: React.FC = () => {
                   <IonLabel><strong>Fecha de nacimiento:</strong> {user.fechaNac}</IonLabel>
                 </IonItem>
                 <IonItem>
+                  <IonLabel><strong>Domicilio:</strong> {user.domicilio}</IonLabel>
+                </IonItem>
+                <IonItem>
+                  <IonLabel><strong>Nacionalidad:</strong> {user.nacionalidad}</IonLabel>
+                </IonItem>
+                <IonItem>
                   <input type="button" onClick={confirmUserTested} className="submit-btn confirm-btn" value="Confirmar" />
                 </IonItem>
               </>

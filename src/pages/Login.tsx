@@ -21,14 +21,12 @@ import { set, get } from 'idb-keyval';
 import { useCookies } from "react-cookie";
 
 const LoginPage: React.FC = () => {
-  const exportWorker: Worker = new Worker('../workers/export.js');
   const history = useHistory();
   const [username, setUsername] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
   const [password, setPassword] = useState<string>();
   const [error, setError] = useState({message: ''});
   const [cookies, setCookie] = useCookies(["user"]);
-  const userInput = useRef<HTMLIonInputElement>(null);
 
   const handleUserChange = (event: any) =>
     setUsername(event.target.value);
@@ -47,14 +45,18 @@ const LoginPage: React.FC = () => {
         const autenticarExaminadorResult = res.responseXML.getElementsByTagName("AutenticarExaminadorResult")[0];
         const codError = autenticarExaminadorResult.firstChild.innerHTML;
 
-        if (codError == 0) {
+        if (codError === '0') {
           const ticket = autenticarExaminadorResult.getElementsByTagName("Ticket")[0].innerHTML;
+
+          setCookie("usuario", username, {
+            path: "/"
+          });
 
           setCookie("ticket", ticket, {
             path: "/"
           });
 
-          history.push('/page/categories');
+          history.replace('/page/categories');
         } else {
           let errMsg;
 
@@ -74,15 +76,6 @@ const LoginPage: React.FC = () => {
         setLoading(false);
         setError(error);
       });
-  }
-
-  // function saveUser() {
-  //   exportWorker
-  //        .postMessage({msg: 'incApple', countApple: 1});
-  // }
-
-  async function getUid() {
-    const x = await get('user');
   }
 
   return (

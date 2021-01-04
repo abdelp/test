@@ -11,7 +11,7 @@ import {
   IonButton
 } from '@ionic/react';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
   archiveOutline,
@@ -34,6 +34,7 @@ import { useCookies } from "react-cookie";
 import { useHistory } from 'react-router-dom';
 import { logout } from './../utils/db';
 
+import { withCookies, Cookies } from 'react-cookie';
 interface AppPage {
   url: string;
   iosIcon: string;
@@ -42,40 +43,34 @@ interface AppPage {
 }
 
 const appPages: AppPage[] = [
-  {
-    title: 'Parámetros',
-    url: '/page/Inbox',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
-  },
-  // {
-  //   title: 'Salir',
-  //   url: '/page/Spam',
-  //   iosIcon: warningOutline,
-  //   mdIcon: logOut
-  // }
 ];
 
-const Menu: React.FC = () => {
+const capitalize = (string: string) =>
+  string.replace(/^\w/, c => c.toUpperCase());
+
+const Menu: React.FC = (props: any) => {
   const location = useLocation();
-  const [cookies, setCookie] = useCookies(["user"]);
   const history = useHistory();
+  const [username, setUsername] = useState<string>();
+  const [cookies, setCookie, removeCookie] = useCookies(["usuario"]);
+
+  useEffect(() => {
+    setUsername(capitalize(props.cookies.get('usuario') || ''));
+  });
 
   const logoutAction = () => {
-    // setCookie("ticket", null, {
-    //   path: "/"
-    // });
-    debugger;
+    console.log('x')
+    removeCookie("usuario", {path: '/'});
+    removeCookie("ticket", {path: '/'});
     logout();
-    history.replace('/');
+    history.push('/login');
   }
 
   return (
-    <IonMenu contentId="main" type="overlay">
+    <IonMenu contentId="main" type="overlay" swipeGesture={false}>
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>Inbox</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
+          <IonListHeader>{username}</IonListHeader>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
@@ -93,6 +88,8 @@ const Menu: React.FC = () => {
               </IonMenuToggle>
             );
           })}
+              <IonMenuToggle key={'exit'} autoHide={false}>
+
             <IonItem
               lines="none"
               detail={false}
@@ -100,10 +97,11 @@ const Menu: React.FC = () => {
             >
               <IonButton>Salir</IonButton>
             </IonItem>
+            </IonMenuToggle>
         </IonList>
       </IonContent>
     </IonMenu>
   );
 };
 
-export default Menu;
+export default withCookies(Menu);

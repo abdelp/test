@@ -41,7 +41,9 @@ const getTestedUserData = (rut: any) => {
           nombre: 'Abdel Omar Pérez Téllez',
           fechaNac: '04/02/1992',
           ci: '4.484.595',
-          categoria: 1,
+          domicilio: 'LAMBARE',
+          nacionalidad: 'PARAGUAYA',
+          categoria: '1',
           fecCatMotocicleta: {
             ultimoExamen: '2020-12-23',
             proximaHabilitacion: '30 dias',
