@@ -117,9 +117,9 @@ const MultipleOptionsPage: React.FC = (props: any) => {
             history.replace('/page/time-out');
           } else {
             setState(state => ({
-                  min: state.min - 1,
-                  sec: 59
-              }))
+              min: state.min - 1,
+              sec: 59
+            }))
           }
         } 
 

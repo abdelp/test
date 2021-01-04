@@ -1,23 +1,16 @@
 import {
-  IonButtons,
   IonContent,
   IonHeader,
-  IonList,
-  IonMenuButton,
   IonPage,
   IonTitle,
   IonToolbar,
   IonItem,
   IonLabel,
   IonInput,
-  IonButton,
-  IonIcon,
   IonSpinner
 } from '@ionic/react';
-import { logIn } from 'ionicons/icons';
-import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router';
-import ExploreContainer from '../components/ExploreContainer';
+
+import React, { useState, useRef } from 'react';
 import './Login.css';
 import { useHistory } from 'react-router-dom';
 import { signinUser } from '../APIs';
@@ -80,14 +73,13 @@ const LoginPage: React.FC = () => {
         // @ts-ignore
         setLoading(false);
         setError(error);
-        console.log('error');
       });
   }
 
-  function saveUser() {
-    exportWorker
-         .postMessage({msg: 'incApple', countApple: 1});
-  }
+  // function saveUser() {
+  //   exportWorker
+  //        .postMessage({msg: 'incApple', countApple: 1});
+  // }
 
   async function getUid() {
     const x = await get('user');

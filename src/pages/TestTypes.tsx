@@ -1,18 +1,14 @@
 import {
-  IonButtons,
   IonContent,
   IonHeader,
-  IonMenuButton,
   IonPage,
   IonTitle,
   IonToolbar,
   IonCard,
   IonCardHeader,
-  IonCardSubtitle,
   IonCardTitle,
   IonCardContent,
-  IonButton,
-  IonBackButton
+  IonButton
 } from '@ionic/react';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
@@ -57,9 +53,6 @@ const TestTypesPage: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="categories" text="Volver" icon="ios-arrow-back" />
-          </IonButtons>
           <IonTitle>Tests</IonTitle>
         </IonToolbar>
       </IonHeader>

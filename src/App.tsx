@@ -9,6 +9,7 @@ import InstructionsPage from './pages/Instructions';
 import TestFinishedPage from './pages/TestFinished';
 import TimeOutPage from './pages/TimeOut';
 import NoticePage from './pages/Notice';
+
 import React from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -53,12 +54,12 @@ const App: React.FC = () => {
               <Route path="/page/time-out" component={TimeOutPage} exact />
               <Route path="/page/notice" component={NoticePage} exact />
               <Route exact path="/">
-                { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage /> }
+                {/* { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage /> } */}
               </Route>
             </IonRouterOutlet>
           </IonSplitPane>
           <Route path="/login" component={LoginPage} exact >
-            { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage /> }
+            {/* { loggedIn() ? <Redirect to="/page/categories" /> : <LoginPage /> } */}
           </Route>
         </IonReactRouter>
       </IonApp>

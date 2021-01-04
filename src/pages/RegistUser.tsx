@@ -1,4 +1,17 @@
-import { IonButtons, IonContent, IonHeader, IonList, IonMenuButton, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonInput, IonButton, IonIcon, IonSpinner } from '@ionic/react';
+import {
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonList,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonBackButton,
+  IonSpinner
+} from '@ionic/react';
 import { logIn } from 'ionicons/icons';
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
@@ -41,6 +54,9 @@ const RegistUserPage: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="categories" text="Volver" icon="ios-arrow-back" />
+          </IonButtons>
           <IonTitle>Indique el RUT del conductor</IonTitle>
         </IonToolbar>
       </IonHeader>
