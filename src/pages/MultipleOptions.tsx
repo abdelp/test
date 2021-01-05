@@ -43,7 +43,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
   const examWorker: Worker = new Worker('../workers/export.js');
 
   const nextQuestion = () => {
-    if(selected || continuar) {
+    if(typeof selected != 'undefined' || continuar) {
       continuar = false;
       setSelected('');
       setState({min: 3, sec: 0});
@@ -79,7 +79,6 @@ const MultipleOptionsPage: React.FC = (props: any) => {
   }
 
   useEffect(() => {
-
     updateUserTestDate('123', 'multiple options')
     .then(result => {
       console.log(result);
@@ -167,9 +166,11 @@ const MultipleOptionsPage: React.FC = (props: any) => {
           />
 
         <IonList lines="none">
-          <IonRadioGroup ref={radioGroup} value={selected} onIonChange={e => {
-            setSelected(e.detail.value);
-          }}>
+          <IonRadioGroup
+            value={selected}
+            onIonChange={e => {
+              setSelected(e.detail.value)
+            }}>
             <IonListHeader className="list-header">
               <IonImg src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
               <IonLabel><strong>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
@@ -178,9 +179,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
               return (
                 <IonItem key={opt}>
                   <IonLabel>{opt}</IonLabel>
-                  <IonRadio slot="start" value={idx} onFocus={e => {
-                    setSelected(e.target.value);
-                  }}/>
+                  <IonRadio slot="start" value={idx} />
                 </IonItem>
               )
               })

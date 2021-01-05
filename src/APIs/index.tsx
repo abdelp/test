@@ -35,12 +35,12 @@ const signinUser = (username: any, password: any) => {
 const getTestedUserData = (rut: any) => {
   return new Promise((resolve, reject) => {
     setInterval(() => {
-      if(rut == 4484595) {
+      if(rut == 111) {
         resolve(
           {
-          nombre: 'Abdel Omar Pérez Téllez',
-          fechaNac: '04/02/1992',
-          ci: '4.484.595',
+          nombre: 'Pedro Martinez',
+          fechaNac: '04/02/1980',
+          ci: '3.324.585',
           domicilio: 'LAMBARE',
           nacionalidad: 'PARAGUAYA',
           categoria: '1',

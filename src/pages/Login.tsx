@@ -41,12 +41,12 @@ const LoginPage: React.FC = () => {
     signinUser(username, password)
       .then(async (res:any) => {
         setLoading(false);
+        // const autenticarExaminadorResult = res.responseXML.getElementsByTagName("AutenticarExaminadorResult")[0];
+        // const codError = autenticarExaminadorResult.firstChild.innerHTML;
 
-        const autenticarExaminadorResult = res.responseXML.getElementsByTagName("AutenticarExaminadorResult")[0];
-        const codError = autenticarExaminadorResult.firstChild.innerHTML;
-
-        if (codError === '0') {
-          const ticket = autenticarExaminadorResult.getElementsByTagName("Ticket")[0].innerHTML;
+        // if (codError === '0') {
+        //   const ticket = autenticarExaminadorResult.getElementsByTagName("Ticket")[0].innerHTML;
+          const ticket = 'x';
 
           setCookie("usuario", username, {
             path: "/"
@@ -57,19 +57,19 @@ const LoginPage: React.FC = () => {
           });
 
           history.replace('/page/categories');
-        } else {
-          let errMsg;
+        // } else {
+        //   let errMsg;
 
-          switch(codError) {
-            case '6':
-              errMsg = 'Usuario y/o contraseña incorrecta';
-              break;
-            default:
-              errMsg = 'Error desconocido'
-          }
+        //   switch(codError) {
+        //     case '6':
+        //       errMsg = 'Usuario y/o contraseña incorrecta';
+        //       break;
+        //     default:
+        //       errMsg = 'Error desconocido'
+        //   }
 
-          setError({message: errMsg})
-        }
+          // setError({message: errMsg})
+        // }
       })
       .catch(async error => {
         // @ts-ignore
