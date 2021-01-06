@@ -12,12 +12,9 @@ import {
   IonButtons,
   IonMenuButton
 } from '@ionic/react';
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router';
-import ExploreContainer from '../components/ExploreContainer';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { get } from 'idb-keyval';
-import { today } from 'ionicons/icons';
 
 const TestTypesPage: React.FC = () => {
   const history = useHistory();
