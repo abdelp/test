@@ -40,15 +40,19 @@ const getTestedUserData = (rut: any) => {
           {
           nombre: 'Pedro Martinez',
           fechaNac: '04/02/1980',
-          ci: '3.324.585',
+          ci: '3324585',
           domicilio: 'LAMBARE',
           nacionalidad: 'PARAGUAYA',
           categoria: '1',
-          fecCatMotocicleta: {
-            ultimoExamen: '2020-12-23',
-            proximaHabilitacion: '30 dias',
-            catProfB: null,
-          }
+          examenes:
+            {
+              catMotocicleta: {
+                examenTeorico: {
+                  fecha: '2020-12-23',
+                  puntaje: 80
+                }
+              }
+            }
         }
         )
       } else {
@@ -107,6 +111,9 @@ const sendResult = (ticket: any, ci: any, result: any) => {
   });
 }
 
+const getExamDate = async ({categoria, ticket, ci, examType}: any) =>
+  ({ ci: '111', categoria: 'motocicleta', examType: 'seleccion_multiple', date: '2020-01-06' });
+
 export {
-  signinUser, getCategories, getTestedUserData, getPreguntasSenhales, sendResult
+  signinUser, getCategories, getTestedUserData, getPreguntasSenhales, sendResult, getExamDate
 };

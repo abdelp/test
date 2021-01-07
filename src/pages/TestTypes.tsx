@@ -15,34 +15,56 @@ import {
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { get } from 'idb-keyval';
+import { getExamDate } from '../APIs';
+import { useCookies } from "react-cookie";
 
 const TestTypesPage: React.FC = () => {
   const history = useHistory();
+  const [cookies, setCookie] = useCookies(["user"]);
 
   const checkExamDate = () => {
     return new Promise((resolve, reject) => {
-      const ci = '123';
-  
-      get(ci)
-      .then((result: any) => {
-        // const enableDate = new Date();
-        // enableDate.setDate(result.date.getDate()+30);
 
-        // if(result.date < enableDate) {
-        //   reject(true);
-        // } else {
+      const { categoria, ticket, usuario_testeado: { ci } } = cookies;
+      const examType = 'seleccion_multiple';
+
+      getExamDate({ categoria, ticket, ci, examType })
+      .then(result => {
+        if (result.date) {
+          const fechaExamen = new Date(result.date);
+          const today = new Date();
+          const fechaHabilitacion = new Date();
+          fechaHabilitacion.setDate(fechaExamen.getDate()+30);
+
+          if (today >= fechaHabilitacion) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        } else {
           resolve(true);
-        // }
+        }
       })
-      .catch(err => console.log(err));
-    })
+      .catch(err => { 
+        console.log(err)
+      });
+    });
   }
   
   const goToTest = (test: any) => {
     checkExamDate()
-    .then(() => 
-      history.push(`/page/tutorial`)
-    )
+    .then(result => {
+      const { categoria, ticket, usuario_testeado } = cookies;
+  
+      if (result) {
+        history.push({
+          pathname: '/page/tutorial',
+          state: {categoria, usuario_testeado }
+        });
+      } else {
+        history.replace('/page/notice');
+      }
+    })
     .catch(() => 
       history.replace('/page/notice')
     );

@@ -21,17 +21,19 @@ import './Categories.css';
 import { useHistory } from 'react-router-dom';
 import { getCategories } from '../APIs';
 import { withCookies, Cookies } from 'react-cookie';
+import { useCookies } from "react-cookie";
 
 const CategoriesPage: React.FC = (props: any) => {
-
   const history = useHistory();
+  const [cookies, setCookie] = useCookies(["user"]);
 
-  const goToCategory = (category: any) =>
+  const goToCategory = (category: any) => {
+    setCookie('categoria', category, { path: '/' });
     history.push(`/page/regist-user`);
+  }
 
   useEffect(() => {
     const usuario = props.cookies.get('usuario');
-    console.log(usuario);
 
     if (!usuario || usuario === 'null') {
       history.push('/login');
@@ -57,7 +59,7 @@ const CategoriesPage: React.FC = (props: any) => {
             </IonCardHeader>
             <IonCardContent>
               <br/>
-              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+              <IonButton onClick={() => goToCategory('motocycleta')}>Seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
           <IonCard>

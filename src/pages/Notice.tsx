@@ -19,7 +19,9 @@ import { useHistory } from 'react-router-dom';
 
 import './Notice.css';
 
-const NoticePage: React.FC = () => {
+const NoticePage: React.FC = (props: any) => {
+  console.log(props);
+  const {ci, fechaExamen, fechaHabilitacion} = props;
   const history = useHistory();
 
   const returnMenu = () => {
@@ -42,7 +44,8 @@ const NoticePage: React.FC = () => {
         <br/>
         <IonList>
           <IonItem>
-            <IonLabel>La persona con CI 4.484.595, ha realizado el examen en fecha 28/12/2020 y necesita aguardar 30 días para poder volver a realizarlo, 28/01/2021</IonLabel>
+            <IonLabel>La persona con CI ${ci} ha realizado el examen en fecha {fechaExamen} y necesita aguardar 30 días para poder volver a realizarlo
+            Fecha habilitada para volver a tomar el examen: ${fechaHabilitacion}</IonLabel>
           </IonItem>
           <IonItem>
             <IonButton onClick={returnMenu} size="default" className="confirm-btn">Volver a los tests</IonButton>

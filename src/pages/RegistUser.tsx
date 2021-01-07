@@ -12,13 +12,12 @@ import {
   IonBackButton,
   IonSpinner
 } from '@ionic/react';
-import { logIn } from 'ionicons/icons';
 import React, { useState } from 'react';
-import { useParams } from 'react-router';
-import ExploreContainer from '../components/ExploreContainer';
 import { useHistory } from 'react-router-dom';
 import { getTestedUserData } from '../APIs';
 import './RegistUser.css';
+
+import { useCookies } from "react-cookie";
 
 const RegistUserPage: React.FC = () => {
   const history = useHistory();
@@ -26,15 +25,17 @@ const RegistUserPage: React.FC = () => {
   const [user, setUser] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState({message: ''});
+  const [cookies, setCookie] = useCookies(["user"]);
 
   const handleRutChange = (event: any) =>
     setRut(event.target.value);
 
   const consultUserData = (event: any) => {
     setLoading(true);
-    setError({message: ''});
+    setError({ message: '' });
     setUser(null);
     event.preventDefault();
+
     getTestedUserData(rut)
     .then((result: any) => {
       setUser(result);
@@ -47,6 +48,10 @@ const RegistUserPage: React.FC = () => {
   }
   
   const confirmUserTested = () => {
+    setCookie("usuario_testeado", JSON.stringify(user), {
+      path: "/"
+    });
+
     history.push('/page/test-types');
   }
 
