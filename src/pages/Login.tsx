@@ -9,16 +9,11 @@ import {
   IonInput,
   IonSpinner
 } from '@ionic/react';
-
 import React, { useState, useRef } from 'react';
-import './Login.css';
 import { useHistory } from 'react-router-dom';
 import { signinUser } from '../APIs';
-
-import GeolocationButton from '../components/GeolocationButton';
-import { set, get } from 'idb-keyval';
-
 import { useCookies } from "react-cookie";
+import './Login.css';
 
 const LoginPage: React.FC = () => {
   const history = useHistory();
@@ -48,13 +43,13 @@ const LoginPage: React.FC = () => {
         //   const ticket = autenticarExaminadorResult.getElementsByTagName("Ticket")[0].innerHTML;
           const ticket = 'x';
 
-          setCookie("usuario", username, {
+          setCookie("usuario", JSON.stringify({ username, ticket }), {
             path: "/"
           });
 
-          setCookie("ticket", ticket, {
-            path: "/"
-          });
+          // setCookie("ticket", ticket, {
+          //   path: "/"
+          // });
 
           history.replace('/page/categories');
         // } else {

@@ -55,13 +55,15 @@ const Menu: React.FC = (props: any) => {
   const [cookies, setCookie, removeCookie] = useCookies(["usuario"]);
 
   useEffect(() => {
+    const usuario = JSON.parse(props.cookies.get('usuario'));
+    console.log("=====================", usuario);
     setUsername(capitalize(props.cookies.get('usuario') || ''));
   });
 
   const logoutAction = () => {
-    console.log('x')
+    console.log('x');
     removeCookie("usuario", {path: '/'});
-    removeCookie("ticket", {path: '/'});
+    // removeCookie("ticket", {path: '/'});
     logout();
     history.push('/login');
   }

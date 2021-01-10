@@ -34,6 +34,7 @@ const CategoriesPage: React.FC = (props: any) => {
 
   useEffect(() => {
     const usuario = props.cookies.get('usuario');
+    console.log(usuario);
 
     if (!usuario || usuario === 'null') {
       history.push('/login');
