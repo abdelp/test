@@ -20,7 +20,8 @@
       "Detención completa, en todos los casos"
     ],
     "respuesta": 2
-  },
+  }
+  ,
   {
     "id": 3,
     "img": "q3.png",
@@ -31,5 +32,89 @@
       "Detención completa, en todos los casos"
     ],
     "respuesta": 2
+  }
+  ,
+  {
+    "id": 4,
+    "img": "q4.png",
+    "pregunta": "La siguiente señal se denomina",
+    "opciones": [
+      "Prohibido adelantar",
+      "Prohibido estacionar",
+      "Prohibida la circulación de vehículos automotores"
+    ],
+    "respuesta": 0
+  }
+  ,
+  {
+    "id": 5,
+    "img": "q5.png",
+    "pregunta": "Qué debe hacer el conductor que enfrente esta señal?",
+    "opciones": [
+      "Girar en U o retornar",
+      "Seguir de frente o girar a la izquierda",
+      "Cambiar de carril"
+    ],
+    "respuesta": 1
+  }
+  ,
+  {
+    "id": 6,
+    "img": "q6.png",
+    "pregunta": "La siguiente señal indica",
+    "opciones": [
+      "siga de frente, gire a la izquierda o gire a la derecha",
+      "no hay paso, contramano",
+      "cruce de vías"
+    ],
+    "respuesta": 0
+  }
+  ,
+  {
+    "id": 7,
+    "img": "q7.png",
+    "pregunta": "Qué indica esta señal?",
+    "opciones": [
+      "Prohibido estacionar a la derecha",
+      "Prohibido curva a la derecha",
+      "Prohibido girar a la derecha"
+    ],
+    "respuesta": 2
+  }
+  ,
+  {
+    "id": 8,
+    "img": "q8.png",
+    "pregunta": "Qué indica la siguiente señal?",
+    "opciones": [
+      "Siga de frente",
+      "Estacionamiento prohibido",
+      "Contramano"
+    ],
+    "respuesta": 2
+  }
+  ,
+  {
+    "id": 9,
+    "img": "q9.png",
+    "pregunta": "La siguiente señal indica",
+    "opciones": [
+      "Tránsito prohibido",
+      "No bloquear la bocacalle",
+      "Prohibido detenerse"
+    ],
+    "respuesta": 1
+  }
+  ,
+  {
+    "id": 10,
+    "img": "q10.png",
+    "pregunta": "La siguiente señal indica",
+    "opciones": [
+      "Estacionamiento prohibido",
+      "Estacionamiento permitido",
+      "Estacionamiento reglamentado por hora"
+    ],
+    "respuesta": 1
   }
 ]

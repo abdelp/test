@@ -7,22 +7,11 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonSlides,
-  IonSlide,
   IonList,
-  IonItemSliding,
   IonItem,
-  IonLabel,
-  IonItemOptions,
-  IonItemOption,
-  IonIcon,
-  IonNote,
-  IonBackButton
+  IonLabel
 } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
-import ExploreContainer from '../components/ExploreContainer';
-import { heart, trash, star, archive, ellipsisHorizontal, ellipsisVertical } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom';
 import { get } from 'idb-keyval';
 
@@ -62,6 +51,7 @@ const TestFinishedPage: React.FC = () => {
                     typeof exam.selected === 'undefined'
                   ).length;
 
+      console.log(nac);
       setCorrectas(cc);
       setPorcentaje(cc * 100 / result.exam.length);
       setNoRespondidas(nac);

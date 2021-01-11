@@ -23,6 +23,7 @@ import { set } from 'idb-keyval';
 import { sendResult } from '../APIs';
 import { updateUserTestDate } from '../utils/db';
 import { withCookies, Cookies } from 'react-cookie';
+import './MultipleOptions.css';
 
 const MultipleOptionsPage: React.FC = (props: any) => {
   const [selected, setSelected] = useState<string>();
@@ -53,6 +54,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
         doSaveExamProgress(questions);
         setQuestionIdx(idx => idx + 1);
       } else {
+        doSaveExamProgress(questions);
         setLoading(true);
         setTimeout(() => {
           const resultado = questions.filter((r: any) => r.selected === r.respuesta).length;
@@ -165,7 +167,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
             ]}
           />
 
-        <IonList lines="none">
+        <IonList lines="none" className="ms-list">
           <IonRadioGroup
             value={selected}
             onIonChange={e => {

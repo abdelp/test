@@ -21,10 +21,9 @@ const NoticePage: React.FC = (props: any) => {
   const [cookies, setCookie] = useCookies(["usuario"]);
   const { categoria, usuario_testeado: { ci } } = cookies;
 
+  console.log(props);
   // console.log(categoria);
   // console.log(usuario_testeado);
-
-  console.log(props.location.state);
 
   const {fechaExamen, fechaHabilitacion, tipoExamen } = props.location.state;
   const history = useHistory();

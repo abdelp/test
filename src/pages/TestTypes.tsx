@@ -39,7 +39,7 @@ const TestTypesPage: React.FC = () => {
           if (today >= fechaHabilitacion) {
             resolve(true);
           } else {
-            resolve(false);
+            resolve(true);
           }
         } else {
           resolve(true);
@@ -52,21 +52,21 @@ const TestTypesPage: React.FC = () => {
   }
   
   const goToTest = (test: any) => {
+    const { categoria, ticket, usuario_testeado } = cookies;
+
     checkExamDate()
     .then(result => {
-      const { categoria, ticket, usuario_testeado } = cookies;
-  
       if (result) {
-        history.push({
+        history.replace({
           pathname: '/page/tutorial',
           state: {categoria, usuario_testeado }
         });
       } else {
-        history.replace({pathname: '/page/notice', state: {categoria} });
+        history.replace({pathname: '/page/notice', state: {categoria, usuario_testeado} });
       }
     })
     .catch(() => 
-      history.replace({pathname: '/page/notice'})
+      history.replace({pathname: '/page/notice', state: {categoria, usuario_testeado}})
     );
   }
 
