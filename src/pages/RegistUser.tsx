@@ -18,14 +18,16 @@ import { getTestedUserData } from '../APIs';
 import './RegistUser.css';
 
 import { useCookies } from "react-cookie";
+import { set, get } from 'idb-keyval';
 
 const RegistUserPage: React.FC = () => {
   const history = useHistory();
-  const [rut, setRut] = useState<string>();
+  const [rut, setRut] = useState<string>('');
   const [user, setUser] = useState<any>();
+  let usuariosTesteados: any = [];
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState({message: ''});
-  const [cookies, setCookie] = useCookies(["user"]);
+  const [cookies, setCookie] = useCookies(["usuario_testeado"]);
 
   const handleRutChange = (event: any) =>
     setRut(event.target.value);
@@ -36,22 +38,56 @@ const RegistUserPage: React.FC = () => {
     setUser(null);
     event.preventDefault();
 
-    getTestedUserData(rut)
+    get('usuarios_testeados')
     .then((result: any) => {
-      setUser(result);
-      setLoading(false);
+      console.log('result: ')
+      console.log(result);
+
+      if(result && result.length > 0) {
+        usuariosTesteados = result;
+        const usuario = usuariosTesteados.find((u: any) => u.rut === rut);
+
+        if(usuario) {
+          setUser(usuario);
+          setLoading(false);
+        } else {
+          // DRY
+          getTestedUserData(rut)
+          .then((result: any) => {
+            setUser(result);
+            setLoading(false);
+          })
+          .catch(err => {
+            setError(err);
+            setLoading(false);
+          });
+        }
+      } else {
+        getTestedUserData(rut)
+        .then((result: any) => {
+          setUser(result);
+          setLoading(false);
+        })
+        .catch(err => {
+          setError(err);
+          setLoading(false);
+        });
+      }
     })
-    .catch(err => {
-      setError(err);
-      setLoading(false);
-    });
+    .catch(error => console.log(error));
   }
   
   const confirmUserTested = () => {
-    setCookie("usuario_testeado", JSON.stringify(user), {
-      path: "/"
-    });
+    const userT = usuariosTesteados.find((u: any) => u.rut === rut);
 
+    console.log(userT);
+  
+    if(!userT) {
+      usuariosTesteados.push(user);
+    }
+
+    set("usuarios_testeados", usuariosTesteados);
+    setCookie('usuario_testeado', user, {path: '/'});
     history.push('/page/test-types');
   }
 

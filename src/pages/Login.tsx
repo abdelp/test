@@ -9,7 +9,7 @@ import {
   IonInput,
   IonSpinner
 } from '@ionic/react';
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { signinUser } from '../APIs';
 import { useCookies } from "react-cookie";
@@ -21,7 +21,7 @@ const LoginPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [password, setPassword] = useState<string>();
   const [error, setError] = useState({message: ''});
-  const [cookies, setCookie] = useCookies(["user"]);
+  const [cookies, setCookie] = useCookies(["usuario"]);
 
   const handleUserChange = (event: any) =>
     setUsername(event.target.value);
@@ -29,12 +29,12 @@ const LoginPage: React.FC = () => {
   const handlePasswordChange = (event: any) =>
     setPassword(event.target.value);
 
-  const login = (event:any) => {
+  const login = (event: any) => {
     setLoading(true);
     event.preventDefault();
 
     signinUser(username, password)
-      .then(async (res:any) => {
+      .then((res: any) => {
         setLoading(false);
         // const autenticarExaminadorResult = res.responseXML.getElementsByTagName("AutenticarExaminadorResult")[0];
         // const codError = autenticarExaminadorResult.firstChild.innerHTML;
@@ -66,7 +66,7 @@ const LoginPage: React.FC = () => {
           // setError({message: errMsg})
         // }
       })
-      .catch(async error => {
+      .catch((error: any) => {
         // @ts-ignore
         setLoading(false);
         setError(error);
@@ -75,30 +75,35 @@ const LoginPage: React.FC = () => {
 
   return (
     <IonPage>
+
       <IonHeader>
         <IonToolbar color="primary">
           <IonTitle className="title">Login</IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent fullscreen className="ion-padding" color="light">
         <form className="ion-padding login-list" onSubmit={login}>
+
           <IonItem>
             <IonLabel position="floating">Usuario</IonLabel>
             <IonInput value={username} onIonChange={handleUserChange} autofocus></IonInput>
           </IonItem>
+
           <IonItem>
             <IonLabel position="floating">Contraseña</IonLabel>
             <IonInput value={password} type="password" onIonChange={handlePasswordChange} />
           </IonItem>
-          <input type="submit" className="submit-btn" value="Ingresar" />
-          {
-            loading &&
 
-            <IonItem>
-              <IonSpinner className="loading" />
-            </IonItem>
-          }
-          {error && <p className="error-msg">{error.message}</p>}
+          <input type="submit" className="submit-btn" value="Ingresar" />
+            {
+              loading &&
+
+              <IonItem>
+                <IonSpinner className="loading" />
+              </IonItem>
+            }
+          { error && <p className="error-msg">{error.message}</p> }
         </form>
       </IonContent>
     </IonPage>

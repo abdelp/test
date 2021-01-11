@@ -1,4 +1,3 @@
-import axios from 'axios';
 import preguntas_senhales from './preguntas_senhales.json';
 
 const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
@@ -38,22 +37,23 @@ const getTestedUserData = (rut: any) => {
       if(rut == 111) {
         resolve(
           {
-          nombre: 'Pedro Martinez',
-          fechaNac: '04/02/1980',
-          ci: '3324585',
-          domicilio: 'LAMBARE',
-          nacionalidad: 'PARAGUAYA',
-          categoria: '1',
-          examenes:
-            {
-              catMotocicleta: {
-                examenTeorico: {
-                  fecha: '2020-12-23',
-                  puntaje: 80
+            nombre: 'Pedro Martinez',
+            fechaNac: '04/02/1980',
+            ci: '3324585',
+            rut: '111',
+            domicilio: 'LAMBARE',
+            nacionalidad: 'PARAGUAYA',
+            categoria: '1',
+            examenes:
+              {
+                catMotocicleta: {
+                  examenTeorico: {
+                    fecha: '2020-12-23',
+                    puntaje: 80
+                  }
                 }
               }
-            }
-        }
+          }
         )
       } else {
         reject({codError: 1, message: 'Usuario no registrado, favor verifique que esté correcto.'})

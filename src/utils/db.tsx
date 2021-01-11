@@ -7,14 +7,10 @@ async function loggedIn() {
   return user;
 }
 
-async function logout() {
-  const result = await set("user", null);
-}
-
 async function updateUserTestDate(ci: any, test: any) {
   const date = new Date();
   const result = await set(ci, {test, date});
 }
 
 
-export { loggedIn, updateUserTestDate, logout }
+export { loggedIn, updateUserTestDate }

@@ -12,16 +12,21 @@ import {
   IonLabel
 } from '@ionic/react';
 import React from 'react';
-import { useParams } from 'react-router';
-import ExploreContainer from '../components/ExploreContainer';
-import { heart, trash, star, archive, ellipsisHorizontal, ellipsisVertical } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom';
+import { useCookies } from "react-cookie";
 
 import './Notice.css';
 
 const NoticePage: React.FC = (props: any) => {
-  console.log(props);
-  const {ci, fechaExamen, fechaHabilitacion} = props;
+  const [cookies, setCookie] = useCookies(["usuario"]);
+  const { categoria, usuario_testeado: { ci } } = cookies;
+
+  // console.log(categoria);
+  // console.log(usuario_testeado);
+
+  console.log(props.location.state);
+
+  const {fechaExamen, fechaHabilitacion, tipoExamen } = props.location.state;
   const history = useHistory();
 
   const returnMenu = () => {
@@ -44,8 +49,8 @@ const NoticePage: React.FC = (props: any) => {
         <br/>
         <IonList>
           <IonItem>
-            <IonLabel>La persona con CI ${ci} ha realizado el examen en fecha {fechaExamen} y necesita aguardar 30 días para poder volver a realizarlo
-            Fecha habilitada para volver a tomar el examen: ${fechaHabilitacion}</IonLabel>
+            <IonLabel className="ion-text-wrap">La persona con CI <strong>{ci}</strong> ha realizado el examen <strong>{tipoExamen}</strong> para la categoría <strong>{categoria}</strong> en fecha <strong>{fechaExamen}</strong> y necesita aguardar 30 días para poder volver a realizarlo
+            Fecha habilitada para volver a tomar el examen: <strong>{fechaHabilitacion}</strong></IonLabel>
           </IonItem>
           <IonItem>
             <IonButton onClick={returnMenu} size="default" className="confirm-btn">Volver a los tests</IonButton>

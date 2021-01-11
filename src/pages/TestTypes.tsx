@@ -62,11 +62,11 @@ const TestTypesPage: React.FC = () => {
           state: {categoria, usuario_testeado }
         });
       } else {
-        history.replace('/page/notice');
+        history.replace({pathname: '/page/notice', state: {categoria} });
       }
     })
     .catch(() => 
-      history.replace('/page/notice')
+      history.replace({pathname: '/page/notice'})
     );
   }
 
