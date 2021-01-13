@@ -40,11 +40,8 @@ const MultipleOptionsPage: React.FC = (props: any) => {
   const [statex, setState] = useState({min: 3, sec: 0});
   const [isActive, setIsActive] = useState(true);
 
-  const radioGroup = useRef<HTMLIonRadioGroupElement>(null);
-  const examWorker: Worker = new Worker('../workers/export.js');
-
   const nextQuestion = () => {
-    if(typeof selected != 'undefined' || continuar) {
+    if(selected !== '' || continuar) {
       continuar = false;
       setSelected('');
       setState({min: 3, sec: 0});
@@ -60,7 +57,8 @@ const MultipleOptionsPage: React.FC = (props: any) => {
           const resultado = questions.filter((r: any) => r.selected === r.respuesta).length;
     
           const ticket = props.cookies.get('ticket');
-          const ci = '123';
+          const usuarioTesteado = props.cookies.get('usuario_testeado');
+          const { ci, rut } = usuarioTesteado;
 
           sendResult(ticket, ci, resultado)
           .then(result => {
@@ -81,7 +79,11 @@ const MultipleOptionsPage: React.FC = (props: any) => {
   }
 
   useEffect(() => {
-    updateUserTestDate('123', 'multiple options')
+    const ticket = props.cookies.get('ticket');
+    const usuarioTesteado = props.cookies.get('usuario_testeado');
+    const { ci } = usuarioTesteado;
+
+    updateUserTestDate(ci, 'multiple options')
     .then(result => {
       console.log(result);
     })

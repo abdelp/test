@@ -9,8 +9,10 @@ async function loggedIn() {
 
 async function updateUserTestDate(ci: any, test: any) {
   const date = new Date();
+  const usuariosTesteados = await get('usuarios_testeados');
+  console.log(usuariosTesteados);
+  
   const result = await set(ci, {test, date});
 }
-
 
 export { loggedIn, updateUserTestDate }
