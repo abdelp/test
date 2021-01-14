@@ -94,11 +94,11 @@ const RegistUserPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="primary">
-          <IonButtons slot="start">
+        <IonToolbar color="favorite">
+          <IonButtons slot="end">
             <IonBackButton defaultHref="categories" text="Volver" icon="ios-arrow-back" />
           </IonButtons>
-          <IonTitle>Indique el RUT del conductor</IonTitle>
+          <IonTitle className="ion-text-center">Indique el RUT del conductor</IonTitle>
         </IonToolbar>
       </IonHeader>
 

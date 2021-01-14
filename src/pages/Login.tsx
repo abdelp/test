@@ -77,7 +77,7 @@ const LoginPage: React.FC = () => {
     <IonPage>
 
       <IonHeader>
-        <IonToolbar color="primary">
+        <IonToolbar color="favorite">
           <IonTitle className="title">Login</IonTitle>
         </IonToolbar>
       </IonHeader>
@@ -92,10 +92,19 @@ const LoginPage: React.FC = () => {
 
           <IonItem>
             <IonLabel position="floating">Contraseña</IonLabel>
-            <IonInput value={password} type="password" onIonChange={handlePasswordChange} />
+            <IonInput
+              value={password}
+              type="password"
+              onIonChange={handlePasswordChange}
+              />
           </IonItem>
 
-          <input type="submit" className="submit-btn" value="Ingresar" />
+          <input
+            type="submit"
+            className="submit-btn"
+            value="Ingresar"
+            color="favorite"
+          />
             {
               loading &&
 

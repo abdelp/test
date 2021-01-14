@@ -60,11 +60,11 @@ const TestFinishedPage: React.FC = props => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="primary">
+        <IonToolbar color="favorite">
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Test finalizado</IonTitle>
+          <IonTitle className="ion-text-center">Test finalizado</IonTitle>
         </IonToolbar>
       </IonHeader>
 

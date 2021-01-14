@@ -1,3 +1,21 @@
+:root {
+  --ion-color-favorite: #62B766;
+  --ion-color-favorite-rgb: 98,	183, 102;
+  --ion-color-favorite-contrast: #ffffff;
+  --ion-color-favorite-contrast-rgb: 255,255,255;
+  --ion-color-favorite-shade: #5ca56c;
+  --ion-color-favorite-tint: #78c288;
+}
+
+.ion-color-favorite {
+  --ion-color-base: var(--ion-color-favorite);
+  --ion-color-base-rgb: var(--ion-color-favorite-rgb);
+  --ion-color-contrast: var(--ion-color-favorite-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-favorite-contrast-rgb);
+  --ion-color-shade: var(--ion-color-favorite-shade);
+  --ion-color-tint: var(--ion-color-favorite-tint);
+}
+
 .submit-btn {
   box-sizing: border-box;
   color: rgb(255, 255, 255);
@@ -39,7 +57,7 @@
   /* width: 95.0938px; */
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-color: rgb(56, 128, 255);
+  background-color: #62B766;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   padding-top: 0;

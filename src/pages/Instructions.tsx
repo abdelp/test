@@ -47,8 +47,8 @@ const InstructionsPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="primary">
-          <IonTitle>Instrucciones</IonTitle>
+        <IonToolbar color="favorite">
+          <IonTitle className="ion-text-center">Instrucciones</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -86,7 +86,7 @@ const InstructionsPage: React.FC = () => {
             <h1>Instrucciones 3</h1>
             <br/>
             <div>
-              <IonButton onClick={startTest}>
+              <IonButton onClick={startTest} color="favorite">
                 Empezar
               </IonButton>
             </div>

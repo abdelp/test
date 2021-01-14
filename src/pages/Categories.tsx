@@ -34,7 +34,6 @@ const CategoriesPage: React.FC = (props: any) => {
 
   useEffect(() => {
     const usuario = props.cookies.get('usuario');
-    console.log(usuario);
 
     if (!usuario || usuario === 'null') {
       history.push('/login');
@@ -44,11 +43,11 @@ const CategoriesPage: React.FC = (props: any) => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="primary">
+        <IonToolbar color="favorite">
           <IonButtons slot="start">
             <IonMenuButton autoHide={false} />
           </IonButtons>
-          <IonTitle>Categorías</IonTitle>
+          <IonTitle className="ion-text-center">Categorías</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -60,7 +59,7 @@ const CategoriesPage: React.FC = (props: any) => {
             </IonCardHeader>
             <IonCardContent>
               <br/>
-              <IonButton onClick={() => goToCategory('motocycleta')}>Seleccionar</IonButton>
+              <IonButton onClick={() => goToCategory('motocicleta')} color="favorite">Seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
           <IonCard>
@@ -71,7 +70,7 @@ const CategoriesPage: React.FC = (props: any) => {
             <IonCardContent>
 
               <br/>
-              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+              <IonButton onClick={goToCategory} color="favorite">Seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
           <IonCard>
@@ -82,7 +81,7 @@ const CategoriesPage: React.FC = (props: any) => {
             <IonCardContent>
 
               <br/>
-              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+              <IonButton onClick={goToCategory} color="favorite">Seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
           <IonCard>
@@ -93,7 +92,7 @@ const CategoriesPage: React.FC = (props: any) => {
             <IonCardContent>
 
               <br/>
-              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+              <IonButton onClick={goToCategory} color="favorite">Seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
           <IonCard>
@@ -104,7 +103,7 @@ const CategoriesPage: React.FC = (props: any) => {
             <IonCardContent>
 
               <br/>
-              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+              <IonButton onClick={goToCategory} color="favorite">Seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
           <IonCard>
@@ -115,7 +114,7 @@ const CategoriesPage: React.FC = (props: any) => {
             <IonCardContent>
 
               <br/>
-              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+              <IonButton onClick={goToCategory} color="favorite">Seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
           <IonCard>
@@ -126,7 +125,7 @@ const CategoriesPage: React.FC = (props: any) => {
             <IonCardContent>
 
               <br/>
-              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+              <IonButton onClick={goToCategory} color="favorite">Seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
           <IonCard>
@@ -136,7 +135,7 @@ const CategoriesPage: React.FC = (props: any) => {
 
             <IonCardContent>
               <br/>
-              <IonButton onClick={goToCategory}>Seleccionar</IonButton>
+              <IonButton onClick={goToCategory} color="favorite">Seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
         </div>

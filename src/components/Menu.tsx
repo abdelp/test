@@ -39,7 +39,7 @@ const Menu: React.FC = (props: any) => {
   useEffect(() => {
     const usuario = props.cookies.get('usuario');
     if (usuario) {
-      setUsername(capitalize(props.cookies.get('usuario').username));
+      setUsername(capitalize(props.cookies.get('usuario').username || ''));
     } else {
       setUsername('');
     }
@@ -47,6 +47,8 @@ const Menu: React.FC = (props: any) => {
 
   const logoutAction = () => {
     removeCookie("usuario", {path: '/'});
+    removeCookie("categoria", {path: '/'});
+    removeCookie("usuario_testeado", {path: '/'});
     history.replace('/login');
   }
 
@@ -78,10 +80,11 @@ const Menu: React.FC = (props: any) => {
               detail={false}
               onClick={logoutAction}
             >
-              <IonButton>Salir</IonButton>
             </IonItem>
           </IonMenuToggle>
-
+            <section>
+              <IonButton color="favorite" expand="block" onClick={logoutAction}>Salir</IonButton>
+            </section>
         </IonList>
       </IonContent>
     </IonMenu>
