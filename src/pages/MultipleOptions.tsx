@@ -64,7 +64,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
           .then(result => {
             setLoading(false);
   
-            history.replace('/page/test-finished');
+            history.replace('/page/test-finished', {state: 'prueba practica' });
           });
 
         }, 1000);
@@ -139,8 +139,8 @@ const MultipleOptionsPage: React.FC = (props: any) => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="primary">
-          <IonTitle>Test de Selección Múltiple</IonTitle>
+        <IonToolbar color="orange">
+          <IonTitle className="ion-text-uppercase ion-text-center title">prueba practica</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -169,32 +169,34 @@ const MultipleOptionsPage: React.FC = (props: any) => {
             ]}
           />
 
-        <IonList lines="none" className="ms-list">
+        <IonList className="ms-list question-details">
           <IonRadioGroup
             value={selected}
             onIonChange={e => {
               setSelected(e.detail.value)
             }}>
             <IonListHeader className="list-header">
-              <IonImg src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
-              <IonLabel><strong>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
+              <IonLabel className="ion-text-center question-text"><strong>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
             </IonListHeader>
+            <IonItem key="img">
+              <IonImg className="question-img" src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
+            </IonItem>
             {questions[questionIdx] && questions[questionIdx].opciones.map((opt: any, idx: number) => {
               return (
                 <IonItem key={opt}>
                   <IonLabel>{opt}</IonLabel>
-                  <IonRadio slot="start" value={idx} />
+                  <IonRadio slot="start" value={idx} color="light-blue" />
                 </IonItem>
               )
               })
             }
           </IonRadioGroup>
 
-          <IonItem>
+          <IonItem lines="none">
             Tiempo restante: <Timer min={min} sec={sec}></Timer>
           </IonItem>
 
-          <IonItem>
+          <IonItem lines="none">
             <IonButton size="default" onClick={nextQuestion}>
             { loading ? <IonSpinner/> : 'Siguiente' }
             </IonButton>

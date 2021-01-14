@@ -17,7 +17,7 @@ import { get } from 'idb-keyval';
 
 import './TestFinished.css';
 
-const TestFinishedPage: React.FC = () => {
+const TestFinishedPage: React.FC = props => {
   const [total, setTotal] = useState(0);
   const [correctas, setCorrectas] = useState(0);
   const [incorrectas, setIncorrectas] = useState(0);
@@ -51,7 +51,6 @@ const TestFinishedPage: React.FC = () => {
                     typeof exam.selected === 'undefined'
                   ).length;
 
-      console.log(nac);
       setCorrectas(cc);
       setPorcentaje(cc * 100 / result.exam.length);
       setNoRespondidas(nac);
