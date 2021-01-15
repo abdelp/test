@@ -1,5 +1,10 @@
 import { IonButtons, IonButton, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonSlides, IonSlide, IonList, IonItemSliding, IonItem, IonLabel, IonItemOptions, IonItemOption, IonIcon, IonNote } from '@ionic/react';
-import React, {useState, useRef, useCallback} from 'react';
+import React, {
+  useState,
+  useRef,
+  useCallback,
+  useEffect
+} from 'react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import { heart, trash, star, archive, ellipsisHorizontal, ellipsisVertical } from 'ionicons/icons';
@@ -15,6 +20,12 @@ const InstructionsPage: React.FC = (props: any) => {
     speed: 400
   };
 
+  const slider = useRef<HTMLIonSlidesElement>(null);
+
+  useEffect(() => {
+    slider.current?.slideTo(0);
+  }, []);
+
   const history = useHistory();
   // const slider = useCallback((slidesRef) => {
   //   if (slidesRef) {
@@ -23,7 +34,6 @@ const InstructionsPage: React.FC = (props: any) => {
   //   }
   // }, [])
 
-  const slider = useRef<HTMLIonSlidesElement>(null);
 
   const startTest = () => {
     let page = '';

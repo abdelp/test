@@ -12,7 +12,7 @@ import {
   IonBackButton,
   IonSpinner
 } from '@ionic/react';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getTestedUserData } from '../APIs';
 import './RegistUser.css';
@@ -28,6 +28,7 @@ const RegistUserPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState({message: ''});
   const [cookies, setCookie] = useCookies(["usuario_testeado"]);
+  const form = useRef<any>(null);
 
   const handleRutChange = (event: any) =>
     setRut(event.target.value);
@@ -40,9 +41,6 @@ const RegistUserPage: React.FC = () => {
 
     get('usuarios_testeados')
     .then((result: any) => {
-      console.log('result: ')
-      console.log(result);
-
       if(result && result.length > 0) {
         usuariosTesteados = result;
         const usuario = usuariosTesteados.find((u: any) => u.rut === rut);
@@ -79,8 +77,6 @@ const RegistUserPage: React.FC = () => {
   
   const confirmUserTested = () => {
     const userT = usuariosTesteados.find((u: any) => u.rut === rut);
-
-    console.log(userT);
   
     if(!userT) {
       usuariosTesteados.push(user);
@@ -90,6 +86,11 @@ const RegistUserPage: React.FC = () => {
     setCookie('usuario_testeado', user, {path: '/'});
     history.push('/page/test-types');
   }
+
+  useEffect(() => {
+    setUser(null);
+    setRut('');
+  }, []);
 
   return (
     <IonPage>
@@ -103,7 +104,7 @@ const RegistUserPage: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen className="ion-padding">
-        <form className="ion-padding login-list" onSubmit={consultUserData}>
+        <form className="ion-padding login-list" onSubmit={consultUserData} ref={form}>
           <IonItem>
             <IonLabel position="floating">RUT</IonLabel>
             <IonInput value={rut} onIonChange={handleRutChange} autofocus />

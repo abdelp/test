@@ -136,7 +136,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
     if(!turnoUsuario) {
       if(roundFinished) {
         if(round === 4) {
-
+          history.replace('/page/test-finished', {state: 'prueba psiquica' })
         } else {
           round++;
           rotationInterval = window.setTimeout(() => {
@@ -238,7 +238,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
       if(numerosAElegir.length === numerosElegidos.length) {
         const mensaje = numerosAElegir.join('') === numerosElegidos.join('') ? 'Correcto' : 'Incorrecto';
 
-        // round++;
         setState((state: any) => ({...state, mensaje, turnoUsuario: false, roundFinished: true }));
       }
     }
