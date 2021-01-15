@@ -14,7 +14,8 @@ import {
   IonButton,
   IonImg,
   IonSpinner,
-  IonAlert
+  IonAlert,
+  IonButtons
 } from '@ionic/react';
 import Timer from './Timer';
 import { useHistory } from 'react-router-dom';
@@ -26,6 +27,49 @@ import { withCookies, Cookies } from 'react-cookie';
 import './MemorizeNumbers.css';
 import { setMaxListeners } from 'process';
 
+const btnsInitialState = [
+  {
+    num: 0,
+    color: 'light'
+  },
+  {
+    num: 1,
+    color: 'light'
+  },
+  {
+    num: 2,
+    color: 'light'
+  },
+  {
+    num: 3,
+    color: 'light'
+  },
+  {
+    num: 4,
+    color: 'light'
+  },
+  {
+    num: 5,
+    color: 'light'
+  },
+  {
+    num: 6,
+    color: 'light'
+  },
+  {
+    num: 7,
+    color: 'light'
+  },
+  {
+    num: 8,
+    color: 'light'
+  },
+  {
+    num: 9,
+    color: 'light'
+  },
+];
+
 const defaultState = {
   round: 0,
   mensaje: '',
@@ -34,7 +78,8 @@ const defaultState = {
   numerosElegidos: [],
   min: 3,
   sec: 0,
-  roundFinished: false
+  roundFinished: false,
+  btns: btnsInitialState.map(v => ({...v}))
 };
 
 const MemorizeNumbers: React.FC = (props: any) => {
@@ -129,7 +174,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
   }
   
   useEffect(() => {
-    const {mensaje, numerosAElegir, turnoUsuario, numerosElegidos, roundFinished} = state;
+    const {mensaje, numerosAElegir, turnoUsuario, numerosElegidos, roundFinished, btns } = state;
     let { round } = state;
     let rotationInterval: any;
 
@@ -139,6 +184,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
           history.replace('/page/test-finished', {state: 'prueba psiquica' })
         } else {
           round++;
+
           rotationInterval = window.setTimeout(() => {
             setState((state: any) => ({
               ...defaultState,
@@ -146,7 +192,8 @@ const MemorizeNumbers: React.FC = (props: any) => {
               round,
               numerosAElegir: [],
               turnoUsuario: false,
-              numerosElegidos: []
+              numerosElegidos: [],
+              btns: btnsInitialState.map(v => ({...v}))
             }));
           }, 2000);
         }
@@ -186,8 +233,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
               setState((state: any) => ({...state, mensaje: '' }));
             }, 2000);
           } else if (numerosAElegir.length === round + 1) {
-            console.log(numerosAElegir);
-            console.log(state);
             setState((state: any) => ({...state, mensaje: 'Tu turno', turnoUsuario: true}));
           }
         }
@@ -207,8 +252,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
               setState((state: any) => ({...state, mensaje: '' }));
             }, 2000);
           } else if (numerosAElegir.length === round + 1) {
-            console.log(numerosAElegir);
-            console.log(state);
             setState((state: any) => ({...state, mensaje: 'Tu turno', turnoUsuario: true}));
           }
         }
@@ -228,8 +271,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
               setState((state: any) => ({...state, mensaje: '' }));
             }, 2000);
           } else if (numerosAElegir.length === round + 1) {
-            console.log(numerosAElegir);
-            console.log(state);
             setState((state: any) => ({...state, mensaje: 'Tu turno', turnoUsuario: true}));
           }
         }
@@ -254,16 +295,20 @@ const MemorizeNumbers: React.FC = (props: any) => {
   const { round, mensaje } = state;
 
   const pickNumber = (number: any) => {
-    let { numerosElegidos, numerosAElegir } = state;
+    let { numerosElegidos, numerosAElegir, btns } = state;
+  
+    btns[number].color = 'success';
 
     if(numerosElegidos.length < numerosAElegir.length) {
       numerosElegidos.push(number);
-  
-      setState((state: any) => ({...state, numerosElegidos}));
+
+      setState((state: any) => ({...state, numerosElegidos, btns}));
     }
   };
 
-  const { min, sec } = state;
+  const { min, sec, btns } = state;
+
+  console.log(state);
 
   return (
     <IonPage>
@@ -298,36 +343,41 @@ const MemorizeNumbers: React.FC = (props: any) => {
             ]}
           />
             <div style={{textAlign: 'center'}}>
-            <IonButton className="number-btn" onClick={() => pickNumber("0")}>
+            {btns.map((b: any) => {
+              return <IonButton key={b.num} className="number-btn" color={b.color} onClick={() => pickNumber(b.num)}>{b.num}</IonButton>
+            }
+            )}
+
+            {/* <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("0", evt)}>
               0
             </IonButton>
-            <IonButton className="number-btn" onClick={() => pickNumber("1")}>
+            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("1", evt)}>
               1
             </IonButton>
-            <IonButton className="number-btn" onClick={() => pickNumber("2")}>
+            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("2", evt)}>
               2
             </IonButton>
-            <IonButton className="number-btn" onClick={() => pickNumber("3")}>
+            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("3", evt)}>
               3
             </IonButton>
-            <IonButton className="number-btn" onClick={() => pickNumber("4")}>
+            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("4", evt)}>
               4
             </IonButton>
-            <IonButton className="number-btn" onClick={() => pickNumber("5")}>
+            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("5", evt)}>
               5
             </IonButton>
-            <IonButton className="number-btn" onClick={() => pickNumber("6")}>
+            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("6", evt)}>
               6
             </IonButton>
-            <IonButton className="number-btn" onClick={() => pickNumber("7")}>
+            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("7", evt)}>
               7
             </IonButton>
-            <IonButton className="number-btn" onClick={() => pickNumber("8")}>
+            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("8", evt)}>
               8
             </IonButton>
-            <IonButton className="number-btn" onClick={() => pickNumber("9")}>
+            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("9", evt)}>
               9
-            </IonButton>
+            </IonButton> */}
           </div>
 
           <div className="display-container">
