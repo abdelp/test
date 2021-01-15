@@ -80,10 +80,11 @@ const MultipleOptionsPage: React.FC = (props: any) => {
 
   useEffect(() => {
     const ticket = props.cookies.get('ticket');
+    const categoria = props.cookies.get('ticket');
     const usuarioTesteado = props.cookies.get('usuario_testeado');
     const { ci } = usuarioTesteado;
 
-    updateUserTestDate(ci, 'multiple options')
+    updateUserTestDate(ci, categoria, 'multiple options')
     .then(result => {
       console.log(result);
     })

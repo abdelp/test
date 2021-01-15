@@ -37,7 +37,7 @@ const DrivingTestPage: React.FC = (props: any) => {
   }
 
   useEffect(() => {
-    updateUserTestDate('123', 'multiple options')
+    updateUserTestDate('123', 'x', 'multiple options')
     .then(result => {
       console.log(result);
     })

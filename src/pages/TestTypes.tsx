@@ -55,12 +55,14 @@ const TestTypesPage: React.FC = () => {
   const goToTest = (test: any) => {
     const { categoria, ticket, usuario_testeado } = cookies;
 
+    console.log(test);
+
     checkExamDate()
     .then(result => {
       if (result) {
         history.replace({
-          pathname: '/page/tutorial',
-          state: {categoria, usuario_testeado }
+          pathname: '/page/instrucciones',
+          state: {categoria, test, usuario_testeado }
         });
       } else {
         history.replace({pathname: '/page/notice', state: {categoria, usuario_testeado} });
@@ -95,7 +97,7 @@ const TestTypesPage: React.FC = () => {
               <IonButton
                 className="ion-text-uppercase"
                 color="light-blue"
-                onClick={goToTest}
+                onClick={() => goToTest('teorica')}
               >seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
@@ -110,7 +112,7 @@ const TestTypesPage: React.FC = () => {
               <IonButton
                 className="ion-text-uppercase"
                 color="danger"
-                onClick={goToTest}>seleccionar</IonButton>
+                onClick={() => goToTest('psiquica')}>seleccionar</IonButton>
             </IonCardContent>
           </IonCard>
 

@@ -7,12 +7,14 @@ import { useHistory } from 'react-router-dom';
 
 import './Instructions.css';
 
-const slideOpts = {
-  initialSlide: 0,
-  speed: 400
-};
+const InstructionsPage: React.FC = (props: any) => {
+  const { categoria, test } = props.location.state || '';
+  
+  const slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
 
-const InstructionsPage: React.FC = () => {
   const history = useHistory();
   // const slider = useCallback((slidesRef) => {
   //   if (slidesRef) {
@@ -24,7 +26,18 @@ const InstructionsPage: React.FC = () => {
   const slider = useRef<HTMLIonSlidesElement>(null);
 
   const startTest = () => {
-    history.push('/page/multiple-options');
+    let page = '';
+
+    if(test === 'teorica') {
+      page = 'multiple-options';
+    } else if (test === 'psiquica') {
+      page = 'memorize-numbers'
+    }
+  
+    history.push({
+      pathname: `/page/${page}`,
+      state: ''
+    });
   };
 
   const skipButton = () => {

@@ -5,6 +5,7 @@ import CategoriesPage from './pages/Categories';
 import RegistUserPage from './pages/RegistUser';
 import TestTypesPage from './pages/TestTypes';
 import MultipleOptionsPage from './pages/MultipleOptions';
+import MemorizeNumbersPage from './pages/MemorizeNumbers';
 import InstructionsPage from './pages/Instructions';
 import TestFinishedPage from './pages/TestFinished';
 import TimeOutPage from './pages/TimeOut';
@@ -56,7 +57,8 @@ const App: React.FC = (props: any) => {
               <Route path="/page/regist-user" component={RegistUserPage} exact />
               <Route path="/page/test-types" component={TestTypesPage} exact />
               <Route path="/page/multiple-options" component={MultipleOptionsPage} exact />
-              <Route path="/page/tutorial" component={InstructionsPage} exact />
+              <Route path="/page/memorize-numbers" component={MemorizeNumbersPage} exact />
+              <Route path="/page/instrucciones" component={InstructionsPage} exact />
               <Route path="/page/test-finished" component={TestFinishedPage} exact />
               <Route path="/page/time-out" component={TimeOutPage} exact />
               <Route path="/page/notice" component={NoticePage} exact />
