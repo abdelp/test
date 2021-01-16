@@ -97,7 +97,7 @@ const TestTypesPage: React.FC = () => {
               <IonButton
                 className="ion-text-uppercase"
                 color="light-blue"
-                onClick={() => goToTest('teorica')}
+                onClick={() => goToTest('teórica')}
               >seleccionar</IonButton>
             </IonCardContent>
           </IonCard>

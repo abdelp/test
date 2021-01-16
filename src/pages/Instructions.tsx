@@ -1,4 +1,24 @@
-import { IonButtons, IonButton, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonSlides, IonSlide, IonList, IonItemSliding, IonItem, IonLabel, IonItemOptions, IonItemOption, IonIcon, IonNote } from '@ionic/react';
+import {
+  IonButtons,
+  IonButton,
+  IonContent,
+  IonHeader,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonSlides,
+  IonSlide,
+  IonList,
+  IonItemSliding,
+  IonItem,
+  IonLabel,
+  IonItemOptions,
+  IonItemOption,
+  IonIcon,
+  IonNote,
+  IonImg
+} from '@ionic/react';
 import React, {
   useState,
   useRef,
@@ -11,10 +31,14 @@ import { heart, trash, star, archive, ellipsisHorizontal, ellipsisVertical } fro
 import { useHistory } from 'react-router-dom';
 
 import './Instructions.css';
+import { cog } from 'ionicons/icons';
+import multipleSelectionImg from '../assets/multiple-selection.png';
 
 const InstructionsPage: React.FC = (props: any) => {
   const { categoria, test } = props.location.state || '';
-  
+  let [showSkip, setSkip] = useState(true);
+  let [state, setState] = useState({color: 'success'});
+
   const slideOpts = {
     initialSlide: 0,
     speed: 400
@@ -38,7 +62,7 @@ const InstructionsPage: React.FC = (props: any) => {
   const startTest = () => {
     let page = '';
 
-    if(test === 'teorica') {
+    if(test === 'teórica') {
       page = 'multiple-options';
     } else if (test === 'psiquica') {
       page = 'memorize-numbers'
@@ -63,7 +87,6 @@ const InstructionsPage: React.FC = (props: any) => {
     }
   }
   
-  let [showSkip, setSkip] = useState(true);
 
   const handleNext = () => slider.current?.slideNext();
 
@@ -71,19 +94,19 @@ const InstructionsPage: React.FC = (props: any) => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="favorite">
-          <IonTitle className="ion-text-center">Instrucciones</IonTitle>
+          <IonTitle className="ion-text-center title ion-text-capitalize">Prueba {test}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen>
-        <IonSlides
+        {/* <IonSlides
           pager={false}
           scrollbar={true}
           options={slideOpts}
           ref={slider}
           >
           <IonSlide>
-            <h1>Instrucciones 1</h1>
+            <h1>{test}</h1>
 
             <IonToolbar>
               <IonButtons slot="end">
@@ -113,17 +136,56 @@ const InstructionsPage: React.FC = (props: any) => {
                 Empezar
               </IonButton>
             </div>
-
-            
           </IonSlide>
-        </IonSlides>
+        </IonSlides> */}
 
-        <IonButtons slot="end">
+        <IonItem lines="none">
+          <div className="icon-container" color="light-gray" style={{
+            margin: '0 auto',
+            padding: '3.5em',
+            borderRadius: '10px',
+            marginTop: '4em'
+          }}>
+            <div className="icon-background" style={{
+              padding: '2em',
+              borderRadius: '10px',
+              margin: '0 auto'}}>
+            <IonIcon style={{fontSize: '7em', color: 'white'}} icon={cog} />
+            </div>
+            <IonTitle className="ion-text-capitalize">prueba {test}</IonTitle>
+          </div>
+        </IonItem>
+
+        <IonItem lines="none">
+          <div className="ion-text-center">
+            <h3>¿Cómo funciona?</h3>
+          </div>
+        </IonItem>
+
+        <IonItem lines="none">
+          <div className="ion-text-center">
+            <p>En la pantalla aparecerá una pregunta
+              y 3 opciones de respuesta; usted debe
+              seleccionar la que esté correcta pulsando
+              encima de ella</p>
+          </div>
+        </IonItem>
+
+        <IonItem lines="none">
+          <IonImg style={{margin: '0 auto'}} src={multipleSelectionImg} />
+        </IonItem>
+
+        <IonItem lines="none">
+          <IonButton onClick={startTest} color="favorite" className="ion-text-capitalize">
+                          Comenzar
+                        </IonButton>
+        </IonItem>
+        {/* <IonButtons slot="end">
           {showSkip && <IonButton
             routerDirection="forward"
             onClick={handleNext}
             color="light">Skip </IonButton>}
-        </IonButtons>
+        </IonButtons> */}
 
     </IonContent>
   </IonPage>
