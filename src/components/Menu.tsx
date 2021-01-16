@@ -85,7 +85,10 @@ const Menu: React.FC = (props: any) => {
             </IonItem>
           </IonMenuToggle>
             <section>
-              <IonButton color="favorite" expand="block" onClick={logoutAction}>Salir</IonButton>
+              <IonButton
+                color="favorite"
+                expand="block"
+                onClick={logoutAction}>Salir</IonButton>
             </section>
         </IonList>
       </IonContent>

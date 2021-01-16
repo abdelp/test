@@ -308,8 +308,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
 
   const { min, sec, btns } = state;
 
-  console.log(state);
-
   return (
     <IonPage>
       <IonHeader>

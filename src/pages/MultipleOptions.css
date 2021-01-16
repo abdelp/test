@@ -12,6 +12,13 @@
   --ion-color-light-blue-contrast-rgb: 255,255,255;
   --ion-color-light-blue-shade:#018594;
   --ion-color-light-blue-tint: #78c288;
+
+  --ion-color-lighter-blue:#B8E8ED;
+  --ion-color-lighter-blue-rgb: 184, 232, 237;
+  --ion-color-lighter-blue-contrast: #ffffff;
+  --ion-color-lighter-blue-contrast-rgb: 255,255,255;
+  --ion-color-lighter-blue-shade:#B8E8ED;
+  --ion-color-lighter-blue-tint: #78c288;
 }
 
 .ion-color-orange {
@@ -32,10 +39,30 @@
   --ion-color-tint: var(--ion-color-light-blue-tint);
 }
 
+.ion-color-lighter-blue {
+  --ion-color-base: var(--ion-color-lighter-blue);
+  --ion-color-base-rgb: var(--ion-color-lighter-blue-rgb);
+  --ion-color-contrast: var(--ion-color-lighter-blue-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-lighter-blue-contrast-rgb);
+  --ion-color-shade: var(--ion-color-lighter-blue-shade);
+  --ion-color-tint: var(--ion-color-lighter-blue-tint);
+}
+
+@media (width: 1200px) {
+  .toolbar-title-default {
+    padding: 2.5em !important;
+  }
+
+  .title {
+    font-size: 3.5em;
+    font-weight: bold;
+  }
+}
+
 .ms-list {
-  max-width: 800px;
+  max-width: 90%;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 5em;
 }
 
 ion-button {
@@ -47,10 +74,27 @@ ion-button {
 }
 
 .question-text {
-  font-size: 1.6em;
+  font-size: 3.5em;
 }
 
 .question-img {
   margin: 0 auto;
   margin-bottom: 10px;
+}
+
+.opt-btn {
+  margin-top: 1em;
+}
+
+ion-button{
+  white-space: normal;
+  --border-radius: 15px;
+  min-height: 3em;
+  --color: black !important;
+  color: black !important;
+  font-size: 2em;
+}
+
+.counter {
+  font-size: 2em;
 }

@@ -26,7 +26,7 @@ import { withCookies, Cookies } from 'react-cookie';
 import './MultipleOptions.css';
 
 const MultipleOptionsPage: React.FC = (props: any) => {
-  const [selected, setSelected] = useState<string>();
+  // const [selected, setSelected] = useState<string>();
   const [questions, setQuestions] = useState<any>([]);
   const [currentQuestion, setCurrentQuestion] = useState<any>();
   const [questionIdx, setQuestionIdx] = useState<number>(0);
@@ -40,12 +40,13 @@ const MultipleOptionsPage: React.FC = (props: any) => {
   const [statex, setState] = useState({min: 3, sec: 0});
   const [isActive, setIsActive] = useState(true);
 
-  const nextQuestion = () => {
-    if(selected !== '' || continuar) {
-      continuar = false;
-      setSelected('');
+  const nextQuestion = (opt: number) => {
+    // if(selected !== '' || continuar) {
+      // continuar = false;
+      // setSelected('');
       setState({min: 3, sec: 0});
-      questions[questionIdx].selected = selected;
+      // questions[questionIdx].selected = selected;
+      questions[questionIdx].selected = opt;
     
       if (questionIdx + 1 < questions.length) {
         doSaveExamProgress(questions);
@@ -64,14 +65,15 @@ const MultipleOptionsPage: React.FC = (props: any) => {
           .then(result => {
             setLoading(false);
   
-            history.replace('/page/test-finished', {state: 'prueba practica' });
+            history.replace('/page/test-finished', { state: 'prueba practica' });
           });
 
         }, 1000);
       }
-    } else {
-      setShowAlert(true)
-    }
+    // }
+    // else {
+    //   setShowAlert(true)
+    // }
   }
 
   async function doSaveExamProgress(exam: any) {
@@ -94,7 +96,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
 
     getPreguntasSenhales()
     .then((result: any) => {
-      setSelected('');
+      // setSelected('');
       setQuestions(result);
       setCurrentQuestion(result[questionIdx]);
     })
@@ -118,7 +120,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
 
         if (sec === 0) {
           if (min === 0) {
-            history.replace('/page/time-out');
+            // history.replace('/page/time-out');
           } else {
             setState(state => ({
               min: state.min - 1,
@@ -140,12 +142,12 @@ const MultipleOptionsPage: React.FC = (props: any) => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="orange">
-          <IonTitle className="ion-text-uppercase ion-text-center title">prueba practica</IonTitle>
+        <IonToolbar color="light-blue">
+          <IonTitle className="ion-text-uppercase ion-text-center title ion-text-capitalize">prueba teórica</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonAlert
+        {/* <IonAlert
             isOpen={showAlert}
             onDidDismiss={() => setShowAlert(false)}
             cssClass='my-custom-class'
@@ -168,40 +170,49 @@ const MultipleOptionsPage: React.FC = (props: any) => {
                 }
               }
             ]}
-          />
+          /> */}
 
-        <IonList className="ms-list question-details">
-          <IonRadioGroup
+        <IonList className="ms-list question-details" lines="none">
+          {/* <IonRadioGroup
             value={selected}
             onIonChange={e => {
               setSelected(e.detail.value)
-            }}>
+            }}> */}
             <IonListHeader className="list-header">
               <IonLabel className="ion-text-center question-text"><strong>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
             </IonListHeader>
-            <IonItem key="img">
+            {/* <IonItem key="img">
               <IonImg className="question-img" src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
-            </IonItem>
+            </IonItem> */}
             {questions[questionIdx] && questions[questionIdx].opciones.map((opt: any, idx: number) => {
               return (
-                <IonItem key={opt}>
-                  <IonLabel>{opt}</IonLabel>
-                  <IonRadio slot="start" value={idx} color="light-blue" />
-                </IonItem>
+                //{/*<IonItem key={opt}> */}
+                  //{/* <IonLabel>{opt}</IonLabel>
+                 // <IonRadio slot="start" value={idx} color="light-blue" /> */}
+                  <IonButton
+                    key={opt}
+                    size="default"
+                    expand="block"
+                    className="opt-btn"
+                    color="light-blue"
+                    onClick={() => nextQuestion(idx)}
+                    style={{color: 'black'}}
+                    >{opt}</IonButton>
+                //</IonItem>
               )
               })
             }
-          </IonRadioGroup>
+          {/* </IonRadioGroup> */}
 
-          <IonItem lines="none">
+          <IonItem lines="none" className="counter">
             Tiempo restante: <Timer min={min} sec={sec}></Timer>
           </IonItem>
 
-          <IonItem lines="none">
+          {/* <IonItem lines="none">
             <IonButton size="default" onClick={nextQuestion}>
             { loading ? <IonSpinner/> : 'Siguiente' }
             </IonButton>
-          </IonItem>
+          </IonItem> */}
         </IonList>
       </IonContent>
     </IonPage>
