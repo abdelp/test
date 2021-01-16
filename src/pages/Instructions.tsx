@@ -17,7 +17,8 @@ import {
   IonItemOption,
   IonIcon,
   IonNote,
-  IonImg
+  IonImg,
+  IonText
 } from '@ionic/react';
 import React, {
   useState,
@@ -86,14 +87,17 @@ const InstructionsPage: React.FC = (props: any) => {
       return (<span></span>);
     }
   }
-  
 
   const handleNext = () => slider.current?.slideNext();
 
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="favorite">
+        <IonToolbar color={
+          test === 'teórica' ?
+          'light-blue' :
+          'favorite'
+          }>
           <IonTitle className="ion-text-center title ion-text-capitalize">Prueba {test}</IonTitle>
         </IonToolbar>
       </IonHeader>
@@ -146,37 +150,51 @@ const InstructionsPage: React.FC = (props: any) => {
             borderRadius: '10px',
             marginTop: '4em'
           }}>
-            <div className="icon-background" style={{
+            <div className="icon-background ion-text-center" style={{
               padding: '2em',
               borderRadius: '10px',
               margin: '0 auto'}}>
             <IonIcon style={{fontSize: '7em', color: 'white'}} icon={cog} />
             </div>
-            <IonTitle className="ion-text-capitalize">prueba {test}</IonTitle>
+            <IonTitle
+              className="ion-text-uppercase"
+              style={{marginTop: '2em', fontWeight: 'bold'}}
+              color={
+                test === 'teórica' ?
+                'light-blue' :
+                'favorite'
+              }
+              >prueba {test}</IonTitle>
           </div>
         </IonItem>
 
         <IonItem lines="none">
           <div className="ion-text-center">
-            <h3>¿Cómo funciona?</h3>
+            <IonTitle
+              color={
+                test === 'teórica' ?
+                'light-blue' :
+                'favorite'
+              } size="large"
+              style={{fontSize: '3em', marginTop: '1.7em', fontWeight: 'bold'}}>¿Cómo funciona?</IonTitle>
           </div>
         </IonItem>
 
-        <IonItem lines="none">
+        <IonItem lines="none" style={{margin: '3em 0'}}>
           <div className="ion-text-center">
-            <p>En la pantalla aparecerá una pregunta
+            <IonText style={{fontSize: '2em', fontWeight: 'bold'}}>En la pantalla aparecerá una pregunta
               y 3 opciones de respuesta; usted debe
               seleccionar la que esté correcta pulsando
-              encima de ella</p>
+              encima de ella</IonText>
           </div>
         </IonItem>
 
-        <IonItem lines="none">
+        <IonItem lines="none" style={{marginTop: '3em'}}>
           <IonImg style={{margin: '0 auto'}} src={multipleSelectionImg} />
         </IonItem>
 
         <IonItem lines="none">
-          <IonButton onClick={startTest} color="favorite" className="ion-text-capitalize">
+          <IonButton onClick={startTest} color="favorite" className="comenzar-btn">
                           Comenzar
                         </IonButton>
         </IonItem>

@@ -26,7 +26,6 @@ import { withCookies, Cookies } from 'react-cookie';
 import './MultipleOptions.css';
 
 const MultipleOptionsPage: React.FC = (props: any) => {
-  // const [selected, setSelected] = useState<string>();
   const [questions, setQuestions] = useState<any>([]);
   const [currentQuestion, setCurrentQuestion] = useState<any>();
   const [questionIdx, setQuestionIdx] = useState<number>(0);
@@ -41,11 +40,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
   const [isActive, setIsActive] = useState(true);
 
   const nextQuestion = (opt: number) => {
-    // if(selected !== '' || continuar) {
-      // continuar = false;
-      // setSelected('');
       setState({min: 3, sec: 0});
-      // questions[questionIdx].selected = selected;
       questions[questionIdx].selected = opt;
     
       if (questionIdx + 1 < questions.length) {
@@ -70,10 +65,6 @@ const MultipleOptionsPage: React.FC = (props: any) => {
 
         }, 1000);
       }
-    // }
-    // else {
-    //   setShowAlert(true)
-    // }
   }
 
   async function doSaveExamProgress(exam: any) {
@@ -96,7 +87,6 @@ const MultipleOptionsPage: React.FC = (props: any) => {
 
     getPreguntasSenhales()
     .then((result: any) => {
-      // setSelected('');
       setQuestions(result);
       setCurrentQuestion(result[questionIdx]);
     })
@@ -147,72 +137,37 @@ const MultipleOptionsPage: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        {/* <IonAlert
-            isOpen={showAlert}
-            onDidDismiss={() => setShowAlert(false)}
-            cssClass='my-custom-class'
-            header={'Confirmación'}
-            message={'No has seleccionado ninguna opción. ¿Estás segurdo que deseas continuar?'}
-            buttons={[
-              {
-                text: 'Cancelar',
-                role: 'cancel',
-                cssClass: 'secondary',
-                handler: () => {
-                  console.log('Cancelado');
-                }
-              },
-              {
-                text: 'Ok',
-                handler: () => {
-                  continuar = true;
-                  nextQuestion();
-                }
-              }
-            ]}
-          /> */}
-
         <IonList className="ms-list question-details" lines="none">
-          {/* <IonRadioGroup
-            value={selected}
-            onIonChange={e => {
-              setSelected(e.detail.value)
-            }}> */}
             <IonListHeader className="list-header">
               <IonLabel className="ion-text-center question-text"><strong>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
             </IonListHeader>
-            {/* <IonItem key="img">
+
+            {currentQuestion && questions[questionIdx].img &&
+            <IonItem key="img">
               <IonImg className="question-img" src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
-            </IonItem> */}
+            </IonItem>
+            }
+
             {questions[questionIdx] && questions[questionIdx].opciones.map((opt: any, idx: number) => {
               return (
-                //{/*<IonItem key={opt}> */}
-                  //{/* <IonLabel>{opt}</IonLabel>
-                 // <IonRadio slot="start" value={idx} color="light-blue" /> */}
-                  <IonButton
-                    key={opt}
-                    size="default"
-                    expand="block"
-                    className="opt-btn"
-                    color="light-blue"
-                    onClick={() => nextQuestion(idx)}
-                    style={{color: 'black'}}
-                    >{opt}</IonButton>
-                //</IonItem>
+                <IonButton
+                  key={opt}
+                  size="default"
+                  expand="block"
+                  className="opt-btn"
+                  color="light-blue"
+                  onClick={() => nextQuestion(idx)}
+                  style={{color: 'black'}}
+                  >
+                    {opt}
+                </IonButton>
               )
               })
             }
-          {/* </IonRadioGroup> */}
 
           <IonItem lines="none" className="counter">
             Tiempo restante: <Timer min={min} sec={sec}></Timer>
           </IonItem>
-
-          {/* <IonItem lines="none">
-            <IonButton size="default" onClick={nextQuestion}>
-            { loading ? <IonSpinner/> : 'Siguiente' }
-            </IonButton>
-          </IonItem> */}
         </IonList>
       </IonContent>
     </IonPage>
