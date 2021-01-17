@@ -11,15 +11,14 @@ const INITIAL_STATE = {
 };
 
 const SignInFormBase = ({
+  auth,
   history
-}) => {
+}: any) => {
   const [state, setState] = useState({ ...INITIAL_STATE });
 
-  const onSubmit = event => {
+  const onSubmit = async (event: any) => {
     const { username, password } = state;
 
-    /*
-      reemplazar lo de firebase
-    */
+
   }
 }
