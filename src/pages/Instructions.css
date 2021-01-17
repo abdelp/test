@@ -73,8 +73,6 @@
 }
 
 .confirmar-btn {
-  /* --background: none !important; */
-  /* background-image: url('../assets/confirmar_btn.svg') !important; */
   background-image: url('../assets/confirmar_btn.svg') !important;
   --background-image: url('../assets/confirmar_btn.svg') !important;
   background-size: auto auto !important;

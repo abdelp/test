@@ -1,7 +1,6 @@
 import Menu from './components/Menu';
 
 import LoginPage from './pages/Login';
-import CategoriesPage from './pages/Categories';
 import RegistUserPage from './pages/RegistUser';
 import TestTypesPage from './pages/TestTypes';
 import MultipleOptionsPage from './pages/MultipleOptions';
@@ -54,9 +53,6 @@ const App: React.FC = (props: any) => {
           <IonSplitPane contentId="main" when={false}>
              <Menu />
             <IonRouterOutlet id="main">
-{/* 
-  // @ts-ignore */}
-              <PrivateRoute path="/page/categories" component={CategoriesPage} exact />
               {/* 
   // @ts-ignore */}
               <PrivateRoute path="/page/regist-user" component={RegistUserPage} exact />
@@ -82,12 +78,12 @@ const App: React.FC = (props: any) => {
   // @ts-ignore */}
               <PrivateRoute path="/page/notice" component={NoticePage} exact />
               <Route exact path="/">
-                { usuario ? <Redirect to="/page/categories" /> : <LoginPage /> }
+                { usuario ? <Redirect to="/page/regist-user" /> : <LoginPage /> }
               </Route>
             </IonRouterOutlet>
           </IonSplitPane>
           <Route path="/login" component={LoginPage} exact >
-            { usuario ? <Redirect to="/page/categories" /> : <LoginPage /> }
+            { usuario ? <Redirect to="/page/regist-user" /> : <LoginPage /> }
           </Route>
         </IonReactRouter>
       </IonApp>
