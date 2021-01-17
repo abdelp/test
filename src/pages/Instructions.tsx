@@ -1,34 +1,20 @@
 import {
-  IonButtons,
   IonButton,
   IonContent,
   IonHeader,
-  IonMenuButton,
   IonPage,
   IonTitle,
   IonToolbar,
-  IonSlides,
-  IonSlide,
-  IonList,
-  IonItemSliding,
   IonItem,
-  IonLabel,
-  IonItemOptions,
-  IonItemOption,
   IonIcon,
-  IonNote,
   IonImg,
   IonText
 } from '@ionic/react';
 import React, {
   useState,
   useRef,
-  useCallback,
   useEffect
 } from 'react';
-import { useParams } from 'react-router';
-import ExploreContainer from '../components/ExploreContainer';
-import { heart, trash, star, archive, ellipsisHorizontal, ellipsisVertical } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom';
 
 import './Instructions.css';

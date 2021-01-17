@@ -10,6 +10,7 @@ import InstructionsPage from './pages/Instructions';
 import TestFinishedPage from './pages/TestFinished';
 import TimeOutPage from './pages/TimeOut';
 import NoticePage from './pages/Notice';
+import PrivateRoute from './components/PrivateRoute';
 
 import React, { useEffect, useRef } from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
@@ -53,15 +54,33 @@ const App: React.FC = (props: any) => {
           <IonSplitPane contentId="main" when={false}>
              <Menu />
             <IonRouterOutlet id="main">
-              <Route path="/page/categories" component={CategoriesPage} exact />
-              <Route path="/page/regist-user" component={RegistUserPage} exact />
-              <Route path="/page/test-types" component={TestTypesPage} exact />
-              <Route path="/page/multiple-options" component={MultipleOptionsPage} exact />
-              <Route path="/page/memorize-numbers" component={MemorizeNumbersPage} exact />
-              <Route path="/page/instrucciones" component={InstructionsPage} exact />
-              <Route path="/page/test-finished" component={TestFinishedPage} exact />
-              <Route path="/page/time-out" component={TimeOutPage} exact />
-              <Route path="/page/notice" component={NoticePage} exact />
+{/* 
+  // @ts-ignore */}
+              <PrivateRoute path="/page/categories" component={CategoriesPage} exact />
+              {/* 
+  // @ts-ignore */}
+              <PrivateRoute path="/page/regist-user" component={RegistUserPage} exact />
+              {/* 
+  // @ts-ignore */}
+              <PrivateRoute path="/page/test-types" component={TestTypesPage} exact />
+              {/* 
+  // @ts-ignore */}
+              <PrivateRoute path="/page/multiple-options" component={MultipleOptionsPage} exact />
+              {/* 
+  // @ts-ignore */}
+              <PrivateRoute path="/page/memorize-numbers" component={MemorizeNumbersPage} exact />
+              {/* 
+  // @ts-ignore */}
+              <PrivateRoute path="/page/instrucciones" component={InstructionsPage} exact />
+              {/* 
+  // @ts-ignore */}
+              <PrivateRoute path="/page/test-finished" component={TestFinishedPage} exact />
+              {/* 
+  // @ts-ignore */}
+              <PrivateRoute path="/page/time-out" component={TimeOutPage} exact />
+              {/* 
+  // @ts-ignore */}
+              <PrivateRoute path="/page/notice" component={NoticePage} exact />
               <Route exact path="/">
                 { usuario ? <Redirect to="/page/categories" /> : <LoginPage /> }
               </Route>

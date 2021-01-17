@@ -8,18 +8,13 @@ import {
   IonToolbar,
   IonCard,
   IonCardHeader,
-  IonCardSubtitle,
   IonCardTitle,
   IonCardContent,
-  IonButton,
-  IonMenuToggle
+  IonButton
 } from '@ionic/react';
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router';
-import ExploreContainer from '../components/ExploreContainer';
 import './Categories.css';
 import { useHistory } from 'react-router-dom';
-import { getCategories } from '../APIs';
 import { withCookies, Cookies } from 'react-cookie';
 import { useCookies } from "react-cookie";
 
