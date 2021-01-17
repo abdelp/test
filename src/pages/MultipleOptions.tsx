@@ -138,15 +138,20 @@ const MultipleOptionsPage: React.FC = (props: any) => {
       </IonHeader>
       <IonContent>
         <IonList className="ms-list question-details" lines="none">
-            <IonListHeader className="list-header">
+            {/* <IonListHeader className="list-header">
               <IonLabel className="ion-text-center question-text"><strong>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
-            </IonListHeader>
+            </IonListHeader> */}
 
-            {currentQuestion && questions[questionIdx].img &&
-            <IonItem key="img">
-              <IonImg className="question-img" src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
-            </IonItem>
-            }
+            <div style={{minHeight: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end'}}>
+              <IonItem>
+                <IonLabel className="ion-text-center question-text texto" style={{fontSize: '3em', witheSpace: 'normal'}}><strong className='texto'>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
+              </IonItem>
+              {currentQuestion && questions[questionIdx].img &&
+              <IonItem key="img">
+                <IonImg className="question-img" src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
+              </IonItem>
+              }
+            </div>
 
             {questions[questionIdx] && questions[questionIdx].opciones.map((opt: any, idx: number) => {
               return (

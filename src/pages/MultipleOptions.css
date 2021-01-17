@@ -67,6 +67,10 @@
     font-size: 2em;
   }
   
+  .text, .texto {
+    white-space: normal;
+  }
+
   .counter {
     font-size: 2em;
   }

@@ -89,3 +89,7 @@
 .loading {
   margin: 0 auto;
 }
+
+* {
+  font-family: Arial !important;
+}
