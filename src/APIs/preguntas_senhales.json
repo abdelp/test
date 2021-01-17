@@ -3,6 +3,7 @@
     "id": 1,
     "img": "q1.jpg",
     "pregunta": "La luz amarilla intermitente del semáforo significa",
+    "preguntaImg": "",
     "opciones": [
       "Pare",
       "Precaución",

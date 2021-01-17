@@ -185,7 +185,6 @@ const InstructionsPage: React.FC = (props: any) => {
 
         <IonItem lines="none">
           <IonButton onClick={startTest} color="none" className="confirmar-btn">
-            Confirmar
           </IonButton>
         </IonItem>
         {/* <IonButtons slot="end">
