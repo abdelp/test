@@ -72,6 +72,16 @@
   margin: 0 auto;
 }
 
-.comenzar-btn {
-  margin-top: 2em;
+.confirmar-btn {
+  /* --background: none !important; */
+  /* background-image: url('../assets/confirmar_btn.svg') !important; */
+  background-image: url('../assets/confirmar_btn.svg') !important;
+  --background-image: url('../assets/confirmar_btn.svg') !important;
+  background-size: auto 100% !important;
+  --background-size: auto 100% !important;
+  width: 467px;
+  background-repeat: no-repeat;
+  --background-repeat: no-repeat;
+  box-shadow: none;
+  --box-shadow: none;
 }

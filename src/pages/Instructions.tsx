@@ -20,6 +20,9 @@ import { useHistory } from 'react-router-dom';
 import './Instructions.css';
 import { cog } from 'ionicons/icons';
 import multipleSelectionImg from '../assets/multiple-selection.png';
+// import logoPruebaTeorica from '../assets/logo_prueba_teorica.svg';
+import instruccionesPruebaTeorica from '../assets/instrucciones_prueba_teorica.svg';
+import confirmarBtn from '../assets/confirmar_btn.svg';
 
 const InstructionsPage: React.FC = (props: any) => {
   const { categoria, test } = props.location.state || '';
@@ -130,7 +133,8 @@ const InstructionsPage: React.FC = (props: any) => {
         </IonSlides> */}
 
         <IonItem lines="none">
-          <div className="icon-container" color="light-gray" style={{
+          <IonImg src={instruccionesPruebaTeorica} style={{maxWidth: '100%', width: '100%'}}/>
+          {/* <div className="icon-container" color="light-gray" style={{
             margin: '0 auto',
             padding: '3.5em',
             borderRadius: '10px',
@@ -151,10 +155,10 @@ const InstructionsPage: React.FC = (props: any) => {
                 'favorite'
               }
               >prueba {test}</IonTitle>
-          </div>
+          </div> */}
         </IonItem>
 
-        <IonItem lines="none">
+        {/* <IonItem lines="none">
           <div className="ion-text-center">
             <IonTitle
               color={
@@ -177,12 +181,12 @@ const InstructionsPage: React.FC = (props: any) => {
 
         <IonItem lines="none" style={{marginTop: '3em'}}>
           <IonImg style={{margin: '0 auto'}} src={multipleSelectionImg} />
-        </IonItem>
+        </IonItem> */}
 
         <IonItem lines="none">
-          <IonButton onClick={startTest} color="favorite" className="comenzar-btn">
-                          Comenzar
-                        </IonButton>
+          <IonButton onClick={startTest} color="none" className="confirmar-btn">
+            Confirmar
+          </IonButton>
         </IonItem>
         {/* <IonButtons slot="end">
           {showSkip && <IonButton
