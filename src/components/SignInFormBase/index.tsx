@@ -5,10 +5,16 @@ import {
   IonInput,
   IonSpinner
 } from '@ionic/react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as ROUTES from '../../constants/routes';
+import * as Auth from '../Auth/auth';
 import { signInWithUsernameAndPassword } from '../Auth/auth';
+import { withCookies, Cookies } from 'react-cookie';
+
 import to from 'await-to-js';
+import { compose } from 'recompose';
+
 // import * as ERRORS from '../../constants/errors';
 
 const INITIAL_STATE = {
@@ -19,33 +25,54 @@ const INITIAL_STATE = {
 };
 
 const SignInFormBase = ({
-  auth,
-  history
+  // auth,
+  history,
+  cookies
 }: any) => {
   const [state, setState] = useState({ ...INITIAL_STATE });
   const { username, password, error, loading } = state;
 
   const onSubmit = async (event: any) => {
-    // setState((state: any) => ({ ...state, loading: true })); // TRY
+    event.preventDefault();
+    setState((state: any) => ({ ...state, loading: true }));
     let error: any, result;
 
-    [ error, result] = await to(auth
-      .siginInWithUsernameAndPassword(username, password))
+    // [ error, result] = await to(Auth
+    //   .signInWithUsernameAndPassword(username, password));
 
+    console.log(error);
     if(!error) {
+      console.log('pasó');
+
+      
+      /*
+      * start of temporal implementation
+      */
+     
+     const ticket = 'x';
+     
+     cookies.set("usuario", JSON.stringify({ username, ticket }), {
+       path: "/"
+      });
+      
       setState((state: any) => ({ ...state, ...INITIAL_STATE }));
+
+      history.replace(ROUTES.REGIST_USER);
+
+      /*
+       * end of temporal implementation
+       */
+
     } else {
+      console.log('hubo un error');
       // const error = { ...err }; // LEAVE EXACT ERRORS FOR LATER
-      setState((state: any) => ({ ...state, error }));
+      setState((state: any) => ({ ...state, loading: false, error }));
     }
 
-    event.preventDefault();
   };
 
-  const onChange = (e: any) => {
-    e.persist();
+  const onChange = (e: any) =>
     setState((state: any) => ({ ...state, [e.target.name]: e.target.value }));
-  };
 
   const isInvalid = !password || !username;
 
@@ -60,6 +87,7 @@ const SignInFormBase = ({
           Usuario
         </IonLabel>
         <IonInput
+          name="username"
           value={username}
           onIonChange={onChange}
           autofocus
@@ -72,6 +100,7 @@ const SignInFormBase = ({
             Contraseña
         </IonLabel>
         <IonInput
+          name="password"
           value={password}
           type="password"
           onIonChange={onChange}
@@ -96,3 +125,8 @@ const SignInFormBase = ({
     </form>
   );
 }
+
+export default compose(
+  withRouter,
+  withCookies
+)(SignInFormBase);
