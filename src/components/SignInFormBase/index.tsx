@@ -40,7 +40,6 @@ const SignInFormBase = ({
     // [ error, result] = await to(Auth
     //   .signInWithUsernameAndPassword(username, password));
 
-    console.log(error);
     if(!error) {
       console.log('pasó');
 
@@ -64,7 +63,6 @@ const SignInFormBase = ({
        */
 
     } else {
-      console.log('hubo un error');
       // const error = { ...err }; // LEAVE EXACT ERRORS FOR LATER
       setState((state: any) => ({ ...state, loading: false, error }));
     }
