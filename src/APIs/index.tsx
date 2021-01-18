@@ -1,4 +1,5 @@
 import preguntas_senhales from './preguntas_senhales.json';
+import PREGUNTAS_DECLARACION_JURADA from './declaracion_jurada.json';
 
 const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
 
@@ -43,7 +44,8 @@ const getTestedUserData = (rut: any) => {
             rut: '111',
             domicilio: 'LAMBARE',
             nacionalidad: 'PARAGUAYA',
-            categoria: '1',
+            categoria: 1,
+            tipo: 'renov',
             examenes:
               {
                 catMotocicleta: {
@@ -114,6 +116,12 @@ const sendResult = (ticket: any, ci: any, result: any) => {
 const getExamDate = async ({categoria, ticket, ci, examType}: any) =>
   ({ ci: '111', categoria: 'motocicleta', examType: 'seleccion_multiple', date: '2020-01-06' });
 
+const getDeclaracionJurada = async () => {
+  return new Promise((resolve, reject) => {
+    resolve(PREGUNTAS_DECLARACION_JURADA);
+  });
+};
+
 export {
-  signinUser, getCategories, getTestedUserData, getPreguntasSenhales, sendResult, getExamDate
+  signinUser, getCategories, getTestedUserData, getPreguntasSenhales, sendResult, getExamDate, getDeclaracionJurada
 };

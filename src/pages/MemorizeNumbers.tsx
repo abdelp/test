@@ -345,37 +345,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
               return <IonButton key={b.num} className="number-btn" color={b.color} onClick={() => pickNumber(b.num)}>{b.num}</IonButton>
             }
             )}
-
-            {/* <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("0", evt)}>
-              0
-            </IonButton>
-            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("1", evt)}>
-              1
-            </IonButton>
-            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("2", evt)}>
-              2
-            </IonButton>
-            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("3", evt)}>
-              3
-            </IonButton>
-            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("4", evt)}>
-              4
-            </IonButton>
-            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("5", evt)}>
-              5
-            </IonButton>
-            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("6", evt)}>
-              6
-            </IonButton>
-            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("7", evt)}>
-              7
-            </IonButton>
-            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("8", evt)}>
-              8
-            </IonButton>
-            <IonButton className="number-btn" color="light" onClick={(evt: any) => pickNumber("9", evt)}>
-              9
-            </IonButton> */}
           </div>
 
           <div className="display-container">

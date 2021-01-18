@@ -10,7 +10,9 @@ import {
   IonCardContent,
   IonButton,
   IonButtons,
-  IonMenuButton
+  IonMenuButton,
+  IonImg,
+  IonFooter
 } from '@ionic/react';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
@@ -18,6 +20,11 @@ import { get } from 'idb-keyval';
 import { getExamDate } from '../APIs';
 import { useCookies } from "react-cookie";
 import './TestTypes.css';
+
+import pruebaTeoricaBtnImg from '../assets/prueba-teorica-btn-img.svg';
+import pruebaPsiquicaBtnImg from '../assets/prueba-psiquica-btn-img.svg';
+import declaracionJuradaBtnImg from '../assets/declaracion-jurada-btn-img.svg';
+import backArrow from '../assets/back-arrow.svg';
 
 const TestTypesPage: React.FC = () => {
   const history = useHistory();
@@ -55,22 +62,26 @@ const TestTypesPage: React.FC = () => {
   const goToTest = (test: any) => {
     const { categoria, ticket, usuario_testeado } = cookies;
 
-    console.log(test);
-
-    checkExamDate()
-    .then(result => {
-      if (result) {
-        history.replace({
-          pathname: '/page/instrucciones',
-          state: {categoria, test, usuario_testeado }
-        });
-      } else {
-        history.replace({pathname: '/page/notice', state: {categoria, usuario_testeado} });
-      }
-    })
-    .catch(() => 
-      history.replace({pathname: '/page/notice', state: {categoria, usuario_testeado}})
-    );
+    if (test === 'declaración jurada') {
+      history.replace({
+        pathname: '/page/declaracion-jurada'
+      });
+    } else {
+      checkExamDate()
+      .then(result => {
+        if (result) {
+          history.replace({
+            pathname: '/page/instrucciones',
+            state: {categoria, test, usuario_testeado }
+          });
+        } else {
+          history.replace({pathname: '/page/notice', state: {categoria, usuario_testeado} });
+        }
+      })
+      .catch(() => 
+        history.replace({pathname: '/page/notice', state: {categoria, usuario_testeado}})
+      );
+    }
   }
 
   return (
@@ -84,10 +95,40 @@ const TestTypesPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen>
-        <div className="flex" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
-
-          <IonCard>
+      <IonContent>
+        <div
+          className="flex"
+          style={{
+            height: '100%',
+            maxHeight: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center'
+          }}
+        >
+          <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div
+              className="test-type-btn"
+              style={{
+                margin: '2em',
+                width: '50%'
+              }}
+              onClick={() => goToTest('declaración jurada')}>
+              <IonImg src={declaracionJuradaBtnImg} />
+            </div >
+            <div className="test-type-btn" style={{margin: '2em', width: '50%'}} onClick={() => goToTest('teórica')}>
+              <IonImg src={pruebaTeoricaBtnImg} />
+            </div>
+          </div>
+          <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div className="test-type-btn" style={{margin: '2em', width: '50%'}} onClick={() => goToTest('psiquica')}>
+              <IonImg src={pruebaPsiquicaBtnImg} />
+            </div>
+            <div className="test-type-btn" style={{margin: '2em', width: '50%'}}>
+              <IonImg src={pruebaTeoricaBtnImg} />
+            </div>
+          </div>
+          {/* <IonCard>
             <IonCardHeader color="light-blue">
               <IonCardTitle className="ion-text-uppercase">prueba teorica</IonCardTitle>
             </IonCardHeader>
@@ -128,7 +169,7 @@ const TestTypesPage: React.FC = () => {
                 color="orange"
                 onClick={goToTest}>seleccionar</IonButton>
             </IonCardContent>
-          </IonCard>
+          </IonCard> */}
         </div>
       </IonContent>
     </IonPage>

@@ -142,7 +142,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
               <IonLabel className="ion-text-center question-text"><strong>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
             </IonListHeader> */}
 
-            <div style={{minHeight: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end'}}>
+            <div style={{minHeight: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
               <IonItem>
                 <IonLabel className="ion-text-center question-text texto" style={{fontSize: '3em', witheSpace: 'normal'}}><strong className='texto'>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
               </IonItem>
@@ -159,7 +159,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
                   key={opt}
                   size="default"
                   expand="block"
-                  className="opt-btn"
+                  className="opt-btn ion-text-capitalize"
                   color="light-blue"
                   onClick={() => nextQuestion(idx)}
                   style={{color: 'black'}}

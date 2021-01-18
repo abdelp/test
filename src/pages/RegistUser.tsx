@@ -9,7 +9,7 @@ import {
   IonItem,
   IonLabel,
   IonInput,
-  IonBackButton,
+  IonMenuButton,
   IonSpinner
 } from '@ionic/react';
 import React, { useState, useEffect, useRef } from 'react';
@@ -96,8 +96,8 @@ const RegistUserPage: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="favorite">
-          <IonButtons slot="end">
-            <IonBackButton defaultHref="categories" text="Volver" icon="ios-arrow-back" />
+        <IonButtons slot="start">
+            <IonMenuButton autoHide={false} />
           </IonButtons>
           <IonTitle className="ion-text-center">Indique el RUT del conductor</IonTitle>
         </IonToolbar>

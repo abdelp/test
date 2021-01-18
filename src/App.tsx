@@ -9,6 +9,7 @@ import InstructionsPage from './pages/Instructions';
 import TestFinishedPage from './pages/TestFinished';
 import TimeOutPage from './pages/TimeOut';
 import NoticePage from './pages/Notice';
+import DeclaracionJuradaPage from './pages/DeclaracionJurada';
 import PrivateRoute from './components/PrivateRoute';
 
 import React, { useEffect, useRef } from 'react';
@@ -55,7 +56,7 @@ const App: React.FC = (props: any) => {
             <IonRouterOutlet id="main">
               {/* 
   // @ts-ignore */}
-              <PrivateRoute path="/page/regist-user" component={RegistUserPage} exact />
+              <PrivateRoute path="/regist-user" component={RegistUserPage} exact />
               {/* 
   // @ts-ignore */}
               <PrivateRoute path="/page/test-types" component={TestTypesPage} exact />
@@ -77,13 +78,16 @@ const App: React.FC = (props: any) => {
               {/* 
   // @ts-ignore */}
               <PrivateRoute path="/page/notice" component={NoticePage} exact />
+              {/*
+  // @ts-ignore */}
+              <PrivateRoute path="/page/declaracion-jurada" component={DeclaracionJuradaPage} exact />
               <Route exact path="/">
-                { usuario ? <Redirect to="/page/regist-user" /> : <LoginPage /> }
+                { props.cookies.get('usuario') ? <RegistUserPage /> : <LoginPage /> }
               </Route>
             </IonRouterOutlet>
           </IonSplitPane>
           <Route path="/login" component={LoginPage} exact >
-            { usuario ? <Redirect to="/page/regist-user" /> : <LoginPage /> }
+            { props.cookies.get('usuario') ? <RegistUserPage /> : <LoginPage /> }
           </Route>
         </IonReactRouter>
       </IonApp>

@@ -84,3 +84,7 @@
   /* background-color: #62B766; */
   --background: #62B766;
 }
+
+.test-type-btn:hover {
+  cursor: pointer;
+}
