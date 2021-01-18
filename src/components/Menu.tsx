@@ -10,7 +10,7 @@ import {
   IonButton
 } from '@ionic/react';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Menu.css';
 import { useCookies } from "react-cookie";
@@ -35,6 +35,7 @@ const Menu: React.FC = (props: any) => {
   const history = useHistory();
   const [username, setUsername] = useState<string>();
   const [cookies, setCookie, removeCookie] = useCookies(["usuario"]);
+  // const menu = useRef();
 
   useEffect(() => {
     const usuario = props.cookies.get('usuario');

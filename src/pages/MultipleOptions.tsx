@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -6,15 +6,10 @@ import {
   IonTitle,
   IonToolbar,
   IonList,
-  IonRadioGroup,
-  IonListHeader,
   IonLabel,
   IonItem,
-  IonRadio,
   IonButton,
-  IonImg,
-  IonSpinner,
-  IonAlert
+  IonImg
 } from '@ionic/react';
 import Timer from './Timer';
 import { useHistory } from 'react-router-dom';

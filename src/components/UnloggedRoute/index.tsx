@@ -3,19 +3,20 @@ import { Route } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import LoginPage from '../../pages/Login';
+import RegistUserPage from '../../pages/RegistUser';
 
 // @ts-ignore
-const PrivateRoute: React.FC = ({ component: Component, cookies, ...rest }): any => {
+const UnloggedRoute: React.FC = ({ component: Component, cookies, ...rest }): any => {
   return <Route
     {...rest}
-    render={props => {
-      return cookies.get('usuario') ? <Component {...props} /> : <LoginPage />;
+    render={() => {
+      return cookies.get('usuario') ? <RegistUserPage /> : <LoginPage />;
     }}
   />
 };
 
-PrivateRoute.propTypes = {
+UnloggedRoute.propTypes = {
   cookies: instanceOf(Cookies).isRequired
 };
 
-export default withCookies(PrivateRoute);
+export default withCookies(UnloggedRoute);

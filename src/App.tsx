@@ -11,12 +11,13 @@ import TimeOutPage from './pages/TimeOut';
 import NoticePage from './pages/Notice';
 import DeclaracionJuradaPage from './pages/DeclaracionJurada';
 import PrivateRoute from './components/PrivateRoute';
+import UnloggedRoute from './components/UnloggedRoute';
 
 import React, { useEffect, useRef } from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
-import { CookiesProvider, withCookies, Cookies } from "react-cookie";
+import { Route } from 'react-router-dom';
+import { CookiesProvider, withCookies } from "react-cookie";
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -37,58 +38,62 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-import { loggedIn } from './utils/db';
-import { useHistory } from 'react-router-dom';
-
 const App: React.FC = (props: any) => {
-  const usuario = props.cookies.get('usuario');
-  const history = useHistory();
-  const menu = useRef();
-
-  useEffect(() => console.log('effect'));
+  useEffect(() => console.log(props.cookies.get('user')));
 
   return (
     <CookiesProvider>
       <IonApp>
         <IonReactRouter>
           <IonSplitPane contentId="main" when={false}>
-             <Menu />
+            <Menu />
             <IonRouterOutlet id="main">
-              {/* 
-  // @ts-ignore */}
+              {/*
+                // @ts-ignore */}
               <PrivateRoute path="/regist-user" component={RegistUserPage} exact />
               {/* 
-  // @ts-ignore */}
+                // @ts-ignore */}
               <PrivateRoute path="/page/test-types" component={TestTypesPage} exact />
               {/* 
-  // @ts-ignore */}
+                // @ts-ignore */}
               <PrivateRoute path="/page/multiple-options" component={MultipleOptionsPage} exact />
               {/* 
-  // @ts-ignore */}
+                // @ts-ignore */}
               <PrivateRoute path="/page/memorize-numbers" component={MemorizeNumbersPage} exact />
               {/* 
-  // @ts-ignore */}
+                // @ts-ignore */}
               <PrivateRoute path="/page/instrucciones" component={InstructionsPage} exact />
               {/* 
-  // @ts-ignore */}
+                // @ts-ignore */}
               <PrivateRoute path="/page/test-finished" component={TestFinishedPage} exact />
               {/* 
-  // @ts-ignore */}
+                // @ts-ignore */}
               <PrivateRoute path="/page/time-out" component={TimeOutPage} exact />
               {/* 
-  // @ts-ignore */}
+                // @ts-ignore */}
               <PrivateRoute path="/page/notice" component={NoticePage} exact />
               {/*
-  // @ts-ignore */}
+                // @ts-ignore */}
               <PrivateRoute path="/page/declaracion-jurada" component={DeclaracionJuradaPage} exact />
-              <Route exact path="/">
+              {/*
+              // @ts-ignore */}
+              <PrivateRoute path="/"
+                exact
+              >
                 { props.cookies.get('usuario') ? <RegistUserPage /> : <LoginPage /> }
-              </Route>
+              </PrivateRoute>
             </IonRouterOutlet>
           </IonSplitPane>
-          <Route path="/login" component={LoginPage} exact >
-            { props.cookies.get('usuario') ? <RegistUserPage /> : <LoginPage /> }
-          </Route>
+          {/*
+            // @ts-ignore */}
+          <UnloggedRoute path="/login"
+            component={LoginPage}
+            exact
+            render={() => {
+              return props.cookies.get('usuario') ? <RegistUserPage /> : <LoginPage />;
+            }}
+          >
+          </UnloggedRoute>
         </IonReactRouter>
       </IonApp>
     </CookiesProvider>

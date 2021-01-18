@@ -43,7 +43,6 @@ const SignInFormBase = ({
     if(!error) {
       console.log('pasó');
 
-      
       /*
       * start of temporal implementation
       */
