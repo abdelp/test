@@ -29,7 +29,12 @@ import backArrow from '../assets/back-arrow.svg';
 const TestTypesPage: React.FC = () => {
   const history = useHistory();
   const [cookies, setCookie] = useCookies(["user"]);
-  const { categoria, ticket, usuario_testeado: { ci } } = cookies;
+  const { categoria, ticket, usuario_testeado } = cookies;
+  let ci = '';
+
+  if (usuario_testeado) {
+    ci = usuario_testeado.ci;
+  }
 
   const checkExamDate = () => {
     return new Promise((resolve, reject) => {

@@ -84,7 +84,7 @@ const RegistUserPage: React.FC = () => {
 
     set("usuarios_testeados", usuariosTesteados);
     setCookie('usuario_testeado', user, {path: '/'});
-    history.push('/page/test-types');
+    history.replace('/page/test-types');
   }
 
   useEffect(() => {

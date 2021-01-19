@@ -46,7 +46,6 @@ const MultipleOptionsPage: React.FC = (props: any) => {
         setLoading(true);
         setTimeout(() => {
           const resultado = questions.filter((r: any) => r.selected === r.respuesta).length;
-    
           const ticket = props.cookies.get('ticket');
           const usuarioTesteado = props.cookies.get('usuario_testeado');
           const { ci, rut } = usuarioTesteado;
@@ -60,7 +59,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
 
         }, 1000);
       }
-  }
+  };
 
   async function doSaveExamProgress(exam: any) {
     await set("exam", {exam});

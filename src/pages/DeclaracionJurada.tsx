@@ -11,7 +11,10 @@ import {
   IonLabel,
   IonItem,
   IonRadio,
-  IonTextarea
+  IonTextarea,
+  IonAlert,
+  IonPopover,
+  IonSpinner
 } from '@ionic/react';
 import { getDeclaracionJurada } from '../APIs';
 import { useHistory } from 'react-router-dom';
@@ -20,6 +23,7 @@ import './DeclaracionJurada.css';
 
 const DeclaracionJuradaPage: React.FC = () => {
   const [questions, setQuestions] = useState<any>([]);
+  const [state, setState] = useState<any>({showAlert: false});
   const history = useHistory();
 
   useEffect(() => {
@@ -31,9 +35,21 @@ const DeclaracionJuradaPage: React.FC = () => {
   });
 
   const confirmar = () => {
-    console.log(questions);
-    history.push('/page/test-types');
+
+    /*
+     * poner webservice
+     */
+
+    setState((state: any) => ({...state, loading: true}))
+
+    setTimeout(() => {
+      setState((state: any) => ({...state, loading: false}))
+      history.push('/page/test-types');
+    }, 2000);
+
   };
+
+  const { loading, showAlert } = state;
 
   return (
     <IonPage>
@@ -43,27 +59,36 @@ const DeclaracionJuradaPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonList>
-        {/* <IonRadioGroup value={selected} onIonChange={e => setSelected(e.detail.value)}>
-              <div style={{display: 'flex'}}>
-                <div style={{width: '100%'}}>
-                  <IonItem>
-                      <IonLabel>Descripcion del item</IonLabel>
-                  </IonItem>
-                </div>
-                <div style={{display: 'flex'}}>
-                  <IonItem>
-                    <IonLabel>Sí</IonLabel>
-                    <IonRadio slot="end" mode="ios" value="1" color="success" />
-                  </IonItem>
+        { loading &&
+          <IonPopover
+            cssClass='loading-popover ion-text-center'
+            isOpen={loading}
+          >
+            <IonSpinner style={{margin: '2em'}}></IonSpinner>
+          </IonPopover>
+        }
 
-                  <IonItem>
-                    <IonLabel>No</IonLabel>
-                    <IonRadio slot="end" mode="ios" value="2" color="danger" />
-                  </IonItem>
-                </div>
-              </div>
-            </IonRadioGroup> */}
+        <IonAlert
+          isOpen={showAlert}
+          cssClass='my-custom-class'
+          header={'Confirmación'}
+          message={'¿Estás seguro que deseas confirmar?'}
+          buttons={[
+            {
+              text: 'Cancelar',
+              role: 'cancel',
+              cssClass: 'secondary'
+            },
+            {
+              text: 'Sí',
+              handler: () => {
+                confirmar();
+              }
+            }
+          ]}
+        />
+
+        <IonList>
           { questions.map((q: any) =>
             <IonRadioGroup
               key={q.id}
@@ -106,7 +131,7 @@ const DeclaracionJuradaPage: React.FC = () => {
           </IonItem>
         </IonList>
         <IonItem className='ion-text-center'>
-          <IonButton className="confirmar-btn"  color="none" size="large" onClick={confirmar}>
+          <IonButton className="confirmar-btn"  color="none" size="large" onClick={(state) => setState({...state, showAlert: true}) }>
           &nbsp;
           </IonButton>
         </IonItem>
