@@ -76,8 +76,8 @@ const DeclaracionJuradaPage: React.FC = () => {
                 return [...state ];
               }
               )}>
-              <div style={{display: 'flex'}}>
-                <div style={{width: '100%'}}>
+              <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+                <div style={{width: '100%', minWidth: '300px'}}>
                   <IonItem>
                     <IonLabel className="question-label">{q.pregunta}</IonLabel>
                   </IonItem>
