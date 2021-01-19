@@ -10,7 +10,7 @@ import {
   IonButton
 } from '@ionic/react';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Menu.css';
 import { useCookies } from "react-cookie";
@@ -35,16 +35,13 @@ const Menu: React.FC = (props: any) => {
   const history = useHistory();
   const [username, setUsername] = useState<string>();
   const [cookies, setCookie, removeCookie] = useCookies(["usuario"]);
-  // const menu = useRef();
 
   useEffect(() => {
     const usuario = props.cookies.get('usuario');
-    // console.log(usuario);
     if (usuario) {
       setUsername(capitalize(props.cookies.get('usuario').username || ''));
     } else {
       setUsername('');
-      // history.replace('/login');
     }
   });
 
@@ -85,12 +82,13 @@ const Menu: React.FC = (props: any) => {
             >
             </IonItem>
           </IonMenuToggle>
-            <section>
-              <IonButton
-                color="favorite"
-                expand="block"
-                onClick={logoutAction}>Salir</IonButton>
-            </section>
+
+          <section>
+            <IonButton
+              color="favorite"
+              expand="block"
+              onClick={logoutAction}>Salir</IonButton>
+          </section>
         </IonList>
       </IonContent>
     </IonMenu>

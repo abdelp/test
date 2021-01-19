@@ -105,7 +105,8 @@ const TestTypesPage: React.FC = () => {
           className="flex"
           style={{
             height: '100%',
-            maxHeight: '100%',
+            backgroundColor: 'red',
+            // maxHeight: '100%',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center'
@@ -116,20 +117,35 @@ const TestTypesPage: React.FC = () => {
               className="test-type-btn"
               style={{
                 margin: '2em',
-                width: '50%'
+                width: '50%',
+                maxWidth: '400px'
               }}
               onClick={() => goToTest('declaración jurada')}>
               <IonImg src={declaracionJuradaBtnImg} />
             </div >
-            <div className="test-type-btn" style={{margin: '2em', width: '50%'}} onClick={() => goToTest('teórica')}>
+            <div className="test-type-btn" style={{
+              margin: '2em',
+              width: '50%',
+              maxWidth: '400px'
+              
+              }} onClick={() => goToTest('teórica')}>
               <IonImg src={pruebaTeoricaBtnImg} />
             </div>
           </div>
           <div style={{display: 'flex', justifyContent: 'center'}}>
-            <div className="test-type-btn" style={{margin: '2em', width: '50%'}} onClick={() => goToTest('psiquica')}>
+            <div className="test-type-btn" style={{
+              margin: '2em',
+              width: '50%',
+              maxWidth: '400px'
+              }} onClick={() => goToTest('psiquica')}>
               <IonImg src={pruebaPsiquicaBtnImg} />
             </div>
-            <div className="test-type-btn" style={{margin: '2em', width: '50%'}}>
+            <div className="test-type-btn" style={{
+              margin: '2em',
+              width: '50%',
+              maxWidth: '400px'
+
+              }}>
               <IonImg src={pruebaTeoricaBtnImg} />
             </div>
           </div>
