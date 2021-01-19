@@ -38,8 +38,8 @@ const DeclaracionJuradaPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonTitle>Declaración Jurada</IonTitle>
+        <IonToolbar color="yellow">
+          <IonTitle className="ion-text-uppercase ion-text-center title">Declaración Jurada</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -106,8 +106,8 @@ const DeclaracionJuradaPage: React.FC = () => {
           </IonItem>
         </IonList>
         <IonItem className='ion-text-center'>
-          <IonButton size="default" onClick={confirmar}>
-            Confirmar
+          <IonButton className="confirmar-btn"  color="none" size="large" onClick={confirmar}>
+          &nbsp;
           </IonButton>
         </IonItem>
       </IonContent>
