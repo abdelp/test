@@ -98,14 +98,12 @@ const MemorizeNumbers: React.FC = (props: any) => {
   // const [statex, setState] = useState({min: 3, sec: 0});
   // const [isActive, setIsActive] = useState(true);
 
-  async function doSaveExamProgress(exam: any) {
+  const doSaveExamProgress = async (exam: any) =>
     await set("exam", {exam});
-  }
 
-  function randomNumber() {  
-    return Math.floor(Math.random() * (9 - 0) + 0); 
-  }
-  
+  const randomNumber = () =>  
+    Math.floor(Math.random() * (9 - 0) + 0);
+
   useEffect(() => {
     const {mensaje, numerosAElegir, turnoUsuario, numerosElegidos, roundFinished, btns } = state;
     let { round } = state;
@@ -158,7 +156,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
         setState((state: any) => ({...state, mensaje, turnoUsuario: false, roundFinished: true }));
       }
     }
-    //Cleanup can be done like this
     return () => {
       clearTimeout(rotationInterval)
     }
@@ -182,6 +179,9 @@ const MemorizeNumbers: React.FC = (props: any) => {
   };
 
   const { min, sec, btns } = state;
+
+  console.log(mensaje);
+  console.log(state.mensaje);
 
   return (
     <IonPage>
@@ -217,7 +217,15 @@ const MemorizeNumbers: React.FC = (props: any) => {
           />
             <div style={{textAlign: 'center'}}>
             {btns.map((b: any) => {
-              return <IonButton key={b.num} className="number-btn" color={b.color} onClick={() => pickNumber(b.num)}>{b.num}</IonButton>
+              return <IonButton
+                key={b.num}
+                className="number-btn"
+                color={b.color}
+                onClick={() => pickNumber(b.num)}
+                disabled={mensaje !== 'Tu turno' ? true : false}
+              >
+                  {b.num}
+                </IonButton>
             }
             )}
           </div>
