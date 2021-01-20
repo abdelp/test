@@ -90,24 +90,25 @@ const PracticalTestPage: React.FC = () => {
 
         <IonList>
           { questions.map((q: any) =>
-            <IonRadioGroup
-              key={q.id}
-              // value={questions[q.id].respuesta || null}
-              onIonChange={e => setQuestions((state: any) => {
-                const idx: any = state.findIndex((obj: any) => obj.id === q.id);
-
-                state[idx].respuesta = e.detail.value;
-
-                return [...state ];
-              }
-              )}>
-              <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+              <div
+                // style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}
+                >
                 <div style={{width: '100%', minWidth: '300px'}}>
                     {/* <IonLabel className="question-label">{q.titulo}</IonLabel> */}
                     <IonTitle className="question-label ion-text-wrap"><strong>{q.titulo}</strong></IonTitle>
                 </div>
                 {q.items.map((item: any, idx: any) => 
-                  <Fragment key={idx}>
+                  <IonRadioGroup
+                    key={idx}
+                    // value={questions[q.id].respuesta || null}
+                    onIonChange={e => setQuestions((state: any) => {
+                      const idx: any = state.findIndex((obj: any) => obj.id === q.id);
+      
+                      state[idx].respuesta = e.detail.value;
+      
+                      return [...state ];
+                    }
+                    )}>
                     <div style={{width: '100%', minWidth: '300px'}}>
                       <IonItem>
                         <IonLabel className="question-label ion-text-wrap">{item}</IonLabel>
@@ -124,10 +125,9 @@ const PracticalTestPage: React.FC = () => {
                         <IonRadio slot="end" mode="ios" value="false" color="danger" />
                       </IonItem>
                     </div>
-                  </Fragment>
+                </IonRadioGroup>
                 )}
               </div>
-            </IonRadioGroup>
           ) }
           <IonItem>
             <IonTextarea
