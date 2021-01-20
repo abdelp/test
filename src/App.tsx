@@ -5,6 +5,7 @@ import RegistUserPage from './pages/RegistUser';
 import TestTypesPage from './pages/TestTypes';
 import MultipleOptionsPage from './pages/MultipleOptions';
 import MemorizeNumbersPage from './pages/MemorizeNumbers';
+import PracticalTestPage from './pages/PracticalTest';
 import InstructionsPage from './pages/Instructions';
 import TestFinishedPage from './pages/TestFinished';
 import TimeOutPage from './pages/TimeOut';
@@ -60,6 +61,9 @@ const App: React.FC = (props: any) => {
               {/* 
                 // @ts-ignore */}
               <PrivateRoute path="/page/memorize-numbers" component={MemorizeNumbersPage} exact />
+              {/* 
+                // @ts-ignore */}
+              <PrivateRoute path="/page/test-practico" component={PracticalTestPage} exact />
               {/* 
                 // @ts-ignore */}
               <PrivateRoute path="/page/instrucciones" component={InstructionsPage} exact />

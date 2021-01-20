@@ -1,5 +1,6 @@
 import preguntas_senhales from './preguntas_senhales.json';
 import PREGUNTAS_DECLARACION_JURADA from './declaracion_jurada.json';
+import ITEMS_MOTOCICLETA_PRACTICO from './motocicleta_practico.json';
 
 const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
 
@@ -122,6 +123,19 @@ const getDeclaracionJurada = async () => {
   });
 };
 
+const getPracticalTestItems = () => {
+  return new Promise((resolve, reject) => {
+    resolve(ITEMS_MOTOCICLETA_PRACTICO);
+  });
+};
+
 export {
-  signinUser, getCategories, getTestedUserData, getPreguntasSenhales, sendResult, getExamDate, getDeclaracionJurada
+  signinUser,
+  getCategories,
+  getTestedUserData,
+  getPreguntasSenhales,
+  sendResult,
+  getExamDate,
+  getDeclaracionJurada,
+  getPracticalTestItems
 };

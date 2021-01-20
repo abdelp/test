@@ -23,6 +23,7 @@ import './TestTypes.css';
 
 import pruebaTeoricaBtnImg from '../assets/prueba-teorica-btn-img.svg';
 import pruebaPsiquicaBtnImg from '../assets/prueba-psiquica-btn-img.svg';
+import pruebaPracticaBtnImg from '../assets/prueba-practica-btn-img.svg';
 import declaracionJuradaBtnImg from '../assets/declaracion-jurada-btn-img.svg';
 import backArrow from '../assets/back-arrow.svg';
 
@@ -71,6 +72,10 @@ const TestTypesPage: React.FC = () => {
       history.replace({
         pathname: '/page/declaracion-jurada'
       });
+    } else if(test === 'practica') {
+      history.replace({
+        pathname: '/page/test-practico'
+      });
     } else {
       checkExamDate()
       .then(result => {
@@ -105,7 +110,6 @@ const TestTypesPage: React.FC = () => {
           className="flex"
           style={{
             height: '100%',
-            backgroundColor: 'red',
             // maxHeight: '100%',
             display: 'flex',
             flexDirection: 'column',
@@ -144,9 +148,8 @@ const TestTypesPage: React.FC = () => {
               margin: '2em',
               width: '50%',
               maxWidth: '400px'
-
-              }}>
-              <IonImg src={pruebaTeoricaBtnImg} />
+              }} onClick={() => goToTest('practica')}>
+              <IonImg src={pruebaPracticaBtnImg} />
             </div>
           </div>
           {/* <IonCard>

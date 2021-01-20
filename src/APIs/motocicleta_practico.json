@@ -1,22 +1,22 @@
 [
 {
- "titulo": "ANTES DE PONER EN MARCHA EL MOTOR", "items": [
+ "id": 1, "titulo": "ANTES DE PONER EN MARCHA EL MOTOR", "items": [
  "Ajusta el ángulo de los espejos retrovisores"
 ]},{
- "titulo":"DESPUES DE PONER EN MARCHA EL MOTOR", "items": [
+ "id": 2, "titulo":"DESPUES DE PONER EN MARCHA EL MOTOR", "items": [
  "Revisa el tablero o panel",
  "Revisa el juego libre de embrague",
  "Prueba el acelerador",
  "Prueba la palanca y la caja de velocidades",
  "Prueba el juego libre del freno"
 ]},{
- "titulo":"AL INCORPORARSE A LA CIRCULACIÒN", "items": [
+ "id": 3, "titulo":"AL INCORPORARSE A LA CIRCULACIÒN", "items": [
  "Mira hacia atrás y verifica las condiciones del tránsito",
  "Hace señales apropiadas",
  "Espera por tránsito en movimiento",
  "Hace una salida suave"
 ]},{
- "titulo":"USO DE LOS CONTROLES DE MANDO", "items": [
+ "id": 4, "titulo":"USO DE LOS CONTROLES DE MANDO", "items": [
  "Utiliza en forma adecuada el embrague",
  "Utiliza en forma adecuada el freno",
  "Hace sonar los cambios",
@@ -25,7 +25,7 @@
  "Acelera el motor innecesariamente",
  "Deja parar el motor"
 ]},{
- "titulo":"DURANTE LA MARCHA", "items": [
+ "id": 5, "titulo":"DURANTE LA MARCHA", "items": [
  "Excede la velocidad máxima permitida",
  "Guía por el carril correcto",
  "Reduce la velocidad en sitios específicos",
@@ -40,29 +40,29 @@
  "Respeta la señal de 'PARE'",
  "En pendientes: circula en punto muerto"
 ]},{
- "titulo":"AL ENFRENAR EN UN SEMAFORO", "items": [
+ "id": 6, "titulo":"AL ENFRENAR EN UN SEMAFORO", "items": [
  "Disminuye la velocidad ante la luz amarilla",
  "Detiene la marcha ante la luz roja",
  "Se detiene sobre la franja peatonal"
 ]},{
- "titulo":"AL ADELANTAR", "items": [
+ "id": 7, "titulo":"AL ADELANTAR", "items": [
  "Hace las señales debidas y a tiempo",
  "Lo hace en una boca calle o próxima a ella",
  "Lo hace a un ómnibus detenido",
  "Lo hace en una curva, cuesta, vía angosta",
  "Señaliza el desplazamiento a la izquierda y a la derecha"
 ]},{
- "titulo":"REDUCIENDO Y PARANDO", "items": [
+ "id": 8, "titulo":"REDUCIENDO Y PARANDO", "items": [
  "Mira por el espejo retrovisor",
  "Se detiene suavemente",
  "Usa el motor como freno"
 ]},{
- "titulo":"COMPORTAMIENTO EN LOS CRUCES", "items": [
+ "id": 9, "titulo":"COMPORTAMIENTO EN LOS CRUCES", "items": [
  "Disminuye la velocidad en los cruces no regulados",
  "Cede el paso al vehículo con preferencia",
  "Detiene el vehiculo en la bocacalle"
 ]},{
- "titulo":"AL GIRAR A LA DERECHA O LA IZQUIERDA", "items": [
+ "id": 10, "titulo":"AL GIRAR A LA DERECHA O LA IZQUIERDA", "items": [
  "Lo hace desde el carril correcto",
  "Entra al carril correcto",
  "Sube sobre la vereda",

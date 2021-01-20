@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@capacitor/android": "^2.4.4",
     "@capacitor/core": "2.4.4",
     "@ionic-native/core": "^5.30.0",
     "@ionic-native/geolocation": "^5.30.0",
