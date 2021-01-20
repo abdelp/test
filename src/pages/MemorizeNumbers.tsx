@@ -1,21 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   IonContent,
   IonHeader,
   IonPage,
   IonTitle,
   IonToolbar,
-  IonList,
-  IonRadioGroup,
-  IonListHeader,
-  IonLabel,
-  IonItem,
-  IonRadio,
   IonButton,
-  IonImg,
-  IonSpinner,
-  IonAlert,
-  IonButtons
+  IonAlert
 } from '@ionic/react';
 import Timer from './Timer';
 import { useHistory } from 'react-router-dom';
@@ -111,64 +102,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
     await set("exam", {exam});
   }
 
-  // useEffect(() => {
-  //   const ticket = props.cookies.get('ticket');
-  //   const categoria = props.cookies.get('ticket');
-  //   const usuarioTesteado = props.cookies.get('usuario_testeado');
-  //   const { ci } = usuarioTesteado;
-
-  //   updateUserTestDate(ci, categoria, 'multiple options')
-  //   .then(result => {
-  //     console.log(result);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
-
-  //   getPreguntasSenhales()
-  //   .then((result: any) => {
-  //     setSelected('');
-  //     setQuestions(result);
-  //     setCurrentQuestion(result[questionIdx]);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   })
-  // }, []);
-
-  // useEffect(() => {
-  //   let interval: any = null;
-
-  //   if (isActive) {
-  //     interval = setInterval(() => {
-  //       const { sec, min } = statex;
-
-  //       if (sec > 0) {
-  //         setState(state => ({...state,
-  //           sec: state.sec - 1
-  //           }));
-  //       }
-
-  //       if (sec === 0) {
-  //         if (min === 0) {
-  //           history.replace('/page/time-out');
-  //         } else {
-  //           setState(state => ({
-  //             min: state.min - 1,
-  //             sec: 59
-  //           }))
-  //         }
-  //       } 
-
-  //     }, 1000);
-  //   }
-
-  //   return () => {
-  //     clearInterval(interval);
-  //   }
-  // }, [isActive, statex]);
-
-  // const { min, sec } = statex;
   function randomNumber() {  
     return Math.floor(Math.random() * (9 - 0) + 0); 
   }
@@ -198,67 +131,10 @@ const MemorizeNumbers: React.FC = (props: any) => {
           }, 2000);
         }
       } else {
-        if(round === 1) {
+        if(round >= 1 && round <= 4) {
           if(mensaje === 'Turno del ordenador') {        
             rotationInterval = window.setTimeout(() => {
               setState((state: any) => ({...state, mensaje: '' }));
-            }, 2000);
-          } else if (mensaje === '' && numerosAElegir.length < round + 1) {
-            const randNum: any = randomNumber().toString();
-            numerosAElegir.push(randNum);
-            rotationInterval = window.setTimeout(() => {
-              setState((state: any) => ({...state, mensaje: randNum, numerosAElegir}));
-            });
-          } else if (mensaje != '' && mensaje != 'Turno del ordenador') {
-            rotationInterval = window.setTimeout(() => {
-              setState((state: any) => ({...state, mensaje: '' }));
-            }, 2000);
-          } else if (numerosAElegir.length === round + 1) {
-            setState((state: any) => ({...state, mensaje: 'Tu turno', turnoUsuario: true}));
-          }
-        }
-        else if(round === 2) {
-          if(mensaje === 'Turno del ordenador') {        
-            rotationInterval = window.setTimeout(() => {
-              setState((state: any) => ({...state, mensaje: '' }))
-            }, 2000);
-          } else if (mensaje === '' && numerosAElegir.length < round + 1) {
-            const randNum: any = randomNumber().toString();
-            numerosAElegir.push(randNum);
-            rotationInterval = window.setTimeout(() => {
-              setState((state: any) => ({...state, mensaje: randNum, numerosAElegir}));
-            });
-          } else if (mensaje != '' && mensaje != 'Turno del ordenador') {
-            rotationInterval = window.setTimeout(() => {
-              setState((state: any) => ({...state, mensaje: '' }));
-            }, 2000);
-          } else if (numerosAElegir.length === round + 1) {
-            setState((state: any) => ({...state, mensaje: 'Tu turno', turnoUsuario: true}));
-          }
-        }
-        else if(round === 3) {
-          if(mensaje === 'Turno del ordenador') {        
-            rotationInterval = window.setTimeout(() => {
-              setState((state: any) => ({...state, mensaje: '' }))
-            }, 2000);
-          } else if (mensaje === '' && numerosAElegir.length < round + 1) {
-            const randNum: any = randomNumber().toString();
-            numerosAElegir.push(randNum);
-            rotationInterval = window.setTimeout(() => {
-              setState((state: any) => ({...state, mensaje: randNum, numerosAElegir}));
-            });
-          } else if (mensaje != '' && mensaje != 'Turno del ordenador') {
-            rotationInterval = window.setTimeout(() => {
-              setState((state: any) => ({...state, mensaje: '' }));
-            }, 2000);
-          } else if (numerosAElegir.length === round + 1) {
-            setState((state: any) => ({...state, mensaje: 'Tu turno', turnoUsuario: true}));
-          }
-        }
-        else if(round === 4) {
-          if(mensaje === 'Turno del ordenador') {        
-            rotationInterval = window.setTimeout(() => {
-              setState((state: any) => ({...state, mensaje: '' }))
             }, 2000);
           } else if (mensaje === '' && numerosAElegir.length < round + 1) {
             const randNum: any = randomNumber().toString();
@@ -288,9 +164,8 @@ const MemorizeNumbers: React.FC = (props: any) => {
     }
   }, [state]);
 
-  const empezar = () => {
+  const empezar = () =>
     setState((state: any) => ({...state, mensaje: 'Turno del ordenador', round: 1}));
-  }
 
   const { round, mensaje } = state;
 
