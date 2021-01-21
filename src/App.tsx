@@ -15,10 +15,9 @@ import LocationTestPage from './pages/LocationTest';
 import PrivateRoute from './components/PrivateRoute';
 import UnloggedRoute from './components/UnloggedRoute';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { Route } from 'react-router-dom';
 import { CookiesProvider, withCookies } from "react-cookie";
 
 /* Core CSS required for Ionic components to work properly */
@@ -41,8 +40,6 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App: React.FC = (props: any) => {
-  useEffect(() => console.log(props.cookies.get('user')));
-
   return (
     <CookiesProvider>
       <IonApp>

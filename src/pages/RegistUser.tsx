@@ -22,53 +22,51 @@ import { set, get } from 'idb-keyval';
 
 const RegistUserPage: React.FC = () => {
   const history = useHistory();
-  const [rut, setRut] = useState<string>('');
-  const [user, setUser] = useState<any>();
+  {/*
+  //@ts-ignore */}
+  const [state, setState]: any = useState<any>({
+    rut: '',
+    user: null,
+    loading: false,
+    error: null
+  });
+
+  // const [user, setUser] = useState<any>();
   let usuariosTesteados: any = [];
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState({message: ''});
   const [cookies, setCookie] = useCookies(["usuario_testeado"]);
   const form = useRef<any>(null);
 
   const handleRutChange = (event: any) =>
-    setRut(event.target.value);
+    setState((state: any) => ({...state, rut: event.target.value }));
 
   const consultUserData = (event: any) => {
-    setLoading(true);
-    setError({ message: '' });
-    setUser(null);
+    setState((state: any) => ({...state, user: null, loading: true, error: {message: ''}}));
     event.preventDefault();
 
     get('usuarios_testeados')
     .then((result: any) => {
       if(result && result.length > 0) {
         usuariosTesteados = result;
-        const usuario = usuariosTesteados.find((u: any) => u.rut === rut);
+        const usuario = usuariosTesteados.find((u: any) => u.rut === state.rut);
 
         if(usuario) {
-          setUser(usuario);
-          setLoading(false);
+          setState((state: any) => ({...state, user: usuario, loading: false}));
         } else {
-          // DRY
-          getTestedUserData(rut)
+          getTestedUserData(state.rut)
           .then((result: any) => {
-            setUser(result);
-            setLoading(false);
+            setState((state: any) => ({...state, user: result, loading: false}));
           })
           .catch(err => {
-            setError(err);
-            setLoading(false);
+            setState((state: any) => ({...state, error: err, loading: false}));
           });
         }
       } else {
-        getTestedUserData(rut)
+        getTestedUserData(state.rut)
         .then((result: any) => {
-          setUser(result);
-          setLoading(false);
+          setState((state: any) => ({...state, user: result, loading: false}));
         })
         .catch(err => {
-          setError(err);
-          setLoading(false);
+          setState((state: any) => ({...state, error: err, loading: false}));
         });
       }
     })
@@ -76,21 +74,22 @@ const RegistUserPage: React.FC = () => {
   }
   
   const confirmUserTested = () => {
-    const userT = usuariosTesteados.find((u: any) => u.rut === rut);
+    const userT = usuariosTesteados.find((u: any) => u.rut === state.rut);
   
     if(!userT) {
-      usuariosTesteados.push(user);
+      usuariosTesteados.push(state.user);
     }
 
     set("usuarios_testeados", usuariosTesteados);
-    setCookie('usuario_testeado', user, {path: '/'});
+    setCookie('usuario_testeado', state.user, {path: '/'});
     history.replace('/page/test-types');
   }
 
   useEffect(() => {
-    setUser(null);
-    setRut('');
+    setState((state: any) => ({...state, rut: '', user: null}));
   }, []);
+
+  const { rut, user, error, loading } = state;
 
   return (
     <IonPage>
