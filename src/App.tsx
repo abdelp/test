@@ -11,6 +11,7 @@ import TestFinishedPage from './pages/TestFinished';
 import TimeOutPage from './pages/TimeOut';
 import NoticePage from './pages/Notice';
 import DeclaracionJuradaPage from './pages/DeclaracionJurada';
+import LocationTestPage from './pages/LocationTest';
 import PrivateRoute from './components/PrivateRoute';
 import UnloggedRoute from './components/UnloggedRoute';
 
@@ -79,6 +80,9 @@ const App: React.FC = (props: any) => {
               {/*
                 // @ts-ignore */}
               <PrivateRoute path="/page/declaracion-jurada" component={DeclaracionJuradaPage} exact />
+              {/*
+                // @ts-ignore */}
+              <PrivateRoute path="/page/test-ubicaciones" component={LocationTestPage} exact />
               {/*
               // @ts-ignore */}
               <PrivateRoute path="/"

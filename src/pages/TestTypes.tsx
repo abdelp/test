@@ -4,15 +4,9 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardContent,
-  IonButton,
   IonButtons,
   IonMenuButton,
-  IonImg,
-  IonFooter
+  IonImg
 } from '@ionic/react';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
@@ -69,27 +63,27 @@ const TestTypesPage: React.FC = () => {
     const { categoria, ticket, usuario_testeado } = cookies;
 
     if (test === 'declaración jurada') {
-      history.replace({
+      history.push({
         pathname: '/page/declaracion-jurada'
       });
     } else if(test === 'practica') {
-      history.replace({
+      history.push({
         pathname: '/page/test-practico'
       });
     } else {
       checkExamDate()
       .then(result => {
         if (result) {
-          history.replace({
+          history.push({
             pathname: '/page/instrucciones',
             state: {categoria, test, usuario_testeado }
           });
         } else {
-          history.replace({pathname: '/page/notice', state: {categoria, usuario_testeado} });
+          history.push({pathname: '/page/notice', state: {categoria, usuario_testeado} });
         }
       })
       .catch(() => 
-        history.replace({pathname: '/page/notice', state: {categoria, usuario_testeado}})
+        history.push({pathname: '/page/notice', state: {categoria, usuario_testeado}})
       );
     }
   }

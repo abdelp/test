@@ -90,7 +90,7 @@ const PracticalTestPage: React.FC = () => {
 
         <IonList>
           { questions.map((q: any) =>
-              <div
+              <div key={q.id}
                 // style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}
                 >
                 <div style={{width: '100%', minWidth: '300px'}}>

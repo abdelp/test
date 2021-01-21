@@ -12,6 +12,13 @@
   --ion-color-light-blue-contrast-rgb: 255,255,255;
   --ion-color-light-blue-shade:#018594;
   --ion-color-light-blue-tint: #78c288;
+
+  --ion-color-alert: #e93a49;
+  --ion-color-alert-rgb: 0, 175, 194;
+  --ion-color-alert-contrast: #ffffff;
+  --ion-color-alert-contrast-rgb: 255,255,255;
+  --ion-color-alert-shade:#d62534;
+  --ion-color-alert-tint: #78c288;
 }
 
 .ion-color-light-gray {
@@ -30,6 +37,15 @@
   --ion-color-contrast-rgb: var(--ion-color-light-blue-contrast-rgb);
   --ion-color-shade: var(--ion-color-light-blue-shade);
   --ion-color-tint: var(--ion-color-light-blue-tint);
+}
+
+.ion-color-alert {
+  --ion-color-base: var(--ion-color-alert);
+  --ion-color-base-rgb: var(--ion-color-alert-rgb);
+  --ion-color-contrast: var(--ion-color-alert-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-alert-contrast-rgb);
+  --ion-color-shade: var(--ion-color-alert-shade);
+  --ion-color-tint: var(--ion-color-alert-tint);
 }
 
 .swiper-slide {

@@ -44,7 +44,7 @@ const DeclaracionJuradaPage: React.FC = () => {
 
     setTimeout(() => {
       setState((state: any) => ({...state, loading: false}))
-      history.push('/page/test-types');
+      history.replace('/page/test-types');
     }, 2000);
 
   };

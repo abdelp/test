@@ -51,7 +51,7 @@ const InstructionsPage: React.FC = (props: any) => {
       page = 'memorize-numbers'
     }
   
-    history.push({
+    history.replace({
       pathname: `/page/${page}`,
       state: ''
     });
@@ -72,13 +72,28 @@ const InstructionsPage: React.FC = (props: any) => {
 
   const handleNext = () => slider.current?.slideNext();
 
+  const getHeaderColor = (test: any) => {
+    let color;
+
+    switch(test) {
+      case 'teórica':
+        color = 'light-blue';
+        break;
+      case 'psiquica':
+        color = 'alert';
+        break;
+      default:
+        color = 'success';
+    }
+
+    return color;
+  };
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar color={
-          test === 'teórica' ?
-          'light-blue' :
-          'favorite'
+getHeaderColor(test)
           }>
           <IonTitle className="ion-text-center title ion-text-capitalize">Prueba {test}</IonTitle>
         </IonToolbar>
