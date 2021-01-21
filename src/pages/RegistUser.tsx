@@ -13,17 +13,18 @@ import {
   IonSpinner
 } from '@ionic/react';
 import React, { useState, useEffect, useRef } from 'react';
+import to from 'await-to-js';
+
 import { useHistory } from 'react-router-dom';
 import { getTestedUserData } from '../APIs';
 import './RegistUser.css';
+import SearchTestedUserFormBase from '../components/SearchTestedUserFormBase';
 
 import { useCookies } from "react-cookie";
 import { set, get } from 'idb-keyval';
 
 const RegistUserPage: React.FC = () => {
   const history = useHistory();
-  {/*
-  //@ts-ignore */}
   const [state, setState]: any = useState<any>({
     rut: '',
     user: null,
@@ -31,46 +32,44 @@ const RegistUserPage: React.FC = () => {
     error: null
   });
 
-  // const [user, setUser] = useState<any>();
   let usuariosTesteados: any = [];
   const [cookies, setCookie] = useCookies(["usuario_testeado"]);
-  const form = useRef<any>(null);
 
-  const handleRutChange = (event: any) =>
-    setState((state: any) => ({...state, rut: event.target.value }));
+  const handleChange = (event: any) =>
+    setState((state: any) => ({...state, [event.target.name]: event.target.value }));
 
-  const consultUserData = (event: any) => {
+  const consultUserData = async (event: any) => {
     setState((state: any) => ({...state, user: null, loading: true, error: {message: ''}}));
     event.preventDefault();
 
-    get('usuarios_testeados')
-    .then((result: any) => {
-      if(result && result.length > 0) {
-        usuariosTesteados = result;
-        const usuario = usuariosTesteados.find((u: any) => u.rut === state.rut);
+    let [err, result]: any = await to(get('usuarios_testeados'));
 
-        if(usuario) {
-          setState((state: any) => ({...state, user: usuario, loading: false}));
-        } else {
-          getTestedUserData(state.rut)
-          .then((result: any) => {
-            setState((state: any) => ({...state, user: result, loading: false}));
-          })
-          .catch(err => {
-            setState((state: any) => ({...state, error: err, loading: false}));
-          });
-        }
+    if (err) return;
+
+    if(result && result.length > 0) {
+      usuariosTesteados = result;
+      const usuario = usuariosTesteados.find((u: any) => u.rut === state.rut);
+
+      if(usuario) {
+        setState((state: any) => ({...state, user: usuario, loading: false}));
       } else {
-        getTestedUserData(state.rut)
-        .then((result: any) => {
-          setState((state: any) => ({...state, user: result, loading: false}));
-        })
-        .catch(err => {
+        [err, result] = await to(getTestedUserData(state.rut));
+
+        if(err) {
           setState((state: any) => ({...state, error: err, loading: false}));
-        });
+        } else {
+          setState((state: any) => ({...state, user: result, loading: false}));
+        }
       }
-    })
-    .catch(error => console.log(error));
+    } else {
+      [err, result ] = await to(getTestedUserData(state.rut));
+
+      if(err) {
+        setState((state: any) => ({...state, error: err, loading: false}));
+      } else {
+        setState((state: any) => ({...state, user: result, loading: false}));
+      }
+    }
   }
   
   const confirmUserTested = () => {
@@ -98,19 +97,17 @@ const RegistUserPage: React.FC = () => {
         <IonButtons slot="start">
             <IonMenuButton autoHide={false} />
           </IonButtons>
-          <IonTitle className="ion-text-center">Indique el RUT del conductor</IonTitle>
+          <IonTitle className="ion-text-center">Indique el CI del conductor</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen className="ion-padding">
-        <form className="ion-padding login-list" onSubmit={consultUserData} ref={form}>
-          <IonItem>
-            <IonLabel position="floating">RUT</IonLabel>
-            <IonInput value={rut} onIonChange={handleRutChange} autofocus />
-          </IonItem>
-          <input type="submit" className="submit-btn" value="Consultar" />
-          {error && <p className="error-msg">{error.message}</p>}
-        </form>
+        <SearchTestedUserFormBase
+          onSubmit={consultUserData}
+          handleChange={handleChange}
+          rut={rut}
+          error={error}
+        />
 
         <IonList>
         { loading && <IonItem><IonSpinner className="loading" /></IonItem> }
