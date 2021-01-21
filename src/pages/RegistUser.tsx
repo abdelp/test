@@ -109,8 +109,12 @@ const RegistUserPage: React.FC = () => {
 
         { loading && <IonItem><IonSpinner className="loading" /></IonItem> }
 
-        { user && 
-          <DataList user={user} onClick={consultUserData} />
+        { user && <>
+          <DataList user={user} />
+          <IonItem>
+            <input type="button" onClick={confirmUserTested} className="submit-btn confirm-btn" value="Confirmar" />
+          </IonItem>
+          </>
         }
 
       </IonContent>

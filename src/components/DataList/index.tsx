@@ -2,13 +2,11 @@ import React from 'react';
 import {
   IonItem,
   IonLabel,
-  IonInput,
   IonList
 } from '@ionic/react';
 
 const DataList = ({
-  user,
-  onClick
+  user
 }: any) => {
   return (
   <IonList>
@@ -26,9 +24,6 @@ const DataList = ({
     </IonItem>
     <IonItem>
       <IonLabel><strong>Nacionalidad:</strong> {user.nacionalidad}</IonLabel>
-    </IonItem>
-    <IonItem>
-      <input type="button" onClick={onClick} className="submit-btn confirm-btn" value="Confirmar" />
     </IonItem>
   </IonList>
   );
