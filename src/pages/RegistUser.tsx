@@ -2,23 +2,21 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonList,
   IonPage,
   IonTitle,
   IonToolbar,
   IonItem,
-  IonLabel,
-  IonInput,
   IonMenuButton,
   IonSpinner
 } from '@ionic/react';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import to from 'await-to-js';
 
 import { useHistory } from 'react-router-dom';
 import { getTestedUserData } from '../APIs';
 import './RegistUser.css';
 import SearchTestedUserFormBase from '../components/SearchTestedUserFormBase';
+import DataList from '../components/DataList';
 
 import { useCookies } from "react-cookie";
 import { set, get } from 'idb-keyval';
@@ -109,31 +107,12 @@ const RegistUserPage: React.FC = () => {
           error={error}
         />
 
-        <IonList>
         { loading && <IonItem><IonSpinner className="loading" /></IonItem> }
-            { user &&
-              <>
-                <IonItem>
-                  <IonLabel><strong>Nombre:</strong> {user.nombre}</IonLabel>
-                </IonItem>
-                <IonItem>
-                  <IonLabel><strong>C.I.:</strong> {user.ci}</IonLabel>
-                </IonItem>
-                <IonItem>
-                  <IonLabel><strong>Fecha de nacimiento:</strong> {user.fechaNac}</IonLabel>
-                </IonItem>
-                <IonItem>
-                  <IonLabel><strong>Domicilio:</strong> {user.domicilio}</IonLabel>
-                </IonItem>
-                <IonItem>
-                  <IonLabel><strong>Nacionalidad:</strong> {user.nacionalidad}</IonLabel>
-                </IonItem>
-                <IonItem>
-                  <input type="button" onClick={confirmUserTested} className="submit-btn confirm-btn" value="Confirmar" />
-                </IonItem>
-              </>
-          }
-          </IonList>
+
+        { user && 
+          <DataList user={user} onClick={consultUserData} />
+        }
+
       </IonContent>
     </IonPage>
   );
