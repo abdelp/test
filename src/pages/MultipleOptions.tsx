@@ -9,14 +9,16 @@ import {
   IonLabel,
   IonItem,
   IonButton,
-  IonImg
+  IonImg,
+  IonSpinner,
+  IonPopover
 } from '@ionic/react';
 import Timer from './Timer';
 import { useHistory } from 'react-router-dom';
 import { getPreguntasSenhales } from '../APIs';
 import { set } from 'idb-keyval';
 import { sendResult } from '../APIs';
-import { updateUserTestDate } from '../utils/db';
+import { updateUserTest } from '../utils/db';
 import { withCookies, Cookies } from 'react-cookie';
 import './MultipleOptions.css';
 
@@ -44,26 +46,32 @@ const MultipleOptionsPage: React.FC = (props: any) => {
       } else {
         doSaveExamProgress(questions);
         setLoading(true);
-        setTimeout(() => {
-          const resultado = questions.filter((r: any) => r.selected === r.respuesta).length;
-          const ticket = props.cookies.get('ticket');
-          const usuarioTesteado = props.cookies.get('usuario_testeado');
-          const { ci, rut } = usuarioTesteado;
 
+        const resultado = questions.filter((r: any) => r.selected === r.respuesta).length;
+        const ticket = props.cookies.get('ticket');
+        const usuarioTesteado = props.cookies.get('usuario_testeado');
+        const categoria = props.cookies.get('categoria');
+        const { ci, rut } = usuarioTesteado;
+
+        updateUserTest(ci, categoria, "teorica", questions)
+        .then(result => {
           sendResult(ticket, ci, resultado)
           .then(result => {
             setLoading(false);
   
             history.replace('/page/test-finished', { state: 'prueba practica' });
           });
+        })
+        .catch((error: any) => {
+          setLoading(false);
 
-        }, 1000);
+          console.log(error);
+        });
       }
   };
 
-  async function doSaveExamProgress(exam: any) {
+  const doSaveExamProgress = async (exam: any) =>
     await set("exam", {exam});
-  }
 
   useEffect(() => {
     const ticket = props.cookies.get('ticket');
@@ -71,13 +79,13 @@ const MultipleOptionsPage: React.FC = (props: any) => {
     const usuarioTesteado = props.cookies.get('usuario_testeado');
     const { ci } = usuarioTesteado;
 
-    updateUserTestDate(ci, categoria, 'multiple options')
-    .then(result => {
-      console.log(result);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    // updateUserTest(ci, categoria, 'multiple options')
+    // .then(result => {
+    //   console.log(result);
+    // })
+    // .catch(err => {
+    //   console.log(err);
+    // });
 
     getPreguntasSenhales()
     .then((result: any) => {
@@ -104,7 +112,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
 
         if (sec === 0) {
           if (min === 0) {
-            // history.replace('/page/time-out');
+            history.replace('/page/time-out');
           } else {
             setState(state => ({
               min: state.min - 1,
@@ -136,6 +144,15 @@ const MultipleOptionsPage: React.FC = (props: any) => {
               <IonLabel className="ion-text-center question-text"><strong>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
             </IonListHeader> */}
 
+            { loading &&
+              <IonPopover
+                cssClass='loading-popover ion-text-center'
+                isOpen={loading}
+              >
+                <IonSpinner style={{margin: '2em'}}></IonSpinner>
+              </IonPopover>
+            }
+
             <div style={{minHeight: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
               <IonItem>
                 <IonLabel className="ion-text-center question-text texto" style={{fontSize: '3em', witheSpace: 'normal'}}><strong className='texto'>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
@@ -149,17 +166,24 @@ const MultipleOptionsPage: React.FC = (props: any) => {
 
             {questions[questionIdx] && questions[questionIdx].opciones.map((opt: any, idx: number) => {
               return (
-                <IonButton
+                <div
                   key={opt}
-                  size="default"
-                  expand="block"
-                  className="opt-btn ion-text-capitalize"
-                  color="light-blue"
+                  className="opt-btn"
                   onClick={() => nextQuestion(idx)}
-                  style={{color: 'black'}}
                   >
-                    {opt}
-                </IonButton>
+                  {opt}
+                </div>
+                // <IonButton
+                //   key={opt}
+                //   size="large"
+                //   expand="block"
+                //   className="opt-btn ion-text-capitalize"
+                //   color="light-blue"
+                //   onClick={() => nextQuestion(idx)}
+                //   style={{color: 'black'}}
+                //   >
+                //   <span className="opt-span">{opt}</span>
+                // </IonButton>
               )
               })
             }

@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom';
 import { getPreguntasSenhales } from '../APIs';
 import { set } from 'idb-keyval';
 import { sendResult } from '../APIs';
-import { updateUserTestDate } from '../utils/db';
+import { updateUserTest } from '../utils/db';
 import { withCookies, Cookies } from 'react-cookie';
 import './MemorizeNumbers.css';
 import { setMaxListeners } from 'process';

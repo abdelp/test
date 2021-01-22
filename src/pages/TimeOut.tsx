@@ -23,18 +23,18 @@ const TimeOutPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="primary">
+        <IonToolbar color="fav">
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Test finalizado</IonTitle>
+          <IonTitle className="ion-text-center">Test finalizado</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent id="test-finished-content" fullscreen>
         <h1>Se ha terminado el tiempo :(</h1>
         <br/>
-        <IonButton onClick={returnMenu}>Pagina principal</IonButton>
+        <IonButton color="fav" onClick={returnMenu}>Pagina principal</IonButton>
       </IonContent>
   </IonPage>
   );

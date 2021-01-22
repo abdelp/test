@@ -18,12 +18,17 @@ import {
 } from '@ionic/react';
 import { getDeclaracionJurada } from '../APIs';
 import { useHistory } from 'react-router-dom';
+import { saveDeclaracionJurada } from '../APIs';
+import to from 'await-to-js';
+import { set, get } from 'idb-keyval';
+import { useCookies } from "react-cookie";
 
 import './DeclaracionJurada.css';
 
 const DeclaracionJuradaPage: React.FC = () => {
   const [questions, setQuestions] = useState<any>([]);
-  const [state, setState] = useState<any>({showAlert: false});
+  const [state, setState] = useState<any>({showAlert: false, showAlertNotCompleted: false});
+  const [cookies, setCookie] = useCookies(["user"]);
   const history = useHistory();
 
   useEffect(() => {
@@ -35,21 +40,61 @@ const DeclaracionJuradaPage: React.FC = () => {
   });
 
   const confirmar = () => {
+    setState((state: any) => ({ ...state, showAlert: false }));
 
-    /*
-     * poner webservice
-     */
+    if(checkAnswers() === -1 ) {
+      setState((state: any) => ({...state, loading: true}));
+  
+      get('usuarios_testeados')
+      .then((result: any) => {
+        const { usuario_testeado: usuarioTesteado, categoria } = cookies;
+        const usuarioIdx = result.findIndex((u: any) => u.ci === usuarioTesteado.ci);
 
-    setState((state: any) => ({...state, loading: true}))
+        let examenes: any = usuarioTesteado["examenes"];
 
-    setTimeout(() => {
-      setState((state: any) => ({...state, loading: false}))
-      history.replace('/page/test-types');
-    }, 2000);
+        let cat: any;
 
+        if (!usuarioTesteado.examenes[categoria.toLowerCase()]) {
+          cat = usuarioTesteado["examenes"][categoria.toLowerCase()] = {};
+        } else {
+          cat = usuarioTesteado.examenes[categoria.toLowerCase()];
+        }
+
+        cat["declaracionJurada"] = { date: new Date(), declaracion: questions };
+        result[usuarioIdx] = usuarioTesteado;
+
+        set('usuarios_testeados', result);
+
+        saveDeclaracionJurada(questions)
+        .then((result: any) => {
+          setState((state: any) => ({...state, loading: false}));
+          history.replace('/page/test-types');
+        })
+        .catch(error => {
+          console.log(error);
+          setState((state: any) => ({...state, loading: false}));
+        });
+      })
+      .catch((error: any) => {
+        console.log(error);
+        setState((state: any) => ({...state, loading: false}));
+      });
+    } else {
+      setState((state: any) => ({...state, showAlertNotCompleted: true }));
+    }
   };
 
-  const { loading, showAlert } = state;
+  const checkAnswers = () => {
+    const noRespondido = questions.findIndex((q: any) => typeof q.respuesta === 'undefined');
+
+    return noRespondido;
+  };
+
+  const { loading, showAlert, showAlertNotCompleted } = state;
+
+  if(questions.length) {
+    console.log(questions[questions.length - 1]["respuesta"]);
+  }
 
   return (
     <IonPage>
@@ -88,17 +133,29 @@ const DeclaracionJuradaPage: React.FC = () => {
           ]}
         />
 
+        <IonAlert
+          isOpen={showAlertNotCompleted}
+          cssClass='my-custom-class'
+          header={'Error'}
+          message={'No se han completado todas las declaraciones. Favor, verificar que todas estén respondidas.'}
+          buttons={[
+            {
+              text: 'Ok',
+              role: 'cancel'
+            }
+          ]}
+        />
+
         <IonList>
           { questions.map((q: any) =>
             <IonRadioGroup
               key={q.id}
-              // value={questions[q.id].respuesta || null}
+              value={(questions[q.id]?.respuesta || null)}
               onIonChange={e => setQuestions((state: any) => {
                 const idx: any = state.findIndex((obj: any) => obj.id === q.id);
-
                 state[idx].respuesta = e.detail.value;
 
-                return [...state ];
+                return state;
               }
               )}>
               <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
@@ -124,7 +181,7 @@ const DeclaracionJuradaPage: React.FC = () => {
           <IonItem>
             <IonTextarea
               placeholder="Enter more information here..."
-              // disabled
+              // disabled={questions.length ? questions[questions.length] : true}
               // value={text}
               // onIonChange={e => setText(e.detail.value!)}
             ></IonTextarea>

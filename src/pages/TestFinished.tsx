@@ -26,7 +26,7 @@ const TestFinishedPage: React.FC = props => {
   const history = useHistory();
 
   const returnMenu = () => {
-    history.push('/page/test-types');
+    history.replace('/page/test-types');
   }
 
   async function getExam() {
@@ -37,24 +37,27 @@ const TestFinishedPage: React.FC = props => {
   useEffect(() => {
     getExam()
     .then((result: any) => {
-      setTotal(result.exam.length);
+      if(result) {
+        setTotal(result.exam.length);
 
-      const cc = result.exam.filter((exam: any) =>
-                    exam.respuesta == exam.selected
-                  ).length;
+        const cc = result.exam.filter((exam: any) =>
+                      exam.respuesta == exam.selected
+                    ).length;
 
-      const ic = result.exam.length - cc;
+        const ic = result.exam.length - cc;
 
-      setIncorrectas(ic);
+        setIncorrectas(ic);
 
-      const nac = result.exam.filter((exam: any) =>
-                    typeof exam.selected === 'undefined'
-                  ).length;
+        const nac = result.exam.filter((exam: any) =>
+                      typeof exam.selected === 'undefined'
+                    ).length;
 
-      setCorrectas(cc);
-      setPorcentaje(cc * 100 / result.exam.length);
-      setNoRespondidas(nac);
-    });
+        setCorrectas(cc);
+        setPorcentaje(cc * 100 / result.exam.length);
+        setNoRespondidas(nac);
+      }
+    })
+    .catch(error => console.log(error));
   });
 
   return (
@@ -85,7 +88,7 @@ const TestFinishedPage: React.FC = props => {
               <IonLabel><strong>Porcentaje:</strong> {porcentaje}%</IonLabel>
             </IonItem>
             <IonItem>
-              <IonButton onClick={returnMenu} size="default" className="confirm-btn">Volver a los tests</IonButton>
+              <IonButton onClick={returnMenu} size="large" className="confirm-btn" color="favorite">Volver a los tests</IonButton>
             </IonItem>
           </IonList>
       </IonContent>

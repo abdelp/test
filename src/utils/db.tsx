@@ -7,17 +7,22 @@ async function loggedIn() {
   return user;
 }
 
-async function updateUserTestDate(ci: any, categoria: any, test: any) {
+async function updateUserTest(ci: any, categoria: any, test: any, result: any) {
   const date = new Date();
   const usuariosTesteados: any = await get('usuarios_testeados');
-  console.log(usuariosTesteados);
   const idx = usuariosTesteados.findIndex((u: any) => u.ci === ci);
-  // si se encuentra
-  console.log(idx);
-  console.log(usuariosTesteados[idx]["examenes"]);
-  console.log(categoria);
-  console.log(usuariosTesteados[idx]["examenes"][categoria] = 1);
-  const result = await set("usuarios_testeados", usuariosTesteados);
+  let cat: any;
+
+  if (!usuariosTesteados[idx][categoria.toLowerCase()]) {
+    cat = usuariosTesteados[idx]["examenes"][categoria.toLowerCase()] = {};
+  } else {
+    cat = usuariosTesteados[idx]["examenes"][categoria.toLowerCase()];
+  }
+
+  cat[test] = { date: new Date(), result }
+  await set("usuarios_testeados", usuariosTesteados);
+
+  return;
 }
 
-export { loggedIn, updateUserTestDate }
+export { loggedIn, updateUserTest }

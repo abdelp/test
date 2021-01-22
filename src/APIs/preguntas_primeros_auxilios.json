@@ -1,0 +1,61 @@
+[{
+    "id": 1,
+    "pregunta": "¿Qué son los factores de riesgo?"
+    , "opciones": [
+      "Son factores que inciden directamente en la probabilidad de tener un siniestro vial y en su gravedad o consecuencia",
+      "Son las estadísticas que indican la siniestralidad en el tráfico",
+      "Son factores que inciden en la velocidad del vehículo"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 2,
+    "pregunta": "El procedimiento a seguir en casos de accidentes de tránsito, se determina según el siguiente orden"
+    , "opciones": [
+      "Primero: Proteger a las víctimas de los peligros del tráfico y otros riesgos. Segundo: Avisar a las autoridades y solicitar ayuda de los servicios de emergencia. Tercero: Socorrer a las víctimas para mantenerlas con vida hasta que llegue el servicio de emergencias",
+      "Primero: Avisar a las autoridades y solicitar ayuda de los servicios de emergencia. Segundo: Proteger a las víctimas de los peligros del tráfico y otros riesgos Tercero: Socorrer a las víctimas para mantenerlas con vida hasta que llegue el servicio de emergencias",
+      "Primero: Socorrer a las víctimas para mantenerlas con vida hasta que llegue el servicio de emergencias. Segundo: Proteger a las víctimas de los peligros del tráfico y otros riesgos. Tercero: Avisar a las autoridades y solicitar ayuda de los servicios de emergencia"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 3,
+    "pregunta": "El procedimiento de reanimación cardiopulmonar debe repetirse"
+    , "opciones": [
+      "Hasta diez veces",
+      "Dos veces cada 5 minutos",
+      "Hasta que el paciente recupere los signos vitales o llegue el servicio de emergencia"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 4,
+    "pregunta": "Durante la respiración boca a boca, se debe tener en cuenta que"
+    , "opciones": [
+      "Un paramédico debe supervisar el procedimiento",
+      "El mentón debe estar levantado y las vías nasales cerradas para evitar fuga del flujo de aire",
+      "El paciente debe estar consciente"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 5,
+    "pregunta": "Si una persona fue alcanzada por las llamas y comienza a arder, usted debe"
+    , "opciones": [
+      "Tratar de apagar las llamas con sus manos",
+      "Alejarse de ella lo más que pueda, para evitar que las llamas lo alcancen también a usted",
+      "Cubrirla con una manta, derribarla y hacerla rodas sobre su cuerpo; o simplemente derribarla y utilizar un extintor de incendios"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 6,
+    "pregunta": "Al prestar los primeros auxilios, ante todo debe tener en cuenta que"
+    , "opciones": [
+      "La víctima debe estar de acuerdo con los procedimientos que usted realice",
+      "Usted no curara al paciente, solamente debe mantenerlo con vida y en comodidad relativa, hasta que llegue el servicio de emergencia",
+      "Usted es responsable de que la víctima llegue al hospital lo antes posible y por cualquier medio"
+    ],
+    "respuesta": 1
+  }
+]

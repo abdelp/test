@@ -16,7 +16,7 @@ import PrivateRoute from './components/PrivateRoute';
 import UnloggedRoute from './components/UnloggedRoute';
 
 import React from 'react';
-import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonSplitPane, setupConfig } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { CookiesProvider, withCookies } from "react-cookie";
 
@@ -40,6 +40,12 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App: React.FC = (props: any) => {
+  
+  setupConfig({
+    swipeBackEnabled: false,// also prevent swiping back on either platform
+    hardwareBackButton: false// this is what you need (android only)
+  });
+
   return (
     <CookiesProvider>
       <IonApp>

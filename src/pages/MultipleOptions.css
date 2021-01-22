@@ -59,7 +59,7 @@
   }
 
   ion-button{
-    white-space: normal;
+    white-space: nowrap;
     --border-radius: 15px;
     min-height: 3em;
     --color: black !important;
@@ -74,6 +74,15 @@
   .counter {
     font-size: 2em;
   }
+}
+
+.opt-btn {
+  padding: 1em;
+  background: var(--ion-color-light-blue);
+  border-radius: 5px;
+  margin-bottom: 2em;
+  color: white;
+  font-size: larger;
 }
 
 .ms-list {

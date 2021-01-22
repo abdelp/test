@@ -31,12 +31,11 @@ const TestTypesPage: React.FC = () => {
     ci = usuario_testeado.ci;
   }
 
-  const checkExamDate = () => {
+  /* extend to also use local database to check date */
+
+  const checkExamDate = (test: any) => {
     return new Promise((resolve, reject) => {
-
-      const examType = 'seleccion_multiple';
-
-      getExamDate({ categoria, ticket, ci, examType })
+      getExamDate({ categoria, ticket, ci, test })
       .then(result => {
         if (result.date) {
           const fechaExamen = new Date(result.date);
@@ -47,7 +46,7 @@ const TestTypesPage: React.FC = () => {
           if (today >= fechaHabilitacion) {
             resolve(true);
           } else {
-            resolve(true);
+            resolve(false);
           }
         } else {
           resolve(true);
@@ -62,31 +61,31 @@ const TestTypesPage: React.FC = () => {
   const goToTest = (test: any) => {
     const { categoria, ticket, usuario_testeado } = cookies;
 
-    if (test === 'declaración jurada') {
-      history.push({
-        pathname: '/page/declaracion-jurada'
-      });
-    } else if(test === 'practica') {
-      history.push({
-        pathname: '/page/test-practico'
-      });
-    } else {
-      checkExamDate()
-      .then(result => {
-        if (result) {
+    checkExamDate(test)
+    .then(result => {
+      if (result) {
+        if (test === 'declaración jurada') {
+          history.push({
+            pathname: '/page/declaracion-jurada'
+          });
+        } else if(test === 'practica') {
+          history.push({
+            pathname: '/page/test-practico'
+          });
+        } else if(test === 'teorica') {
           history.push({
             pathname: '/page/instrucciones',
             state: {categoria, test, usuario_testeado }
           });
-        } else {
-          history.push({pathname: '/page/notice', state: {categoria, usuario_testeado} });
         }
-      })
-      .catch(() => 
-        history.push({pathname: '/page/notice', state: {categoria, usuario_testeado}})
-      );
-    }
-  }
+      } else {
+        history.push({pathname: '/page/notice', state: {categoria, usuario_testeado} });
+      }
+    })
+    .catch(() => 
+      history.push({pathname: '/page/notice', state: {categoria, usuario_testeado}})
+    );
+  };
 
   return (
     <IonPage>

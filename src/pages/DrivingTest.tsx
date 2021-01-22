@@ -21,7 +21,7 @@ import { useHistory } from 'react-router-dom';
 
 import { set } from 'idb-keyval';
 import { sendResult } from '../APIs';
-import { updateUserTestDate } from '../utils/db';
+import { updateUserTest } from '../utils/db';
 import { withCookies, Cookies } from 'react-cookie';
 
 const DrivingTestPage: React.FC = (props: any) => {
@@ -36,15 +36,15 @@ const DrivingTestPage: React.FC = (props: any) => {
     await set("exam", {exam});
   }
 
-  useEffect(() => {
-    updateUserTestDate('123', 'x', 'multiple options')
-    .then(result => {
-      console.log(result);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  }, []);
+  // useEffect(() => {
+  //   // updateUserTestDate('123', 'x', 'multiple options')
+  //   // .then(result => {
+  //   //   console.log(result);
+  //   // })
+  //   // .catch(err => {
+  //   //   console.log(err);
+  //   // });
+  // }, []);
 
   useEffect(() => {
     let interval: any = null;

@@ -21,11 +21,12 @@ const NoticePage: React.FC = (props: any) => {
   const [cookies, setCookie] = useCookies(["usuario"]);
   const { categoria, usuario_testeado: { ci } } = cookies;
 
-  console.log(props);
-  // console.log(categoria);
-  // console.log(usuario_testeado);
+  let fechaExamen, fechaHabilitacion, tipoExamen;
 
-  const {fechaExamen, fechaHabilitacion, tipoExamen } = props.location.state;
+  if (props.location.state) {
+    ({ fechaExamen, fechaHabilitacion, tipoExamen } = props.location.state);
+  }
+
   const history = useHistory();
 
   const returnMenu = () => {
@@ -35,11 +36,11 @@ const NoticePage: React.FC = (props: any) => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="primary">
+        <IonToolbar color="favorite">
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Examen no habilitado</IonTitle>
+          <IonTitle className="ion-text-center">Examen no habilitado</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -52,7 +53,7 @@ const NoticePage: React.FC = (props: any) => {
             Fecha habilitada para volver a tomar el examen: <strong>{fechaHabilitacion}</strong></IonLabel>
           </IonItem>
           <IonItem>
-            <IonButton onClick={returnMenu} size="default" className="confirm-btn">Volver a los tests</IonButton>
+            <IonButton onClick={returnMenu} size="large" color="favorite" className="confirm-btn">Volver a los tests</IonButton>
           </IonItem>
         </IonList>
       </IonContent>

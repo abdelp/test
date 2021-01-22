@@ -41,7 +41,7 @@ const RegistUserPage: React.FC = () => {
     event.preventDefault();
 
     let [err, result]: any = await to(get('usuarios_testeados'));
-
+    
     if (err) return;
 
     if(result && result.length > 0) {
@@ -79,7 +79,12 @@ const RegistUserPage: React.FC = () => {
 
     set("usuarios_testeados", usuariosTesteados);
     setCookie('usuario_testeado', state.user, {path: '/'});
-    history.replace('/page/test-types');
+    setCookie('categoria', state.user.categoria, {path: '/'});
+
+    history.replace({
+      pathname: '/page/test-types',
+      state: state.user
+    });
   }
 
   useEffect(() => {
@@ -109,11 +114,12 @@ const RegistUserPage: React.FC = () => {
 
         { loading && <IonItem><IonSpinner className="loading" /></IonItem> }
 
-        { user && <>
-          <DataList user={user} />
-          <IonItem>
-            <input type="button" onClick={confirmUserTested} className="submit-btn confirm-btn" value="Confirmar" />
-          </IonItem>
+        { user &&
+          <>
+            <DataList user={user} />
+            <IonItem>
+              <input type="button" onClick={confirmUserTested} className="submit-btn confirm-btn" value="Confirmar" />
+            </IonItem>
           </>
         }
 

@@ -2,7 +2,9 @@ import React from 'react';
 import {
   IonItem,
   IonLabel,
-  IonList
+  IonList,
+  IonListHeader,
+  IonTitle
 } from '@ionic/react';
 
 const DataList = ({
@@ -10,20 +12,23 @@ const DataList = ({
 }: any) => {
   return (
   <IonList>
+    <IonListHeader>
+      <IonTitle className="ion-text-center"><strong>Datos del interesado</strong></IonTitle>
+    </IonListHeader>
     <IonItem>
-      <IonLabel><strong>Nombre:</strong> {user.nombre}</IonLabel>
+      <IonLabel><strong>Nombres:</strong> {user.nombres}</IonLabel>
+    </IonItem>
+    <IonItem>
+      <IonLabel><strong>Apellidos:</strong> {user.apellidos}</IonLabel>
     </IonItem>
     <IonItem>
       <IonLabel><strong>C.I.:</strong> {user.ci}</IonLabel>
     </IonItem>
     <IonItem>
-      <IonLabel><strong>Fecha de nacimiento:</strong> {user.fechaNac}</IonLabel>
+      <IonLabel><strong>Nro. Antecedente:</strong> {user.nroAntecedente}</IonLabel>
     </IonItem>
     <IonItem>
-      <IonLabel><strong>Domicilio:</strong> {user.domicilio}</IonLabel>
-    </IonItem>
-    <IonItem>
-      <IonLabel><strong>Nacionalidad:</strong> {user.nacionalidad}</IonLabel>
+      <IonLabel><strong>Categoria:</strong> {user.categoria}</IonLabel>
     </IonItem>
   </IonList>
   );
