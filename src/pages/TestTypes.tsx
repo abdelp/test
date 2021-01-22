@@ -32,16 +32,22 @@ const TestTypesPage: React.FC = () => {
   }
 
   /* extend to also use local database to check date */
+  const addDays = (date: any, days: any) => {
+    const copy = new Date(Number(date))
+    copy.setDate(date.getDate() + days)
+    return copy
+  };
 
   const checkExamDate = (test: any) => {
     return new Promise((resolve, reject) => {
       getExamDate({ categoria, ticket, ci, test })
       .then(result => {
         if (result.date) {
+
           const fechaExamen = new Date(result.date);
           const today = new Date();
-          const fechaHabilitacion = new Date();
-          fechaHabilitacion.setDate(fechaExamen.getDate()+30);
+          let fechaHabilitacion = new Date();
+          fechaHabilitacion = addDays(fechaExamen, 30);
 
           if (today >= fechaHabilitacion) {
             resolve(true);
@@ -61,6 +67,8 @@ const TestTypesPage: React.FC = () => {
   const goToTest = (test: any) => {
     const { categoria, ticket, usuario_testeado } = cookies;
 
+    console.log(test);
+
     checkExamDate(test)
     .then(result => {
       if (result) {
@@ -72,7 +80,7 @@ const TestTypesPage: React.FC = () => {
           history.push({
             pathname: '/page/test-practico'
           });
-        } else if(test === 'teorica') {
+        } else if(test === 'teórica') {
           history.push({
             pathname: '/page/instrucciones',
             state: {categoria, test, usuario_testeado }
