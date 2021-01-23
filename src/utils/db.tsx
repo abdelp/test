@@ -1,6 +1,21 @@
 import { set, get } from 'idb-keyval';
 import _ from 'lodash';
 
+const agregarUsuarioTesteado = async (usuario: any) => {
+  try {
+    const TABLA = 'usuarios_testeados';
+    const usuariosTesteados: any = await get(TABLA) || [];
+
+    usuariosTesteados.push(usuario);
+
+    await set(TABLA, usuariosTesteados);
+
+    return { cod: 0, mensaje: 'Usuario agregado exitosamente' };
+  } catch(e) {
+    throw e;
+  }
+};
+
 const obtenerIndiceUsuarioTesteadoPorCedula = async (cedula: any) => {
   try {
     const TABLA = 'usuarios_testeados';
@@ -139,6 +154,7 @@ const updateUserTest = async (ci: any, categoria: any, test: any, result: any) =
 
 export {
   updateUserTest,
+  agregarUsuarioTesteado,
   obtenerDatosUsuarioTesteadoPorCedula,
   actualizarDatosUsuarioTesteadoPorCedula
 };
