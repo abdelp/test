@@ -16,6 +16,21 @@ const agregarUsuarioTesteado = async (usuario: any) => {
   }
 };
 
+const eleminarUsuarioTesteadoPorCedula = async (cedula: any) => {
+  try {
+    const TABLA = 'usuarios_testeados';
+    const USUARIO_TESTEADO_IDX = await obtenerIndiceUsuarioTesteadoPorCedula(cedula);
+    let usuariosTesteados: any = await get(TABLA) || [];
+
+    usuariosTesteados = [...usuariosTesteados.slice(0, USUARIO_TESTEADO_IDX), ...usuariosTesteados.slice(USUARIO_TESTEADO_IDX + 1)]
+
+    await set(TABLA, usuariosTesteados);
+    return { cod: 0, mensaje: 'Usuario eliminado exitosamente' };
+  } catch(e) {
+    throw e;
+  }
+};
+
 const obtenerIndiceUsuarioTesteadoPorCedula = async (cedula: any) => {
   try {
     const TABLA = 'usuarios_testeados';
@@ -156,5 +171,6 @@ export {
   updateUserTest,
   agregarUsuarioTesteado,
   obtenerDatosUsuarioTesteadoPorCedula,
-  actualizarDatosUsuarioTesteadoPorCedula
+  actualizarDatosUsuarioTesteadoPorCedula,
+  eleminarUsuarioTesteadoPorCedula
 };
