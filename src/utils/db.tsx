@@ -16,7 +16,7 @@ const agregarUsuarioTesteado = async (usuario: any) => {
   }
 };
 
-const eleminarUsuarioTesteadoPorCedula = async (cedula: any) => {
+const eliminarUsuarioTesteadoPorCedula = async (cedula: any) => {
   try {
     const TABLA = 'usuarios_testeados';
     const USUARIO_TESTEADO_IDX = await obtenerIndiceUsuarioTesteadoPorCedula(cedula);
@@ -172,5 +172,5 @@ export {
   agregarUsuarioTesteado,
   obtenerDatosUsuarioTesteadoPorCedula,
   actualizarDatosUsuarioTesteadoPorCedula,
-  eleminarUsuarioTesteadoPorCedula
+  eliminarUsuarioTesteadoPorCedula
 };
