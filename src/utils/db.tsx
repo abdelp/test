@@ -19,8 +19,6 @@ const actualizarUsuarioTesteadoPorCedula = async (cedula: any, datos: any) => {
   // VER QUE PASA CUANDO NO HAY DATOS
 
   const NUEVOS_DATOS = {...DATOS_USUARIO, ...datos};
-
-
 };
 
 const update = async (table: string, data: any) => {
@@ -80,4 +78,4 @@ const updateUserTest = async (ci: any, categoria: any, test: any, result: any) =
   return;
 }
 
-export { updateUserTest }
+export { updateUserTest, obtenerDatosUsuarioTesteadoPorCedula }

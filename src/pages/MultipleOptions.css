@@ -83,6 +83,7 @@
   margin-bottom: 2em;
   color: white;
   font-size: larger;
+  cursor: pointer;
 }
 
 .ms-list {

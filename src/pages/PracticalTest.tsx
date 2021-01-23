@@ -23,7 +23,7 @@ import './PracticalTest.css';
 
 const PracticalTestPage: React.FC = () => {
   const [questions, setQuestions] = useState<any>([]);
-  const [state, setState] = useState<any>({showAlert: false});
+  const [state, setState] = useState<any>({showAlert: false, showAlertNotCompleted: false});
   const history = useHistory();
 
   useEffect(() => {
@@ -35,21 +35,29 @@ const PracticalTestPage: React.FC = () => {
   });
 
   const confirmar = () => {
+    setState((state: any) => ({ ...state, showAlert: false }));
 
+    console.log(questions);
     /*
      * poner webservice
      */
 
-    setState((state: any) => ({...state, loading: true}))
+    // setState((state: any) => ({...state, loading: true}))
 
-    setTimeout(() => {
-      setState((state: any) => ({...state, loading: false}))
-      history.push('/page/test-types');
-    }, 2000);
+    // setTimeout(() => {
+    //   setState((state: any) => ({...state, loading: false}))
+    //   history.push('/page/test-types');
+    // }, 2000);
 
   };
 
-  const { loading, showAlert } = state;
+  const checkAnswers = () => {
+    const noRespondido = questions.findIndex((q: any) => typeof q.respuesta === 'undefined');
+
+    return noRespondido;
+  };
+
+  const { loading, showAlert, showAlertNotCompleted } = state;
 
   return (
     <IonPage>
@@ -88,44 +96,54 @@ const PracticalTestPage: React.FC = () => {
           ]}
         />
 
+        <IonAlert
+          isOpen={showAlertNotCompleted}
+          cssClass='my-custom-class'
+          header={'Error'}
+          message={'No se han completado todas las declaraciones. Favor, verificar que todas estén respondidas.'}
+          buttons={[
+            {
+              text: 'Ok',
+              role: 'cancel'
+            }
+          ]}
+        />
+
         <IonList>
           { questions.map((q: any) =>
-              <div key={q.id}
-                // style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}
-                >
+              <div key={q.id}>
                 <div style={{width: '100%', minWidth: '300px'}}>
-                    {/* <IonLabel className="question-label">{q.titulo}</IonLabel> */}
-                    <IonTitle className="question-label ion-text-wrap"><strong>{q.titulo}</strong></IonTitle>
+                  <IonTitle className="question-label ion-text-wrap"><strong>{q.titulo}</strong></IonTitle>
                 </div>
-                {q.items.map((item: any, idx: any) => 
+                 {q.items.map((item: any, idx: any) => 
                   <IonRadioGroup
-                    key={idx}
-                    // value={questions[q.id].respuesta || null}
+                    key={item.id}
+                    value={(questions[q.id]?.items[item.id - 1]?.respuesta || null)}
                     onIonChange={e => setQuestions((state: any) => {
                       const idx: any = state.findIndex((obj: any) => obj.id === q.id);
-      
-                      state[idx].respuesta = e.detail.value;
-      
-                      return [...state ];
+                      const questionIdx: any = state[idx]["items"].findIndex((obj: any) => obj.id === item.id);
+                      state[idx]["items"][questionIdx].respuesta = e.detail.value;
+                      return state;
                     }
-                    )}>
-                    <div style={{width: '100%', minWidth: '300px'}}>
-                      <IonItem>
-                        <IonLabel className="question-label ion-text-wrap">{item}</IonLabel>
-                      </IonItem>
-                    </div>
-                    <div style={{display: 'flex'}}>
-                      <IonItem lines="none">
-                        <IonLabel>Sí</IonLabel>
-                        <IonRadio slot="end" mode="ios" value="true" color="success" />
-                      </IonItem>
+                    )}
+                >
+                     <div style={{width: '100%', minWidth: '300px'}}>
+                       <IonItem>
+                         <IonLabel className="question-label ion-text-wrap">{item.pregunta}</IonLabel>
+                       </IonItem>
+                     </div>
+                     <div style={{display: 'flex'}}>
+                       <IonItem lines="none">
+                         <IonLabel>Sí</IonLabel>
+                         <IonRadio slot="end" mode="ios" value="true" color="success" />
+                       </IonItem>
 
-                      <IonItem lines="none">
-                        <IonLabel>No</IonLabel>
-                        <IonRadio slot="end" mode="ios" value="false" color="danger" />
-                      </IonItem>
-                    </div>
-                </IonRadioGroup>
+                       <IonItem lines="none">
+                         <IonLabel>No</IonLabel>
+                         <IonRadio slot="end" mode="ios" value="false" color="danger" />
+                       </IonItem>
+                     </div>
+                  </IonRadioGroup>
                 )}
               </div>
           ) }

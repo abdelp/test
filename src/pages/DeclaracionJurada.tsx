@@ -42,6 +42,7 @@ const DeclaracionJuradaPage: React.FC = () => {
   const confirmar = () => {
     setState((state: any) => ({ ...state, showAlert: false }));
 
+    console.log(questions);
     if(checkAnswers() === -1 ) {
       setState((state: any) => ({...state, loading: true}));
   

@@ -7,7 +7,8 @@ import {
   IonListHeader,
   IonMenu,
   IonMenuToggle,
-  IonButton
+  IonButton,
+  IonPopover
 } from '@ionic/react';
 
 import React, { useEffect, useState } from 'react';
@@ -15,7 +16,7 @@ import { useLocation } from 'react-router-dom';
 import './Menu.css';
 import { useCookies } from "react-cookie";
 import { useHistory } from 'react-router-dom';
-
+import SignInFormBase from '../components/SignInFormBase';
 import { withCookies } from 'react-cookie';
 interface AppPage {
   url: string;
@@ -55,6 +56,14 @@ const Menu: React.FC = (props: any) => {
   return (
     <IonMenu contentId="main" type="overlay" swipeGesture={false}>
       <IonContent>
+
+        {/* <IonPopover
+          cssClass='loading-popover ion-text-center'
+          isOpen={true}
+        >
+          <SignInFormBase />
+        </IonPopover> */}
+
         <IonList id="inbox-list">
           <IonListHeader>{username}</IonListHeader>
           {appPages.map((appPage, index) => {
@@ -84,10 +93,17 @@ const Menu: React.FC = (props: any) => {
           </IonMenuToggle>
 
           <section>
-            <IonButton
-              color="favorite"
-              expand="block"
-              onClick={logoutAction}>Salir</IonButton>
+            {/* {props.cookies.get('usuario_testeado') && */}
+              <IonButton
+                color="favorite"
+                expand="block"
+                onClick={ props.cookies.get('usuario_testeado') ? 
+                  logoutAction :
+                  logoutAction
+                }>
+                  Salir
+              </IonButton>
+            {/* } */}
           </section>
         </IonList>
       </IonContent>

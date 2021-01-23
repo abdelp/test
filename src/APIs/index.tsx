@@ -8,37 +8,43 @@ const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
 
 const signinUser = (username: any, password: any) => {
   return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", url);
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-    xhr.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-    xhr.setRequestHeader("SOAPAction", "http://rut.antsv.gov.py/AutenticarExaminador");
 
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        resolve(xhr);
-      }
-    };
+    try {
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", url);
+      xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+      xhr.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+      xhr.setRequestHeader("SOAPAction", "http://rut.antsv.gov.py/AutenticarExaminador");
 
-    const data = `<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-      <s:Body>
-        <AutenticarExaminador xmlns="http://rut.antsv.gov.py/" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-          <Usuario>${username}</Usuario>
-          <Clave>${password}</Clave>
-          <Certificado/>
-          <Firma/>
-        </AutenticarExaminador>
-      </s:Body>
-    </s:Envelope>`;
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          resolve(xhr);
+        }
+      };
 
-    xhr.send(data);
+      const data = `<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+        <s:Body>
+          <AutenticarExaminador xmlns="http://rut.antsv.gov.py/" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+            <Usuario>${username}</Usuario>
+            <Clave>${password}</Clave>
+            <Certificado/>
+            <Firma/>
+          </AutenticarExaminador>
+        </s:Body>
+      </s:Envelope>`;
+
+      xhr.send(data);
+    } catch(e) {
+      reject(e);
+    }
+
   });
 };
 
-const getTestedUserData = (rut: any) => {
+const getTestedUserData = (cedula: any) => {
   return new Promise((resolve, reject) => {
     setInterval(() => {
-      if(rut == 111) {
+      if(cedula == 111) {
         resolve(
           {
             nombres: 'Pedro Marting',
@@ -49,14 +55,14 @@ const getTestedUserData = (rut: any) => {
             domicilio: 'LAMBARE',
             nacionalidad: 'PARAGUAYA',
             categoria: 'Motocicleta',
-            tipo: 'renov',
+            renovacion: true,
             nroAntecedente: 1701,
             examenes:
               {
               }
           }
         )
-      } else if (rut == 222) {
+      } else if (cedula == 222) {
         resolve(
           {
             nombres: 'Gustavo Marcelo',
@@ -67,8 +73,8 @@ const getTestedUserData = (rut: any) => {
             domicilio: 'LAMBARE',
             nacionalidad: 'PARAGUAYA',
             categoria: 'Profesional B',
-            tipo: 'nuevo',
-            nroAntecedente: 1701,
+            renovacion: false,
+            nroAntecedente: 1702,
             examenes:
               {
                 catMotocicleta: {

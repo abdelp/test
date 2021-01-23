@@ -8,7 +8,6 @@ import {
   IonList,
   IonLabel,
   IonItem,
-  IonButton,
   IonImg,
   IonSpinner,
   IonPopover
@@ -19,27 +18,52 @@ import { getPreguntasSenhales } from '../APIs';
 import { set } from 'idb-keyval';
 import { sendResult } from '../APIs';
 import { updateUserTest } from '../utils/db';
-import { withCookies, Cookies } from 'react-cookie';
+import { withCookies } from 'react-cookie';
 import './MultipleOptions.css';
 
 const MultipleOptionsPage: React.FC = (props: any) => {
   const [questions, setQuestions] = useState<any>([]);
   const [currentQuestion, setCurrentQuestion] = useState<any>();
   const [questionIdx, setQuestionIdx] = useState<number>(0);
-  const [minutes, setMinutes] = useState<any>({val: 3});
-  const [showTimer, setShowTimer] = useState<any>(true);
+  const [time, setTime] = useState<any>({min: 3, sec: 0});
   const history = useHistory();
   const [loading, setLoading] = useState<boolean>(false);
-  let continuar: boolean = false;
-  const [showAlert, setShowAlert] = useState(false);
-
-  const [statex, setState] = useState({min: 3, sec: 0});
   const [isActive, setIsActive] = useState(true);
+  
+  useEffect(() => {
+    const { cookies } = props;
+
+    const ticket = cookies.get('ticket');
+    const categoria = cookies.get('ticket');
+    const usuarioTesteado = cookies.get('usuario_testeado');
+    const { ci } = usuarioTesteado;
+
+    const updateUserTest = async () => {
+
+    };
+
+    // updateUserTest(ci, categoria, 'multiple options')
+    // .then(result => {
+    //   console.log(result);
+    // })
+    // .catch(err => {
+    //   console.log(err);
+    // });
+
+    getPreguntasSenhales()
+    .then((result: any) => {
+      setQuestions(result);
+      setCurrentQuestion(result[questionIdx]);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, []);
 
   const nextQuestion = (opt: number) => {
-      setState({min: 3, sec: 0});
+      setTime({min: 3, sec: 0});
       questions[questionIdx].selected = opt;
-    
+      
       if (questionIdx + 1 < questions.length) {
         doSaveExamProgress(questions);
         setQuestionIdx(idx => idx + 1);
@@ -73,39 +97,16 @@ const MultipleOptionsPage: React.FC = (props: any) => {
   const doSaveExamProgress = async (exam: any) =>
     await set("exam", {exam});
 
-  useEffect(() => {
-    const ticket = props.cookies.get('ticket');
-    const categoria = props.cookies.get('ticket');
-    const usuarioTesteado = props.cookies.get('usuario_testeado');
-    const { ci } = usuarioTesteado;
-
-    // updateUserTest(ci, categoria, 'multiple options')
-    // .then(result => {
-    //   console.log(result);
-    // })
-    // .catch(err => {
-    //   console.log(err);
-    // });
-
-    getPreguntasSenhales()
-    .then((result: any) => {
-      setQuestions(result);
-      setCurrentQuestion(result[questionIdx]);
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }, []);
 
   useEffect(() => {
     let interval: any = null;
 
     if (isActive) {
       interval = setInterval(() => {
-        const { sec, min } = statex;
+        const { sec, min } = time;
 
         if (sec > 0) {
-          setState(state => ({...state,
+          setTime((state: any) => ({...state,
             sec: state.sec - 1
             }));
         }
@@ -114,7 +115,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
           if (min === 0) {
             history.replace('/page/time-out');
           } else {
-            setState(state => ({
+            setTime((state: any) => ({
               min: state.min - 1,
               sec: 59
             }))
@@ -127,9 +128,9 @@ const MultipleOptionsPage: React.FC = (props: any) => {
     return () => {
       clearInterval(interval);
     }
-  }, [isActive, statex]);
+  }, [isActive, time]);
 
-  const { min, sec } = statex;
+  const { min, sec } = time;
 
   return (
     <IonPage>
@@ -140,53 +141,38 @@ const MultipleOptionsPage: React.FC = (props: any) => {
       </IonHeader>
       <IonContent>
         <IonList className="ms-list question-details" lines="none">
-            {/* <IonListHeader className="list-header">
-              <IonLabel className="ion-text-center question-text"><strong>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
-            </IonListHeader> */}
+          { loading &&
+            <IonPopover
+              cssClass='loading-popover ion-text-center'
+              isOpen={loading}
+            >
+              <IonSpinner style={{margin: '2em'}}></IonSpinner>
+            </IonPopover>
+          }
 
-            { loading &&
-              <IonPopover
-                cssClass='loading-popover ion-text-center'
-                isOpen={loading}
-              >
-                <IonSpinner style={{margin: '2em'}}></IonSpinner>
-              </IonPopover>
+          <div style={{minHeight: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+            <IonItem>
+              <IonLabel className="ion-text-center question-text texto" style={{fontSize: '3em', witheSpace: 'normal'}}><strong className='texto'>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
+            </IonItem>
+            {currentQuestion && questions[questionIdx].img &&
+            <IonItem key="img">
+              <IonImg className="question-img" src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
+            </IonItem>
             }
+          </div>
 
-            <div style={{minHeight: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-              <IonItem>
-                <IonLabel className="ion-text-center question-text texto" style={{fontSize: '3em', witheSpace: 'normal'}}><strong className='texto'>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
-              </IonItem>
-              {currentQuestion && questions[questionIdx].img &&
-              <IonItem key="img">
-                <IonImg className="question-img" src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
-              </IonItem>
-              }
-            </div>
-
-            {questions[questionIdx] && questions[questionIdx].opciones.map((opt: any, idx: number) => {
-              return (
-                <div
-                  key={opt}
-                  className="opt-btn"
-                  onClick={() => nextQuestion(idx)}
-                  >
-                  {opt}
-                </div>
-                // <IonButton
-                //   key={opt}
-                //   size="large"
-                //   expand="block"
-                //   className="opt-btn ion-text-capitalize"
-                //   color="light-blue"
-                //   onClick={() => nextQuestion(idx)}
-                //   style={{color: 'black'}}
-                //   >
-                //   <span className="opt-span">{opt}</span>
-                // </IonButton>
-              )
-              })
-            }
+          {questions[questionIdx] && questions[questionIdx].opciones.map((opt: any, idx: number) => {
+            return (
+              <div
+                key={opt}
+                className="opt-btn"
+                onClick={() => nextQuestion(idx)}
+                >
+                {opt}
+              </div>
+            )
+            })
+          }
 
           <IonItem lines="none" className="counter">
             Tiempo restante: <Timer min={min} sec={sec}></Timer>

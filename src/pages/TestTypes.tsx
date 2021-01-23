@@ -19,16 +19,16 @@ import pruebaTeoricaBtnImg from '../assets/prueba-teorica-btn-img.svg';
 import pruebaPsiquicaBtnImg from '../assets/prueba-psiquica-btn-img.svg';
 import pruebaPracticaBtnImg from '../assets/prueba-practica-btn-img.svg';
 import declaracionJuradaBtnImg from '../assets/declaracion-jurada-btn-img.svg';
-import backArrow from '../assets/back-arrow.svg';
 
 const TestTypesPage: React.FC = () => {
   const history = useHistory();
   const [cookies, setCookie] = useCookies(["user"]);
   const { categoria, ticket, usuario_testeado } = cookies;
-  let ci = '';
+  let ci = '', renovacion;
 
   if (usuario_testeado) {
     ci = usuario_testeado.ci;
+    renovacion = usuario_testeado.renovacion;
   }
 
   /* extend to also use local database to check date */
@@ -127,15 +127,18 @@ const TestTypesPage: React.FC = () => {
               }}
               onClick={() => goToTest('declaración jurada')}>
               <IonImg src={declaracionJuradaBtnImg} />
-            </div >
-            <div className="test-type-btn" style={{
-              margin: '2em',
-              width: '50%',
-              maxWidth: '400px'
-              
-              }} onClick={() => goToTest('teórica')}>
-              <IonImg src={pruebaTeoricaBtnImg} />
             </div>
+
+            {!renovacion &&
+              <div className="test-type-btn" style={{
+                margin: '2em',
+                width: '50%',
+                maxWidth: '400px'
+                
+                }} onClick={() => goToTest('teórica')}>
+                <IonImg src={pruebaTeoricaBtnImg} />
+              </div>
+            }
           </div>
           <div style={{display: 'flex', justifyContent: 'center'}}>
             <div className="test-type-btn" style={{
@@ -145,13 +148,15 @@ const TestTypesPage: React.FC = () => {
               }} onClick={() => goToTest('psiquica')}>
               <IonImg src={pruebaPsiquicaBtnImg} />
             </div>
-            <div className="test-type-btn" style={{
-              margin: '2em',
-              width: '50%',
-              maxWidth: '400px'
-              }} onClick={() => goToTest('practica')}>
-              <IonImg src={pruebaPracticaBtnImg} />
-            </div>
+            {!renovacion &&
+              <div className="test-type-btn" style={{
+                margin: '2em',
+                width: '50%',
+                maxWidth: '400px'
+                }} onClick={() => goToTest('practica')}>
+                <IonImg src={pruebaPracticaBtnImg} />
+              </div>
+            }
           </div>
           {/* <IonCard>
             <IonCardHeader color="light-blue">
