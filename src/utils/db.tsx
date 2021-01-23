@@ -1,7 +1,7 @@
 import { set, get } from 'idb-keyval';
 import _ from 'lodash';
 
-const obtenerIndiceDeUsuarioTesteadoPorCedula = async (cedula: any) => {
+const obtenerIndiceUsuarioTesteadoPorCedula = async (cedula: any) => {
   try {
     const TABLA = 'usuarios_testeados';
     const usuariosTesteados: any = await get(TABLA) || [];
@@ -33,7 +33,7 @@ const actualizarDatosUsuarioTesteadoPorCedula = async (cedula: any, datos: any) 
     const NUEVOS_DATOS = _.merge(DATOS_USUARIO, datos);
 
     let usuariosTesteados: any = await get(TABLA) || [];
-    const USUARIO_TESTEADO_IDX = await obtenerIndiceDeUsuarioTesteadoPorCedula(cedula);
+    const USUARIO_TESTEADO_IDX = await obtenerIndiceUsuarioTesteadoPorCedula(cedula);
 
     if (USUARIO_TESTEADO_IDX === -1) return {cod: 0, mensaje: `Usuario con cédula de identidad nro.: ${cedula} no encontrado`};
 
