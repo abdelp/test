@@ -21,7 +21,7 @@ import DataList from '../components/DataList';
 import { useCookies } from "react-cookie";
 import { set, get } from 'idb-keyval';
 
-import { eleminarUsuarioTesteadoPorCedula } from '../utils/db';
+import { eliminarUsuarioTesteadoPorCedula } from '../utils/db';
 
 const RegistUserPage: React.FC = () => {
   const history = useHistory();
@@ -91,7 +91,7 @@ const RegistUserPage: React.FC = () => {
 
   useEffect(() => {
     const x = async () => {
-      const result = await eleminarUsuarioTesteadoPorCedula('111');
+      const result = await eliminarUsuarioTesteadoPorCedula('111');
 
       return result;
     };
