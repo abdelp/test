@@ -77,12 +77,19 @@ const actualizarDatosUsuarioTesteadoPorCedula = async (cedula: any, datos: any) 
   }
 };
 
+const actualizarUsuarioTesteado = async (usuario: any) => {
+  
+};
+
+/*
+ *
+ */
+
 const actualizarTestDeUsuario = async (
   cedula: any,
   categoria: any,
   test: any,
   data: any) => {
-
   const TABLA = 'usuarios_testeados';
   const FECHA = new Date();
   const USUARIOS_TESTEADOS: any = await get(TABLA) || [];
@@ -149,10 +156,10 @@ const actualizarFechaDeTest = async (cedula: any, categoria: string, test: strin
   }
 };
 
-const updateUserTest = async (ci: any, categoria: any, test: any, result: any) => {
+const updateUserTest = async (cedula: any, categoria: any, test: any, result: any) => {
   const date = new Date();
   const usuariosTesteados: any = await get('usuarios_testeados');
-  const idx = usuariosTesteados.findIndex((u: any) => u.ci === ci);
+  const idx = usuariosTesteados.findIndex((u: any) => u.cedula === cedula);
   let cat: any;
 
   if (!usuariosTesteados[idx][categoria.toLowerCase()]) {
