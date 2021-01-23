@@ -3,8 +3,9 @@ import { set, get } from 'idb-keyval';
 const obtenerDatosUsuarioTesteadoPorCedula = async (cedula: any) => {
   try {
     const TABLA = 'usuarios_testeados';
-    const usuariosTesteados: any = await get(TABLA);
-    const usuarioTesteado = usuariosTesteados.findIndex((u: any) => u.cedula === cedula);
+    const usuariosTesteados: any = await get(TABLA) || [];
+    const usuarioTesteadoIdx = usuariosTesteados.findIndex((u: any) => u.cedula === cedula);
+    const usuarioTesteado = usuariosTesteados[usuarioTesteadoIdx];
 
     return usuarioTesteado;
   } catch(e) {
