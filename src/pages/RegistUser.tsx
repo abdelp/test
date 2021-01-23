@@ -117,7 +117,7 @@ const RegistUserPage: React.FC = () => {
         { user &&
           <>
             <DataList user={user} />
-            <IonItem>
+            <IonItem lines="none">
               <input type="button" onClick={confirmUserTested} className="submit-btn confirm-btn" value="Confirmar" />
             </IonItem>
           </>

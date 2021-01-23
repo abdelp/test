@@ -16,7 +16,7 @@ const LoginPage: React.FC = () => (
         <IonTitle className="title">Login</IonTitle>
       </IonToolbar>
     </IonHeader>
-    <IonContent className="ion-padding" color="light">
+    <IonContent className="ion-padding" >
       <SignInFormBase />
     </IonContent>
   </IonPage>

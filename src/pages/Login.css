@@ -1,5 +1,5 @@
 :root {
-  --ion-color-favorite: #62B766;
+  --ion-color-favorite: #63a856;
   --ion-color-favorite-rgb: 98,	183, 102;
   --ion-color-favorite-contrast: #ffffff;
   --ion-color-favorite-contrast-rgb: 255,255,255;
@@ -92,4 +92,10 @@
 
 * {
   font-family: Arial !important;
+}
+
+ion-input{ 
+  border: solid 2px var(--ion-color-favorite);
+  font-weight: bold;
+  text-align: center;
 }

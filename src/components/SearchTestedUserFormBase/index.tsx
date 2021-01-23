@@ -13,9 +13,8 @@ const SearchTestedUserFormBase = ({
 }: any) => {
   return (
     <form className="ion-padding login-list" onSubmit={onSubmit}>
-      <IonItem>
-        <IonLabel position="floating">C.I. N°</IonLabel>
-        <IonInput name="rut" value={rut} onIonChange={handleChange} autofocus />
+      <IonItem lines="none">
+        <IonInput name="rut" value={rut} onIonChange={handleChange} autofocus placeholder="C.I. N°" />
       </IonItem>
       <input type="submit" className="submit-btn" value="Consultar" />
       {error && <p className="error-msg">{error.message}</p>}

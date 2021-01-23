@@ -76,30 +76,24 @@ const SignInFormBase = ({
     <form
       className="ion-padding login-list"
       onSubmit={onSubmit}>
-      <IonItem>
-        <IonLabel
-          position="floating"
-        >
-          Usuario
-        </IonLabel>
+      <IonItem lines="none">
         <IonInput
           name="username"
           value={username}
           onIonChange={onChange}
+          placeholder="USUARIO"
           autofocus
         />
       </IonItem>
 
-      <IonItem>
-        <IonLabel
-          position="floating">
-            Contraseña
-        </IonLabel>
+      <IonItem lines="none">
+        
         <IonInput
           name="password"
           value={password}
           type="password"
           onIonChange={onChange}
+          placeholder="CONTRASEÑA"
           />
       </IonItem>
 
