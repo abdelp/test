@@ -13,13 +13,18 @@ const obtenerDatosUsuarioTesteadoPorCedula = async (cedula: any) => {
   }
 };
 
-const actualizarUsuarioTesteadoPorCedula = async (cedula: any, datos: any) => {
-  const TABLA = 'usuarios_testeados';
-  const DATOS_USUARIO = obtenerDatosUsuarioTesteadoPorCedula(cedula);
+const actualizarDatosUsuarioTesteadoPorCedula = async (cedula: any, datos: any) => {
+  try {
+    const TABLA = 'usuarios_testeados';
+    const DATOS_USUARIO = obtenerDatosUsuarioTesteadoPorCedula(cedula) || {};
+    const NUEVOS_DATOS = {...DATOS_USUARIO, ...datos};
 
-  // VER QUE PASA CUANDO NO HAY DATOS
+    await set(TABLA, NUEVOS_DATOS);
 
-  const NUEVOS_DATOS = {...DATOS_USUARIO, ...datos};
+    return {cod: 0, mensaje: 'Los datos del usuario testeado fueron actualizados exitosamente'};
+  } catch(e) {
+    throw e;
+  }
 };
 
 const update = async (table: string, data: any) => {
@@ -79,4 +84,8 @@ const updateUserTest = async (ci: any, categoria: any, test: any, result: any) =
   return;
 }
 
-export { updateUserTest, obtenerDatosUsuarioTesteadoPorCedula }
+export {
+  updateUserTest,
+  obtenerDatosUsuarioTesteadoPorCedula,
+  actualizarDatosUsuarioTesteadoPorCedula
+};
