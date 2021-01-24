@@ -27,7 +27,8 @@ const INITIAL_STATE = {
 const SignInFormBase = ({
   // auth,
   history,
-  cookies
+  cookies,
+  setShowLogin
 }: any) => {
   const [state, setState] = useState({ ...INITIAL_STATE });
   const { username, password, error, loading } = state;
@@ -52,6 +53,7 @@ const SignInFormBase = ({
        path: "/"
       });
       
+      setShowLogin(false);
       setState((state: any) => ({ ...state, ...INITIAL_STATE }));
 
       history.replace(ROUTES.REGIST_USER);
@@ -87,7 +89,6 @@ const SignInFormBase = ({
       </IonItem>
 
       <IonItem lines="none">
-        
         <IonInput
           name="password"
           value={password}

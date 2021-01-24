@@ -34,6 +34,7 @@ const capitalize = (string: string) =>
 const Menu: React.FC = (props: any) => {
   const location = useLocation();
   const history = useHistory();
+  const [showLogin, setShowLogin] = useState<any>();
   const [username, setUsername] = useState<string>();
   const [cookies, setCookie, removeCookie] = useCookies(["usuario"]);
 
@@ -57,12 +58,14 @@ const Menu: React.FC = (props: any) => {
     <IonMenu contentId="main" type="overlay" swipeGesture={false}>
       <IonContent>
 
-        {/* <IonPopover
-          cssClass='loading-popover ion-text-center'
-          isOpen={true}
+        <IonPopover
+          cssClass='login-popover ion-text-center'
+          isOpen={showLogin}
         >
-          <SignInFormBase />
-        </IonPopover> */}
+          {/*
+            //@ts-ignore */}
+          <SignInFormBase setShowLogin={setShowLogin} />
+        </IonPopover>
 
         <IonList id="inbox-list" lines="none">
           <IonListHeader>{username}</IonListHeader>
@@ -98,10 +101,7 @@ const Menu: React.FC = (props: any) => {
                 color="favorite"
                 className="botonmenu"
                 expand="block"
-                onClick={ props.cookies.get('usuario_testeado') ? 
-                  logoutAction :
-                  logoutAction
-                }>
+                onClick={() => setShowLogin(true)}>
                   Salir
               </IonButton>
             {/* } */}

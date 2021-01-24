@@ -22,12 +22,14 @@ import { cog } from 'ionicons/icons';
 import multipleSelectionImg from '../assets/multiple-selection.png';
 // import logoPruebaTeorica from '../assets/logo_prueba_teorica.svg';
 import instruccionesPruebaTeorica from '../assets/instrucciones_prueba_teorica.svg';
+import instruccionesPruebaPsiquica from '../assets/instrucciones_prueba_psiquica.svg';
 import confirmarBtn from '../assets/confirmar_btn.svg';
 
 const InstructionsPage: React.FC = (props: any) => {
   const { categoria, test } = props.location.state || '';
   let [showSkip, setSkip] = useState(true);
   let [state, setState] = useState({color: 'success'});
+  let backgroundImg;
 
   const slideOpts = {
     initialSlide: 0,
@@ -78,9 +80,11 @@ const InstructionsPage: React.FC = (props: any) => {
     switch(test) {
       case 'teórica':
         color = 'light-blue';
+        backgroundImg = instruccionesPruebaTeorica
         break;
       case 'psiquica':
         color = 'alert';
+        backgroundImg = instruccionesPruebaPsiquica
         break;
       default:
         color = 'success';
@@ -101,7 +105,7 @@ getHeaderColor(test)
 
       <IonContent fullscreen>
         <IonItem lines="none">
-          <IonImg src={instruccionesPruebaTeorica} style={{maxWidth: '100%', width: '100%'}}/>
+          <IonImg src={backgroundImg} style={{maxWidth: '100%', width: '100%'}}/>
         </IonItem>
           <IonButton onClick={startTest} color="none" className="confirmar-btn" size="large">
           CONFIRMAR
