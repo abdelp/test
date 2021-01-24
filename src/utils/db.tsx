@@ -1,6 +1,18 @@
 import { set, get } from 'idb-keyval';
 import _ from 'lodash';
 
+const obtenerUsuariosTesteadosNoSincronizados = async () => {
+  try {
+    const TABLA = 'usuarios_testeados';
+    const USUARIOS_TESTEADOS: any = await get(TABLA) || [];
+    const USUARIOS_TESTEADOS_NO_SINCRONIZADOS = USUARIOS_TESTEADOS.filter((u: any) => typeof u.sincronizado === 'undefined');
+
+    return USUARIOS_TESTEADOS_NO_SINCRONIZADOS;
+  } catch(e) {
+    throw e;
+  }
+};
+
 const agregarUsuarioTesteado = async (usuario: any) => {
   try {
     const TABLA = 'usuarios_testeados';
@@ -78,7 +90,7 @@ const actualizarDatosUsuarioTesteadoPorCedula = async (cedula: any, datos: any) 
 };
 
 const actualizarUsuarioTesteado = async (usuario: any) => {
-  
+
 };
 
 /*
