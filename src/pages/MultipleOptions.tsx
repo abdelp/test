@@ -88,8 +88,6 @@ const MultipleOptionsPage: React.FC = (props: any) => {
         })
         .catch((error: any) => {
           setLoading(false);
-
-          console.log(error);
         });
       }
   };

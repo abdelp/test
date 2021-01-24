@@ -181,7 +181,7 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
                   valor = true;
                 }
 
-                setDisableText(valor)
+                setDisableText(valor);
                 return state;
               }
               )}>
@@ -211,7 +211,6 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
                 value={questions[questions.length-1]?.descripcion || ''}
                 disabled={disableText}
                 onIonChange={e => setQuestions((state: any) => {
-                  // const idx: any = state.findIndex((obj: any) => obj.id === q.id);
                   state[state.length - 1].descripcion = e.detail.value;
 
                   return state;
