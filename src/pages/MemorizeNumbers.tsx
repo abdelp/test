@@ -266,7 +266,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
               {!showButtons &&
                 <div className="display-container">
                   <div className="number-display">
-                    <p>
+                    <p className={parseInt(mensaje, 10) ? 'elemento-grande ion-text-center' : 'elemento-chico ion-text-center'}>
                     { mensaje }
                     </p>
                   </div>
