@@ -73,14 +73,14 @@ const RegistUserPage: React.FC = () => {
   }
   
   const confirmUserTested = () => {
-    const userT = usuariosTesteados.find((u: any) => u.rut === state.rut);
+    const userT = usuariosTesteados.find((u: any) => u.cedula === state.cedula);
   
     if(!userT) {
       usuariosTesteados.push(state.user);
     }
 
     set("usuarios_testeados", usuariosTesteados);
-    setCookie('usuario_testeado', state.user, {path: '/'});
+    setCookie('usuario_testeado', {nombres: state.user.nombres, apellidos: state.user.apellidos, cedula: state.user.cedula, nroAntecedente: state.user.nroAntecedente}, {path: '/'});
     setCookie('categoria', state.user.categoria, {path: '/'});
 
     history.replace({
@@ -128,9 +128,7 @@ const RegistUserPage: React.FC = () => {
           { user &&
             <>
               <DataList user={user} />
-              
-                <input type="button" onClick={confirmUserTested} className="submit-btn confirm-btn" value="Confirmar" />
-              
+              <input type="button" onClick={confirmUserTested} className="submit-btn confirm-btn" value="Confirmar" />
             </>
           }
         </div>

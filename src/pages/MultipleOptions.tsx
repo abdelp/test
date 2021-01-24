@@ -36,7 +36,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
     const ticket = cookies.get('ticket');
     const categoria = cookies.get('ticket');
     const usuarioTesteado = cookies.get('usuario_testeado');
-    const { ci } = usuarioTesteado;
+    const { cedula } = usuarioTesteado;
 
     const updateUserTest = async () => {
 
@@ -75,11 +75,11 @@ const MultipleOptionsPage: React.FC = (props: any) => {
         const ticket = props.cookies.get('ticket');
         const usuarioTesteado = props.cookies.get('usuario_testeado');
         const categoria = props.cookies.get('categoria');
-        const { ci, rut } = usuarioTesteado;
+        const { cedula } = usuarioTesteado;
 
-        updateUserTest(ci, categoria, "teorica", questions)
+        updateUserTest(cedula, categoria, "teorica", questions)
         .then(result => {
-          sendResult(ticket, ci, resultado)
+          sendResult(ticket, cedula, resultado)
           .then(result => {
             setLoading(false);
   

@@ -22,7 +22,7 @@ const DataList = ({
       <IonLabel><strong>Apellidos:</strong> {user.apellidos}</IonLabel>
     </IonItem>
     <IonItem>
-      <IonLabel><strong>C.I.:</strong> {user.ci}</IonLabel>
+      <IonLabel><strong>C.I.:</strong> {user.cedula}</IonLabel>
     </IonItem>
     <IonItem>
       <IonLabel><strong>Nro. Antecedente:</strong> {user.nroAntecedente}</IonLabel>
