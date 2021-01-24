@@ -16,9 +16,9 @@
   --ion-color-tint: var(--ion-color-favorite-tint);
 }
 
-.submit-btn, .botonmenu {
+.submit-btn, .botonmenu, .confirmar-btn {
   box-sizing: border-box;
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255) !important;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-kerning: none;
   font-size: 3vh;
@@ -52,7 +52,9 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-color: #62B766;
   box-shadow: 0 1vw 0 0.3vw var(--ion-color-favorite-shade);
+  --box-shadow: 0 1vw 0 0.3vw var(--ion-color-favorite-shade);
   border-radius: 2vw;
+  --border-radius: 2vw;
   padding-top: 0;
   padding-bottom: 0;
   border-width: initial;
@@ -103,13 +105,13 @@
   flex-direction: column;
 }
 
-ion-input{ 
+ion-input, ion-textarea{ 
   border: solid 2px var(--ion-color-favorite);
   font-weight: bold;
   text-align: center;
   height: 6vh;
-  margin-bottom: 3vh;
-  font-size: 4vh;
+  margin-bottom: 3vh !important;
+  font-size: 4vh !important;
 }
 
 .native-input.sc-ion-input-md:-webkit-autofill,

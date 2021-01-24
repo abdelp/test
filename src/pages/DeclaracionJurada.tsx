@@ -122,7 +122,7 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
           <IonTitle className="ion-text-uppercase ion-text-center title">Declaración Jurada</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent className="ion-padding">
         { loading &&
           <IonPopover
             cssClass='loading-popover ion-text-center'
@@ -179,11 +179,11 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
               )}>
               <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                 <div style={{width: '100%', minWidth: '300px'}}>
-                  <IonItem>
+                  <IonItem lines="none">
                     <IonLabel className="question-label">{q.pregunta}</IonLabel>
                   </IonItem>
                 </div>
-                <div style={{display: 'flex'}}>
+                <div className="radio-row" style={{display: 'flex'}}>
                   <IonItem className="radio-label" lines="none">
                     <IonLabel>Sí</IonLabel>
                     <IonRadio slot="end" value="true" color="success" />
@@ -197,7 +197,7 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
               </div>
             </IonRadioGroup>
           ) }
-          <IonItem>
+          <IonItem  lines="none">
             <IonTextarea
               placeholder="Enter more information here..."
               // disabled={questions.length ? questions[questions.length] : true}
@@ -206,9 +206,9 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
             ></IonTextarea>
           </IonItem>
         </IonList>
-        <IonItem className='ion-text-center'>
-          <IonButton className="confirmar-btn"  color="none" size="large" onClick={(state) => setState({...state, showAlert: true}) }>
-          &nbsp;
+        <IonItem className='ion-text-center' lines="none">
+          <IonButton  style={{margin: '2em auto'}} className="confirmar-btn"  color="none" size="large" onClick={(state) => setState({...state, showAlert: true}) }>
+          CONFIRMAR
           </IonButton>
         </IonItem>
       </IonContent>

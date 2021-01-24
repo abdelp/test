@@ -20,7 +20,7 @@
   white-space: normal !important;
   overflow: visible;
 }
-
+/*
 .confirmar-btn {
   background-image: url('../assets/confirmar_btn.svg') !important;
   --background-image: url('../assets/confirmar_btn.svg') !important;
@@ -35,7 +35,15 @@
   --box-shadow: none;
   margin-bottom: 3em;
 }
-
+*/
 .question-label, .radio-label {
   font-size: 4vw !important;
+}
+
+ion-list ion-radio {
+  width: 4vw;
+  height: 4vw;
+}
+.radio-row{
+  margin-bottom: 3vh;
 }
