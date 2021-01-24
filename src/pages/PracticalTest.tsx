@@ -18,13 +18,24 @@ import {
 } from '@ionic/react';
 import { getPracticalTestItems } from '../APIs';
 import { useHistory } from 'react-router-dom';
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from "react-cookie";
+import to from 'await-to-js';
+import { set, get } from 'idb-keyval';
+import { obtenerDatosUsuarioTesteadoPorCedula, actualizarDatosUsuarioTesteadoPorCedula } from '../utils/db';
 
 import './PracticalTest.css';
 
-const PracticalTestPage: React.FC = () => {
+const PracticalTestPage: React.FC = (props: any) => {
   const [questions, setQuestions] = useState<any>([]);
   const [state, setState] = useState<any>({showAlert: false, showAlertNotCompleted: false});
   const history = useHistory();
+
+  const incompleteForm = () => {
+    const incomplete = questions.some((q: any) => typeof q.respuesta === 'undefined');
+  
+    return incomplete;
+  };
 
   useEffect(() => {
     getPracticalTestItems()
@@ -34,27 +45,47 @@ const PracticalTestPage: React.FC = () => {
     .catch((error) => console.log(error));
   });
 
-  const confirmar = () => {
+  const confirmar = async () => {
     setState((state: any) => ({ ...state, showAlert: false }));
 
-    console.log(questions);
+    // console.log(questions);
     /*
      * poner webservice
      */
+    if(!incompleteForm()) {
+      setState((state: any) => ({...state, loading: true}))
+      let err: any, result: any;
 
-    // setState((state: any) => ({...state, loading: true}))
+      ([err, result] = await to(get('usuarios_testeados')));
 
-    // setTimeout(() => {
-    //   setState((state: any) => ({...state, loading: false}))
-    //   history.push('/page/test-types');
-    // }, 2000);
+      if (err) {
+        setState((state: any) => ({...state, loading: false}));
+        return err;
+      };
 
-  };
+      const { cookies } = props;
+      const { cedula } = cookies.get('usuario_testeado');
+      const usuarioTesteado = await obtenerDatosUsuarioTesteadoPorCedula(cedula);
+      const categoria = cookies.get('categoria');
 
-  const checkAnswers = () => {
-    const noRespondido = questions.findIndex((q: any) => typeof q.respuesta === 'undefined');
+      const examen = {
+        examenes: {
+          [categoria]: {
+            "practico": { fecha: new Date(), declaracion: questions }
+          }
+        }
+      };
 
-    return noRespondido;
+      ([err, result] = await to(actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)));
+
+      setTimeout(() => {
+        setState((state: any) => ({...state, loading: false}))
+        history.push('/page/test-types');
+      }, 2000);
+    } else {
+      setState((state: any) => ({...state, showAlertNotCompleted: true }));
+      return;
+    }
   };
 
   const { loading, showAlert, showAlertNotCompleted } = state;
@@ -164,4 +195,8 @@ const PracticalTestPage: React.FC = () => {
   );
 };
 
-export default PracticalTestPage;
+PracticalTestPage.propTypes = {
+  cookies: instanceOf(Cookies).isRequired
+};
+
+export default withCookies(PracticalTestPage);
