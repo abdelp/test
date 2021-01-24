@@ -1,53 +1,100 @@
-[
-  {
-    "id": "1",
-    "pregunta": "SI USTED TOMA LA DECISIÓN DEFINITIVA DE NO VOLVER A MANEJAR POR RECOMENDACIÓN MÉDICA O CUALQUIER OTRO MOTIVO"
-// a.	Debe realizar una denuncia, entregando el carnet a la autoridad policial de su zona.
-// b.	No debe preocuparse en cancelar su licencia.
-// c.	Debe realizar el trámite de cancelación de su licencia de conducir, ante su municipalidad.
-
-// 2.	USTED VA CONDUCIENDO Y SE PERCATA DE QUE HAY UN GRUPO DE NIÑOS A UN COSTADO DE LA VÍA:
-// a.	Debe reducir la velocidad y estar listo para detenerse, a fin de garantizar la seguridad de los mismos.
-// b.	Debe frenar bruscamente y dar aviso a la autoridad competente.
-// c.	Debe intentar salir rápidamente de la zona de peligro.
-
-// 3.	PARA ADELANTAR A UN MOTOCICLISTA O A UN CICLISTA, DEBE TENER EN CUENTA QUE:
-// a.	Puede realizar la maniobra compartiendo el mismo carril con el motociclista o ciclista.
-// b.	Debe realizar igual maniobra como si fuera a adelantar a un automóvil o camioneta.
-// c.	Puede hacerlo de cualquier manera, si considera que el motociclista o ciclista va muy lento.
-
-// 4.	UN VEHÍCULO QUE SALE DE UN GARAJE ¿TIENE DERECHO PREFERENTE DE PASO?
-// a.	Cuando el vehículo es camión.
-// b.	En ningún caso.
-// c.	Cuando el vehículo es de uso particular.
-
-// 5.	¿QUÉ DEBE HACER USTED CUANDO ES ADELANTADO POR OTRO VEHÍCULO?
-// a.	Encender las luces bajas.
-// b.	Frenar bruscamente para dar paso.
-// c.	Disminuir la velocidad y ceder el paso.
-
-// 6.	¿QUÉ SE DEBE HACER AL ACERCARSE A UNA ZONA ESCOLAR?
-// a.	Disminuir la velocidad.
-// b.	Tocar la bocina.
-// c.	Mantener la misma velocidad.
-
-// 7.	¿QUÉ HACER CUANDO LA CALZADA ESTÁ HUMEDA POR LLUVIA O SUSTANCIA RESVALOSA?
-// a.	Aumentar la velocidad.
-// b.	Circular a velocidad reducida.
-// c.	Detenerse inmediatamente.
-
-// 8.	¿A CUÁNTOS METROS DE UNA SEÑAL “PARE” O “CEDA EL PASO” SE PUEDE ESTACIONAR?
-// a.	A 10 metros o más.
-// b.	A 5 metros o más.
-// c.	A 1 metros o más.
-
-// 9.	¿CÓMO HAY QUE COMPORTARSE AL ACERCARSE A UN PASO DE FERROCARRIL QUE NO TIENE BARRERA NI LUZ INTERMITENTE?
-// a.	Acercarse a gran velocidad.
-// b.	No tiene ninguna obligación que cumplir.
-// c.	Disminuir la velocidad y observar la vía férrea hacia ambos lados y cruzar con precaución.
-
-// 10.	CONDUCIR CON ZAPATILLAS (CALZADOS ABIERTOS):
-// a.	Está permitido, especialmente en días de mucho calor.
-// b.	Está prohibido, por dificultar el uso de los pedales.
-// c.	Está prohibido solamente para conductores de transporte colectivo.
+[{
+    "id": 151,
+    "pregunta": "PODRÁN SER RETIRADOS DE LA VÍA PÚBLICA CON GRÚA",
+    "opciones": [
+      "Los vehículos que obstaculicen la circulación por estar estacionados en lugar prohibido",
+      "Los vehículos que no cuenten con paragolpes",
+      "Los vehículos que circulen por el carril derecho"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 152,
+    "pregunta": "SI UD. ESTÁ SIENDO ADELANTADO POR OTRO VEHÍCULO, SU DEBER ES",
+    "opciones": [
+      "Acelerar para dejar atrás al vehículo que ha iniciado la maniobra de adelantamiento",
+      "Disminuir la velocidad y permitir que el otro vehículo retome su derecha",
+      "Continuar avanzando en forma indiferente"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 153,
+    "pregunta": "CUANDO USTED ABROCHA EL CINTURÓN DE SEGURIDAD, DEBE ASEGURARSE DE",
+    "opciones": [
+      "Que el juego libre de la parte superior sea de por lo menos 50 cm",
+      "Que el cinturón cubra por completo al niño que usted lleva en su regazo",
+      "Que la hebilla produzca un sonido de clic, como señal de un correcto ajuste"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 154,
+    "pregunta": "¿EN QUÉ CASO PUEDE USTED ESTACIONAR EN UN LUGAR PROHIBIDO?",
+    "opciones": [
+      "Cuando sea solamente por 5 minutos o menos",
+      "En ningún caso",
+      "Durante horas de la noche y los fines de semana"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 155,
+    "pregunta": "EVITAR LA EMISIÓN VEHICULAR DE GASES DENSOS (HUMO NEGRO) ES UNA RESPONSABILIDAD DE",
+    "opciones": [
+      "El conductor del vehículo",
+      "El propietario del vehículo",
+      "Ambos, el conductor y el propietario"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 156,
+    "pregunta": "UNA CHAPA O MATRÍCULA ASIGNADA A UN VEHICULO ¿PODRÁ SER UTILIZADA POR OTRO VEHÍCULO?",
+    "opciones": [
+      "Sí, cuando el vehículo sea del mismo propietario",
+      "Sí, cuando el vehículo al que fue asignada la matrícula se encuentre fuera de circulación",
+      "No, en ningún caso"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 157,
+    "pregunta": "EL USO DE BUSCAHUELLAS ESTÁ PERMITIDO",
+    "opciones": [
+      "Cuando el vehículo está en circulación",
+      "Cuando el vehículo es de transporte de carga",
+      "Exclusivamente en zonas rurales, fuera de las zonas urbanas"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 158,
+    "pregunta": "CUANDO LA CALZADA PRESENTE DETERIOROS O BACHES, EL CONDUCTOR DEBERÁ",
+    "opciones": [
+      "Tomar las debidas precauciones para evitar accidentes",
+      "Esquivar los desperfectos en la calzada y salir rápidamente de la zona de peligro",
+      "Continuar la marcha en forma indiferente"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 159,
+    "pregunta": "LAS CICLOVÍAS O BICISENDAS SON ZONAS DESTINADAS AL USO EXCLUSIVO DEL CICLISTA",
+    "opciones": [
+      "Que pueden ser utilizadas eventualmente por motociclistas o vehículos pequeños",
+      "Que no pueden ser utilizadas por vehículos automotores",
+      "Que pueden ser utilizadas como estacionamiento, en días feriados y durante horas de la noche"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 160,
+    "pregunta": "AL CONDUCIR, USTED VE A UN PEATÓN QUE INTENTA CRUZAR A MITAD DE CUADRA ¿QUÉ DEBE HACER?",
+    "opciones": [
+      "Frenar preventivamente y hacer uso de la bocina para advertir sobre el peligro",
+      "Acelerar para salir de la situación de peligro lo antes posible",
+      "Continuar la marcha indiferente, ya que la imprudencia es exclusivamente del peatón"
+    ],
+    "respuesta": 0
   }]

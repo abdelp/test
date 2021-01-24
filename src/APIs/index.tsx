@@ -2,6 +2,7 @@ import PREGUNTAS_SENHALES from './preguntas_senhales.json';
 import PREGUNTAS_DECLARACION_JURADA from './declaracion_jurada.json';
 import ITEMS_MOTOCICLETA_PRACTICO from './motocicleta_practico.json';
 import PREGUNTAS_MECANICA from './preguntas_mecanica.json';
+import PREGUNTAS_NORMAS from './preguntas_normas.json';
 import PREGUNTAS_PRIMEROS_AUXILIOS from './preguntas_primeros_auxilios.json';
 
 const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
@@ -106,7 +107,7 @@ const getCategories = async () =>
 
 const getPreguntasSenhales = () => {
   return new Promise((resolve, reject) => {
-    resolve([...PREGUNTAS_SENHALES, ...PREGUNTAS_MECANICA, ...PREGUNTAS_PRIMEROS_AUXILIOS]);
+    resolve([...PREGUNTAS_SENHALES, ...PREGUNTAS_MECANICA, ...PREGUNTAS_PRIMEROS_AUXILIOS, ...PREGUNTAS_NORMAS]);
   });
 };
 

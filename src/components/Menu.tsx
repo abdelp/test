@@ -130,10 +130,11 @@ const Menu: React.FC = (props: any) => {
                 <IonImg className="iconomenu" src={iconoFinalizar}></IonImg> Finalizar Prueba
               </IonItem>
             }
-            <IonItem className="botonmenu" onClick={logoutAction}>
-              <IonImg className="iconomenu" src={iconoCerrar}></IonImg> Cerrar Sesión
-            </IonItem>
-            
+            { !props.cookies.get('usuario_testeado') && 
+              <IonItem className="botonmenu" onClick={logoutAction}>
+                <IonImg className="iconomenu" src={iconoCerrar}></IonImg> Cerrar Sesión
+              </IonItem>
+            }
           </section>
         </IonList>
       </IonContent>
