@@ -47,12 +47,21 @@ const Menu: React.FC = (props: any) => {
     }
   });
 
-  const logoutAction = () => {
+  const logoutUser = () => {
     removeCookie("usuario", {path: '/'});
     removeCookie("categoria", {path: '/'});
     removeCookie("usuario_testeado", {path: '/'});
     history.replace('/login');
   }
+
+  const logoutAction = () => {
+    const usuarioTesteado = props.cookies.get('usuario_testeado');
+    if(usuarioTesteado) {
+      setShowLogin(true);
+    } else {
+      logoutUser();
+    }
+  };
 
   return (
     <IonMenu contentId="main" type="overlay" swipeGesture={false}>
@@ -101,7 +110,7 @@ const Menu: React.FC = (props: any) => {
                 color="favorite"
                 className="botonmenu"
                 expand="block"
-                onClick={() => setShowLogin(true)}>
+                onClick={logoutAction}>
                   Salir
               </IonButton>
             {/* } */}

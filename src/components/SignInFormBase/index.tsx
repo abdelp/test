@@ -52,6 +52,10 @@ const SignInFormBase = ({
      cookies.set("usuario", JSON.stringify({ username, ticket }), {
        path: "/"
       });
+
+     cookies.remove("usuario_testeado", {
+       path: "/"
+      });
       
       setShowLogin(false);
       setState((state: any) => ({ ...state, ...INITIAL_STATE }));
