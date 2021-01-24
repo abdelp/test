@@ -57,6 +57,16 @@
 
 .number-display p {
   text-align: center;
+  font-size: 6vh;
+}
+
+.elemento-grande{
+  font-size: 58vh;
+  color: var(--ion-color-alert)
+}
+
+.elemento-chico{
+  font-size: 6vh;
 }
 
 .btn-container {
