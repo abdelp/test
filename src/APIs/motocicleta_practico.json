@@ -70,5 +70,7 @@
 {"id": 5, "pregunta": "Lo hace muy a prisa"},
 {"id": 6, "pregunta": "Hace las señales apropiadas y a tiempo"}
  ]
+},{
+  "id": 11, "titulo": "Otros", "descripcion": "", "items": []
 }
 ]

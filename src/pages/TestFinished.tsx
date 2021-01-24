@@ -75,23 +75,17 @@ const TestFinishedPage: React.FC = props => {
         <h1>El test ha finalizado</h1>
         <br/>
         <IonList>
-            <IonItem>
-              <IonLabel><strong>Correctas:</strong> {correctas}/{total}</IonLabel>
-            </IonItem>
-            <IonItem>
-              <IonLabel><strong>Incorrectas:</strong> {incorrectas}/{total}</IonLabel>
-            </IonItem>
-            <IonItem>
-              <IonLabel><strong>No respondidas:</strong> {noRespondidas}/{total}</IonLabel>
-            </IonItem>
-            <IonItem>
-              <IonLabel><strong>Porcentaje:</strong> {porcentaje}%</IonLabel>
-            </IonItem>
-            
-            
-          </IonList>
-          <IonButton onClick={returnMenu} size="large" className="confirm-btn confirmar-btn" color="favorite" style={{margin: '3vh auto'}}>Volver a los tests</IonButton>
-
+          <IonItem>
+            <IonLabel><strong>Correctas:</strong> {correctas}/{total}</IonLabel>
+          </IonItem>
+          <IonItem>
+            <IonLabel><strong>Incorrectas:</strong> {incorrectas}/{total}</IonLabel>
+          </IonItem>
+          <IonItem>
+            <IonLabel><strong>Porcentaje:</strong> {porcentaje}%</IonLabel>
+          </IonItem> 
+        </IonList>
+        <IonButton onClick={returnMenu} size="large" className="confirm-btn confirmar-btn" color="favorite" style={{margin: '3vh auto'}}>Volver a los tests</IonButton>
       </IonContent>
   </IonPage>
   );

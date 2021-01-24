@@ -158,6 +158,7 @@ const PracticalTestPage: React.FC = (props: any) => {
                       const idx: any = state.findIndex((obj: any) => obj.id === q.id);
                       const questionIdx: any = state[idx]["items"].findIndex((obj: any) => obj.id === item.id);
                       state[idx]["items"][questionIdx].respuesta = e.detail.value;
+
                       return state;
                     }
                     )}
@@ -185,9 +186,13 @@ const PracticalTestPage: React.FC = (props: any) => {
           <IonItem lines="none">
             <IonTextarea
               placeholder="Otros datos..."
-              // disabled
-              // value={text}
-              // onIonChange={e => setText(e.detail.value!)}
+              value={questions[questions.length-1]?.descripcion || ''}
+              onIonChange={e => setQuestions((state: any) => {
+                state[state.length - 1].descripcion = e.detail.value;
+
+                return state;
+              }
+              )}
             ></IonTextarea>
           </IonItem>
         </IonList>
