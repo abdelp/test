@@ -16,20 +16,26 @@ import {
   IonPopover,
   IonSpinner
 } from '@ionic/react';
-import { getDeclaracionJurada } from '../APIs';
 import { useHistory } from 'react-router-dom';
-import { saveDeclaracionJurada } from '../APIs';
 import to from 'await-to-js';
 import { set, get } from 'idb-keyval';
-import { useCookies } from "react-cookie";
-
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from "react-cookie";
+import _ from 'lodash';
+import { getDeclaracionJurada, saveDeclaracionJurada } from '../APIs';
+import { obtenerDatosUsuarioTesteadoPorCedula, actualizarDatosUsuarioTesteadoPorCedula } from '../utils/db';
 import './DeclaracionJurada.css';
 
-const DeclaracionJuradaPage: React.FC = () => {
+const DeclaracionJuradaPage: React.FC = (props: any) => {
   const [questions, setQuestions] = useState<any>([]);
   const [state, setState] = useState<any>({showAlert: false, showAlertNotCompleted: false});
-  const [cookies, setCookie] = useCookies(["user"]);
   const history = useHistory();
+  
+  const incompleteForm = () => {
+    const incomplete = questions.some((q: any) => typeof q.respuesta === 'undefined');
+  
+    return incomplete;
+  };
 
   useEffect(() => {
     getDeclaracionJurada()
@@ -37,58 +43,70 @@ const DeclaracionJuradaPage: React.FC = () => {
       setQuestions(result);
     })
     .catch((error) => console.log(error));
-  });
+  }, []);
 
-  const confirmar = () => {
+  const confirmar = async () => {
     setState((state: any) => ({ ...state, showAlert: false }));
 
-    console.log(questions);
-    if(checkAnswers() === -1 ) {
+    if(!incompleteForm()) {
       setState((state: any) => ({...state, loading: true}));
+      let err: any, result: any;
+
+      ([err, result] = await to(get('usuarios_testeados')));
   
-      get('usuarios_testeados')
-      .then((result: any) => {
-        const { usuario_testeado: usuarioTesteado, categoria } = cookies;
-        const usuarioIdx = result.findIndex((u: any) => u.ci === usuarioTesteado.ci);
-
-        let examenes: any = usuarioTesteado["examenes"];
-
-        let cat: any;
-
-        if (!usuarioTesteado.examenes[categoria.toLowerCase()]) {
-          cat = usuarioTesteado["examenes"][categoria.toLowerCase()] = {};
-        } else {
-          cat = usuarioTesteado.examenes[categoria.toLowerCase()];
-        }
-
-        cat["declaracionJurada"] = { date: new Date(), declaracion: questions };
-        result[usuarioIdx] = usuarioTesteado;
-
-        set('usuarios_testeados', result);
-
-        saveDeclaracionJurada(questions)
-        .then((result: any) => {
-          setState((state: any) => ({...state, loading: false}));
-          history.replace('/page/test-types');
-        })
-        .catch(error => {
-          console.log(error);
-          setState((state: any) => ({...state, loading: false}));
-        });
-      })
-      .catch((error: any) => {
-        console.log(error);
+      if (err) {
         setState((state: any) => ({...state, loading: false}));
-      });
+        return err;
+      };
+
+      const { cookies } = props;
+      const { cedula } = cookies.get('usuario_testeado');
+      const usuarioTesteado = await obtenerDatosUsuarioTesteadoPorCedula(cedula);
+      const categoria = cookies.get('categoria');
+
+      const examen = {
+        examenes: {
+          [categoria]: {
+            "declaracionJurada": { fecha: new Date(), declaracion: questions }
+          }
+        }
+      };
+
+      // const usuarioActualizado = _.merge(usuarioTesteado, examen);
+
+      // console.log(usuarioActualizado);
+      // const usuarioIdx = result.findIndex((u: any) => u.cedula === usuarioTesteado.cedula);
+
+      // let examenes: any = usuarioTesteado["examenes"];
+
+      // let cat: any;
+
+      // if (!usuarioTesteado.examenes[categoria.toLowerCase()]) {
+      //   cat = usuarioTesteado["examenes"][categoria.toLowerCase()] = {};
+      // } else {
+      //   cat = usuarioTesteado.examenes[categoria.toLowerCase()];
+      // }
+
+      // cat["declaracionJurada"] = { date: new Date(), declaracion: questions };
+      // result[usuarioIdx] = usuarioTesteado;
+
+      // set('usuarios_testeados', result);
+
+      ([err, result] = await to(actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)));
+      ([err, result] = await to(saveDeclaracionJurada(questions)));
+
+      // if (err) {
+      //   setState((state: any) => ({...state, loading: false}));
+
+      //   return err;
+      // }
+
+      setState((state: any) => ({...state, loading: false}));
+      history.replace('/page/test-types');
     } else {
       setState((state: any) => ({...state, showAlertNotCompleted: true }));
+      return;
     }
-  };
-
-  const checkAnswers = () => {
-    const noRespondido = questions.findIndex((q: any) => typeof q.respuesta === 'undefined');
-
-    return noRespondido;
   };
 
   const { loading, showAlert, showAlertNotCompleted } = state;
@@ -151,7 +169,7 @@ const DeclaracionJuradaPage: React.FC = () => {
           { questions.map((q: any) =>
             <IonRadioGroup
               key={q.id}
-              value={(questions[q.id]?.respuesta || null)}
+              value={(questions[q.id - 1]?.respuesta || null)}
               onIonChange={e => setQuestions((state: any) => {
                 const idx: any = state.findIndex((obj: any) => obj.id === q.id);
                 state[idx].respuesta = e.detail.value;
@@ -198,4 +216,8 @@ const DeclaracionJuradaPage: React.FC = () => {
   );
 };
 
-export default DeclaracionJuradaPage;
+DeclaracionJuradaPage.propTypes = {
+  cookies: instanceOf(Cookies).isRequired
+};
+
+export default withCookies(DeclaracionJuradaPage);

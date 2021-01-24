@@ -1,7 +1,37 @@
 import { set, get } from 'idb-keyval';
 import _ from 'lodash';
 
-const obtenerIndiceDeUsuarioTesteadoPorCedula = async (cedula: any) => {
+const agregarUsuarioTesteado = async (usuario: any) => {
+  try {
+    const TABLA = 'usuarios_testeados';
+    const usuariosTesteados: any = await get(TABLA) || [];
+
+    usuariosTesteados.push(usuario);
+
+    await set(TABLA, usuariosTesteados);
+
+    return { cod: 0, mensaje: 'Usuario agregado exitosamente' };
+  } catch(e) {
+    throw e;
+  }
+};
+
+const eliminarUsuarioTesteadoPorCedula = async (cedula: any) => {
+  try {
+    const TABLA = 'usuarios_testeados';
+    const USUARIO_TESTEADO_IDX = await obtenerIndiceUsuarioTesteadoPorCedula(cedula);
+    let usuariosTesteados: any = await get(TABLA) || [];
+
+    usuariosTesteados = [...usuariosTesteados.slice(0, USUARIO_TESTEADO_IDX), ...usuariosTesteados.slice(USUARIO_TESTEADO_IDX + 1)]
+
+    await set(TABLA, usuariosTesteados);
+    return { cod: 0, mensaje: 'Usuario eliminado exitosamente' };
+  } catch(e) {
+    throw e;
+  }
+};
+
+const obtenerIndiceUsuarioTesteadoPorCedula = async (cedula: any) => {
   try {
     const TABLA = 'usuarios_testeados';
     const usuariosTesteados: any = await get(TABLA) || [];
@@ -33,7 +63,7 @@ const actualizarDatosUsuarioTesteadoPorCedula = async (cedula: any, datos: any) 
     const NUEVOS_DATOS = _.merge(DATOS_USUARIO, datos);
 
     let usuariosTesteados: any = await get(TABLA) || [];
-    const USUARIO_TESTEADO_IDX = await obtenerIndiceDeUsuarioTesteadoPorCedula(cedula);
+    const USUARIO_TESTEADO_IDX = await obtenerIndiceUsuarioTesteadoPorCedula(cedula);
 
     if (USUARIO_TESTEADO_IDX === -1) return {cod: 0, mensaje: `Usuario con cédula de identidad nro.: ${cedula} no encontrado`};
 
@@ -47,12 +77,19 @@ const actualizarDatosUsuarioTesteadoPorCedula = async (cedula: any, datos: any) 
   }
 };
 
+const actualizarUsuarioTesteado = async (usuario: any) => {
+  
+};
+
+/*
+ *
+ */
+
 const actualizarTestDeUsuario = async (
   cedula: any,
   categoria: any,
   test: any,
   data: any) => {
-
   const TABLA = 'usuarios_testeados';
   const FECHA = new Date();
   const USUARIOS_TESTEADOS: any = await get(TABLA) || [];
@@ -119,10 +156,10 @@ const actualizarFechaDeTest = async (cedula: any, categoria: string, test: strin
   }
 };
 
-const updateUserTest = async (ci: any, categoria: any, test: any, result: any) => {
+const updateUserTest = async (cedula: any, categoria: any, test: any, result: any) => {
   const date = new Date();
   const usuariosTesteados: any = await get('usuarios_testeados');
-  const idx = usuariosTesteados.findIndex((u: any) => u.ci === ci);
+  const idx = usuariosTesteados.findIndex((u: any) => u.cedula === cedula);
   let cat: any;
 
   if (!usuariosTesteados[idx][categoria.toLowerCase()]) {
@@ -139,6 +176,8 @@ const updateUserTest = async (ci: any, categoria: any, test: any, result: any) =
 
 export {
   updateUserTest,
+  agregarUsuarioTesteado,
   obtenerDatosUsuarioTesteadoPorCedula,
-  actualizarDatosUsuarioTesteadoPorCedula
+  actualizarDatosUsuarioTesteadoPorCedula,
+  eliminarUsuarioTesteadoPorCedula
 };
