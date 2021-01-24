@@ -16,8 +16,10 @@ const LoginPage: React.FC = () => (
         <IonTitle className="title">Login</IonTitle>
       </IonToolbar>
     </IonHeader>
-    <IonContent className="ion-padding" >
+    <IonContent className="ion-padding vertical-center" >
+      <div className="grilla">
       <SignInFormBase />
+      </div>
     </IonContent>
   </IonPage>
 );

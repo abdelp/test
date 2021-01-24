@@ -35,3 +35,7 @@
   --box-shadow: none;
   margin-bottom: 3em;
 }
+
+.question-label, .radio-label {
+  font-size: 4vw !important;
+}

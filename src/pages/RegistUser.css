@@ -5,4 +5,20 @@
 .loading {
   margin: 0 auto;
 }
+ion-menu-button{
+  font-size: 6vw;
+  max-width: 100%;
+}
+.sc-ion-buttons-md-h {
+  display: block;
+}
 
+
+ion-menu {
+  --max-width: 90vw!important;
+  --width:90vw!important;
+}
+
+ion-menu.md ion-list#inbox-list ion-list-header{
+  font-size: 4vw;
+}

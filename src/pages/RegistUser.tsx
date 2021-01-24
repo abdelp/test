@@ -100,29 +100,30 @@ const RegistUserPage: React.FC = () => {
         <IonButtons slot="start">
             <IonMenuButton autoHide={false} />
           </IonButtons>
-          <IonTitle className="ion-text-center">Indique el CI del conductor</IonTitle>
+          <IonTitle className="ion-text-center title">Indique el CI del conductor</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen className="ion-padding">
-        <SearchTestedUserFormBase
-          onSubmit={consultUserData}
-          handleChange={handleChange}
-          rut={rut}
-          error={error}
-        />
+        <div className="grilla">
+          <SearchTestedUserFormBase
+            onSubmit={consultUserData}
+            handleChange={handleChange}
+            rut={rut}
+            error={error}
+          />
 
-        { loading && <IonItem><IonSpinner className="loading" /></IonItem> }
+          { loading && <IonItem><IonSpinner className="loading" /></IonItem> }
 
-        { user &&
-          <>
-            <DataList user={user} />
-            <IonItem lines="none">
-              <input type="button" onClick={confirmUserTested} className="submit-btn confirm-btn" value="Confirmar" />
-            </IonItem>
-          </>
-        }
-
+          { user &&
+            <>
+              <DataList user={user} />
+              
+                <input type="button" onClick={confirmUserTested} className="submit-btn confirm-btn" value="Confirmar" />
+              
+            </>
+          }
+        </div>
       </IonContent>
     </IonPage>
   );

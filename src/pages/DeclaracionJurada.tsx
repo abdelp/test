@@ -166,12 +166,12 @@ const DeclaracionJuradaPage: React.FC = () => {
                   </IonItem>
                 </div>
                 <div style={{display: 'flex'}}>
-                  <IonItem lines="none">
+                  <IonItem className="radio-label" lines="none">
                     <IonLabel>Sí</IonLabel>
                     <IonRadio slot="end" mode="ios" value="true" color="success" />
                   </IonItem>
 
-                  <IonItem lines="none">
+                  <IonItem className="radio-label" lines="none">
                     <IonLabel>No</IonLabel>
                     <IonRadio slot="end" mode="ios" value="false" color="danger" />
                   </IonItem>

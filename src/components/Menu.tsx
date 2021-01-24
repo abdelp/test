@@ -64,7 +64,7 @@ const Menu: React.FC = (props: any) => {
           <SignInFormBase />
         </IonPopover> */}
 
-        <IonList id="inbox-list">
+        <IonList id="inbox-list" lines="none">
           <IonListHeader>{username}</IonListHeader>
           {appPages.map((appPage, index) => {
             return (
@@ -96,6 +96,7 @@ const Menu: React.FC = (props: any) => {
             {/* {props.cookies.get('usuario_testeado') && */}
               <IonButton
                 color="favorite"
+                className="botonmenu"
                 expand="block"
                 onClick={ props.cookies.get('usuario_testeado') ? 
                   logoutAction :
