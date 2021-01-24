@@ -63,12 +63,12 @@ const defaultState = {
   min: 3,
   sec: 0,
   roundFinished: false,
+  showButtons: false,
   btns: btnsInitialState.map(v => ({...v}))
 };
 
 const MemorizeNumbers: React.FC = (props: any) => {
   const [state, setState] = useState<any>(defaultState);
-
   // const [iniciado, setIniciado] = useState<boolean>(false);
   // const [round, setRound] = useState<number>(0);
   // const [numerosAElegir, setNumerosAElegir] = useState<any>([]);
@@ -99,8 +99,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
 
   useEffect(() => {
     const {mensaje, numerosAElegir, turnoUsuario, numerosElegidos, roundFinished, btns } = state;
-    console.log(numerosAElegir);
-    console.log(numerosElegidos);
     let { round } = state;
     let rotationInterval: any;
 
@@ -173,11 +171,16 @@ const MemorizeNumbers: React.FC = (props: any) => {
           }
         }
       }
-    } else {  
-      if(numerosAElegir[round-1].length === numerosElegidos[round-1].length) {
+    } else {
+      if (!showButtons) {
+        console.log('mi turno');
+        rotationInterval = window.setTimeout(() => {
+            setState((state: any) => ({...state, showButtons: true }));
+        }, 2000);
+      } else if(numerosAElegir[round-1].length === numerosElegidos[round-1].length) {
         const mensaje = numerosAElegir[round-1].join('') === numerosElegidos[round-1].join('') ? 'Correcto' : 'Incorrecto';
 
-        setState((state: any) => ({...state, mensaje, turnoUsuario: false, roundFinished: true }));
+        setState((state: any) => ({...state, mensaje, turnoUsuario: false, roundFinished: true, showButtons: false }));
       }
     }
     return () => {
@@ -202,9 +205,9 @@ const MemorizeNumbers: React.FC = (props: any) => {
     }
   };
 
-  const { min, sec, btns } = state;
+  const { min, sec, btns, showButtons } = state;
 
-  console.log(mensaje);
+  console.log(showButtons);
   console.log(state.mensaje);
 
   return (
@@ -240,48 +243,53 @@ const MemorizeNumbers: React.FC = (props: any) => {
             ]}
           />
           <div className="grilla" style={{flexDirection: 'column'}}>
-                <div className="number-board" style={{display: 'flex', justifyContent: 'center'}}>
-                  <div className="number-column" style={{textAlign: 'center', display: 'flex', flexDirection: 'column'}}>
-                    {btns.slice(0, 5).map((b: any) => {
-                      return <IonButton
-                        key={b.num}
-                        expand="block"
-                        className="number-btn"
-                        color={b.color}
-                        onClick={() => pickNumber(b.num)}
-                        disabled={mensaje !== 'Tu turno' ? true : false}
-                      >
-                          {b.num}
-                        </IonButton>
-                    }
-                    )}
-                  </div>
-                  <div className="display-container">
-                    <div className="number-display">
-                      <p>
-                      { mensaje }
-                      </p>
-                    </div>
-                  </div>
-                  <div  className="number-column" style={{textAlign: 'center', display: 'flex', flexDirection: 'column'}}>
-                    {btns.slice(5).map((b: any) => {
-                      return <IonButton
-                        key={b.num}
-                        className="number-btn"
-                        expand="block"
-                        color={b.color}
-                        onClick={() => pickNumber(b.num)}
-                        disabled={mensaje !== 'Tu turno' ? true : false}
-                      >
-                          {b.num}
-                        </IonButton>
-                    }
-                    )}
+            <div className="number-board" style={{display: 'flex', justifyContent: 'center'}}>
+
+              {showButtons &&
+                <div className="number-column" style={{textAlign: 'center', display: 'flex', flexDirection: 'column'}}>
+                  {btns.slice(0, 5).map((b: any) => {
+                    return <IonButton
+                      key={b.num}
+                      expand="block"
+                      className="number-btn"
+                      color={b.color}
+                      onClick={() => pickNumber(b.num)}
+                      disabled={mensaje !== 'Tu turno' ? true : false}
+                    >
+                        {b.num}
+                      </IonButton>
+                  }
+                  )}
                 </div>
+              }
 
-                
+              {!showButtons &&
+                <div className="display-container">
+                  <div className="number-display">
+                    <p>
+                    { mensaje }
+                    </p>
+                  </div>
+                </div>
+              }
 
-                
+              {showButtons &&
+              <div className="number-column" style={{textAlign: 'center', display: 'flex', flexDirection: 'column'}}>
+                {btns.slice(5).map((b: any) => {
+                  return <IonButton
+                    key={b.num}
+                    className="number-btn"
+                    expand="block"
+                    color={b.color}
+                    onClick={() => pickNumber(b.num)}
+                    disabled={mensaje !== 'Tu turno' ? true : false}
+                  >
+                      {b.num}
+                    </IonButton>
+                }
+                )}
+              </div>
+            }
           </div>
           <div className="btn-container" style={{display: 'flex'}}>
                   {!round &&
