@@ -16,7 +16,7 @@
   --ion-color-tint: var(--ion-color-favorite-tint);
 }
 
-.submit-btn, .botonmenu, .confirmar-btn, .back-to-main {
+.submit-btn, .botonmenu, .confirmar-btn, .back-to-main, .btn-empezar {
   box-sizing: border-box;
   color: rgb(255, 255, 255) !important;
   font-family: Roboto, "Helvetica Neue", sans-serif;
