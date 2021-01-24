@@ -169,7 +169,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
   const pickNumber = (number: any) => {
     let { numerosElegidos, numerosAElegir, btns } = state;
   
-    btns[number].color = 'success';
+    btns[number].color = 'alert';
 
     if(numerosElegidos.length < numerosAElegir.length) {
       numerosElegidos.push(number);
