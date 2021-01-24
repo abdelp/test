@@ -16,7 +16,7 @@ import { set } from 'idb-keyval';
 // import { updateUserTest } from '../utils/db';
 import { withCookies, Cookies } from 'react-cookie';
 import { sendResult } from '../APIs';
-import { updateUserTest } from '../utils/db';
+import { updateUserTest, actualizarDatosUsuarioTesteadoPorCedula } from '../utils/db';
 import './MemorizeNumbers.css';
 import { debug } from 'console';
 // import { setMaxListeners } from 'process';
@@ -113,20 +113,33 @@ const MemorizeNumbers: React.FC = (props: any) => {
           const { cookies } = props;
 
           const ticket = cookies.get('ticket');
-          const categoria = cookies.get('ticket');
+          const categoria = cookies.get('categoria');
           const usuarioTesteado = cookies.get('usuario_testeado');
           const { cedula } = usuarioTesteado;
+          const { numerosAElegir, numerosElegidos } = state;
 
-          // updateUserTest(cedula, categoria, "teorica", questions)
-          // .then(result => {
-          //   sendResult(ticket, cedula, resultado)
-          //   .then(result => {    
-          //     history.replace('/page/test-finished', { state: 'prueba psiquica' });
-          //   });
-          // })
-          // .catch((error: any) => {
-          //   // setLoading(false);
-          // });
+          const examen = {
+            examenes: {
+              [categoria]: {
+                "psiquica": {
+                  "memorizar numeros": {numerosAElegir, numerosElegidos},
+                  fecha: new Date()
+                }
+              }
+            }
+          };
+
+          actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
+          .then(result => {
+            sendResult(ticket, cedula, 100)
+            .then(result => {    
+              history.replace('/page/test-finished', { state: 'prueba psiquica' });
+            })
+            .catch((error: any) => console.log(error));
+          })
+          .catch((error: any) => {
+            console.log(error);
+          });
 
           // history.replace('/page/test-finished', {state: 'prueba psiquica' })
         } else {
