@@ -16,7 +16,7 @@
   --ion-color-tint: var(--ion-color-favorite-tint);
 }
 
-.submit-btn, .botonmenu, .confirmar-btn, .back-to-main, .btn-empezar {
+.submit-btn, .confirmar-btn, .back-to-main, .btn-empezar {
   box-sizing: border-box;
   color: rgb(255, 255, 255) !important;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -66,7 +66,17 @@
 }
 
 .botonmenu{
-  box-shadow: none
+  box-shadow: none;
+  color: white;
+  font-size: 3vh;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-width: initial;
+  border-color: initial;
+  border-style: initial;
+  display: block;
+  height: 7vh;
+  font-weight: bold;
 }
 
 .title {
@@ -214,3 +224,28 @@ ion-input, ion-textarea{
   border-bottom: 2px solid var(--ion-color-primary);
   padding: 2vh 1vh 1vh 1vh;
 }
+
+
+ion-menu ion-content{
+  --background:var(--ion-color-favorite);
+}
+ion-menu.md ion-list#inbox-list{
+  border-bottom: none;
+  background: transparent !important;
+}
+
+.titulo-de-menu{
+  font-size: 3.5vh
+}
+
+ion-menu.md ion-item{
+  background: transparent !important;
+  --background: transparent;
+  margin-left: 3vw;
+}
+
+.iconomenu{
+  width: 5vw;
+  margin-right: 1vw;
+}
+

@@ -20,5 +20,8 @@ ion-menu {
 }
 
 ion-menu.md ion-list#inbox-list ion-list-header{
-  font-size: 4vw;
+  font-size: 5vw;
+  color: white;
+  font-weight: normal;
+  margin-left: 3vw;
 }
