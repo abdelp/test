@@ -27,14 +27,14 @@ const TimeOutPage: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle className="ion-text-center">Test finalizado</IonTitle>
+          <IonTitle className="ion-text-center title">Test finalizado</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent id="test-finished-content" fullscreen>
-        <h1>Se ha terminado el tiempo :(</h1>
+        <h1 style={{margin: '3vh auto'}}>Se ha terminado el tiempo :(</h1>
         <br/>
-        <IonButton color="favorite" onClick={returnMenu}>Pagina principal</IonButton>
+        <IonButton className="back-to-main" color="favorite" onClick={returnMenu}>Pagina principal</IonButton>
       </IonContent>
   </IonPage>
   );

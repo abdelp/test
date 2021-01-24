@@ -155,9 +155,9 @@ const MultipleOptionsPage: React.FC = (props: any) => {
               <IonLabel className="ion-text-center question-text texto" style={{fontSize: '3em', witheSpace: 'normal'}}><strong className='texto'>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
             </IonItem>
             {currentQuestion && questions[questionIdx].img &&
-            <IonItem key="img">
+            <div className="question-img-container" key="img">
               <IonImg className="question-img" src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
-            </IonItem>
+            </div>
             }
           </div>
 

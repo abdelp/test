@@ -103,11 +103,9 @@ getHeaderColor(test)
         <IonItem lines="none">
           <IonImg src={instruccionesPruebaTeorica} style={{maxWidth: '100%', width: '100%'}}/>
         </IonItem>
-        <IonItem lines="none">
           <IonButton onClick={startTest} color="none" className="confirmar-btn" size="large">
-          &nbsp;
+          CONFIRMAR
           </IonButton>
-        </IonItem>
     </IonContent>
   </IonPage>
   );

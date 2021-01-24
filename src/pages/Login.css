@@ -16,7 +16,7 @@
   --ion-color-tint: var(--ion-color-favorite-tint);
 }
 
-.submit-btn, .botonmenu, .confirmar-btn {
+.submit-btn, .botonmenu, .confirmar-btn, .back-to-main {
   box-sizing: border-box;
   color: rgb(255, 255, 255) !important;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -131,4 +131,54 @@ ion-input, ion-textarea{
 .datosdeinteresado ion-item ion-label{
   padding: 1vh 0;
   margin: 1vh 0;
+}
+
+.alert-wrapper.sc-ion-alert-md {
+  width: 90vw;
+  max-width: 90vw;
+  font-size: 4vh !important;
+}
+
+.alert-title.sc-ion-alert-md{
+  font-size: 3vh;
+}
+
+.alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
+  font-size: 3vh;
+}
+
+.alert-button-group.sc-ion-alert-md {
+  font-size: 4vw;
+}
+
+.alert-button.sc-ion-alert-md {
+  font-size: 2vh;
+  height: 5vh;
+}
+
+.opt-btn{
+  padding:1.4vh !important;
+    background: var(--ion-color-light-blue) !important;
+    border-radius: 5px !important;
+    margin-bottom: 2vh !important;
+    color: white !important;
+    font-size: 2.4vh !important;
+    cursor: pointer !important;
+    HEIGHT: auto;
+    font-weight: bold;
+}
+
+.question-img-container{
+   margin-top: 2vh;
+}
+
+.question-img {
+  min-height: 20vh;
+  height: 20vh;
+}
+
+.practical-test-list ion-title{
+  color: var(--ion-color-favorite);
+  border-bottom: 2px solid var(--ion-color-primary);
+  padding: 2vh 1vh 1vh 1vh;
 }

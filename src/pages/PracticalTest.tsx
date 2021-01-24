@@ -66,7 +66,7 @@ const PracticalTestPage: React.FC = () => {
           <IonTitle className="ion-text-uppercase ion-text-center title">Test Práctico</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent className="ion-padding">
         { loading &&
           <IonPopover
             cssClass='loading-popover ion-text-center'
@@ -109,7 +109,7 @@ const PracticalTestPage: React.FC = () => {
           ]}
         />
 
-        <IonList>
+        <IonList className="practical-test-list">
           { questions.map((q: any) =>
               <div key={q.id}>
                 <div style={{width: '100%', minWidth: '300px'}}>
@@ -128,26 +128,26 @@ const PracticalTestPage: React.FC = () => {
                     )}
                 >
                      <div style={{width: '100%', minWidth: '300px'}}>
-                       <IonItem>
+                       <IonItem lines="none">
                          <IonLabel className="question-label ion-text-wrap">{item.pregunta}</IonLabel>
                        </IonItem>
                      </div>
-                     <div style={{display: 'flex'}}>
-                       <IonItem lines="none">
+                     <div className="radio-row" style={{display: 'flex'}}>
+                       <IonItem className="radio-label" lines="none">
                          <IonLabel>Sí</IonLabel>
-                         <IonRadio slot="end" mode="ios" value="true" color="success" />
+                         <IonRadio slot="end" value="true" color="success" />
                        </IonItem>
 
-                       <IonItem lines="none">
+                       <IonItem className="radio-label" lines="none">
                          <IonLabel>No</IonLabel>
-                         <IonRadio slot="end" mode="ios" value="false" color="danger" />
+                         <IonRadio slot="end" value="false" color="danger" />
                        </IonItem>
                      </div>
                   </IonRadioGroup>
                 )}
               </div>
           ) }
-          <IonItem>
+          <IonItem lines="none">
             <IonTextarea
               placeholder="Enter more information here..."
               // disabled
@@ -156,11 +156,9 @@ const PracticalTestPage: React.FC = () => {
             ></IonTextarea>
           </IonItem>
         </IonList>
-        <IonItem className='ion-text-center'>
-          <IonButton className="confirmar-btn"  color="none" size="large" onClick={(state) => setState({...state, showAlert: true}) }>
-          &nbsp;
+          <IonButton style={{margin: '2em auto'}} className="confirmar-btn"  color="none" size="large" onClick={(state) => setState({...state, showAlert: true}) }>
+          CONFIRMAR
           </IonButton>
-        </IonItem>
       </IonContent>
     </IonPage>
   );

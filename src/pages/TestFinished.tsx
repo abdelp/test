@@ -67,7 +67,7 @@ const TestFinishedPage: React.FC = props => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle className="ion-text-center">Test finalizado</IonTitle>
+          <IonTitle className="ion-text-center title">Test finalizado</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -87,10 +87,11 @@ const TestFinishedPage: React.FC = props => {
             <IonItem>
               <IonLabel><strong>Porcentaje:</strong> {porcentaje}%</IonLabel>
             </IonItem>
-            <IonItem>
-              <IonButton onClick={returnMenu} size="large" className="confirm-btn" color="favorite">Volver a los tests</IonButton>
-            </IonItem>
+            
+            
           </IonList>
+          <IonButton onClick={returnMenu} size="large" className="confirm-btn confirmar-btn" color="favorite" style={{margin: '3vh auto'}}>Volver a los tests</IonButton>
+
       </IonContent>
   </IonPage>
   );
