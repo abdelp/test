@@ -185,6 +185,9 @@ ion-input, ion-textarea{
   font-weight: bold;
 }
 
+.alert-button.sc-ion-alert-md.alert-button-role-cancel {
+  background: var(--ion-color-medium);
+}
 .opt-btn{
   padding:1.4vh !important;
     background: var(--ion-color-light-blue) !important;
