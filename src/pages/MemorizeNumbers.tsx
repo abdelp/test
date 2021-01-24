@@ -215,28 +215,43 @@ const MemorizeNumbers: React.FC = (props: any) => {
               }
             ]}
           />
-            <div style={{textAlign: 'center'}}>
-            {btns.map((b: any) => {
-              return <IonButton
-                key={b.num}
-                className="number-btn"
-                color={b.color}
-                onClick={() => pickNumber(b.num)}
-                disabled={mensaje !== 'Tu turno' ? true : false}
-              >
-                  {b.num}
-                </IonButton>
-            }
-            )}
-          </div>
-
-          <div className="display-container">
-            <div className="number-display">
-              <p>
-              { mensaje }
-              </p>
+          <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div style={{textAlign: 'center', display: 'flex', flexDirection: 'column'}}>
+              {btns.slice(0, 5).map((b: any) => {
+                return <IonButton
+                  key={b.num}
+                  className="number-btn"
+                  color={b.color}
+                  onClick={() => pickNumber(b.num)}
+                  disabled={mensaje !== 'Tu turno' ? true : false}
+                >
+                    {b.num}
+                  </IonButton>
+              }
+              )}
             </div>
+            <div className="display-container">
+              <div className="number-display">
+                <p>
+                { mensaje }
+                </p>
+              </div>
+            </div>
+            <div style={{textAlign: 'center', display: 'flex', flexDirection: 'column'}}>
+              {btns.slice(5).map((b: any) => {
+                return <IonButton
+                  key={b.num}
+                  className="number-btn"
+                  color={b.color}
+                  onClick={() => pickNumber(b.num)}
+                  disabled={mensaje !== 'Tu turno' ? true : false}
+                >
+                    {b.num}
+                  </IonButton>
+              }
+              )}
           </div>
+        </div>
 
           {/* <IonItem lines="none">
             Tiempo restante: <Timer min={min} sec={sec}></Timer>
