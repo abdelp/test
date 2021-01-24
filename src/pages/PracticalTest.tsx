@@ -32,7 +32,11 @@ const PracticalTestPage: React.FC = (props: any) => {
   const history = useHistory();
 
   const incompleteForm = () => {
-    const incomplete = questions.some((q: any) => typeof q.respuesta === 'undefined');
+    const incomplete = questions.some((q: any) => {
+      return q.items.some((i: any) => 
+        typeof i.respuesta === 'undefined'
+        )
+    });
   
     return incomplete;
   };
@@ -149,7 +153,7 @@ const PracticalTestPage: React.FC = (props: any) => {
                  {q.items.map((item: any, idx: any) => 
                   <IonRadioGroup
                     key={item.id}
-                    value={(questions[q.id]?.items[item.id - 1]?.respuesta || null)}
+                    value={(questions[q.id - 1]?.items[item.id - 1]?.respuesta || null)}
                     onIonChange={e => setQuestions((state: any) => {
                       const idx: any = state.findIndex((obj: any) => obj.id === q.id);
                       const questionIdx: any = state[idx]["items"].findIndex((obj: any) => obj.id === item.id);
@@ -180,7 +184,7 @@ const PracticalTestPage: React.FC = (props: any) => {
           ) }
           <IonItem lines="none">
             <IonTextarea
-              placeholder="Enter more information here..."
+              placeholder="Otros datos..."
               // disabled
               // value={text}
               // onIonChange={e => setText(e.detail.value!)}

@@ -35,5 +35,5 @@
 {"id": 34, "pregunta": "¿Sufre o a sufrido ataques de epilepsia?"},
 {"id": 35, "pregunta": "¿Consume habitualmente bebidas alcohólicas?"},
 {"id": 36, "pregunta": "¿Fuma habitualmente? Indique en observaciones la cantidad de cigarrillos diarios."},
-{"id": 37, "pregunta": "Otros"}
+{"id": 37, "pregunta": "Otros", "descripcion": ""}
 ]

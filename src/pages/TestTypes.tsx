@@ -85,6 +85,11 @@ const TestTypesPage: React.FC = () => {
             pathname: '/page/instrucciones',
             state: {categoria, test, usuario_testeado }
           });
+        } else if(test === 'psiquica') {
+          history.push({
+            pathname: '/page/instrucciones',
+            state: {categoria, test, usuario_testeado }
+          });
         }
       } else {
         history.push({pathname: '/page/notice', state: {categoria, usuario_testeado} });

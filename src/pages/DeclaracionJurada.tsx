@@ -29,6 +29,7 @@ import './DeclaracionJurada.css';
 const DeclaracionJuradaPage: React.FC = (props: any) => {
   const [questions, setQuestions] = useState<any>([]);
   const [state, setState] = useState<any>({showAlert: false, showAlertNotCompleted: false});
+  const [disableText, setDisableText] = useState<any>(true);
   const history = useHistory();
   
   const incompleteForm = () => {
@@ -111,10 +112,6 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
 
   const { loading, showAlert, showAlertNotCompleted } = state;
 
-  if(questions.length) {
-    console.log(questions[questions.length - 1]["respuesta"]);
-  }
-
   return (
     <IonPage>
       <IonHeader>
@@ -174,6 +171,14 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
                 const idx: any = state.findIndex((obj: any) => obj.id === q.id);
                 state[idx].respuesta = e.detail.value;
 
+                let valor = false;
+                if (state[state.length - 1]?.respuesta === "true") {
+                  valor = false;
+                } else {
+                  valor = true;
+                }
+
+                setDisableText(valor)
                 return state;
               }
               )}>
@@ -197,14 +202,23 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
               </div>
             </IonRadioGroup>
           ) }
-          <IonItem  lines="none">
-            <IonTextarea
-              placeholder="Enter more information here..."
-              // disabled={questions.length ? questions[questions.length] : true}
-              // value={text}
-              // onIonChange={e => setText(e.detail.value!)}
-            ></IonTextarea>
-          </IonItem>
+
+            <IonItem  lines="none">
+              <IonTextarea placeholder="Otros datos..."
+                value={questions[questions.length-1]?.descripcion || ''}
+                disabled={disableText}
+                onIonChange={e => setQuestions((state: any) => {
+                  // const idx: any = state.findIndex((obj: any) => obj.id === q.id);
+                  state[state.length - 1].descripcion = e.detail.value;
+
+                  return state;
+                }
+                )}
+              >
+
+              </IonTextarea>
+            </IonItem>
+
         </IonList>
         <IonItem className='ion-text-center' lines="none">
           <IonButton  style={{margin: '2em auto'}} className="confirmar-btn"  color="none" size="large" onClick={(state) => setState({...state, showAlert: true}) }>
