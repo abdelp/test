@@ -23,44 +23,34 @@ import { debug } from 'console';
 
 const btnsInitialState = [
   {
-    num: 0,
-    color: 'light'
+    num: 0
   },
   {
-    num: 1,
-    color: 'light'
+    num: 1
   },
   {
-    num: 2,
-    color: 'light'
+    num: 2
   },
   {
-    num: 3,
-    color: 'light'
+    num: 3
   },
   {
-    num: 4,
-    color: 'light'
+    num: 4
   },
   {
-    num: 5,
-    color: 'light'
+    num: 5
   },
   {
-    num: 6,
-    color: 'light'
+    num: 6
   },
   {
-    num: 7,
-    color: 'light'
+    num: 7
   },
   {
-    num: 8,
-    color: 'light'
+    num: 8
   },
   {
-    num: 9,
-    color: 'light'
+    num: 9
   },
 ];
 
@@ -249,55 +239,64 @@ const MemorizeNumbers: React.FC = (props: any) => {
               }
             ]}
           />
-          <div style={{display: 'flex', justifyContent: 'center'}}>
-            <div style={{textAlign: 'center', display: 'flex', flexDirection: 'column'}}>
-              {btns.slice(0, 5).map((b: any) => {
-                return <IonButton
-                  key={b.num}
-                  className="number-btn"
-                  color={b.color}
-                  onClick={() => pickNumber(b.num)}
-                  disabled={mensaje !== 'Tu turno' ? true : false}
-                >
-                    {b.num}
-                  </IonButton>
-              }
-              )}
-            </div>
-            <div className="display-container">
-              <div className="number-display">
-                <p>
-                { mensaje }
-                </p>
-              </div>
-            </div>
-            <div style={{textAlign: 'center', display: 'flex', flexDirection: 'column'}}>
-              {btns.slice(5).map((b: any) => {
-                return <IonButton
-                  key={b.num}
-                  className="number-btn"
-                  color={b.color}
-                  onClick={() => pickNumber(b.num)}
-                  disabled={mensaje !== 'Tu turno' ? true : false}
-                >
-                    {b.num}
-                  </IonButton>
-              }
-              )}
+          <div className="grilla" style={{flexDirection: 'column'}}>
+                <div className="number-board" style={{display: 'flex', justifyContent: 'center'}}>
+                  <div className="number-column" style={{textAlign: 'center', display: 'flex', flexDirection: 'column'}}>
+                    {btns.slice(0, 5).map((b: any) => {
+                      return <IonButton
+                        key={b.num}
+                        expand="block"
+                        className="number-btn"
+                        color={b.color}
+                        onClick={() => pickNumber(b.num)}
+                        disabled={mensaje !== 'Tu turno' ? true : false}
+                      >
+                          {b.num}
+                        </IonButton>
+                    }
+                    )}
+                  </div>
+                  <div className="display-container">
+                    <div className="number-display">
+                      <p>
+                      { mensaje }
+                      </p>
+                    </div>
+                  </div>
+                  <div  className="number-column" style={{textAlign: 'center', display: 'flex', flexDirection: 'column'}}>
+                    {btns.slice(5).map((b: any) => {
+                      return <IonButton
+                        key={b.num}
+                        className="number-btn"
+                        expand="block"
+                        color={b.color}
+                        onClick={() => pickNumber(b.num)}
+                        disabled={mensaje !== 'Tu turno' ? true : false}
+                      >
+                          {b.num}
+                        </IonButton>
+                    }
+                    )}
+                </div>
+
+                
+
+                
           </div>
+          <div className="btn-container" style={{display: 'flex'}}>
+                  {!round &&
+                    <IonButton className="btn-empezar" color="favorite" onClick={empezar}>
+                      empezar
+                    </IonButton>
+                  }
+                </div>
         </div>
 
           {/* <IonItem lines="none">
             Tiempo restante: <Timer min={min} sec={sec}></Timer>
           </IonItem> */}
 
-          <div className="btn-container">
-            {!round &&
-              <IonButton color="primary" onClick={empezar}>
-                empezar
-              </IonButton>
-            }
-          </div>
+          
       </IonContent>
     </IonPage>
   );
