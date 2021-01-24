@@ -15,7 +15,10 @@ import { set } from 'idb-keyval';
 // import { sendResult } from '../APIs';
 // import { updateUserTest } from '../utils/db';
 import { withCookies, Cookies } from 'react-cookie';
+import { sendResult } from '../APIs';
+import { updateUserTest } from '../utils/db';
 import './MemorizeNumbers.css';
+import { debug } from 'console';
 // import { setMaxListeners } from 'process';
 
 const btnsInitialState = [
@@ -64,9 +67,9 @@ const btnsInitialState = [
 const defaultState = {
   round: 0,
   mensaje: '',
-  numerosAElegir: [],
+  numerosAElegir: [[],[],[],[]],
   turnoUsuario: false,
-  numerosElegidos: [],
+  numerosElegidos: [[],[],[],[]],
   min: 3,
   sec: 0,
   roundFinished: false,
@@ -106,13 +109,38 @@ const MemorizeNumbers: React.FC = (props: any) => {
 
   useEffect(() => {
     const {mensaje, numerosAElegir, turnoUsuario, numerosElegidos, roundFinished, btns } = state;
+    console.log(numerosAElegir);
+    console.log(numerosElegidos);
     let { round } = state;
     let rotationInterval: any;
 
     if(!turnoUsuario) {
       if(roundFinished) {
         if(round === 4) {
-          history.replace('/page/test-finished', {state: 'prueba psiquica' })
+
+          /*
+           * Poner webservice
+           */
+
+          const { cookies } = props;
+
+          const ticket = cookies.get('ticket');
+          const categoria = cookies.get('ticket');
+          const usuarioTesteado = cookies.get('usuario_testeado');
+          const { cedula } = usuarioTesteado;
+
+          // updateUserTest(cedula, categoria, "teorica", questions)
+          // .then(result => {
+          //   sendResult(ticket, cedula, resultado)
+          //   .then(result => {    
+          //     history.replace('/page/test-finished', { state: 'prueba psiquica' });
+          //   });
+          // })
+          // .catch((error: any) => {
+          //   // setLoading(false);
+          // });
+
+          // history.replace('/page/test-finished', {state: 'prueba psiquica' })
         } else {
           round++;
 
@@ -121,22 +149,28 @@ const MemorizeNumbers: React.FC = (props: any) => {
               ...defaultState,
               mensaje: 'Turno del ordenador',
               round,
-              numerosAElegir: [],
+              numerosAElegir: [...state.numerosAElegir],
               turnoUsuario: false,
-              numerosElegidos: [],
+              numerosElegidos: [...state.numerosElegidos],
               btns: btnsInitialState.map(v => ({...v}))
             }));
           }, 2000);
         }
       } else {
         if(round >= 1 && round <= 4) {
+          // debug();
           if(mensaje === 'Turno del ordenador') {        
             rotationInterval = window.setTimeout(() => {
               setState((state: any) => ({...state, mensaje: '' }));
             }, 2000);
-          } else if (mensaje === '' && numerosAElegir.length < round + 1) {
-            const randNum: any = randomNumber().toString();
-            numerosAElegir.push(randNum);
+          } else if (mensaje === '' && numerosAElegir[round-1].length < round + 1) {
+            let randNum: any = randomNumber().toString();
+
+            while(numerosAElegir[round-1].findIndex((n: any) => n == randNum) != -1) {
+              randNum = randomNumber().toString();
+            }
+
+            numerosAElegir[round-1].push(randNum);
             rotationInterval = window.setTimeout(() => {
               setState((state: any) => ({...state, mensaje: randNum, numerosAElegir}));
             });
@@ -144,14 +178,14 @@ const MemorizeNumbers: React.FC = (props: any) => {
             rotationInterval = window.setTimeout(() => {
               setState((state: any) => ({...state, mensaje: '' }));
             }, 2000);
-          } else if (numerosAElegir.length === round + 1) {
+          } else if (numerosAElegir[round-1].length === round + 1) {
             setState((state: any) => ({...state, mensaje: 'Tu turno', turnoUsuario: true}));
           }
         }
       }
     } else {  
-      if(numerosAElegir.length === numerosElegidos.length) {
-        const mensaje = numerosAElegir.join('') === numerosElegidos.join('') ? 'Correcto' : 'Incorrecto';
+      if(numerosAElegir[round-1].length === numerosElegidos[round-1].length) {
+        const mensaje = numerosAElegir[round-1].join('') === numerosElegidos[round-1].join('') ? 'Correcto' : 'Incorrecto';
 
         setState((state: any) => ({...state, mensaje, turnoUsuario: false, roundFinished: true }));
       }
@@ -171,8 +205,8 @@ const MemorizeNumbers: React.FC = (props: any) => {
   
     btns[number].color = 'alert';
 
-    if(numerosElegidos.length < numerosAElegir.length) {
-      numerosElegidos.push(number);
+    if(numerosElegidos[round-1].length < numerosAElegir[round-1].length) {
+      numerosElegidos[round-1].push(number);
 
       setState((state: any) => ({...state, numerosElegidos, btns}));
     }
