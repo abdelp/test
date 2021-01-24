@@ -8,7 +8,11 @@ import {
   IonMenu,
   IonMenuToggle,
   IonButton,
-  IonPopover
+  IonPopover,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonImg
 } from '@ionic/react';
 
 import React, { useEffect, useState } from 'react';
@@ -18,6 +22,9 @@ import { useCookies } from "react-cookie";
 import { useHistory } from 'react-router-dom';
 import SignInFormBase from '../components/SignInFormBase';
 import { withCookies } from 'react-cookie';
+import iconoFinalizar from '../assets/menu-check.svg';
+import iconoCerrar from '../assets/menu-power.svg';
+
 interface AppPage {
   url: string;
   iosIcon: string;
@@ -56,6 +63,11 @@ const Menu: React.FC = (props: any) => {
 
   return (
     <IonMenu contentId="main" type="overlay" swipeGesture={false}>
+      <IonHeader>
+        <IonToolbar color="favorite">
+          <IonTitle className="titulo-de-menu">Menu</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent>
 
         <IonPopover
@@ -93,18 +105,24 @@ const Menu: React.FC = (props: any) => {
               onClick={logoutAction}
             >
             </IonItem>
+            
           </IonMenuToggle>
 
           <section>
             {/* {props.cookies.get('usuario_testeado') && */}
-              <IonButton
-                color="favorite"
+              <IonItem
                 className="botonmenu"
-                expand="block"
                 onClick={() => setShowLogin(true)}>
                   Salir
-              </IonButton>
+              </IonItem>
             {/* } */}
+            <IonItem className="botonmenu">
+            <IonImg className="iconomenu" src={iconoFinalizar}></IonImg> Finalizar Prueba
+            </IonItem>
+            <IonItem className="botonmenu">
+              <IonImg className="iconomenu" src={iconoCerrar}></IonImg> Cerrar Sesión
+            </IonItem>
+            
           </section>
         </IonList>
       </IonContent>
