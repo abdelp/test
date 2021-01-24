@@ -132,13 +132,16 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
         <IonAlert
           isOpen={showAlert}
           cssClass='my-custom-class'
-          header={'Confirmación'}
-          message={'¿Estás seguro que deseas confirmar?'}
+          header={'Aviso'}
+          message={'Afirmo que la declaración jurada ha sido completada correctamente, sin omisión ni falsear dato alguno siendo fiel expresión de la verdad y de no cumplirse será pasible de las sanciones previstas en el artículo N° 243 del Código Penal Declaración falsa.'}
           buttons={[
             {
               text: 'Cancelar',
               role: 'cancel',
-              cssClass: 'secondary'
+              cssClass: 'secondary',
+              handler: () => {
+                setState((state: any) => ({ ...state, showAlert: false }))
+              }
             },
             {
               text: 'Sí',
