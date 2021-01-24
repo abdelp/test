@@ -77,6 +77,7 @@
   display: block;
   height: 7vh;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .title {

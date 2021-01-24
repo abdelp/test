@@ -57,7 +57,10 @@ const SignInFormBase = ({
        path: "/"
       });
       
-      setShowLogin(false);
+      if(setShowLogin) {
+        setShowLogin(false);
+      }
+
       setState((state: any) => ({ ...state, ...INITIAL_STATE }));
 
       history.replace(ROUTES.REGIST_USER);
