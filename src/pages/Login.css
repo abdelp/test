@@ -156,6 +156,35 @@ ion-input, ion-textarea{
   height: 5vh;
 }
 
+.alert-message.sc-ion-alert-md{
+  max-height: 46vh;
+}
+
+.alert-head.sc-ion-alert-md{
+  --background: var(--ion-color-favorite);
+  background: var(--ion-color-favorite);
+  color: white;
+}
+
+.alert-head.sc-ion-alert-md h2{
+  color: white !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  text-align: center;
+  padding: 1vh;
+  font-size: 4vh;
+}
+
+.alert-button.sc-ion-alert-md{
+  font-size: 2vh;
+  height: 5vh;
+  background: var(--ion-color-favorite);
+  color: white;
+  padding: 2vh;
+  border-radius: .5vh;
+  font-weight: bold;
+}
+
 .opt-btn{
   padding:1.4vh !important;
     background: var(--ion-color-light-blue) !important;
