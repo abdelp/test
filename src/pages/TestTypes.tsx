@@ -15,10 +15,10 @@ import { getExamDate } from '../APIs';
 import { useCookies } from "react-cookie";
 import './TestTypes.css';
 
-import pruebaTeoricaBtnImg from '../assets/prueba-teorica-btn-img.svg';
-import pruebaPsiquicaBtnImg from '../assets/prueba-psiquica-btn-img.svg';
-import pruebaPracticaBtnImg from '../assets/prueba-practica-btn-img.svg';
-import declaracionJuradaBtnImg from '../assets/declaracion-jurada-btn-img.svg';
+import pruebaTeoricaBtnImg from '../assets/icono-prueba-teorica.svg';
+import pruebaPsiquicaBtnImg from '../assets/icono-prueba-psiquica.svg';
+import pruebaPracticaBtnImg from '../assets/icono-prueba-practica.svg';
+import declaracionJuradaBtnImg from '../assets/declaracion-jurada.svg';
 
 const TestTypesPage: React.FC = () => {
   const history = useHistory();
