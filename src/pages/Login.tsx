@@ -18,7 +18,7 @@ const LoginPage: React.FC = () => (
     </IonHeader>
     <IonContent className="ion-padding vertical-center" >
       <div className="grilla">
-      <SignInFormBase />
+        <SignInFormBase />
       </div>
     </IonContent>
   </IonPage>
