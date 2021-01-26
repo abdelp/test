@@ -174,6 +174,10 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
                 const idx: any = state.findIndex((obj: any) => obj.id === q.id);
                 state[idx].respuesta = e.detail.value;
 
+                if (state[state.length-1].respuesta == "false") {
+                  state[state.length-1].descripcion = '';
+                }
+
                 let valor = false;
                 if (state[state.length - 1]?.respuesta === "true") {
                   valor = false;
