@@ -53,7 +53,7 @@ const colors = [
 
 const defaultTime = {
   min: 0,
-  sec: 5
+  sec: 3
 };
 
 const ColorsTest: React.FC = (props: any) => {
@@ -68,7 +68,6 @@ const ColorsTest: React.FC = (props: any) => {
   const [showIncorrectSymbol, setShowIncorrectSymbol] = useState<any>(false);
 
   useEffect(() => {
-    console.log(results);
     if(round === 0) {
       setRound((state: any) => state + 1);
       nextColor();
@@ -164,17 +163,22 @@ const ColorsTest: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonItem
-          style={{color: codeToDisplay}}
-          className="ion-text-center"
-          onClick={() => checkAnswer(true)}
-        >
-          {nameToDisplay}
-        </IonItem>
-        <IonItem>
-          { showCorrectSymbol && <IonImg src={correctSymbol} /> }
-          { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
-        </IonItem>
+
+        <div style={{position: 'relative'}}>
+          <div
+            style={{color: codeToDisplay}}
+            className="ion-text-center"
+            onClick={() => checkAnswer(true)}
+          >
+            <p className="ion-text-center">{nameToDisplay}</p>
+          </div>
+          <div style={{position: 'absolute', right: 0, left: 0, width: '100px', top: 0, margin: '0 auto'}}>
+            {/* <div style={{display: 'flex', justifyContent: 'center'}}> */}
+            { showCorrectSymbol && <IonImg src={correctSymbol} /> }
+            { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
+            {/* </div> */}
+          </div>
+        </div>
       </IonContent>
     </IonPage>
   );
