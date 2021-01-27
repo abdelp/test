@@ -165,9 +165,11 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
           ]}
         />
 
+          <h1 className="titulo-centrado">Declaración jurada sobre padecimiento de afecciones y/o adicciones</h1>
         <IonList>
           { questions.map((q: any) =>
             <IonRadioGroup
+            className="one-question"
               key={q.id}
               value={(questions[q.id - 1]?.respuesta || null)}
               onIonChange={e => setQuestions((state: any) => {
@@ -189,8 +191,8 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
                 return state;
               }
               )}>
-              <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
-                <div style={{width: '100%', minWidth: '300px'}}>
+              <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: '100%'}}>
+                <div className="radio-label-container">
                   <IonItem lines="none">
                     <IonLabel className="question-label">{q.pregunta}</IonLabel>
                   </IonItem>

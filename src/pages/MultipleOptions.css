@@ -111,5 +111,21 @@ ion-button {
 
 .opt-btn {
   margin-top: 1em;
+  border-radius: 3vw !important;
+  padding: 3vh 3vw !important;
+  background-color: #68C7D4 !important;
+  box-shadow: 10px 10px 10px #04A2B7;
+  color: black !important;
 }
 
+.opt-btn:nth-child(2){
+  background-color: #E5F6F8 !important;
+  box-shadow: 10px 10px 10px #A1DDE4;
+  color: black !important;
+}
+
+.opt-btn:last-child{
+  background-color: #B3E3E9 !important;
+  box-shadow: 10px 10px 10px #7ED0DA;
+  color: black !important;
+}

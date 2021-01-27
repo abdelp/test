@@ -159,18 +159,20 @@ const MultipleOptionsPage: React.FC = (props: any) => {
             }
           </div>
 
-          {questions[questionIdx] && questions[questionIdx].opciones.map((opt: any, idx: number) => {
-            return (
-              <div
-                key={opt}
-                className="opt-btn"
-                onClick={() => nextQuestion(idx)}
-                >
-                {opt}
-              </div>
-            )
-            })
-          }
+          <div className="answers-container">
+            {questions[questionIdx] && questions[questionIdx].opciones.map((opt: any, idx: number) => {
+              return (
+                <p
+                  key={opt}
+                  className="opt-btn"
+                  onClick={() => nextQuestion(idx)}
+                  >
+                  {opt}
+                </p>
+              )
+              })
+            }
+          </div>
 
           <IonItem lines="none" className="counter">
             Tiempo restante: <Timer min={min} sec={sec}></Timer>

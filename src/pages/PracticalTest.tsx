@@ -98,7 +98,7 @@ const PracticalTestPage: React.FC = (props: any) => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="orange">
-          <IonTitle className="ion-text-uppercase ion-text-center title">Test Práctico</IonTitle>
+          <IonTitle className="ion-text-center title">Prueba Práctica</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
@@ -152,6 +152,7 @@ const PracticalTestPage: React.FC = (props: any) => {
                 </div>
                  {q.items.map((item: any, idx: any) => 
                   <IonRadioGroup
+                  className="one-question"
                     key={item.id}
                     value={(questions[q.id - 1]?.items[item.id - 1]?.respuesta || null)}
                     onIonChange={e => setQuestions((state: any) => {
@@ -163,7 +164,7 @@ const PracticalTestPage: React.FC = (props: any) => {
                     }
                     )}
                 >
-                     <div style={{width: '100%', minWidth: '300px'}}>
+                     <div className="radio-label-container">
                        <IonItem lines="none">
                          <IonLabel className="question-label ion-text-wrap">{item.pregunta}</IonLabel>
                        </IonItem>

@@ -98,6 +98,7 @@
 
 .error-msg {
   color: red;
+  font-size: 3vh
 }
 
 .loading {
@@ -132,7 +133,14 @@ ion-input, ion-textarea{
 
 .datosdeinteresado ion-item{
   font-size: 2.5vh; 
+  border-bottom-color: #8C8B8A;
+  --border-color: #8C8B8A;
 }
+
+ion-list.datosdeinteresado {
+  width: 80vw;
+}
+
 .datosdeinteresado ion-title{
   font-size: 3.2vh;
   padding: 0;
@@ -142,6 +150,7 @@ ion-input, ion-textarea{
 .datosdeinteresado ion-item ion-label{
   padding: 1vh 0;
   margin: 1vh 0;
+  color: #4F4F4E !important;
 }
 
 .alert-wrapper.sc-ion-alert-md {
@@ -221,8 +230,7 @@ ion-input, ion-textarea{
 }
 
 .practical-test-list ion-title{
-  color: var(--ion-color-favorite);
-  border-bottom: 2px solid var(--ion-color-primary);
+  border-bottom: 2px solid #000;
   padding: 2vh 1vh 1vh 1vh;
 }
 
@@ -250,3 +258,29 @@ ion-menu.md ion-item{
   margin-right: 1vw;
 }
 
+
+.one-question{
+  display: flex;
+  
+}
+
+.radio-label-container{
+  width: calc(100% - 30vw);
+  min-width: 300px;
+  display: flex;
+}
+.radio-row{
+  width: 30vw
+}
+
+
+.alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
+  padding: 5vh 3vw;
+}
+
+.titulo-centrado{
+  font-size: 2.5vh;
+  padding: 2vh;
+  text-align: center;
+  font-weight: bold;;
+}

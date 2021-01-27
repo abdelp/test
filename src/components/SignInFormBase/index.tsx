@@ -108,7 +108,7 @@ const SignInFormBase = ({
       <input
         type="submit"
         className="submit-btn"
-        value="Ingresar"
+        value="ACEPTAR"
         color="favorite"
       />
       {

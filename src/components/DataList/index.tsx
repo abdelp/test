@@ -12,9 +12,9 @@ const DataList = ({
 }: any) => {
   return (
   <IonList className="datosdeinteresado">
-    <IonListHeader>
+    {/*<IonListHeader>
       <IonTitle className="ion-text-center"><strong>Datos del interesado</strong></IonTitle>
-    </IonListHeader>
+    </IonListHeader>*/}
     <IonItem>
       <IonLabel><strong>Nombres:</strong> {user.nombres}</IonLabel>
     </IonItem>

@@ -107,7 +107,7 @@ const TestTypesPage: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton autoHide={false} />
           </IonButtons>
-          <IonTitle className="ion-text-uppercase ion-text-center title">{categoria}</IonTitle>
+          <IonTitle className="ion-text-center title">{/* {categoria}*/}Pruebas</IonTitle>
         </IonToolbar>
       </IonHeader>
 

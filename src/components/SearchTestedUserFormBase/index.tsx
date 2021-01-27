@@ -16,7 +16,7 @@ const SearchTestedUserFormBase = ({
       <IonItem lines="none">
         <IonInput name="rut" value={rut} onIonChange={handleChange} autofocus placeholder="C.I. N°" />
       </IonItem>
-      <input type="submit" className="submit-btn" value="Consultar" />
+      <input type="submit" className="submit-btn" value="Aceptar" />
       {error && <p className="error-msg">{error.message}</p>}
     </form>
   );
