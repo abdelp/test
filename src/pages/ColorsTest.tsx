@@ -6,8 +6,6 @@ import {
   IonTitle,
   IonToolbar,
   IonItem,
-  IonButton,
-  IonAlert,
   IonImg
 } from '@ionic/react';
 import { useHistory, withRouter } from 'react-router-dom';
@@ -182,7 +180,7 @@ const ColorsTest: React.FC = (props: any) => {
   );
 };
 
-export default  compose(
+export default compose(
   withRouter,
   withCookies
 )(ColorsTest);
