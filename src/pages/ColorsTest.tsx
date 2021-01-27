@@ -52,8 +52,8 @@ const colors = [
 ];
 
 const defaultTime = {
-  min: 2,
-  sec: 0
+  min: 0,
+  sec: 10
 };
 
 const defaultQuestionTime = {
@@ -185,7 +185,10 @@ const ColorsTest: React.FC = (props: any) => {
     setQuestionTime({...defaultQuestionTime});
 
     setRound((state: any) => state + 1);
-    nextColor();
+
+    setTimeout(() => {
+      nextColor();
+    }, 1000);
   };
 
   return (
@@ -204,7 +207,9 @@ const ColorsTest: React.FC = (props: any) => {
           >
             <p className="ion-text-center">{nameToDisplay}</p>
           </div>
-          <div style={{position: 'absolute', right: 0, left: 0, width: '100px', top: 0, margin: '0 auto'}}>
+          <div style={{
+            position: 'absolute', 
+            right: 0, left: 0, width: '100px', top: 0, margin: '0 auto'}}>
             { showCorrectSymbol && <IonImg src={correctSymbol} /> }
             { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
           </div>

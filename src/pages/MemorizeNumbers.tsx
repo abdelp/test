@@ -193,7 +193,9 @@ const MemorizeNumbers: React.FC = (props: any) => {
       } else if(numerosAElegir[round-1].length === numerosElegidos[round-1].length) {
         const mensaje = numerosAElegir[round-1].join('') === numerosElegidos[round-1].join('') ? 'Correcto' : 'Incorrecto';
 
-        setState((state: any) => ({...state, mensaje, turnoUsuario: false, roundFinished: true, showButtons: false }));
+        rotationInterval = window.setTimeout(() => {
+          setState((state: any) => ({...state, mensaje, turnoUsuario: false, roundFinished: true, showButtons: false }));
+        }, 300);
       }
     }
     return () => {
@@ -219,9 +221,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
   };
 
   const { min, sec, btns, showButtons } = state;
-
-  console.log(showButtons);
-  console.log(state.mensaje);
 
   return (
     <IonPage>
