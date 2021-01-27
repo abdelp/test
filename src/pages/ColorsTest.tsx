@@ -52,13 +52,18 @@ const colors = [
 ];
 
 const defaultTime = {
+  min: 2,
+  sec: 0
+};
+
+const defaultQuestionTime = {
   min: 0,
   sec: 3
 };
 
 const ColorsTest: React.FC = (props: any) => {
-  const numberOfRounds = 40;
   const [time, setTime] = useState<any>({...defaultTime});
+  const [questionTime, setQuestionTime] = useState<any>({...defaultQuestionTime});
   const [results, setResults] = useState<any>([]);
   const [round, setRound] = useState<any>(0); // or probably one
   const [isActive, setIsActive] = useState(true);
@@ -66,7 +71,7 @@ const ColorsTest: React.FC = (props: any) => {
   const [codeToDisplay, setCodeToDisplay] = useState<any>();
   const [showCorrectSymbol, setShowCorrectSymbol] = useState<any>(false);
   const [showIncorrectSymbol, setShowIncorrectSymbol] = useState<any>(false);
-
+  
   useEffect(() => {
     if(round === 0) {
       setRound((state: any) => state + 1);
@@ -78,20 +83,53 @@ const ColorsTest: React.FC = (props: any) => {
 
   useEffect(() => {
     let interval: any = null;
+    const { history } = props;
 
-    if (isActive) {      
+    if (isActive) {
       interval = setInterval(() => {
-        setShowCorrectSymbol(false);
-        setShowIncorrectSymbol(false);
         const { sec, min } = time;
 
         if (sec > 0) {
           setTime((state: any) => ({...state,
             sec: state.sec - 1
-            }));
+          }));
         }
 
         if (sec === 0) {
+          if (min === 0) {
+            history.replace('/page/time-out');
+          } else {
+            setTime((state: any) => ({
+              min: state.min - 1,
+              sec: 59
+            }))
+          }
+        } 
+        
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(interval);
+    }
+  }, [isActive, time]);
+
+  useEffect(() => {
+    let questionInterval: any = null;
+
+    if (isActive) {      
+      questionInterval = setInterval(() => {
+        setShowCorrectSymbol(false);
+        setShowIncorrectSymbol(false);
+        const { sec, min } = questionTime;
+
+        if (sec > 0) {
+          setQuestionTime((state: any) => ({...state,
+            sec: state.sec - 1
+            }));
+        }
+
+        if (sec <= 0) {
           if (min === 0) {
             checkAnswer(false);
           } else {
@@ -100,14 +138,15 @@ const ColorsTest: React.FC = (props: any) => {
               sec: 59
             }))
           }
-        }
+        } 
+
       }, 1000);
     }
 
     return () => {
-      clearInterval(interval);
+      clearInterval(questionInterval);
     }
-  }, [isActive, time]);
+  }, [isActive, questionTime]);
 
   const randomNumber = () =>  
     Math.floor(Math.random() * (colors.length - 1 - 0) + 0);
@@ -134,25 +173,19 @@ const ColorsTest: React.FC = (props: any) => {
   }
 
   const checkAnswer = (confirmed: any) => {
-    setTime({...defaultTime});
-
     results[results.length - 1].respuestaUsuario = confirmed;
     setResults([...results]);
-
-    const resultado = 
     
+    const resultado = 
     ((results[results.length - 1].indiceAElegir === results[results.length - 1].indiceCodigo) && confirmed) ||
     ((results[results.length - 1].indiceAElegir !== results[results.length - 1].indiceCodigo) && !confirmed);
-
+    
     setShowCorrectSymbol(resultado);
     setShowIncorrectSymbol(!resultado);
+    setQuestionTime({...defaultQuestionTime});
 
-    if (round < numberOfRounds) {
-      setRound((state: any) => state + 1);
-      nextColor();
-    } else {
-      props.history.replace('/page/test-finished', { state: 'prueba psiquica' });
-    }
+    setRound((state: any) => state + 1);
+    nextColor();
   };
 
   return (
@@ -163,7 +196,6 @@ const ColorsTest: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-
         <div style={{position: 'relative'}}>
           <div
             style={{color: codeToDisplay}}
@@ -173,10 +205,8 @@ const ColorsTest: React.FC = (props: any) => {
             <p className="ion-text-center">{nameToDisplay}</p>
           </div>
           <div style={{position: 'absolute', right: 0, left: 0, width: '100px', top: 0, margin: '0 auto'}}>
-            {/* <div style={{display: 'flex', justifyContent: 'center'}}> */}
             { showCorrectSymbol && <IonImg src={correctSymbol} /> }
             { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
-            {/* </div> */}
           </div>
         </div>
       </IonContent>
