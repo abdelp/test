@@ -68,7 +68,7 @@ const defaultState = {
 };
 
 const MemorizeNumbers: React.FC = (props: any) => {
-  const [state, setState] = useState<any>(defaultState);
+  const [state, setState] = useState<any>({...defaultState});
   // const [iniciado, setIniciado] = useState<boolean>(false);
   // const [round, setRound] = useState<number>(0);
   // const [numerosAElegir, setNumerosAElegir] = useState<any>([]);
@@ -132,7 +132,8 @@ const MemorizeNumbers: React.FC = (props: any) => {
           actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
           .then(result => {
             sendResult(ticket, cedula, 100)
-            .then(result => {    
+            .then(result => {
+              setState({...defaultState});
               history.replace('/page/instrucciones', {type: 'psiquica', test: 'test-colores'});
             })
             .catch((error: any) => console.log(error));
@@ -302,12 +303,12 @@ const MemorizeNumbers: React.FC = (props: any) => {
             }
           </div>
           <div className="btn-container" style={{display: 'flex'}}>
-                  {!round &&
-                    <IonButton className="btn-empezar" color="favorite" onClick={empezar}>
-                      empezar
-                    </IonButton>
-                  }
-                </div>
+            {!round &&
+              <IonButton className="btn-empezar" color="favorite" onClick={empezar}>
+                empezar
+              </IonButton>
+            }
+          </div>
         </div>
 
           {/* <IonItem lines="none">

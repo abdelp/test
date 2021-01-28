@@ -165,7 +165,7 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
           ]}
         />
 
-          <h1 className="titulo-centrado">Declaración jurada sobre padecimiento de afecciones y/o adicciones</h1>
+        <h1 className="titulo-centrado">Declaración jurada sobre padecimiento de afecciones y/o adicciones</h1>
         <IonList>
           { questions.map((q: any) =>
             <IonRadioGroup
