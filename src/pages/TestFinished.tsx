@@ -9,13 +9,16 @@ import {
   IonToolbar,
   IonList,
   IonItem,
-  IonLabel
+  IonLabel,
+  IonImg
 } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { get } from 'idb-keyval';
 
 import './TestFinished.css';
+import successImg from '../assets/green-checkmark.svg';
+
 
 const TestFinishedPage: React.FC = props => {
   const [total, setTotal] = useState(0);
@@ -72,6 +75,13 @@ const TestFinishedPage: React.FC = props => {
       </IonHeader>
 
       <IonContent id="test-finished-content" fullscreen>
+        <div className="grilla">
+          <IonImg src={successImg}  style={{width: '20vw'}} />
+          <h4 className="texto-finalizado">PRUEBA FINALIZADA</h4>
+          <IonButton onClick={returnMenu} size="large" className="confirm-btn confirmar-btn" color="favorite" style={{margin: '3vh auto'}}>aceptar</IonButton>
+        </div>
+      
+        {/*
         <h1>El test ha finalizado</h1>
         <br/>
         <IonList>
@@ -85,7 +95,8 @@ const TestFinishedPage: React.FC = props => {
             <IonLabel><strong>Porcentaje:</strong> {porcentaje}%</IonLabel>
           </IonItem> 
         </IonList>
-        <IonButton onClick={returnMenu} size="large" className="confirm-btn confirmar-btn" color="favorite" style={{margin: '3vh auto'}}>Volver a los tests</IonButton>
+         */}
+        
       </IonContent>
   </IonPage>
   );

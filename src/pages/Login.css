@@ -245,6 +245,9 @@ ion-list.datosdeinteresado {
   padding: 2vh 1vh 1vh 1vh;
 }
 
+.practical-test-list ion-title:last-child {
+  border: none !important;
+}
 
 ion-menu ion-content{
   --background:var(--ion-color-favorite);
@@ -289,15 +292,16 @@ ion-menu.md ion-item{
 
 .alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
   padding: 5vh 3vw;
-  text-align: justify;
   font-weight: bold;
+  text-align: center;
 }
 
 .titulo-centrado{
-  font-size: 2.5vh;
+  font-size: 3vh;
   padding: 2vh;
   text-align: center;
-  font-weight: bold;;
+  font-weight: bold;
+  border-bottom: 2px solid #39b1c1;
 }
 
 .nombre-color p{
@@ -314,4 +318,11 @@ ion-menu.md ion-item{
 .counter .time{
   font-weight: bolder;
   font-size: 4.6vw !important;
+}
+
+.texto-finalizado{
+  color: #a0a0a0;
+    font-size: 5vh;
+    font-weight: bold;
+    margin: 2vh 0 1vh 0;
 }
