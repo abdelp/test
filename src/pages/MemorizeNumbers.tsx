@@ -133,7 +133,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
           .then(result => {
             sendResult(ticket, cedula, 100)
             .then(result => {    
-              history.replace('/page/test-finished', { state: 'prueba psiquica' });
+              history.replace('/page/instrucciones', { state: {type: 'psiquica', test: 'test-colores'} });
             })
             .catch((error: any) => console.log(error));
           })
@@ -278,7 +278,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
               {!showButtons &&
                 <div className="display-container">
                   <div className="number-display">
-                    <p className={parseInt(mensaje, 10) ? 'elemento-grande ion-text-center' : 'elemento-chico ion-text-center'}>
+                    <p className={parseInt(mensaje, 10) || parseInt(mensaje, 10) === 0 ? 'elemento-grande ion-text-center' : 'elemento-chico ion-text-center'}>
                     { mensaje }
                     </p>
                   </div>
