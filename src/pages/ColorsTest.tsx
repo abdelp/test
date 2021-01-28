@@ -199,19 +199,21 @@ const ColorsTest: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <div style={{position: 'relative'}}>
-          <div
-            style={{color: codeToDisplay}}
-            className="ion-text-center"
-            onClick={() => checkAnswer(true)}
-          >
-            <p className="ion-text-center">{nameToDisplay}</p>
-          </div>
-          <div style={{
-            position: 'absolute', 
-            right: 0, left: 0, width: '100px', top: 0, margin: '0 auto'}}>
-            { showCorrectSymbol && <IonImg src={correctSymbol} /> }
-            { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
+        <div className="grilla">
+          <div className="nombre-color" style={{position: 'relative'}}>
+            <div
+              style={{color: codeToDisplay}}
+              className="ion-text-center"
+              onClick={() => checkAnswer(true)}
+            >
+              <p className="ion-text-center">{nameToDisplay}</p>
+            </div>
+            <div style={{
+              position: 'absolute', 
+              right: 0, left: 0, width: '30vw', top: 0, margin: '0 auto'}}>
+              { showCorrectSymbol && <IonImg src={correctSymbol} /> }
+              { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
+            </div>
           </div>
         </div>
       </IonContent>

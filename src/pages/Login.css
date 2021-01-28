@@ -284,3 +284,7 @@ ion-menu.md ion-item{
   text-align: center;
   font-weight: bold;;
 }
+
+.nombre-color p{
+  font-size: 20vw
+}
