@@ -97,7 +97,35 @@ const ColorsTest: React.FC = (props: any) => {
 
         if (sec === 0) {
           if (min === 0) {
-            history.replace('/page/test-finished', { state: 'prueba psiquica' });
+            const { cookies } = props;
+
+            const ticket = cookies.get('ticket');
+            const categoria = cookies.get('categoria');
+            const usuarioTesteado = cookies.get('usuario_testeado');
+            const { cedula } = usuarioTesteado;
+  
+            const examen = {
+              examenes: {
+                [categoria]: {
+                  "psiquica": {
+                    "test-colores": results,
+                    fecha: new Date()
+                  }
+                }
+              }
+            };
+  
+            actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
+            .then(result => {
+              sendResult(ticket, cedula, 100)
+              .then(result => {    
+                history.replace('/page/test-finished', { state: 'prueba psiquica' });
+              })
+              .catch((error: any) => console.log(error));
+            })
+            .catch((error: any) => {
+              console.log(error);
+            });
           } else {
             setTime((state: any) => ({
               min: state.min - 1,
