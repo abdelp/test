@@ -19,6 +19,7 @@ import { sendResult } from '../APIs';
 import { updateUserTest, actualizarDatosUsuarioTesteadoPorCedula } from '../utils/db';
 import './MemorizeNumbers.css';
 import { debug } from 'console';
+import _ from 'lodash';
 // import { setMaxListeners } from 'process';
 
 const btnsInitialState = [
@@ -68,7 +69,7 @@ const defaultState = {
 };
 
 const MemorizeNumbers: React.FC = (props: any) => {
-  const [state, setState] = useState<any>({...defaultState});
+  const [state, setState] = useState<any>({..._.cloneDeep(defaultState)});
   const [showTimer, setShowTimer] = useState<any>(true);
   const history = useHistory();
   let continuar: boolean = false;
@@ -79,8 +80,14 @@ const MemorizeNumbers: React.FC = (props: any) => {
 
   const randomNumber = () =>  
     Math.floor(Math.random() * (9 - 0) + 0);
+    
+  useEffect(() => {
+    setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
+  }, []);
 
   useEffect(() => {
+    console.log(state);
+
     const {mensaje, numerosAElegir, turnoUsuario, numerosElegidos, roundFinished, btns } = state;
     let { round } = state;
     let rotationInterval: any;
@@ -110,7 +117,8 @@ const MemorizeNumbers: React.FC = (props: any) => {
           .then(result => {
             sendResult(ticket, cedula, 100)
             .then(result => {
-              setState({...defaultState});
+              setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
+
               history.replace('/page/instrucciones', {type: 'psiquica', test: 'test-colores'});
             })
             .catch((error: any) => console.log(error));
@@ -123,7 +131,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
 
           rotationInterval = window.setTimeout(() => {
             setState((state: any) => ({
-              ...defaultState,
+              ..._.cloneDeep(defaultState),
               mensaje: 'Turno del ordenador',
               round,
               numerosAElegir: [...state.numerosAElegir],
