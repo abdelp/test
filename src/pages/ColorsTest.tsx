@@ -97,7 +97,7 @@ const ColorsTest: React.FC = (props: any) => {
 
         if (sec === 0) {
           if (min === 0) {
-            history.replace('/page/time-out');
+            history.replace('/page/test-finished', { state: 'prueba psiquica' });
           } else {
             setTime((state: any) => ({
               min: state.min - 1,

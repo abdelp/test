@@ -27,6 +27,7 @@ import confirmarBtn from '../assets/confirmar_btn.svg';
 
 const InstructionsPage: React.FC = (props: any) => {
   const { categoria, test, type } = props.location.state || '';
+
   let [showSkip, setSkip] = useState(true);
   let [state, setState] = useState({color: 'success'});
   let backgroundImg;
@@ -97,7 +98,7 @@ const InstructionsPage: React.FC = (props: any) => {
     <IonPage>
       <IonHeader>
         <IonToolbar color={
-getHeaderColor(type)
+          getHeaderColor(type)
           }>
           <IonTitle className="ion-text-center title ion-text-capitalize">Prueba {type}</IonTitle>
         </IonToolbar>

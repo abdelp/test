@@ -133,15 +133,13 @@ const MemorizeNumbers: React.FC = (props: any) => {
           .then(result => {
             sendResult(ticket, cedula, 100)
             .then(result => {    
-              history.replace('/page/instrucciones', { state: {type: 'psiquica', test: 'test-colores'} });
+              history.replace('/page/instrucciones', {type: 'psiquica', test: 'test-colores'});
             })
             .catch((error: any) => console.log(error));
           })
           .catch((error: any) => {
             console.log(error);
           });
-
-          // history.replace('/page/test-finished', {state: 'prueba psiquica' })
         } else {
           round++;
 
