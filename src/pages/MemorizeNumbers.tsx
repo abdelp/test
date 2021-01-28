@@ -69,27 +69,10 @@ const defaultState = {
 
 const MemorizeNumbers: React.FC = (props: any) => {
   const [state, setState] = useState<any>({...defaultState});
-  // const [iniciado, setIniciado] = useState<boolean>(false);
-  // const [round, setRound] = useState<number>(0);
-  // const [numerosAElegir, setNumerosAElegir] = useState<any>([]);
-  // // const [bloquearBotones, setBloquearBotones] = useState<boolean>(false);
-  // const [turnoUsuario, setTurnoUsuario] = useState<boolean>(false);
-  // const [mensaje, setMensaje] = useState<string>('');
-  // const [time, setTime] = useState<number>(2000);
-
-  // const [selected, setSelected] = useState<string>();
-  // const [questions, setQuestions] = useState<any>([]);
-  // const [currentQuestion, setCurrentQuestion] = useState<any>();
-  // const [questionIdx, setQuestionIdx] = useState<number>(0);
-  // const [minutes, setMinutes] = useState<any>({val: 3});
   const [showTimer, setShowTimer] = useState<any>(true);
   const history = useHistory();
-  // const [loading, setLoading] = useState<boolean>(false);
   let continuar: boolean = false;
   const [showAlert, setShowAlert] = useState(false);
-
-  // const [statex, setState] = useState({min: 3, sec: 0});
-  // const [isActive, setIsActive] = useState(true);
 
   const doSaveExamProgress = async (exam: any) =>
     await set("exam", {exam});
@@ -105,13 +88,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
     if(!turnoUsuario) {
       if(roundFinished) {
         if(round === 4) {
-
-          /*
-           * Poner webservice
-           */
-
           const { cookies } = props;
-
           const ticket = cookies.get('ticket');
           const categoria = cookies.get('categoria');
           const usuarioTesteado = cookies.get('usuario_testeado');
@@ -158,7 +135,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
         }
       } else {
         if(round >= 1 && round <= 4) {
-          // debug();
           if(mensaje === 'Turno del ordenador') {        
             rotationInterval = window.setTimeout(() => {
               setState((state: any) => ({...state, mensaje: '' }));
@@ -185,7 +161,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
       }
     } else {
       if (!showButtons) {
-        console.log('mi turno');
         rotationInterval = window.setTimeout(() => {
             setState((state: any) => ({...state, showButtons: true }));
         }, 2000);
@@ -310,12 +285,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
             }
           </div>
         </div>
-
-          {/* <IonItem lines="none">
-            Tiempo restante: <Timer min={min} sec={sec}></Timer>
-          </IonItem> */}
-
-          
       </IonContent>
     </IonPage>
   );
