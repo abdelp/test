@@ -156,12 +156,15 @@ ion-list.datosdeinteresado {
   padding: 1vh 0;
   margin: 1vh 0;
   color: #4F4F4E !important;
+  
 }
 
 .alert-wrapper.sc-ion-alert-md {
   width: 90vw;
   max-width: 90vw;
   font-size: 4vh !important;
+  border-radius: 3vh !important;
+  background: #ecefee;
 }
 
 .alert-title.sc-ion-alert-md{
@@ -174,6 +177,9 @@ ion-list.datosdeinteresado {
 
 .alert-button-group.sc-ion-alert-md {
   font-size: 4vw;
+  text-align: center;
+  justify-content: center;
+    
 }
 
 .alert-button.sc-ion-alert-md {
@@ -186,8 +192,8 @@ ion-list.datosdeinteresado {
 }
 
 .alert-head.sc-ion-alert-md{
-  --background: var(--ion-color-favorite);
-  background: var(--ion-color-favorite);
+  --background: #aeb925;
+  background: #aeb925;
   color: white;
 }
 
@@ -266,7 +272,9 @@ ion-menu.md ion-item{
 
 .one-question{
   display: flex;
-  
+  border-bottom: 0.2vh solid #ccc;
+  margin: 1vh 0;
+  padding: 2vh 0;
 }
 
 .radio-label-container{
@@ -281,6 +289,8 @@ ion-menu.md ion-item{
 
 .alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
   padding: 5vh 3vw;
+  text-align: justify;
+  font-weight: bold;
 }
 
 .titulo-centrado{
