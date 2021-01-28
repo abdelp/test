@@ -7,6 +7,15 @@
   --ion-color-favorite-tint: #78c288;
 }
 
+@font-face {
+  font-family: 'Calibri';
+  src: url('../assets/fonts/CalibriRegular.ttf');
+}
+
+* {
+  font-family: 'Calibri';
+}
+
 .ion-color-favorite {
   --ion-color-base: var(--ion-color-favorite);
   --ion-color-base-rgb: var(--ion-color-favorite-rgb);
@@ -103,10 +112,6 @@
 
 .loading {
   margin: 0 auto;
-}
-
-* {
-  font-family: Arial !important;
 }
 
 .grilla{
@@ -287,4 +292,16 @@ ion-menu.md ion-item{
 
 .nombre-color p{
   font-size: 20vw
+}
+
+.counter{
+  margin-top: 4vh !important;
+  font-size: 4vw !important;
+  align-self:flex-end;
+  margin-right: 6vw !important;
+}
+
+.counter .time{
+  font-weight: bolder;
+  font-size: 4.6vw !important;
 }

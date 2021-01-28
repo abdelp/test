@@ -138,6 +138,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+      <div className="grilla">
         <IonList className="ms-list question-details" lines="none">
           { loading &&
             <IonPopover
@@ -174,10 +175,12 @@ const MultipleOptionsPage: React.FC = (props: any) => {
             }
           </div>
 
-          <IonItem lines="none" className="counter">
-            Tiempo restante: <Timer min={min} sec={sec}></Timer>
-          </IonItem>
+          
         </IonList>
+        <IonItem lines="none" className="counter">
+            Tiempo restante: &nbsp;<Timer min={min} sec={sec}></Timer>
+          </IonItem>
+        </div>
       </IonContent>
     </IonPage>
   );
