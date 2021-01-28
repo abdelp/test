@@ -83,12 +83,12 @@ const TestTypesPage: React.FC = () => {
         } else if(test === 'teórica') {
           history.push({
             pathname: '/page/instrucciones',
-            state: {categoria, test, usuario_testeado }
+            state: {categoria, type: test, test, usuario_testeado }
           });
         } else if(test === 'psiquica') {
           history.push({
             pathname: '/page/instrucciones',
-            state: {categoria, test, usuario_testeado }
+            state: {categoria, type: 'psiquica', test: 'memorize-numbers', usuario_testeado }
           });
         }
       } else {

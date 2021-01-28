@@ -26,7 +26,7 @@ import instruccionesPruebaPsiquica from '../assets/instrucciones_prueba_psiquica
 import confirmarBtn from '../assets/confirmar_btn.svg';
 
 const InstructionsPage: React.FC = (props: any) => {
-  const { categoria, test } = props.location.state || '';
+  const { categoria, test, type } = props.location.state || '';
   let [showSkip, setSkip] = useState(true);
   let [state, setState] = useState({color: 'success'});
   let backgroundImg;
@@ -47,10 +47,10 @@ const InstructionsPage: React.FC = (props: any) => {
   const startTest = () => {
     let page = '';
 
-    if(test === 'teórica') {
+    if(type === 'teórica') {
       page = 'multiple-options';
-    } else if (test === 'psiquica') {
-      page = 'memorize-numbers'
+    } else if (type === 'psiquica') {
+      page = test;
     }
   
     history.replace({
@@ -97,9 +97,9 @@ const InstructionsPage: React.FC = (props: any) => {
     <IonPage>
       <IonHeader>
         <IonToolbar color={
-getHeaderColor(test)
+getHeaderColor(type)
           }>
-          <IonTitle className="ion-text-center title ion-text-capitalize">Prueba {test}</IonTitle>
+          <IonTitle className="ion-text-center title ion-text-capitalize">Prueba {type}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
