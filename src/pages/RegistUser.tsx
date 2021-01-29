@@ -110,7 +110,7 @@ const RegistUserPage: React.FC = () => {
         <IonButtons slot="start">
             <IonMenuButton autoHide={false} />
           </IonButtons>
-          <IonTitle className="ion-text-center title">Ingresar C.I.N&deg;</IonTitle>
+          <IonTitle className="ion-text-center title">Ingresar C.I.N&deg; / Pasaporte</IonTitle>
         </IonToolbar>
       </IonHeader>
 

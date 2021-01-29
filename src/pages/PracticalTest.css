@@ -19,3 +19,7 @@
 strong {
   white-space: normal !important;
 }
+
+ion-radio[slot="end"] {
+  margin-inline-start: 10px;
+}

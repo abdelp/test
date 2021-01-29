@@ -272,16 +272,16 @@ ion-menu.md ion-item{
   margin-right: 1vw;
 }
 
-
 .one-question{
   display: flex;
+  justify-content: space-between;
   border-bottom: 0.2vh solid #ccc;
   margin: 1vh 0;
   padding: 2vh 0;
 }
 
 .radio-label-container{
-  width: calc(100% - 354.719px);
+  width: calc(100% - 275.141px);
   display: flex;
 }
 .radio-row{
