@@ -310,13 +310,39 @@ ion-menu.md ion-item{
 .counter{
   margin-top: 4vh !important;
   font-size: 4vw !important;
-  align-self:flex-end;
-  margin-right: 6vw !important;
 }
 
 .counter .time{
   font-weight: bolder;
   font-size: 4.6vw !important;
+  display: flex;
+  align-items: center;
+}
+.counter .time .minutos_restantes,
+.counter .time .segundos_restantes{
+  background: #f0f2f1;
+  color: black;
+  border-radius: 1vw;
+  padding: 3vh;
+  position: relative;
+  font-size: 90px;
+}
+
+.counter .time .segundos_restantes::after{
+  content: 'Seg.';
+  font-size: 40px;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+}
+
+
+.counter .time .minutos_restantes::after{
+  content: 'Min.';
+  font-size: 40px;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
 }
 
 .texto-finalizado{

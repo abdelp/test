@@ -114,18 +114,18 @@ ion-button {
   border-radius: 3vw !important;
   padding: 3vh 3vw !important;
   background-color: #68C7D4 !important;
-  box-shadow: 10px 10px 10px #04A2B7;
+  box-shadow: 0 1vw 0 0.3vw #04A2B7;
   color: black !important;
 }
 
 .opt-btn:nth-child(2){
   background-color: #E5F6F8 !important;
-  box-shadow: 10px 10px 10px #A1DDE4;
+  box-shadow: 0 1vw 0 0.3vw #A1DDE4;
   color: black !important;
 }
 
 .opt-btn:last-child{
   background-color: #B3E3E9 !important;
-  box-shadow: 10px 10px 10px #7ED0DA;
+  box-shadow: 0 1vw 0 0.3vw #7ED0DA;
   color: black !important;
 }

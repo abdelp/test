@@ -178,7 +178,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
           
         </IonList>
         <IonItem lines="none" className="counter">
-            Tiempo restante: &nbsp;<Timer min={min} sec={sec}></Timer>
+            <Timer min={min} sec={sec}></Timer>
           </IonItem>
         </div>
       </IonContent>
