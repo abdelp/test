@@ -13,6 +13,7 @@ import NoticePage from './pages/Notice';
 import DeclaracionJuradaPage from './pages/DeclaracionJurada';
 import LocationTestPage from './pages/LocationTest';
 import ColorsTestPage from './pages/ColorsTest';
+import DirectionsTestPage from './pages/DirectionsTest';
 import PrivateRoute from './components/PrivateRoute';
 import UnloggedRoute from './components/UnloggedRoute';
 
@@ -90,6 +91,9 @@ const App: React.FC = (props: any) => {
               {/*
                 // @ts-ignore */}
               <PrivateRoute path="/page/test-colores" component={ColorsTestPage} exact />
+              {/*
+                // @ts-ignore */}
+              <PrivateRoute path="/page/test-direcciones" component={DirectionsTestPage} exact />
               {/*
               // @ts-ignore */}
               <PrivateRoute path="/"
