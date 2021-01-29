@@ -310,27 +310,42 @@ ion-menu.md ion-item{
 .counter{
   margin-top: 4vh !important;
   font-size: 4vw !important;
+  text-align: center;
+  width: 100%;
+  display: block;
+  /* justify-content: center; */
+  /* flex-direction: row; */
+  text-align: center;
+
 }
 
 .counter .time{
+
+
   font-weight: bolder;
-  font-size: 4.6vw !important;
-  display: flex;
-  align-items: center;
+    font-size: 4.6vw !important;
+    display: block;
+    /* align-items: center; */
+    width: 100%;
+    margin-bottom: 32px;
 }
 .counter .time .minutos_restantes,
 .counter .time .segundos_restantes{
   background: #f0f2f1;
   color: black;
   border-radius: 1vw;
-  padding: 3vh;
+  padding: 2vh;
   position: relative;
-  font-size: 90px;
+  font-size: 50px;
+  display: inline-block;
 }
 
+.counter .time .dos_puntos{
+  display: inline-block;
+}
 .counter .time .segundos_restantes::after{
   content: 'Seg.';
-  font-size: 40px;
+  font-size: 16px;
   position: absolute;
   bottom: 8px;
   left: 8px;
@@ -339,7 +354,7 @@ ion-menu.md ion-item{
 
 .counter .time .minutos_restantes::after{
   content: 'Min.';
-  font-size: 40px;
+  font-size: 16px;
   position: absolute;
   bottom: 8px;
   left: 8px;

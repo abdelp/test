@@ -138,7 +138,6 @@ const MultipleOptionsPage: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-      <div className="grilla">
         <IonList className="ms-list question-details" lines="none">
           { loading &&
             <IonPopover
@@ -149,7 +148,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
             </IonPopover>
           }
 
-          <div style={{minHeight: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+          <div style={{minHeight: '310px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
             <IonItem>
               <IonLabel className="ion-text-center question-text texto" style={{fontSize: '3em', witheSpace: 'normal'}}><strong className='texto'>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
             </IonItem>
@@ -180,7 +179,6 @@ const MultipleOptionsPage: React.FC = (props: any) => {
         <IonItem lines="none" className="counter">
             <Timer min={min} sec={sec}></Timer>
           </IonItem>
-        </div>
       </IonContent>
     </IonPage>
   );
