@@ -325,7 +325,7 @@ ion-menu.md ion-item{
   border-radius: 1vw;
   padding: 3vh;
   position: relative;
-  font-size: 45px;
+  font-size: 20px;
 }
 
 .counter .time .segundos_restantes::after{
