@@ -6,13 +6,16 @@ import {
   IonToolbar,
   IonButtons,
   IonMenuButton,
-  IonImg
+  IonImg,
+  IonPopover
 } from '@ionic/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { get } from 'idb-keyval';
 import { getExamDate } from '../APIs';
 import { useCookies } from "react-cookie";
+import AuthenticateFormBase from '../components/AuthenticateFormBase';
+
 import './TestTypes.css';
 
 import pruebaTeoricaBtnImg from '../assets/icono-prueba-teorica.svg';
@@ -24,6 +27,8 @@ const TestTypesPage: React.FC = () => {
   const history = useHistory();
   const [cookies, setCookie] = useCookies(["user"]);
   const { categoria, ticket, usuario_testeado } = cookies;
+  const [showLogin, setShowLogin] = useState<any>();
+
   let ci = '', renovacion;
 
   if (usuario_testeado) {
@@ -77,9 +82,11 @@ const TestTypesPage: React.FC = () => {
             pathname: '/page/declaracion-jurada'
           });
         } else if(test === 'practica') {
-          history.push({
-            pathname: '/page/test-practico'
-          });
+          // history.push({
+          //   pathname: '/page/test-practico'
+          // });
+          setShowLogin(true);
+
         } else if(test === 'teórica') {
           history.push({
             pathname: '/page/instrucciones',
@@ -112,6 +119,15 @@ const TestTypesPage: React.FC = () => {
       </IonHeader>
 
       <IonContent>
+      <IonPopover
+          cssClass='login-popover ion-text-center'
+          isOpen={showLogin}
+        >
+          {/*
+            //@ts-ignore */}
+          <AuthenticateFormBase setShowLogin={setShowLogin} />
+        </IonPopover>
+
         <div
           className="flex"
           style={{

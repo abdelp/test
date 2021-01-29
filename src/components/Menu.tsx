@@ -78,7 +78,6 @@ const Menu: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-
         <IonPopover
           cssClass='login-popover ion-text-center'
           isOpen={showLogin}
