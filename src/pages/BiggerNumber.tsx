@@ -13,7 +13,7 @@ import { set } from 'idb-keyval';
 import { sendResult } from '../APIs';
 import { withCookies, Cookies } from 'react-cookie';
 import { updateUserTest, actualizarDatosUsuarioTesteadoPorCedula } from '../utils/db';
-import './ColorsTest.css';
+import './BiggerNumber.css';
 import { debug } from 'console';
 import { compose } from 'recompose';
 import correctSymbol from '../assets/correcto.svg';
@@ -61,7 +61,7 @@ const defaultQuestionTime = {
   sec: 3
 };
 
-const ColorsTest: React.FC = (props: any) => {
+const BiggerNumber: React.FC = (props: any) => {
   const [time, setTime] = useState<any>({...defaultTime});
   const [questionTime, setQuestionTime] = useState<any>({...defaultQuestionTime});
   const [results, setResults] = useState<any>([]);
@@ -227,21 +227,12 @@ const ColorsTest: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <div className="grilla">
-          <div className="nombre-color" style={{position: 'relative'}}>
-            <div
-              style={{color: codeToDisplay}}
-              className="ion-text-center"
-              onClick={() => checkAnswer(true)}
-            >
-              <p className="ion-text-center">{nameToDisplay}</p>
-            </div>
-            <div style={{
-              position: 'absolute', 
-              right: 0, left: 0, width: '30vw', top: 0, margin: '0 auto'}}>
-              { showCorrectSymbol && <IonImg src={correctSymbol} /> }
-              { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
-            </div>
+        <div className="numbers-container">
+          <div>
+1
+          </div>
+          <div>
+2
           </div>
         </div>
       </IonContent>
@@ -252,4 +243,4 @@ const ColorsTest: React.FC = (props: any) => {
 export default compose(
   withRouter,
   withCookies
-)(ColorsTest);
+)(BiggerNumber);
