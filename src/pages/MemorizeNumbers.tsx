@@ -202,6 +202,22 @@ const MemorizeNumbers: React.FC = (props: any) => {
     }
   };
 
+  const claseDeMensaje = (mensaje: any) => {
+    let result;
+  
+    if (parseInt(mensaje, 10) || parseInt(mensaje, 10) === 0) {
+      result = 'elemento-grande ion-text-center';
+    } else {
+      result = 'elemento-chico ion-text-center';
+
+      if (mensaje === 'Atención') {
+        result += ' atencion';
+      }
+    }
+
+    return result;
+  };
+
   const { min, sec, btns, showButtons } = state;
 
   return (
@@ -260,7 +276,8 @@ const MemorizeNumbers: React.FC = (props: any) => {
               {!showButtons &&
                 <div className="display-container">
                   <div className="number-display">
-                    <p className={parseInt(mensaje, 10) || parseInt(mensaje, 10) === 0 ? 'elemento-grande ion-text-center' : 'elemento-chico ion-text-center'}>
+                    <p
+                      className={claseDeMensaje(mensaje)}>
                     { mensaje }
                     </p>
                   </div>

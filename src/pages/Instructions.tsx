@@ -22,7 +22,8 @@ import { cog } from 'ionicons/icons';
 import multipleSelectionImg from '../assets/multiple-selection.png';
 // import logoPruebaTeorica from '../assets/logo_prueba_teorica.svg';
 import instruccionesPruebaTeorica from '../assets/instrucciones_prueba_teorica.svg';
-import instruccionesPruebaPsiquica from '../assets/instrucciones_prueba_psiquica.svg';
+import instruccionesPruebaMemorizarNumeros from '../assets/instrucciones_prueba_psiquica_memorizar_numeros.svg';
+import instruccionesPruebaColores from '../assets/instrucciones_prueba_psiquica_colores.svg';
 import confirmarBtn from '../assets/confirmar_btn.svg';
 
 const InstructionsPage: React.FC = (props: any) => {
@@ -75,17 +76,28 @@ const InstructionsPage: React.FC = (props: any) => {
 
   const handleNext = () => slider.current?.slideNext();
 
-  const getHeaderColor = (test: any) => {
+  const getHeaderColor = (type: any) => {
     let color;
 
-    switch(test) {
+    switch(type) {
       case 'teórica':
         color = 'light-blue';
         backgroundImg = instruccionesPruebaTeorica
         break;
       case 'psiquica':
         color = 'alert';
-        backgroundImg = instruccionesPruebaPsiquica
+
+        switch(test) {
+          case 'memorize-numbers':
+            backgroundImg = instruccionesPruebaMemorizarNumeros;
+            break;
+          case 'test-colores':
+            backgroundImg = instruccionesPruebaColores;
+
+            break;
+        }
+        console.log(type)
+        console.log(test)
         break;
       default:
         color = 'success';
