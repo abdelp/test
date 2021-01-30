@@ -24,8 +24,8 @@ import incorrectSymbol from '../assets/incorrecto.svg';
 const directions = [ 'arriba', 'izquierda', 'derecha', 'abajo' ];
 
 const defaultTime = {
-  min: 0,
-  sec: 10
+  min: 2,
+  sec: 0
 };
 
 const defaultQuestionTime = {
