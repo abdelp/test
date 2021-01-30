@@ -164,8 +164,6 @@ const DirectionsTest: React.FC = (props: any) => {
     results[results.length - 1].respuestaUsuario = answer;
     setResults([...results]);
 
-    console.log(results);
-
     const resultado = 
     ((results[results.length - 1].indiceAElegir === results[results.length - 1].respuestaUsuario));
     
@@ -212,7 +210,7 @@ const DirectionsTest: React.FC = (props: any) => {
               right: 0, left: 0, width: '30vw', top: 0, margin: '0 auto'}}>
               { showCorrectSymbol && <IonImg src={correctSymbol} /> }
               { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
-            </div>
+          </div>
         </div>
       </IonContent>
     </IonPage>
