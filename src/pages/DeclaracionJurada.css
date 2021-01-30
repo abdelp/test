@@ -37,7 +37,7 @@
 }
 */
 .question-label, .radio-label {
-  font-size: 2em !important;
+  font-size: 1.6em !important;
 }
 
 ion-list ion-radio {
@@ -45,5 +45,5 @@ ion-list ion-radio {
   height: 5vw;
 }
 .radio-row{
-  margin-bottom: 3vh;
+  /*margin-bottom: 3vh; */
 }

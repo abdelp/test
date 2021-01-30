@@ -25,7 +25,7 @@
   --ion-color-tint: var(--ion-color-favorite-tint);
 }
 
-.submit-btn, .confirmar-btn, .back-to-main, .btn-empezar {
+.submit-btn, .confirmar-btn, .back-to-main, .btn-empezar, .alert-button.sc-ion-alert-md {
   box-sizing: border-box;
   color: rgb(255, 255, 255) !important;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -89,6 +89,24 @@
   cursor: pointer;
 }
 
+.alert-button.sc-ion-alert-md {
+  width: 48%;
+  font-size: 18px !important;
+  text-align: center !important;
+  margin: 0 auto 17px auto;
+  padding: 10px 24px !important;
+  justify-content: center;
+  align-items: center;
+  height: auto !important;
+}
+
+.alert-button.sc-ion-alert-md span {
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
 .title {
   text-align: center;
 }
@@ -117,7 +135,7 @@
 .grilla{
   display: flex;
   align-items: center;
-  justify-content: center;
+  text-align: justify;
   height: 90vh;
   flex-direction: column;
 }
@@ -182,10 +200,7 @@ ion-list.datosdeinteresado {
     
 }
 
-.alert-button.sc-ion-alert-md {
-  font-size: 2vh;
-  height: 5vh;
-}
+
 
 .alert-message.sc-ion-alert-md{
   max-height: 46vh;
@@ -206,18 +221,12 @@ ion-list.datosdeinteresado {
   font-size: 4vh;
 }
 
-.alert-button.sc-ion-alert-md{
-  font-size: 2vh;
-  height: 5vh;
-  background: var(--ion-color-favorite);
-  color: white;
-  padding: 2vh;
-  border-radius: .5vh;
-  font-weight: bold;
-}
+
 
 .alert-button.sc-ion-alert-md.alert-button-role-cancel {
   background: var(--ion-color-medium);
+  box-shadow: 0 1vw 0 0.3vw #6f6f6f;
+  --box-shadow: 0 1vw 0 0.3vw #6f6f6f;
 }
 .opt-btn{
   padding:1.4vh !important;
@@ -277,7 +286,8 @@ ion-menu.md ion-item{
   justify-content: space-between;
   border-bottom: 0.2vh solid #ccc;
   margin: 1vh 0;
-  padding: 2vh 0;
+  padding: 0.3vh 0 1vh 0;
+  align-items: center;
 }
 
 .radio-label-container{
