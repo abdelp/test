@@ -20,37 +20,6 @@ import correctSymbol from '../assets/correcto.svg';
 import incorrectSymbol from '../assets/incorrecto.svg';
 // import { setMaxListeners } from 'process';
 
-const colors = [
-{
-  name: 'rojo',
-  code: 'red'
-},
-{
-  name: 'azul',
-  code: 'blue'
-},
-{
-  name: 'amarillo',
-  code: 'yellow'
-},
-{
-  name: 'naranja',
-  code: 'orange'
-},
-{
-  name: 'verde',
-  code: 'green'
-},
-{
-  name: 'negro',
-  code: 'black'
-},
-{
-  name: 'morado',
-  code: 'purple'
-}
-];
-
 const defaultTime = {
   min: 2,
   sec: 0
@@ -65,17 +34,16 @@ const BiggerNumber: React.FC = (props: any) => {
   const [time, setTime] = useState<any>({...defaultTime});
   const [questionTime, setQuestionTime] = useState<any>({...defaultQuestionTime});
   const [results, setResults] = useState<any>([]);
-  const [round, setRound] = useState<any>(0); // or probably one
+  const [round, setRound] = useState<any>(0);
   const [isActive, setIsActive] = useState(true);
-  const [nameToDisplay, setNameToDisplay] = useState<any>();
-  const [codeToDisplay, setCodeToDisplay] = useState<any>();
+  const [numbersToDisplay, setNumbersToDisplay] = useState<any>([]);
   const [showCorrectSymbol, setShowCorrectSymbol] = useState<any>(false);
   const [showIncorrectSymbol, setShowIncorrectSymbol] = useState<any>(false);
   
   useEffect(() => {
     if(round === 0) {
       setRound((state: any) => state + 1);
-      nextColor();
+      nextSetOfNumbers();
     }
   });
 
@@ -108,7 +76,7 @@ const BiggerNumber: React.FC = (props: any) => {
               examenes: {
                 [categoria]: {
                   "psiquica": {
-                    "test-colores": results,
+                    "numero-grande": results,
                     fecha: new Date()
                   }
                 }
@@ -159,7 +127,7 @@ const BiggerNumber: React.FC = (props: any) => {
 
         if (sec <= 0) {
           if (min === 0) {
-            checkAnswer(false);
+            checkAnswer(-1);
           } else {
             setTime((state: any) => ({
               min: state.min - 1,
@@ -176,38 +144,42 @@ const BiggerNumber: React.FC = (props: any) => {
     }
   }, [isActive, questionTime]);
 
-  const randomNumber = () =>  
-    Math.floor(Math.random() * (colors.length - 1 - 0) + 0);
+  const randomNumber = (length: any) =>  
+    Math.floor(Math.random() * (length - 0) + 0);
 
-  const nextColor = () =>{
-    const nameIdx = randomNumber();
-    let colorIdx: any;
-
-    setNameToDisplay(colors[nameIdx].name);
+  const nextSetOfNumbers = () => {
+    const numbers = Array.from(Array(10).keys());
+    const firstIdx = randomNumber(9);
+    const firstNumber = numbers.splice(firstIdx, 1)[0];
+    const secondIdx: any = randomNumber(8);
+    const secondNumber = numbers.splice(secondIdx, 1)[0];
+    const classes = ['numero-grande', 'numero-chico'];
+    const firstIdxClass = randomNumber(2);
     
-    if(Math.random() < 0.5) {
-      colorIdx = nameIdx;
-    } else {
-      colorIdx = randomNumber();
-    }
-    setCodeToDisplay(colors[colorIdx].code);
+    const firstClass = classes.splice(firstIdxClass, 1)[0];
+  
+    const secondClass = classes[0];
+
     setResults((state: any) => ([...state,
       {
-        colorAelegir: colors[nameIdx].name,
-        indiceAElegir: nameIdx,
-        colorMostrado: colors[nameIdx].code,
-        indiceCodigo: colorIdx
+        numeros: [
+          firstNumber,
+          secondNumber
+        ],
+        numeroAElegir: Math.max(firstNumber, secondNumber)
       }]));
+
+    setNumbersToDisplay([{ number: firstNumber, class: firstClass}, {number: secondNumber, class: secondClass}]);
   }
 
-  const checkAnswer = (confirmed: any) => {
-    results[results.length - 1].respuestaUsuario = confirmed;
+  const checkAnswer = (userSelection: any) => {
+    results[results.length - 1].respuestaUsuario = userSelection;
     setResults([...results]);
     
-    const resultado = 
-    ((results[results.length - 1].indiceAElegir === results[results.length - 1].indiceCodigo) && confirmed) ||
-    ((results[results.length - 1].indiceAElegir !== results[results.length - 1].indiceCodigo) && !confirmed);
-    
+    console.log(results);
+
+    const resultado = results[results.length - 1].numeroAElegir === userSelection;
+
     setShowCorrectSymbol(resultado);
     setShowIncorrectSymbol(!resultado);
     setQuestionTime({...defaultQuestionTime});
@@ -215,7 +187,7 @@ const BiggerNumber: React.FC = (props: any) => {
     setRound((state: any) => state + 1);
 
     setTimeout(() => {
-      nextColor();
+      nextSetOfNumbers();
     }, 1000);
   };
 
@@ -228,12 +200,17 @@ const BiggerNumber: React.FC = (props: any) => {
       </IonHeader>
       <IonContent>
         <div className="numbers-container">
-          <div>
-1
-          </div>
-          <div>
-2
-          </div>
+          { numbersToDisplay.map((n: any) => {
+            return <div key={n.number} onClick={() => checkAnswer(n.number)} className={n.class}>
+              {n.number}
+            </div>
+          })}
+        </div>
+        <div style={{
+          position: 'absolute', 
+          right: 0, left: 0, width: '30vw', top: 0, margin: '0 auto'}}>
+          { showCorrectSymbol && <IonImg src={correctSymbol} /> }
+          { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
         </div>
       </IonContent>
     </IonPage>

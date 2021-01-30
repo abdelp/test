@@ -26,8 +26,8 @@ import flecha from '../assets/flecharoja.svg';
 const directions = [ 'arriba', 'izquierda', 'derecha', 'abajo' ];
 
 const defaultTime = {
-  min: 10,
-  sec: 10
+  min: 2,
+  sec: 0
 };
 
 const defaultQuestionTime = {
@@ -165,8 +165,6 @@ const DirectionsTest: React.FC = (props: any) => {
   const checkAnswer = (answer: any) => {
     results[results.length - 1].respuestaUsuario = answer;
     setResults([...results]);
-
-    console.log(results);
 
     const resultado = 
     ((results[results.length - 1].indiceAElegir === results[results.length - 1].respuestaUsuario));
