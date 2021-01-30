@@ -376,3 +376,61 @@ ion-menu.md ion-item{
     font-weight: bold;
     margin: 2vh 0 1vh 0;
 }
+
+
+.contenedor-direcciones{
+  transform: translate(0,14vh);
+  position: relative;
+  /*width: 80vw;*/
+}
+.contenedor-direcciones:before {
+  content: '';
+  background: #ecf1ee;
+  width: 540px;
+  height: 550px;
+  position: absolute;
+  top: 86px;
+  left: 99PX;
+  border-radius: 100%;
+  z-index: -1;
+}
+.flechita{
+  width: 160px;
+  background: transparent;
+  --background: none;
+  box-shadow: none;
+  --box-shadow: none;
+  height: 160px;
+}
+.flechaarriba{
+  transform: rotate(0deg);
+}
+.flechaizquierda{
+  transform: rotate(-90deg);
+}
+.flechaderecha{
+  transform: rotate(90deg);
+}
+.flechaabajo{
+  transform: rotate(180deg);
+}
+
+.cf_arriba{
+  margin-bottom: 130px;
+}
+.cf_izquierda{
+  margin-right: 0px;
+}
+.cf_derecha{
+  margin-left: 0px;
+}
+.cf_abajo{
+  margin-top: 130px;
+}
+
+.mensajeflechas{
+  font-size: 72px;
+  margin-top: 34px;
+  width: 410px;
+  text-align: center;
+}

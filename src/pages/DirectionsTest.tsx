@@ -19,17 +19,19 @@ import { debug } from 'console';
 import { compose } from 'recompose';
 import correctSymbol from '../assets/correcto.svg';
 import incorrectSymbol from '../assets/incorrecto.svg';
+import flecha from '../assets/flecharoja.svg';
+
 // import { setMaxListeners } from 'process';
 
 const directions = [ 'arriba', 'izquierda', 'derecha', 'abajo' ];
 
 const defaultTime = {
-  min: 0,
+  min: 10,
   sec: 10
 };
 
 const defaultQuestionTime = {
-  min: 0,
+  min: 10,
   sec: 3
 };
 
@@ -188,31 +190,33 @@ const DirectionsTest: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <div className="container">
-          <div className="row">
-            <IonButton onClick={() => checkAnswer(0)} >Arriba</IonButton>
-          </div>
-          <div className="row">
-            <div className="col">
-            <IonButton onClick={() => checkAnswer(1)}>Izquierda</IonButton>
+        <div className="grilla">
+          <div className="container contenedor-direcciones">
+            <div className="row">
+              <IonButton className="flechita cf_arriba" onClick={() => checkAnswer(0)} ><IonImg className="flechaarriba" src={flecha} /> </IonButton>
             </div>
-            <div className="col">
-              {message}
+            <div className="row">
+              <div className="col">
+              <IonButton className="flechita cf_izquierda" onClick={() => checkAnswer(1)}><IonImg className="flechaizquierda" src={flecha} /> </IonButton>
+              </div>
+              <div className="col mensajeflechas">
+                {message}
+              </div>
+              <div className="col">
+                <IonButton className="flechita cf_derecha" onClick={() => checkAnswer(2)}><IonImg className="flechaderecha" src={flecha} /> </IonButton>
+              </div>
             </div>
-            <div className="col">
-              <IonButton onClick={() => checkAnswer(2)}>Derecha</IonButton>
+            <div className="row">
+              <IonButton className="flechita cf_abajo" onClick={() => checkAnswer(3)}><IonImg className="flechaabajo" src={flecha} /> </IonButton>
             </div>
-          </div>
-          <div className="row">
-            <IonButton onClick={() => checkAnswer(3)}>Abajo</IonButton>
-          </div>
 
-          <div style={{
-              position: 'absolute', 
-              right: 0, left: 0, width: '30vw', top: 0, margin: '0 auto'}}>
-              { showCorrectSymbol && <IonImg src={correctSymbol} /> }
-              { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
-            </div>
+            <div style={{
+                position: 'absolute', 
+                right: 0, left: 0, width: '30vw', top: '280px', margin: '0 auto'}}>
+                { showCorrectSymbol && <IonImg src={correctSymbol} /> }
+                { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
+              </div>
+          </div>
         </div>
       </IonContent>
     </IonPage>

@@ -26,6 +26,7 @@ import { getDeclaracionJurada, saveDeclaracionJurada } from '../APIs';
 import { obtenerDatosUsuarioTesteadoPorCedula, actualizarDatosUsuarioTesteadoPorCedula } from '../utils/db';
 import './DeclaracionJurada.css';
 
+
 const DeclaracionJuradaPage: React.FC = (props: any) => {
   const [questions, setQuestions] = useState<any>([]);
   const [state, setState] = useState<any>({showAlert: false, showAlertNotCompleted: false});
