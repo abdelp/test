@@ -15,6 +15,7 @@ import LocationTestPage from './pages/LocationTest';
 import ColorsTestPage from './pages/ColorsTest';
 import BiggerNumberPage from './pages/BiggerNumber';
 import DirectionsTestPage from './pages/DirectionsTest';
+import BlockPositionsPage from './pages/BlockPositionsTest';
 import PrivateRoute from './components/PrivateRoute';
 import UnloggedRoute from './components/UnloggedRoute';
 
@@ -98,6 +99,9 @@ const App: React.FC = (props: any) => {
               {/*
               // @ts-ignore */}
               <PrivateRoute path="/page/numeros-grandes" component={BiggerNumberPage} exact />
+              {/*
+              // @ts-ignore */}
+              <PrivateRoute path="/page/posiciones-bloques" component={BlockPositionsPage} exact />
               {/*
               // @ts-ignore */}
               <PrivateRoute path="/"
