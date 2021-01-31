@@ -91,7 +91,7 @@
 
 .alert-button.sc-ion-alert-md {
   width: 48%;
-  font-size: 18px !important;
+  font-size: 30px !important;
   text-align: center !important;
   margin: 0 auto 17px auto;
   padding: 10px 24px !important;
@@ -301,7 +301,7 @@ ion-menu.md ion-item{
 }
 
 .alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
-  padding: 5vh 3vw;
+  padding: 40px 56px;
   font-weight: bold;
   text-align: center;
 }
@@ -438,4 +438,11 @@ ion-menu.md ion-item{
 
 .floating-result{
   z-index: 11111113;
+}
+
+ion-menu .item-lines-none,
+ion-menu .list-ios,
+ion-menu .list-ios ion-item{
+  background: transparent;
+  --background: transparent;
 }
