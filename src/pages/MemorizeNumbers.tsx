@@ -206,9 +206,9 @@ const MemorizeNumbers: React.FC = (props: any) => {
     let result;
   
     if (parseInt(mensaje, 10) || parseInt(mensaje, 10) === 0) {
-      result = 'elemento-grande ion-text-center';
+      result = 'elemento-grande ';
     } else {
-      result = 'elemento-chico ion-text-center';
+      result = 'elemento-chico';
 
       if (mensaje === 'Atención') {
         result += ' atencion';
@@ -253,7 +253,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
             ]}
           />
           <div className="grilla" style={{flexDirection: 'column'}}>
-            <div className="number-board" style={{display: 'flex', justifyContent: 'center'}}>
+            <div className="number-board" style={{display: 'flex', justifyContent: 'center', margin: 'auto'}}>
 
               {showButtons &&
                 <div className="number-column" style={{textAlign: 'center', display: 'flex', flexDirection: 'column'}}>
@@ -304,7 +304,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
           </div>
           <div className="btn-container" style={{display: 'flex'}}>
             {!round &&
-              <IonButton className="btn-empezar" color="favorite" onClick={empezar}>
+              <IonButton className="btn-empezar" color="favorite" onClick={empezar} style={{margin: '-40vh auto auto auto'}}>
                 empezar
               </IonButton>
             }
