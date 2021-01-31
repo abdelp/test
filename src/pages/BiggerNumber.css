@@ -1,4 +1,22 @@
 .numbers-container {
   display: flex;
   flex-direction: column;
+  margin-top: 20vh;
 }
+
+.numbers-container .numero-grande,
+.numbers-container .numero-chico{
+  font-size: 90px;
+  color: red;
+  background: #ecf0ee;
+  border-radius: 20px;
+  padding: 4vh 4vw;
+  margin:  12px;
+  text-align: center;
+}
+
+.numbers-container .numero-chico{
+  font-size: 130px;
+  padding: 4vh 8vh;
+}
+

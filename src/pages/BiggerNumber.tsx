@@ -199,18 +199,20 @@ const BiggerNumber: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <div className="numbers-container">
-          { numbersToDisplay.map((n: any) => {
-            return <div key={n.number} onClick={() => checkAnswer(n.number)} className={n.class}>
-              {n.number}
-            </div>
-          })}
-        </div>
-        <div style={{
-          position: 'absolute', 
-          right: 0, left: 0, width: '30vw', top: 0, margin: '0 auto'}}>
-          { showCorrectSymbol && <IonImg src={correctSymbol} /> }
-          { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
+        <div className="grilla">
+          <div className="numbers-container">
+            { numbersToDisplay.map((n: any) => {
+              return <div key={n.number} onClick={() => checkAnswer(n.number)} className={n.class}>
+                {n.number}
+              </div>
+            })}
+          </div>
+          <div className="floating-result" style={{
+            position: 'absolute', 
+            right: 0, left: 0, width: '30vw', top: '380px', margin: '0 auto'}}>
+            { showCorrectSymbol && <IonImg src={correctSymbol} /> }
+            { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
+          </div>
         </div>
       </IonContent>
     </IonPage>
