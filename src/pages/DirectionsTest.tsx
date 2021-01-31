@@ -210,7 +210,7 @@ const DirectionsTest: React.FC = (props: any) => {
 
             <div style={{
                 position: 'absolute', 
-                right: 0, left: 0, width: '30vw', top: '280px', margin: '0 auto'}}>
+                right: 0, left: 0, width: '30vw', top: '210px', margin: '0 auto'}}>
                 { showCorrectSymbol && <IonImg src={correctSymbol} /> }
                 { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
               </div>

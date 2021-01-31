@@ -62,11 +62,23 @@
 
 .elemento-grande{
   font-size: 58vh !important;
-  color: var(--ion-color-alert)
+  color: var(--ion-color-alert);
+  display: block;
 }
 
 .elemento-chico{
-  font-size: 6vh  !important;
+  font-size: 7vh  !important;
+  background: #ebefee;
+  padding: 40px;
+  box-shadow: 0 1vw 0 0.3vw #9cd8db;
+  --box-shadow: 0 1vw 0 0.3vw #9cd8db;
+  border-radius: 2vw;
+  --border-radius: 2vw;
+  color: red;
+  --color: red;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 80vw !important;
 }
 
 .btn-container {
