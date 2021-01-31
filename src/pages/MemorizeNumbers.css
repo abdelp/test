@@ -27,8 +27,8 @@
   box-shadow: none !important;
   --box-shadow: none !important;
   --border-radius: 1.6vh;
-  --padding-bottom: 0vh;
-  --padding-top: 0;
+  --padding-bottom: 1vh;
+  --padding-top: 2vh;
   --padding-start: 0;
   --padding-end: 0;
   height: auto;
