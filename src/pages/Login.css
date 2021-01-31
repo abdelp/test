@@ -230,7 +230,7 @@ ion-list.datosdeinteresado {
   --box-shadow: 0 1vw 0 0.3vw #6f6f6f;
 }
 .opt-btn{
-  padding:1.4vh !important;
+    padding:1.4vh !important;
     background: var(--ion-color-light-blue) !important;
     border-radius: 5px !important;
     margin-bottom: 2vh !important;
@@ -238,7 +238,8 @@ ion-list.datosdeinteresado {
     font-size: 2.4vh !important;
     cursor: pointer !important;
     HEIGHT: auto;
-    font-weight: bold;
+    font-weight: normal;
+    font-family: 'Arial', sans-serif;
 }
 
 .question-img-container{
