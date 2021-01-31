@@ -113,37 +113,38 @@ const getPreguntasSenhales = () => {
 
 const sendResult = (ticket: any, ci: any, result: any) => {
   return new Promise((resolve, reject) => {
-    try {
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", url);
-      xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-      xhr.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-      xhr.setRequestHeader("SOAPAction", "http://rut.antsv.gov.py/EnviarResultado");
+    resolve(true);
+    // try {
+    //   const xhr = new XMLHttpRequest();
+    //   xhr.open("POST", url);
+    //   xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+    //   xhr.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+    //   xhr.setRequestHeader("SOAPAction", "http://rut.antsv.gov.py/EnviarResultado");
 
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          resolve(xhr);
-        }
-      };
+    //   xhr.onreadystatechange = function () {
+    //     if (xhr.readyState === 4) {
+    //       resolve(xhr);
+    //     }
+    //   };
 
-      const data = `<?xml version="1.0" encoding="utf-8"?>
-      <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-        <soap:Body>
-          <EnviarResultado xmlns="http://rut.antsv.gov.py/">
-            <Token>${ticket}</Token>
-            <Firma>string</Firma>
-            <Entidad>string</Entidad>
-            <CI>${ci}</CI>
-            <DatosExamenXML>${result}</DatosExamenXML>
-          </EnviarResultado>
-        </soap:Body>
-      </soap:Envelope>
-    `;
+    //   const data = `<?xml version="1.0" encoding="utf-8"?>
+    //   <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    //     <soap:Body>
+    //       <EnviarResultado xmlns="http://rut.antsv.gov.py/">
+    //         <Token>${ticket}</Token>
+    //         <Firma>string</Firma>
+    //         <Entidad>string</Entidad>
+    //         <CI>${ci}</CI>
+    //         <DatosExamenXML>${result}</DatosExamenXML>
+    //       </EnviarResultado>
+    //     </soap:Body>
+    //   </soap:Envelope>
+    // `;
 
-      xhr.send(data);
-    } catch(error) {
-      reject(error);
-    }
+    //   xhr.send(data);
+    // } catch(error) {
+    //   reject(error);
+    // }
   });
 };
 

@@ -61,8 +61,8 @@ const defaultState = {
   numerosAElegir: [[],[],[],[]],
   turnoUsuario: false,
   numerosElegidos: [[],[],[],[]],
-  min: 3,
-  sec: 0,
+  // min: 0,
+  // sec: 5,
   roundFinished: false,
   showButtons: false,
   btns: btnsInitialState.map(v => ({...v}))
@@ -86,8 +86,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
   }, []);
 
   useEffect(() => {
-    console.log(state);
-
     const {mensaje, numerosAElegir, turnoUsuario, numerosElegidos, roundFinished, btns } = state;
     let { round } = state;
     let rotationInterval: any;
@@ -95,37 +93,39 @@ const MemorizeNumbers: React.FC = (props: any) => {
     if(!turnoUsuario) {
       if(roundFinished) {
         if(round === 4) {
-          const { cookies } = props;
-          const ticket = cookies.get('ticket');
-          const categoria = cookies.get('categoria');
-          const usuarioTesteado = cookies.get('usuario_testeado');
-          const { cedula } = usuarioTesteado;
-          const { numerosAElegir, numerosElegidos } = state;
+          rotationInterval = window.setTimeout(() => {
+            const { cookies } = props;
+            const ticket = cookies.get('ticket');
+            const categoria = cookies.get('categoria');
+            const usuarioTesteado = cookies.get('usuario_testeado');
+            const { cedula } = usuarioTesteado;
+            const { numerosAElegir, numerosElegidos } = state;
 
-          const examen = {
-            examenes: {
-              [categoria]: {
-                "psiquica": {
-                  "memorizar numeros": {numerosAElegir, numerosElegidos},
-                  fecha: new Date()
+            const examen = {
+              examenes: {
+                [categoria]: {
+                  "psiquica": {
+                    "memorizar numeros": {numerosAElegir, numerosElegidos},
+                    fecha: new Date()
+                  }
                 }
               }
-            }
-          };
+            };
 
-          actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
-          .then(result => {
-            sendResult(ticket, cedula, 100)
+            actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
             .then(result => {
-              setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
+              sendResult(ticket, cedula, 100)
+              .then(result => {
+                setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
 
-              history.replace('/page/instrucciones', {type: 'psiquica', test: 'test-colores'});
+                history.replace('/page/instrucciones', {type: 'psiquica', test: 'test-colores'});
+              })
+              .catch((error: any) => console.log(error));
             })
-            .catch((error: any) => console.log(error));
-          })
-          .catch((error: any) => {
-            console.log(error);
-          });
+            .catch((error: any) => {
+              console.log(error);
+            });
+          }, 300);
         } else {
           round++;
 

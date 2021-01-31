@@ -72,7 +72,7 @@ const LocationTestPage: React.FC = (props: any) => {
           rotationInterval = window.setTimeout(() => {
             setState((state: any) => ({
               ...defaultState,
-              mensaje: 'Turno del ordenador',
+              mensaje: 'Atención',
               round,
               numerosAElegir: [],
               turnoUsuario: false,
@@ -82,7 +82,7 @@ const LocationTestPage: React.FC = (props: any) => {
         }
       } else {
         if(round >= 1 && round <= 4) {
-          if(mensaje === 'Turno del ordenador') {        
+          if(mensaje === 'Atención') {        
             rotationInterval = window.setTimeout(() => {
               setState((state: any) => ({...state, mensaje: '' }));
             }, 2000);
@@ -92,7 +92,7 @@ const LocationTestPage: React.FC = (props: any) => {
             rotationInterval = window.setTimeout(() => {
               setState((state: any) => ({...state, mensaje: randNum, numerosAElegir}));
             });
-          } else if (mensaje != '' && mensaje != 'Turno del ordenador') {
+          } else if (mensaje != '' && mensaje != 'Atención') {
             rotationInterval = window.setTimeout(() => {
               setState((state: any) => ({...state, mensaje: '' }));
             }, 2000);
@@ -114,7 +114,7 @@ const LocationTestPage: React.FC = (props: any) => {
   }, [state]);
 
   const empezar = () =>
-    setState((state: any) => ({...state, mensaje: 'Turno del ordenador', round: 1}));
+    setState((state: any) => ({...state, mensaje: 'Atención', round: 1}));
 
   const { round, mensaje } = state;
 

@@ -24,6 +24,8 @@ import multipleSelectionImg from '../assets/multiple-selection.png';
 import instruccionesPruebaTeorica from '../assets/instrucciones_prueba_teorica.svg';
 import instruccionesPruebaMemorizarNumeros from '../assets/instrucciones_prueba_psiquica_memorizar_numeros.svg';
 import instruccionesPruebaColores from '../assets/instrucciones_prueba_psiquica_colores.svg';
+import instruccionesPruebaNumerosGrandes from '../assets/instrucciones_prueba_psiquica_numeros_grandes.svg';
+import instruccionesPruebaDirecciones from '../assets/instrucciones_prueba_psiquica_direcciones.svg';
 import confirmarBtn from '../assets/confirmar_btn.svg';
 
 const InstructionsPage: React.FC = (props: any) => {
@@ -87,17 +89,27 @@ const InstructionsPage: React.FC = (props: any) => {
       case 'psiquica':
         color = 'alert';
 
+        console.log(type);
+        console.log(test);
+
         switch(test) {
           case 'memorize-numbers':
             backgroundImg = instruccionesPruebaMemorizarNumeros;
             break;
           case 'test-colores':
             backgroundImg = instruccionesPruebaColores;
-
+            break;
+          case 'test-direcciones':
+            backgroundImg = instruccionesPruebaDirecciones;
+            break;
+          case 'numeros-grandes':
+            backgroundImg = instruccionesPruebaNumerosGrandes;
+            break;
+          case 'posiciones-bloques':
+            backgroundImg = instruccionesPruebaColores;
             break;
         }
-        console.log(type)
-        console.log(test)
+
         break;
       default:
         color = 'success';

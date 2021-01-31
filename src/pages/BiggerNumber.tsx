@@ -82,12 +82,13 @@ const BiggerNumber: React.FC = (props: any) => {
                 }
               }
             };
-  
+
             actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
             .then(result => {
               sendResult(ticket, cedula, 100)
               .then(result => {    
-                history.replace('/page/test-finished', { state: 'prueba psiquica' });
+                // history.replace('/page/instrucciones', {type: 'psiquica', test: 'posiciones-bloques'});
+                history.replace('/page/test-finished', {type: 'psiquica', test: 'posiciones-bloques'});
               })
               .catch((error: any) => console.log(error));
             })

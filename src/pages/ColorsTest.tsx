@@ -119,7 +119,7 @@ const ColorsTest: React.FC = (props: any) => {
             .then(result => {
               sendResult(ticket, cedula, 100)
               .then(result => {    
-                history.replace('/page/test-finished', { state: 'prueba psiquica' });
+                history.replace('/page/instrucciones', {type: 'psiquica', test: 'test-direcciones'});
               })
               .catch((error: any) => console.log(error));
             })

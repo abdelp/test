@@ -31,7 +31,7 @@ const defaultTime = {
 };
 
 const defaultQuestionTime = {
-  min: 10,
+  min: 0,
   sec: 3
 };
 
@@ -89,8 +89,8 @@ const DirectionsTest: React.FC = (props: any) => {
             actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
             .then(result => {
               sendResult(ticket, cedula, 100)
-              .then(result => {    
-                history.replace('/page/test-finished', { state: 'prueba psiquica' });
+              .then(result => {
+                history.replace('/page/instrucciones', { type: 'psiquica', test: 'numeros-grandes' });
               })
               .catch((error: any) => console.log(error));
             })
