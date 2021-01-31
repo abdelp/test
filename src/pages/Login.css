@@ -380,11 +380,7 @@ ion-menu.md ion-item{
 
 
 .contenedor-direcciones{
-<<<<<<< HEAD
   /* transform: translate(0,14vh); */
-=======
-  /*transform: translate(0,14vh);*/
->>>>>>> dcff4b060b86038ab46b66acd73355554aceb377
   position: relative;
   /*width: 80vw;*/
 }
