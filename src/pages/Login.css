@@ -434,3 +434,7 @@ ion-menu.md ion-item{
   width: 410px;
   text-align: center;
 }
+
+.floating-result{
+  z-index: 11111113;
+}
