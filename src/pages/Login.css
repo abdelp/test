@@ -138,6 +138,7 @@
   text-align: justify;
   height: 90vh;
   flex-direction: column;
+  justify-content: center;
 }
 
 ion-input, ion-textarea{ 
