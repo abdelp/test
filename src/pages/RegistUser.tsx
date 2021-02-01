@@ -26,13 +26,13 @@ import { set, get } from 'idb-keyval';
 const RegistUserPage: React.FC = () => {
   const history = useHistory();
   const [state, setState]: any = useState<any>({
-    rut: '',
+    cedula: '',
     user: null,
     loading: false,
     error: null
   });
 
-  let usuariosTesteados: any = [];
+  const [usuariosTesteados, setUsuariosTesteados]: any = useState([]);
   const [cookies, setCookie] = useCookies(["usuario_testeado"]);
 
   const handleChange = (event: any) =>
@@ -47,13 +47,14 @@ const RegistUserPage: React.FC = () => {
     if (err) return;
 
     if(result && result.length > 0) {
-      usuariosTesteados = result;
-      const usuario = usuariosTesteados.find((u: any) => u.rut === state.rut);
+      setUsuariosTesteados((state: any) => result);
+      console.log(state.cedula);
+      const usuario = usuariosTesteados.find((u: any) => u.cedula === state.cedula);
 
       if(usuario) {
         setState((state: any) => ({...state, user: usuario, loading: false}));
       } else {
-        [err, result] = await to(getTestedUserData(state.rut));
+        [err, result] = await to(getTestedUserData(state.cedula));
 
         if(err) {
           setState((state: any) => ({...state, error: err, loading: false}));
@@ -62,7 +63,7 @@ const RegistUserPage: React.FC = () => {
         }
       }
     } else {
-      [err, result ] = await to(getTestedUserData(state.rut));
+      [err, result ] = await to(getTestedUserData(state.cedula));
 
       if(err) {
         setState((state: any) => ({...state, error: err, loading: false}));
@@ -79,8 +80,16 @@ const RegistUserPage: React.FC = () => {
       usuariosTesteados.push(state.user);
     }
 
+    console.log(usuariosTesteados);
+
     set("usuarios_testeados", usuariosTesteados);
-    setCookie('usuario_testeado', {nombres: state.user.nombres, apellidos: state.user.apellidos, cedula: state.user.cedula, nroAntecedente: state.user.nroAntecedente}, {path: '/'});
+    setCookie('usuario_testeado', {
+      nombres: state.user.nombres,
+      apellidos: state.user.apellidos,
+      cedula: state.user.cedula,
+      nroAntecedente: state.user.nroAntecedente,
+      renovacion: state.user.renovacion
+    }, {path: '/'});
     setCookie('categoria', state.user.categoria, {path: '/'});
 
     history.replace({
@@ -98,10 +107,10 @@ const RegistUserPage: React.FC = () => {
 
     // x().then((result: any) => console.log(result));
 
-    setState((state: any) => ({...state, rut: '', user: null}));
+    setState((state: any) => ({...state, cedula: '', user: null}));
   }, []);
 
-  const { rut, user, error, loading } = state;
+  const { cedula, user, error, loading } = state;
 
   return (
     <IonPage>
@@ -119,7 +128,7 @@ const RegistUserPage: React.FC = () => {
           <SearchTestedUserFormBase
             onSubmit={consultUserData}
             handleChange={handleChange}
-            rut={rut}
+            cedula={cedula}
             error={error}
           />
 

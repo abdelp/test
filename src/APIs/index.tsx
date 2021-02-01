@@ -9,7 +9,6 @@ const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
 
 const signinUser = (username: any, password: any) => {
   return new Promise((resolve, reject) => {
-
     try {
       const xhr = new XMLHttpRequest();
       xhr.open("POST", url);
@@ -48,7 +47,7 @@ const getTestedUserData = (cedula: any) => {
       if(cedula == 111) {
         resolve(
           {
-            nombres: 'Pedro Marting',
+            nombres: 'Pedro Marcelo',
             apellidos: 'Benitez Martinez',
             fechaNac: '04/02/1980',
             cedula: '111',
@@ -69,8 +68,8 @@ const getTestedUserData = (cedula: any) => {
             nombres: 'Gustavo Marcelo',
             apellidos: 'Dominguez Britos',
             fechaNac: '04/09/1991',
-            ci: '222',
-            rut: '111',
+            cedula: '222',
+            rut: '222',
             domicilio: 'LAMBARE',
             nacionalidad: 'PARAGUAYA',
             categoria: 'Profesional B',
@@ -78,7 +77,7 @@ const getTestedUserData = (cedula: any) => {
             nroAntecedente: 1702,
             examenes:
               {
-                catMotocicleta: {
+                Motocicleta: {
                   examenTeorico: {
                     fecha: '2020-12-23',
                     puntaje: 80
