@@ -19,6 +19,7 @@ import { compose } from 'recompose';
 import correctSymbol from '../assets/correcto.svg';
 import incorrectSymbol from '../assets/incorrecto.svg';
 // import { setMaxListeners } from 'process';
+import _ from 'lodash';
 
 const defaultTime = {
   min: 2,
@@ -30,6 +31,17 @@ const defaultQuestionTime = {
   sec: 3
 };
 
+const defaultPositions = [
+  {justify: '', align: ''},
+  {justify: '', align: ''},
+  {justify: '', align: ''},
+  {justify: '', align: ''},
+  {justify: '', align: ''},
+  {justify: '', align: ''},
+  {justify: '', align: ''},
+  {justify: '', align: ''}
+];
+
 const BlockPositions: React.FC = (props: any) => {
   const [time, setTime] = useState<any>({...defaultTime});
   const [questionTime, setQuestionTime] = useState<any>({...defaultQuestionTime});
@@ -39,7 +51,8 @@ const BlockPositions: React.FC = (props: any) => {
   const [numbersToDisplay, setNumbersToDisplay] = useState<any>([]);
   const [showCorrectSymbol, setShowCorrectSymbol] = useState<any>(false);
   const [showIncorrectSymbol, setShowIncorrectSymbol] = useState<any>(false);
-  
+  const [bloques, setBloques] = useState<any>({..._.cloneDeep(defaultPositions)});
+
   useEffect(() => {
     if(round === 0) {
       setRound((state: any) => state + 1);
@@ -76,7 +89,7 @@ const BlockPositions: React.FC = (props: any) => {
               examenes: {
                 [categoria]: {
                   "psiquica": {
-                    "numero-grande": results,
+                    "posiciones-bloques": results,
                     fecha: new Date()
                   }
                 }
@@ -187,9 +200,23 @@ const BlockPositions: React.FC = (props: any) => {
     setRound((state: any) => state + 1);
 
     setTimeout(() => {
-      nextSetOfNumbers();
+      alignBlocks();
     }, 1000);
   };
+
+  const alignBlocks = () => {
+    let nuevasPosiciones = [];
+    const alignments = ['flex-start', 'flex-end', 'center'];
+
+    for(let i = 0; i < 8; i++) {
+      const justification = alignments[randomNumber(2)];
+      const alignment = alignments[randomNumber(2)];
+
+      nuevasPosiciones.push({justify: justification, align: alignment});
+    }
+
+    setBloques(nuevasPosiciones);
+  }
 
   return (
     <IonPage>
@@ -198,31 +225,27 @@ const BlockPositions: React.FC = (props: any) => {
           <IonTitle className="ion-text-uppercase ion-text-center title">prueba psiquica</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent className="ion-padding">
         <div className="grid">
           <div className="row">
-            <div className="col">1</div>
-            <div className="col">2</div>
-            <div className="col">3</div>
-            <div className="col">3</div>
+            <div className="col"></div>
+            <div className="col" style={{justifyContent: bloques[0].justify, alignItems: bloques[0].align}}><div className="block"></div></div>
+            <div className="col" style={{justifyContent: bloques[1].justify, alignItems: bloques[1].align}}><div className="block"></div></div>
           </div>
           <div className="row">
-            <div className="col">1</div>
-            <div className="col">2</div>
-            <div className="col">3</div>
-            <div className="col">3</div>
+            <div className="col" style={{justifyContent: bloques[2].justify, alignItems: bloques[2].align}}><div className="block"></div></div>
+            <div className="col" style={{justifyContent: bloques[3].justify, alignItems: bloques[3].align}}><div className="block"></div></div>
+            <div className="col" style={{justifyContent: bloques[4].justify, alignItems: bloques[4].align}}><div className="block"></div></div>
           </div>
           <div className="row">
-            <div className="col">1</div>
-            <div className="col">2</div>
-            <div className="col">3</div>
-            <div className="col">3</div>
+            <div className="col" style={{justifyContent: bloques[5].justify, alignItems: bloques[5].align}}><div className="block"></div></div>
+            <div className="col"></div>
+            <div className="col" style={{justifyContent: bloques[6].justify, alignItems: bloques[6].align}}><div className="block"></div></div>
           </div>
           <div className="row">
-            <div className="col">1</div>
-            <div className="col">2</div>
-            <div className="col">3</div>
-            <div className="col">3</div>
+            <div className="col"></div>
+            <div className="col" style={{justifyContent: bloques[7].justify, alignItems: bloques[7].align}}><div className="block"></div></div>
+            <div className="col"></div>
           </div>
        </div>
       </IonContent>
