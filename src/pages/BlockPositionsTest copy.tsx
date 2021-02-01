@@ -6,24 +6,20 @@ import {
   IonTitle,
   IonToolbar,
   IonItem,
-  IonImg,
-  IonButton
+  IonImg
 } from '@ionic/react';
 import { useHistory, withRouter } from 'react-router-dom';
 import { set } from 'idb-keyval';
 import { sendResult } from '../APIs';
 import { withCookies, Cookies } from 'react-cookie';
 import { updateUserTest, actualizarDatosUsuarioTesteadoPorCedula } from '../utils/db';
-import './DirectionsTest.css';
+import './BlockPositionsTest.css';
 import { debug } from 'console';
 import { compose } from 'recompose';
 import correctSymbol from '../assets/correcto.svg';
 import incorrectSymbol from '../assets/incorrecto.svg';
-import flecha from '../assets/flecharoja.svg';
-
 // import { setMaxListeners } from 'process';
-
-const directions = [ 'arriba', 'izquierda', 'derecha', 'abajo' ];
+import _ from 'lodash';
 
 const defaultTime = {
   min: 2,
@@ -32,25 +28,41 @@ const defaultTime = {
 
 const defaultQuestionTime = {
   min: 0,
-  sec: 3
+  sec: 5
 };
 
-const DirectionsTest: React.FC = (props: any) => {
+const defaultPositions = [
+  {justify: '', align: ''},
+  {justify: '', align: ''},
+  {justify: '', align: ''},
+  {justify: '', align: ''},
+  {justify: '', align: ''},
+  {justify: '', align: ''},
+  {justify: '', align: ''},
+  {justify: '', align: ''}
+];
+
+const BlockPositions: React.FC = (props: any) => {
   const [time, setTime] = useState<any>({...defaultTime});
   const [questionTime, setQuestionTime] = useState<any>({...defaultQuestionTime});
   const [results, setResults] = useState<any>([]);
-  const [round, setRound] = useState<any>(0); // or probably one
+  const [round, setRound] = useState<any>(0);
   const [isActive, setIsActive] = useState(true);
-  const [message, setMessage] = useState<any>();
+  const [numbersToDisplay, setNumbersToDisplay] = useState<any>([]);
   const [showCorrectSymbol, setShowCorrectSymbol] = useState<any>(false);
   const [showIncorrectSymbol, setShowIncorrectSymbol] = useState<any>(false);
-  
+  const [bloques, setBloques] = useState<any>({..._.cloneDeep(defaultPositions)});
+
   useEffect(() => {
+    console.log(round);
     if(round === 0) {
       setRound((state: any) => state + 1);
-      nextDirection();
+    } else if (round === 1) {
+      alignBlocks();
     }
   });
+
+  /* timer effect */
 
   useEffect(() => {
     let interval: any = null;
@@ -79,7 +91,7 @@ const DirectionsTest: React.FC = (props: any) => {
               examenes: {
                 [categoria]: {
                   "psiquica": {
-                    "test-direcciones": results,
+                    "posiciones-bloques": results,
                     fecha: new Date()
                   }
                 }
@@ -89,8 +101,8 @@ const DirectionsTest: React.FC = (props: any) => {
             actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
             .then(result => {
               sendResult(ticket, cedula, 100)
-              .then(result => {
-                history.replace('/page/instrucciones', { type: 'psiquica', test: 'numeros-grandes' });
+              .then(result => {    
+                history.replace('/page/test-finished', { state: 'prueba psiquica' });
               })
               .catch((error: any) => console.log(error));
             })
@@ -130,7 +142,7 @@ const DirectionsTest: React.FC = (props: any) => {
 
         if (sec <= 0) {
           if (min === 0) {
-            checkAnswer(-1);
+            // checkAnswer(-1);
           } else {
             setTime((state: any) => ({
               min: state.min - 1,
@@ -147,28 +159,15 @@ const DirectionsTest: React.FC = (props: any) => {
     }
   }, [isActive, questionTime]);
 
-  const randomNumber = () =>  
-    Math.floor(Math.random() * (directions.length - 1 - 0) + 0);
+  const randomNumber = (length: any) =>  
+    Math.floor(Math.random() * (length - 0) + 0);
 
-  const nextDirection = () =>{
-    const directionIdx = randomNumber();
-
-    setMessage(directions[directionIdx]);
-
-    setResults((state: any) => ([...state,
-      {
-        direccionAelegir: directions[directionIdx],
-        indiceAElegir: directionIdx
-      }]));
-  }
-
-  const checkAnswer = (answer: any) => {
-    results[results.length - 1].respuestaUsuario = answer;
+  const checkAnswer = (userSelection: any) => {
+    results[results.length - 1].respuestaUsuario = userSelection;
     setResults([...results]);
 
-    const resultado = 
-    ((results[results.length - 1].indiceAElegir === results[results.length - 1].respuestaUsuario));
-    
+    const resultado = results[results.length - 1].numeroAElegir === userSelection;
+
     setShowCorrectSymbol(resultado);
     setShowIncorrectSymbol(!resultado);
     setQuestionTime({...defaultQuestionTime});
@@ -176,8 +175,36 @@ const DirectionsTest: React.FC = (props: any) => {
     setRound((state: any) => state + 1);
 
     setTimeout(() => {
-      nextDirection();
+      // alignBlocks();
     }, 1000);
+  };
+
+  const alignBlocks = () => {
+    let nuevasPosiciones = [];
+    const alignments = ['flex-start', 'flex-end', 'center'];
+
+    for(let i = 0; i < 8; i++) {
+      const justification = alignments[randomNumber(2)];
+      const alignment = alignments[randomNumber(2)];
+
+      nuevasPosiciones.push({justify: justification, align: alignment});
+    }
+
+    setBloques(nuevasPosiciones);
+
+    const interval = setTimeout(() => {
+      colorizeBlocks();
+    }, 300);
+  };
+
+  const colorizeBlocks = () => {
+    let i = 0;
+
+    console.log(`round: ${round}`);
+
+    while(i < round) {
+      console.log('bloque coloreado');
+    }
   };
 
   return (
@@ -187,35 +214,29 @@ const DirectionsTest: React.FC = (props: any) => {
           <IonTitle className="ion-text-uppercase ion-text-center title">prueba psiquica</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <div className="grilla">
-          <div className="container contenedor-direcciones">
-            <div className="row">
-              <IonButton className="flechita cf_arriba" onClick={() => checkAnswer(0)} ><IonImg className="flechaarriba" src={flecha} /> </IonButton>
-            </div>
-            <div className="row">
-              <div className="col">
-              <IonButton className="flechita cf_izquierda" onClick={() => checkAnswer(1)}><IonImg className="flechaizquierda" src={flecha} /> </IonButton>
-              </div>
-              <div className="col mensajeflechas">
-                {message}
-              </div>
-              <div className="col">
-                <IonButton className="flechita cf_derecha" onClick={() => checkAnswer(2)}><IonImg className="flechaderecha" src={flecha} /> </IonButton>
-              </div>
-            </div>
-            <div className="row">
-              <IonButton className="flechita cf_abajo" onClick={() => checkAnswer(3)}><IonImg className="flechaabajo" src={flecha} /> </IonButton>
-            </div>
-
-            <div style={{
-                position: 'absolute', 
-                right: 0, left: 0, width: '30vw', top: '260px', margin: '0 auto'}}>
-                { showCorrectSymbol && <IonImg src={correctSymbol} /> }
-                { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
-            </div>
+      <IonContent className="ion-padding">
+        <div className="grid">
+          <div className="row">
+            <div className="col"></div>
+            <div className="col" style={{justifyContent: bloques[0].justify, alignItems: bloques[0].align}}><div className="block"></div></div>
+            <div className="col" style={{justifyContent: bloques[1].justify, alignItems: bloques[1].align}}><div className="block"></div></div>
           </div>
-        </div>
+          <div className="row">
+            <div className="col" style={{justifyContent: bloques[2].justify, alignItems: bloques[2].align}}><div className="block"></div></div>
+            <div className="col" style={{justifyContent: bloques[3].justify, alignItems: bloques[3].align}}><div className="block"></div></div>
+            <div className="col" style={{justifyContent: bloques[4].justify, alignItems: bloques[4].align}}><div className="block"></div></div>
+          </div>
+          <div className="row">
+            <div className="col" style={{justifyContent: bloques[5].justify, alignItems: bloques[5].align}}><div className="block"></div></div>
+            <div className="col"></div>
+            <div className="col" style={{justifyContent: bloques[6].justify, alignItems: bloques[6].align}}><div className="block"></div></div>
+          </div>
+          <div className="row">
+            <div className="col"></div>
+            <div className="col" style={{justifyContent: bloques[7].justify, alignItems: bloques[7].align}}><div className="block"></div></div>
+            <div className="col"></div>
+          </div>
+       </div>
       </IonContent>
     </IonPage>
   );
@@ -224,4 +245,4 @@ const DirectionsTest: React.FC = (props: any) => {
 export default compose(
   withRouter,
   withCookies
-)(DirectionsTest);
+)(BlockPositions);

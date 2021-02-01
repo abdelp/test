@@ -1,7 +1,25 @@
+:root {
+  --ion-color-alert: #e93a49;
+  --ion-color-alert-rgb: 0, 175, 194;
+  --ion-color-alert-contrast: #ffffff;
+  --ion-color-alert-contrast-rgb: 255,255,255;
+  --ion-color-alert-shade:#d62534;
+  --ion-color-alert-tint: #78c288;
+}
+
+.ion-color-alert {
+  --ion-color-base: var(--ion-color-alert);
+  --ion-color-base-rgb: var(--ion-color-alert-rgb);
+  --ion-color-contrast: var(--ion-color-alert-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-alert-contrast-rgb);
+  --ion-color-shade: var(--ion-color-alert-shade);
+  --ion-color-tint: var(--ion-color-alert-tint);
+}
+
 .grid {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   height: 100%;
 }
 
@@ -13,7 +31,7 @@
 
 .col {
   width: 33%;
-  height: 310px;
+  height: 290px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,8 +39,12 @@
 }
 
 .block {
-  background-color: red;
+  background-color: rgb(197, 197, 197);
   height: 33%;
   width: 33%;
   border-radius: 5px;
+}
+
+.display-container {
+  margin-bottom: 5em;
 }
