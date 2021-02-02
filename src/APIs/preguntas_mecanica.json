@@ -44,7 +44,7 @@
     , "opciones": [
       "Detener y desconectar la batería durante 5 minutos; luego reiniciar el viaje",
       "Detenerse y retirar inmediatamente la tapa del radiador, para permitir que el sistema de refrigeración se recupere",
-      "Detenerse lo antes posible, para el motor, esperar que se enfríe y luego revisar el radiador y las mangueras de conexión"
+      "Detenerse lo antes posible, parar el motor, esperar que se enfríe y luego revisar el radiador y las mangueras de conexión"
     ],
     "respuesta": 2
   },
