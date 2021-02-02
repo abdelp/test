@@ -137,7 +137,8 @@ const MemorizeNumbers: React.FC = (props: any) => {
           .then(result => {
             setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
 
-            history.replace('/page/instrucciones', {type: 'psiquica', test: 'test-colores'});
+            history.replace('/page/test-finished', {type: 'psiquica', test: 'posiciones-bloques'});
+
           })
           .catch((error: any) => console.log(error));
         })

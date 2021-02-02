@@ -26,6 +26,7 @@ import instruccionesPruebaMemorizarNumeros from '../assets/instrucciones_prueba_
 import instruccionesPruebaColores from '../assets/instrucciones_prueba_psiquica_colores.svg';
 import instruccionesPruebaNumerosGrandes from '../assets/instrucciones_prueba_psiquica_numeros_grandes.svg';
 import instruccionesPruebaDirecciones from '../assets/instrucciones_prueba_psiquica_direcciones.svg';
+import instruccionesPruebaPosicionesBloques from '../assets/instrucciones_prueba_psiquica_posiciones_bloques.svg';
 import confirmarBtn from '../assets/confirmar_btn.svg';
 
 const InstructionsPage: React.FC = (props: any) => {
@@ -106,7 +107,7 @@ const InstructionsPage: React.FC = (props: any) => {
             backgroundImg = instruccionesPruebaNumerosGrandes;
             break;
           case 'posiciones-bloques':
-            backgroundImg = instruccionesPruebaColores;
+            backgroundImg = instruccionesPruebaPosicionesBloques;
             break;
         }
 
