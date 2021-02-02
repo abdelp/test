@@ -24,18 +24,6 @@ import './BlockPositionsTest.css';
 
 // import { setMaxListeners } from 'process';
 
-const defaultState = {
-  round: 1,
-  mensaje: '',
-  bloquesAElegir: [[],[],[],[]],
-  turnoUsuario: false,
-  bloquesElegidos: [[],[],[],[]],
-  pintarBloques: false,
-  // min: 0,
-  // sec: 5,
-  roundFinished: false
-};
-
 const defaultPositions = [
   {justify: '', align: '', color: ''},
   {justify: '', align: '', color: ''},
@@ -47,13 +35,18 @@ const defaultPositions = [
   {justify: '', align: '', color: ''}
 ];
 
+const defaultState = {
+  round: 0,
+  mensaje: '',
+  bloquesAElegir: [[],[],[],[]],
+  bloquesElegidos: [[],[],[],[]],
+  bloquesAMostrar: _.cloneDeep(defaultPositions),
+  action: null
+};
+
 const MemorizeNumbers: React.FC = (props: any) => {
   const [state, setState] = useState<any>({..._.cloneDeep(defaultState)});
-  const [showTimer, setShowTimer] = useState<any>(true);
   const history = useHistory();
-  let continuar: boolean = false;
-  const [showAlert, setShowAlert] = useState(false);
-  const [bloques, setBloques] = useState<any>([..._.cloneDeep(defaultPositions)]);
 
   const doSaveExamProgress = async (exam: any) =>
     await set("exam", {exam});
@@ -72,147 +65,91 @@ const MemorizeNumbers: React.FC = (props: any) => {
       nuevasPosiciones.push({justify: justification, align: alignment});
     }
 
-    setBloques(nuevasPosiciones);
-    setState((state: any) => ({...state, pintarBloques: true}))
+    return nuevasPosiciones;
   };
 
   useEffect(() => {
-    alignBlocks();
+    setState((state: any) => ({ ...state, mensaje: 'Atención', round: 1 }));
   }, []);
 
-  const colorizeBlocks = () => {
-    let i = 0;
-    const indexes = [0, 1, 2, 3, 4, 5, 6, 7];
-    let nuevosBloques = [..._.cloneDeep(bloques)];
-    const { bloquesAElegir } = state;
-
-    while(i <= state.round) {
-      const timeout = window.setTimeout(() => {
-        const bloqueRandom = indexes.splice(randomNumber(indexes.length), 1)[0];
-        bloquesAElegir[round-1].push(bloqueRandom);
-        nuevosBloques[bloqueRandom].color = 'red';
-        setBloques((state: any) => [...nuevosBloques]);
-        setState((state: any) => ({...state, bloquesAElegir }));
-        }, (i * 1000 + 1000));
-  
-      i++;
-    }
-
-    const timeout = window.setTimeout(() => {
-      const clearedBlocks = bloques.map((b: any) => ({...b, color: '' }));
-      setBloques(clearedBlocks);
-      setState((state: any) => ({...state, mensaje: 'Tu turno'}))
-    }, 3000);
-  }
-
   useEffect(() => {
-    const {mensaje, bloquesAElegir, turnoUsuario, bloquesElegidos, roundFinished, pintarBloques } = state;
-    let { round } = state;
+    const { mensaje, action, round, bloquesAMostrar, bloquesAElegir, bloquesElegidos } = state;
     let rotationInterval: any;
 
-    if(pintarBloques) {
-      colorizeBlocks();
-      setState((state: any) => ({...state, pintarBloques: false }));
-    } else if (mensaje === 'Tu turno' && turnoUsuario) {
-      setState((state: any) => ({...state, turnoUsuario: true }));
+    if (round <= 4) {
+      if (mensaje === 'Atención' && action !== 'Colorize blocks') {
+        const nuevasPosiciones = alignBlocks();
+        setState((state: any) => ({...state, bloquesAMostrar: nuevasPosiciones, action: 'Colorize blocks'}));
+      } else if (action === 'Colorize blocks') {
+        let nuevosBloquesAMostrar = _.cloneDeep(bloquesAMostrar);
+        const bloquesLibres = bloquesAMostrar.map((v: any, idx: any) => ({...v, idx})).filter((b: any, idx: any) => !b.color).map((v: any) => v.idx);
+        const bloquesElegidos = 8 - bloquesLibres.length;
 
+        if (bloquesElegidos < round + 1) {
+          const bloqueRandom = bloquesLibres.splice(randomNumber(bloquesLibres.length), 1)[0];
+          nuevosBloquesAMostrar[bloqueRandom].color = 'red';
+          bloquesAElegir[round - 1].push(bloqueRandom);
+
+          rotationInterval = window.setTimeout(() => {
+            setState((state: any) => ({ ...state, mensaje: '', bloquesAMostrar: nuevosBloquesAMostrar, bloquesAElegir }));
+          }, 1000);
+        } else {
+          rotationInterval = window.setTimeout(() => {
+            setState((state: any) => ({ ...state, mensaje: '', action: 'Limpiar bloques' }));
+          }, 2000);
+        }
+      } else if (action === 'Limpiar bloques') {
+        const bloquesSinColor = bloquesAMostrar.map((b: any) => ({...b, color: ''}));
+        setState((state: any) => ({ ...state, mensaje: 'Tu turno', action: 'Turno usuario', bloquesAMostrar: bloquesSinColor}));
+      } else if (action === 'Turno usuario' && bloquesElegidos[round-1].length === bloquesAElegir[round-1].length) {
+        const correcto = checkBlocksSelected(bloquesAElegir[round-1], bloquesElegidos[round-1]);
+        let mensaje = correcto ? 'Correcto' : 'Incorrecto';
+
+        setState((state: any) => ({ ...state, mensaje, action: ''}));
+      } else if (mensaje === 'Correcto' || mensaje === 'Incorrecto') {
+        rotationInterval = window.setTimeout(() => {
+          setState((state: any) => ({ ...state, mensaje: 'Atención', round: state.round + 1, bloquesAMostrar: _.cloneDeep(defaultPositions)}));
+        }, 2000);
+      }
+    } else {
       rotationInterval = window.setTimeout(() => {
-        setState((state: any) => ({...state, mensaje: '' }));
-      }, 3000);
+        const { cookies } = props;
+        const ticket = cookies.get('ticket');
+        const categoria = cookies.get('categoria');
+        const usuarioTesteado = cookies.get('usuario_testeado');
+        const { cedula } = usuarioTesteado;
+        const { bloquesAElegir, bloquesElegidos } = state;
+
+        const examen = {
+          examenes: {
+            [categoria]: {
+              "psiquica": {
+                "posiciones bloques": {bloquesAElegir, bloquesElegidos},
+                fecha: new Date()
+              }
+            }
+          }
+        };
+
+        actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
+        .then(result => {
+          sendResult(ticket, cedula, 100)
+          .then(result => {
+            setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
+
+            history.replace('/page/instrucciones', {type: 'psiquica', test: 'test-colores'});
+          })
+          .catch((error: any) => console.log(error));
+        })
+        .catch((error: any) => {
+          console.log(error);
+        });
+      }, 300);
     }
 
-    // if(!turnoUsuario) {
-    //   if(roundFinished) {
-    //     if(round === 4) {
-    //       rotationInterval = window.setTimeout(() => {
-    //         const { cookies } = props;
-    //         const ticket = cookies.get('ticket');
-    //         const categoria = cookies.get('categoria');
-    //         const usuarioTesteado = cookies.get('usuario_testeado');
-    //         const { cedula } = usuarioTesteado;
-    //         const { bloquesAElegir, bloquesElegidos } = state;
-
-    //         const examen = {
-    //           examenes: {
-    //             [categoria]: {
-    //               "psiquica": {
-    //                 "memorizar numeros": {bloquesAElegir, bloquesElegidos},
-    //                 fecha: new Date()
-    //               }
-    //             }
-    //           }
-    //         };
-
-    //         actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
-    //         .then(result => {
-    //           sendResult(ticket, cedula, 100)
-    //           .then(result => {
-    //             setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
-
-    //             history.replace('/page/instrucciones', {type: 'psiquica', test: 'test-colores'});
-    //           })
-    //           .catch((error: any) => console.log(error));
-    //         })
-    //         .catch((error: any) => {
-    //           console.log(error);
-    //         });
-    //       }, 300);
-    //     } else {
-    //       round++;
-
-    //       rotationInterval = window.setTimeout(() => {
-    //         setState((state: any) => ({
-    //           ..._.cloneDeep(defaultState),
-    //           mensaje: 'Atención',
-    //           round,
-    //           bloquesAElegir: [...state.bloquesAElegir],
-    //           turnoUsuario: false,
-    //           bloquesElegidos: [...state.bloquesElegidos]
-    //         }));
-    //       }, 2000);
-    //     }
-    //   } else {
-    //     if(round >= 1 && round <= 4) {
-    //       if(mensaje === 'Atención') {        
-    //         rotationInterval = window.setTimeout(() => {
-    //           setState((state: any) => ({...state, mensaje: '' }));
-    //         }, 2000);
-    //       } else if (mensaje === '' && bloquesAElegir[round-1].length < round + 1) {
-    //         let randNum: any = randomNumber(1).toString();
-
-    //         while(bloquesAElegir[round-1].findIndex((n: any) => n == randNum) != -1) {
-    //           randNum = randomNumber(1).toString();
-    //         }
-
-    //         bloquesAElegir[round-1].push(randNum);
-    //         rotationInterval = window.setTimeout(() => {
-    //           setState((state: any) => ({...state, mensaje: randNum, bloquesAElegir}));
-    //         });
-    //       } else if (mensaje != '' && mensaje != 'Atención') {
-    //         rotationInterval = window.setTimeout(() => {
-    //           setState((state: any) => ({...state, mensaje: '' }));
-    //         }, 2000);
-    //       } else if (bloquesAElegir[round-1].length === round + 1) {
-    //         setState((state: any) => ({...state, mensaje: 'Tu turno', turnoUsuario: true}));
-    //       }
-    //     }
-    //   }
-    // } else {
-    //   if (!showButtons) {
-    //     rotationInterval = window.setTimeout(() => {
-    //         setState((state: any) => ({...state, showButtons: true }));
-    //     }, 2000);
-    //   } else if(bloquesAElegir[round-1].length === bloquesElegidos[round-1].length) {
-    //     const mensaje = bloquesAElegir[round-1].join('') === bloquesElegidos[round-1].join('') ? 'Correcto' : 'Incorrecto';
-
-    //     rotationInterval = window.setTimeout(() => {
-    //       setState((state: any) => ({...state, mensaje, turnoUsuario: false, roundFinished: true, showButtons: false }));
-    //     }, 300);
-    //   }
-    // }
-    // return () => {
-    //   clearTimeout(rotationInterval)
-    // }
+    return () => {
+      clearTimeout(rotationInterval)
+    }
   }, [state]);
 
   const empezar = () =>
@@ -221,30 +158,16 @@ const MemorizeNumbers: React.FC = (props: any) => {
   const { round, mensaje } = state;
 
   const pickBlock = (number: any) => {
-    const { bloquesAElegir, bloquesElegidos } = state;
-    let nuevosBloques = [..._.cloneDeep(bloques)];
+    const { bloquesElegidos, bloquesAMostrar, round } = state;
 
-    nuevosBloques[number].color = 'red';
-    bloquesElegidos[round-1].push(number);
+    bloquesAMostrar[number].color = 'red';
+    bloquesElegidos[round - 1].push(number);
 
-    setState((state: any) => ({...state, bloquesElegidos }));
-    setBloques((state: any) => [...nuevosBloques]);
-
-    /* contar cuantos bloques no tienen color */
-
-    const coloredBlocks = nuevosBloques.filter((b: any) => b.color).length;
-
-    if (coloredBlocks === bloquesAElegir[round-1].length) {
-      console.log('finished');
-      // setState((state: any) => ({...state, round: state.round + 1, mensaje: 'Atención'}));
-
-    }
-    // if(bloquesElegidos[round-1].length < bloquesAElegir[round-1].length) {
-    //   bloquesElegidos[round-1].push(number);
-
-      // setState((state: any) => ({...state, bloquesElegidos, btns}));
-    // }
+    setState((state: any) => ({...state, bloquesElegidos, bloquesAMostrar }));
   };
+
+  const checkBlocksSelected = (bloquesAElegir: any, bloquesElegidos: any) =>
+    JSON.stringify(bloquesAElegir[round-1]) === JSON.stringify(bloquesElegidos[round-1]);
 
   const claseDeMensaje = (mensaje: any) => {
     let result;
@@ -262,7 +185,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
     return result;
   };
 
-  const { min, sec, btns, showButtons } = state;
+  const { min, sec, btns, showButtons, bloquesAMostrar: bloques } = state;
 
   return (
     <IonPage>
