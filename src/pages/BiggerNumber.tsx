@@ -6,7 +6,8 @@ import {
   IonTitle,
   IonToolbar,
   IonItem,
-  IonImg
+  IonImg,
+  IonButton
 } from '@ionic/react';
 import { useHistory, withRouter } from 'react-router-dom';
 import { set } from 'idb-keyval';
@@ -21,8 +22,8 @@ import incorrectSymbol from '../assets/incorrecto.svg';
 // import { setMaxListeners } from 'process';
 
 const defaultTime = {
-  min: 2,
-  sec: 0
+  min: 0,
+  sec: 30
 };
 
 const defaultQuestionTime = {
@@ -175,8 +176,6 @@ const BiggerNumber: React.FC = (props: any) => {
   const checkAnswer = (userSelection: any) => {
     results[results.length - 1].respuestaUsuario = userSelection;
     setResults([...results]);
-    
-    console.log(results);
 
     const resultado = results[results.length - 1].numeroAElegir === userSelection;
 
@@ -202,9 +201,14 @@ const BiggerNumber: React.FC = (props: any) => {
         <div className="grilla">
           <div className="numbers-container">
             { numbersToDisplay.map((n: any) => {
-              return <div key={n.number} onClick={() => checkAnswer(n.number)} className={n.class}>
+              return <IonButton
+                key={n.number}
+                onClick={() => checkAnswer(n.number)}
+                className={n.class}
+                disabled={showCorrectSymbol || showIncorrectSymbol}
+                >
                 {n.number}
-              </div>
+              </IonButton>
             })}
           </div>
           <div className="floating-result" style={{

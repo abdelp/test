@@ -14,11 +14,12 @@
   text-align: center;
   display: inline-block;
   width: auto;
-  height: auto
+  height: auto;
+  --background: none;
+  --box-shadow: none;
 }
 
 .numbers-container .numero-chico{
   font-size: 130px;
   padding: 3vh 10vw;
 }
-

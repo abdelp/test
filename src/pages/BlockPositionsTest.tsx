@@ -210,36 +210,44 @@ const MemorizeNumbers: React.FC = (props: any) => {
               <div className="col" style={{
                 justifyContent: bloques[0].justify,
                 alignItems: bloques[0].align}}>
-                  <div className="block" onClick={() => pickBlock(0)} style={{backgroundColor: bloques[0].color}}></div></div>
+                  <IonButton
+                    className="block"
+                    onClick={() => pickBlock(0)}
+                    style={{backgroundColor: bloques[0].color, pointerEvents: mensaje === 'Tu turno' ? '' : 'none'}}
+                  ></IonButton></div>
               <div className="col" style={{
                 justifyContent: bloques[1].justify,
-                alignItems: bloques[1].align}}><div className="block" onClick={() => pickBlock(1)} style={{backgroundColor: bloques[1].color}}></div></div>
+                alignItems: bloques[1].align}}>
+                <IonButton
+                  className="block"
+                  onClick={() => pickBlock(1)} style={{backgroundColor: bloques[1].color, pointerEvents: mensaje === 'Tu turno' ? '' : 'none'}}
+                  ></IonButton></div>
             </div>
             <div className="row">
               <div className="col" style={{
                 justifyContent: bloques[2].justify,
-                alignItems: bloques[2].align}}><div className="block" onClick={() => pickBlock(2)} style={{backgroundColor: bloques[2].color}}></div></div>
+                alignItems: bloques[2].align}}><IonButton className="block" onClick={() => pickBlock(2)} style={{backgroundColor: bloques[2].color, pointerEvents: mensaje === 'Tu turno' ? '' : 'none'}}></IonButton></div>
               <div className="col" style={{
                 justifyContent: bloques[3].justify,
-                alignItems: bloques[3].align}}><div className="block" onClick={() => pickBlock(3)} style={{backgroundColor: bloques[3].color}}></div></div>
+                alignItems: bloques[3].align}}><IonButton className="block" onClick={() => pickBlock(3)} style={{backgroundColor: bloques[3].color, pointerEvents: mensaje === 'Tu turno' ? '' : 'none'}}></IonButton></div>
               <div className="col" style={{
                 justifyContent: bloques[4].justify,
-                alignItems: bloques[4].align}}><div className="block" onClick={() => pickBlock(4)} style={{backgroundColor: bloques[4].color}}></div></div>
+                alignItems: bloques[4].align}}><IonButton className="block" onClick={() => pickBlock(4)} style={{backgroundColor: bloques[4].color, pointerEvents: mensaje === 'Tu turno' ? '' : 'none'}}></IonButton></div>
             </div>
             <div className="row">
               <div className="col" style={{
                 justifyContent: bloques[5].justify,
-                alignItems: bloques[5].align}}><div className="block" onClick={() => pickBlock(5)} style={{backgroundColor: bloques[5].color}}></div></div>
+                alignItems: bloques[5].align}}><IonButton className="block" onClick={() => pickBlock(5)} style={{backgroundColor: bloques[5].color, pointerEvents: mensaje === 'Tu turno' ? '' : 'none'}}></IonButton></div>
               <div className="col"></div>
               <div className="col" style={{
                 justifyContent: bloques[6].justify,
-                alignItems: bloques[6].align}}><div className="block" onClick={() => pickBlock(6)} style={{backgroundColor: bloques[6].color}}></div></div>
+                alignItems: bloques[6].align}}><IonButton className="block" onClick={() => pickBlock(6)} style={{backgroundColor: bloques[6].color, pointerEvents: mensaje === 'Tu turno' ? '' : 'none'}}></IonButton></div>
             </div>
             <div className="row">
               <div className="col"></div>
               <div className="col" style={{
                 justifyContent: bloques[7].justify,
-                alignItems: bloques[7].align}}><div className="block" onClick={() => pickBlock(7)} style={{backgroundColor: bloques[7].color}}></div></div>
+                alignItems: bloques[7].align}}><IonButton className="block" onClick={() => pickBlock(7)} style={{backgroundColor: bloques[7].color, pointerEvents: mensaje === 'Tu turno' ? '' : 'none'}}></IonButton></div>
               <div className="col"></div>
             </div>
         </div>

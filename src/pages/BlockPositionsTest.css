@@ -43,8 +43,17 @@
   height: 33%;
   width: 33%;
   border-radius: 5px;
+  --background: none;
+  --box-shadow: none;
+  display: flex;
+  --margin: 0 !important;
+  margin: 0 !important;
 }
 
 .display-container {
   margin-bottom: 5em;
+}
+
+ion-button.button-disabled {
+  --opacity: 1;
 }

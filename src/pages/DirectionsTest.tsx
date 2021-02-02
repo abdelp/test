@@ -26,8 +26,8 @@ import flecha from '../assets/flecharoja.svg';
 const directions = [ 'arriba', 'izquierda', 'derecha', 'abajo' ];
 
 const defaultTime = {
-  min: 2,
-  sec: 0
+  min: 0,
+  sec: 30
 };
 
 const defaultQuestionTime = {
@@ -148,7 +148,7 @@ const DirectionsTest: React.FC = (props: any) => {
   }, [isActive, questionTime]);
 
   const randomNumber = () =>  
-    Math.floor(Math.random() * (directions.length - 1 - 0) + 0);
+    Math.floor(Math.random() * (directions.length - 0) + 0);
 
   const nextDirection = () =>{
     const directionIdx = randomNumber();

@@ -52,8 +52,8 @@ const colors = [
 ];
 
 const defaultTime = {
-  min: 2,
-  sec: 0
+  min: 0,
+  sec: 30
 };
 
 const defaultQuestionTime = {
