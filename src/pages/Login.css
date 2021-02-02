@@ -439,6 +439,7 @@ ion-menu.md ion-item{
 
 .floating-result{
   z-index: 11111113;
+  top: 30vh;
 }
 
 ion-menu .item-lines-none,

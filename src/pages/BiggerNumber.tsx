@@ -213,7 +213,7 @@ const BiggerNumber: React.FC = (props: any) => {
           </div>
           <div className="floating-result" style={{
             position: 'absolute', 
-            right: 0, left: 0, width: '30vw', top: '380px', margin: '0 auto'}}>
+            right: 0, left: 0, width: '30vw', margin: '0 auto'}}>
             { showCorrectSymbol && <IonImg src={correctSymbol} /> }
             { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
           </div>

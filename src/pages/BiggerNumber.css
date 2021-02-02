@@ -5,21 +5,22 @@
 
 .numbers-container .numero-grande,
 .numbers-container .numero-chico{
-  font-size: 210px;
+  font-size: 130px;
   color: red;
   background: #ecf0ee;
   border-radius: 20px;
-  padding: 2.6vh 13vw;
-  margin:  12px auto;
   text-align: center;
   display: inline-block;
-  width: auto;
-  height: auto;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 22px;
+  padding: 0 !important;
   --background: none;
   --box-shadow: none;
 }
 
 .numbers-container .numero-chico{
-  font-size: 130px;
-  padding: 3vh 10vw;
+  font-size: 80px;
+  width: 190px;
+  height: 190px;
 }
