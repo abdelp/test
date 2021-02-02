@@ -418,22 +418,22 @@ ion-menu.md ion-item{
 }
 
 .cf_arriba{
-  margin-bottom: 130px;
+  margin-bottom: 40px;
 }
 .cf_izquierda{
-  margin-right: 0px;
+  margin-right: 40px;
 }
 .cf_derecha{
-  margin-left: 0px;
+  margin-left: 40px;
 }
 .cf_abajo{
-  margin-top: 130px;
+  margin-top: 40px;
 }
 
 .mensajeflechas{
   font-size: 72px;
   margin-top: 34px;
-  width: 410px;
+  width: 300px !important;
   text-align: center;
 }
 
