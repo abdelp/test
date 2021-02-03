@@ -1,10 +1,21 @@
 import { set, get } from 'idb-keyval';
 import _ from 'lodash';
 
-const obtenerUsuariosTesteadosNoSincronizados = async () => {
+const obtenerUsuariosTesteados = async () => {
   try {
     const TABLA = 'usuarios_testeados';
     const USUARIOS_TESTEADOS: any = await get(TABLA) || [];
+
+    return USUARIOS_TESTEADOS;
+  } catch(e) {
+    throw e;
+  }
+};
+
+const obtenerUsuariosTesteadosNoSincronizados = async () => {
+  try {
+    const TABLA = 'usuarios_testeados';
+    const USUARIOS_TESTEADOS: any = await get(TABLA) || []; // Debe haber alguna forma de filtrar ya en el get, averiguar luego.
     const USUARIOS_TESTEADOS_NO_SINCRONIZADOS = USUARIOS_TESTEADOS.filter((u: any) => typeof u.sincronizado === 'undefined');
 
     return USUARIOS_TESTEADOS_NO_SINCRONIZADOS;
