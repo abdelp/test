@@ -208,9 +208,9 @@ const DirectionsTest: React.FC = (props: any) => {
               <IonButton className="flechita cf_abajo" onClick={() => checkAnswer(3)}><IonImg className="flechaabajo" src={flecha} /> </IonButton>
             </div>
 
-            <div style={{
+            <div className="check-symbol" style={{
                 position: 'absolute', 
-                right: 0, left: 0, width: '30vw', top: '260px', margin: '0 auto'}}>
+                right: 0, left: 0, width: '30vw', margin: '0 auto'}}>
                 { showCorrectSymbol && <IonImg src={correctSymbol} /> }
                 { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
             </div>
