@@ -53,7 +53,7 @@ const RegistUserPage: React.FC = () => {
       if(usuario) {
         setState((state: any) => ({...state, user: usuario, loading: false}));
       } else {
-        [err, result] = await to(getTestedUserData(state.cedula));
+        [err, result] = await to(getTestedUserData('token', state.cedula, 'cedula'));
 
         if(err) {
           setState((state: any) => ({...state, error: err, loading: false}));
@@ -62,7 +62,7 @@ const RegistUserPage: React.FC = () => {
         }
       }
     } else {
-      [err, result ] = await to(getTestedUserData(state.cedula));
+      [err, result ] = await to(getTestedUserData('token', state.cedula, 'cedula'));
 
       if(err) {
         setState((state: any) => ({...state, error: err, loading: false}));

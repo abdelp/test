@@ -62,8 +62,6 @@ const ReportPage: React.FC = ({
   }
 
   const calculateResults = (usuario: any) => {
-    /* verificar cuando se redondea el porcentaje 99.9 */
-    console.log(usuario);
     const categoria = cookies.get('categoria');
     const declaracionJurada = usuario.examenes[categoria].declaracionJurada ? 100 : 0;
 
@@ -85,6 +83,18 @@ const ReportPage: React.FC = ({
 
     const porcentajeTeorico = round(respuestasCorrectasTeorico.length * 100 / respuestasTeorico.length);
 
+    const respuestasMemorizarNumeros = usuario.examenes[categoria].psiquica["memorizar numeros"];
+
+    let respuestasCorrectasMemorizarNumeros = [];
+
+    // for(let i = 0; i < respuestasMemorizarNumeros.numerosAElegir.length; i++) {
+    //   if(JSON.stringify(respuestasMemorizarNumeros.numerosAElegir[i]) === JSON.stringify(respuestasMemorizarNumeros.numerosElegidos[i])) {
+    //     respuestasMemorizarNumeros.push()
+    //   }
+    // }
+  
+    console.log(respuestasMemorizarNumeros);
+
     let nuevosPorcentajes = {
       declaracionJurada,
       practico: porcentajePractico,
@@ -99,7 +109,6 @@ const ReportPage: React.FC = ({
 
   const { user, porcentajes } = state;
 
-  console.log(porcentajes)
   return (
     <IonPage>
       <IonHeader>
@@ -163,7 +172,6 @@ const ReportPage: React.FC = ({
             </div>
           </IonItem>
           <IonTitle className="report-title">Prueba psíquica - Porcentaje mínimo para aprobación 70%</IonTitle>
-
             <div className="percentage-container">
               <div className="percentage-text">
                 <p>prueba 1</p>

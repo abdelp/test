@@ -4,52 +4,25 @@ import ITEMS_MOTOCICLETA_PRACTICO from './motocicleta_practico.json';
 import PREGUNTAS_MECANICA from './preguntas_mecanica.json';
 import PREGUNTAS_NORMAS from './preguntas_normas.json';
 import PREGUNTAS_PRIMEROS_AUXILIOS from './preguntas_primeros_auxilios.json';
+import axios from 'axios';
 
 const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
 
-const signinUser = (username: any, password: any) => {
-  return new Promise((resolve, reject) => {
-    try {
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", url);
-      xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-      xhr.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-      xhr.setRequestHeader("SOAPAction", "http://rut.antsv.gov.py/AutenticarExaminador");
-
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          resolve(xhr);
-        }
-      };
-
-      const data = `<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-        <s:Body>
-          <AutenticarExaminador xmlns="http://rut.antsv.gov.py/" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-            <Usuario>${username}</Usuario>
-            <Clave>${password}</Clave>
-            <Certificado/>
-            <Firma/>
-          </AutenticarExaminador>
-        </s:Body>
-      </s:Envelope>`;
-
-      xhr.send(data);
-    } catch(e) {
-      reject(e);
-    }
-
-  });
-};
-
-const getTestedUserData = (cedula: any) => {
+const getTestedUserData = (
+  token: any,
+  nroDocumento: any,
+  tipoDocumento: any
+  ) => {
   return new Promise((resolve, reject) => {
     setInterval(() => {
-      if(cedula == 111) {
+      if(nroDocumento == 111) {
         resolve(
           {
             nombres: 'Pedro Marcelo',
             apellidos: 'Benitez Martinez',
             fechaNac: '04/02/1980',
+            nroDocumento: '111',
+            tipoDocumento: 'cedula',
             cedula: '111',
             rut: '111',
             domicilio: 'LAMBARE',
@@ -62,14 +35,16 @@ const getTestedUserData = (cedula: any) => {
               }
           }
         )
-      } else if (cedula == 222) {
+      } else if (nroDocumento == 222) {
         resolve(
           {
             nombres: 'Gustavo Marcelo',
             apellidos: 'Dominguez Britos',
             fechaNac: '04/09/1991',
-            cedula: '222',
+            nroDocumento: '222',
+            tipoDocumento: 'cedula',
             rut: '222',
+            cedula: '222',
             domicilio: 'LAMBARE',
             nacionalidad: 'PARAGUAYA',
             categoria: 'Profesional B',
@@ -171,7 +146,6 @@ const saveDeclaracionJurada = (declaracion: any) => {
 };
 
 export {
-  signinUser,
   getCategories,
   getTestedUserData,
   getPreguntasSenhales,

@@ -38,8 +38,8 @@ const SignInFormBase = ({
     setState((state: any) => ({ ...state, loading: true }));
     let error: any, result;
 
-    // [ error, result] = await to(Auth
-    //   .signInWithUsernameAndPassword(username, password));
+    [ error, result] = await to(Auth
+      .signInWithUsernameAndPassword(username, password));
 
     if(!error) {
 
@@ -71,7 +71,7 @@ const SignInFormBase = ({
 
     } else {
       // const error = { ...err }; // LEAVE EXACT ERRORS FOR LATER
-      setState((state: any) => ({ ...state, loading: false, error }));
+      setState((state: any) => ({ ...state, loading: false, error: error.message }));
     }
 
   };
