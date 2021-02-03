@@ -17,6 +17,12 @@ import DataList from '../components/DataList';
 import './Report.css';
 import { withCookies } from 'react-cookie';
 
+const round = (value: any) => {
+  {/*
+  //@ts-ignore */}
+  return (value).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+};
+
 const ReportPage: React.FC = ({
   cedula,
   cookies
@@ -56,6 +62,7 @@ const ReportPage: React.FC = ({
   }
 
   const calculateResults = (usuario: any) => {
+    /* verificar cuando se redondea el porcentaje 99.9 */
     console.log(usuario);
     const categoria = cookies.get('categoria');
     const declaracionJurada = usuario.examenes[categoria].declaracionJurada ? 100 : 0;
@@ -70,11 +77,18 @@ const ReportPage: React.FC = ({
   
     const porcentajePractico = respuestasCorrectasPractico.length * 100 / respuestasPractico.length;
 
-    // console.log(usuario.map((i: any) => i.items));
-    // const practico = 
+    const respuestasTeorico = usuario.examenes[categoria]
+      .teorica
+      .result;
+
+    const respuestasCorrectasTeorico = respuestasTeorico.filter((q: any) => q.respuesta === q.selected);
+
+    const porcentajeTeorico = round(respuestasCorrectasTeorico.length * 100 / respuestasTeorico.length);
+
     let nuevosPorcentajes = {
       declaracionJurada,
-      practico: porcentajePractico
+      practico: porcentajePractico,
+      teorico: porcentajeTeorico
     };
 
     setState((state: any) => ({
@@ -141,10 +155,10 @@ const ReportPage: React.FC = ({
               <div className="percentage-number">
                 <progress
                   id="file"
-                  value="32"
+                  value={porcentajes.teorico}
                   max="100"
                   className="percentage-bar"
-                > 32% </progress>%
+                ></progress>{porcentajes.teorico}%
               </div>
             </div>
           </IonItem>
