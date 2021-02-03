@@ -1,0 +1,23 @@
+.report-title {
+  background-color: gray;
+}
+
+.percentage-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.percentage-text {
+  width: 40%; 
+  text-align: end;
+  padding: 10px;
+}
+
+.percentage-number {
+  width: 60%;
+}
+
+.percentage-bar {
+  width: 90%;
+}

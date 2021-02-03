@@ -186,9 +186,9 @@ const updateUserTest = async (cedula: any, categoria: any, test: any, result: an
   let cat: any;
 
   if (!usuariosTesteados[idx][categoria.toLowerCase()]) {
-    cat = usuariosTesteados[idx]["examenes"][categoria.toLowerCase()] = {};
+    cat = usuariosTesteados[idx]["examenes"][categoria] = {};
   } else {
-    cat = usuariosTesteados[idx]["examenes"][categoria.toLowerCase()];
+    cat = usuariosTesteados[idx]["examenes"][categoria];
   }
 
   cat[test] = { date: new Date(), result }

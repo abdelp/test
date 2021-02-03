@@ -12,9 +12,6 @@ const DataList = ({
 }: any) => {
   return (
   <IonList className="datosdeinteresado">
-    {/*<IonListHeader>
-      <IonTitle className="ion-text-center"><strong>Datos del interesado</strong></IonTitle>
-    </IonListHeader>*/}
     <IonItem>
       <IonLabel><strong>Nombres:</strong> {user.nombres}</IonLabel>
     </IonItem>

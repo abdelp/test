@@ -17,7 +17,7 @@ import { useHistory } from 'react-router-dom';
 import { getPreguntasSenhales } from '../APIs';
 import { set } from 'idb-keyval';
 import { sendResult } from '../APIs';
-import { updateUserTest } from '../utils/db';
+import { actualizarDatosUsuarioTesteadoPorCedula } from '../utils/db';
 import { withCookies } from 'react-cookie';
 import './MultipleOptions.css';
 
@@ -34,7 +34,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
     const { cookies } = props;
 
     const ticket = cookies.get('ticket');
-    const categoria = cookies.get('ticket');
+    const categoria = cookies.get('categoria');
     const usuarioTesteado = cookies.get('usuario_testeado');
     const { cedula } = usuarioTesteado;
 
@@ -71,23 +71,34 @@ const MultipleOptionsPage: React.FC = (props: any) => {
         doSaveExamProgress(questions);
         setLoading(true);
 
-        const resultado = questions.filter((r: any) => r.selected === r.respuesta).length;
-        const ticket = props.cookies.get('ticket');
-        const usuarioTesteado = props.cookies.get('usuario_testeado');
-        const categoria = props.cookies.get('categoria');
+        const { cookies } = props;
+
+        const ticket = cookies.get('ticket');
+        const categoria = cookies.get('categoria');
+        const usuarioTesteado = cookies.get('usuario_testeado');
         const { cedula } = usuarioTesteado;
 
-        updateUserTest(cedula, categoria, "teorica", questions)
+        const examen = {
+          examenes: {
+            [categoria]: {
+              "teorica": {
+                "result": questions,
+                fecha: new Date()
+              }
+            }
+          }
+        };
+
+        actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
         .then(result => {
-          sendResult(ticket, cedula, resultado)
-          .then(result => {
-            setLoading(false);
-  
+          sendResult(ticket, cedula, 100)
+          .then(result => { 
             history.replace('/page/test-finished', { state: 'prueba practica' });
-          });
+          })
+          .catch((error: any) => console.log(error));
         })
         .catch((error: any) => {
-          setLoading(false);
+          console.log(error);
         });
       }
   };
@@ -174,7 +185,6 @@ const MultipleOptionsPage: React.FC = (props: any) => {
             }
           </div>
 
-          
         </IonList>
         <IonItem lines="none" className="counter">
             <Timer min={min} sec={sec}></Timer>

@@ -48,7 +48,6 @@ const RegistUserPage: React.FC = () => {
 
     if(result && result.length > 0) {
       setUsuariosTesteados((state: any) => result);
-      console.log(state.cedula);
       const usuario = usuariosTesteados.find((u: any) => u.cedula === state.cedula);
 
       if(usuario) {
@@ -79,8 +78,6 @@ const RegistUserPage: React.FC = () => {
     if(!userT) {
       usuariosTesteados.push(state.user);
     }
-
-    console.log(usuariosTesteados);
 
     set("usuarios_testeados", usuariosTesteados);
     setCookie('usuario_testeado', {
