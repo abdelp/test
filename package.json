@@ -22,6 +22,7 @@
     "@types/yup": "^0.29.10",
     "await-to-js": "^2.1.1",
     "axios": "^0.21.1",
+    "cordova-plugin-advanced-http": "^3.1.0",
     "cordova-plugin-geolocation": "^4.1.0",
     "idb-keyval": "^3.2.0",
     "ionicons": "^5.0.0",
