@@ -22,7 +22,7 @@ const DataList = ({
       <IonLabel><strong>Nro. Antecedente:</strong> {user.nroAntecedente}</IonLabel>
     </IonItem>
     <IonItem lines="none">
-      <IonLabel><strong>Categoria:</strong> {user.categoria}</IonLabel>
+      <IonLabel><strong>Categoría:</strong> {user.categoria}</IonLabel>
     </IonItem>
   </IonList>
   );
