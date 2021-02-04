@@ -5,8 +5,47 @@ import PREGUNTAS_MECANICA from './preguntas_mecanica.json';
 import PREGUNTAS_NORMAS from './preguntas_normas.json';
 import PREGUNTAS_PRIMEROS_AUXILIOS from './preguntas_primeros_auxilios.json';
 import axios from 'axios';
+import to from 'await-to-js';
+import { HTTP } from '@ionic-native/http';
 
 const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
+
+const getUserD = async () => {
+  const data = `<?xml version="1.0" encoding="utf-8"?>
+  <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+      <ConsultarAntecedente xmlns="http://rut.antsv.gov.py/">
+        <Token>string</Token>
+        <Documento>490610</Documento>
+        <TipoDocumento>string</TipoDocumento>
+      </ConsultarAntecedente>
+    </soap:Body>
+  </soap:Envelope>`;
+
+  HTTP.setDataSerializer('utf8');
+
+  let [error, result]: any = await to(HTTP.post(
+    url,
+    data,
+    {"Access-Control-Allow-Origin": "*",
+    "Content-Type": "text/xml; charset=utf-8",
+    "SOAPAction": "http://rut.antsv.gov.py/ConsultarAntecedente"}));
+
+  if (error === 'cordova_not_available') {
+    [error, result] = await to(axios.post(url,
+      data,
+      {headers: 
+        {"Access-Control-Allow-Origin": "*",
+        "Content-Type": "text/xml; charset=utf-8",
+        "SOAPAction": "http://rut.antsv.gov.py/ConsultarAntecedente"}}));
+
+    console.log(error);
+  }
+
+  if (error) throw error;
+
+  return result;
+};
 
 const getTestedUserData = (
   token: any,
@@ -153,5 +192,6 @@ export {
   getExamDate,
   getDeclaracionJurada,
   getPracticalTestItems,
-  saveDeclaracionJurada
+  saveDeclaracionJurada,
+  getUserD
 };

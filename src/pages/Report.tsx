@@ -128,13 +128,14 @@ const ReportPage: React.FC = ({
           <IonItem>
             <div className="percentage-container">
               <div className="percentage-text">Declaración Jurada</div>
-              <div className="percentage-number">
-                <progress
-                  id="file"
-                  value={porcentajes.declaracionJurada}
-                  max="100"
-                  className="percentage-bar"
-                ></progress> {porcentajes.declaracionJurada}%
+              <div className="percentage-number" id="file">
+                <div className="w3-light-grey w3-round verde">
+                  <div className="w3-container w3-blue w3-round " 
+                  style={{ width: porcentajes.declaracionJurada}}
+                  /*style={{ width: "30%"}}*/
+                  ></div>
+                </div>
+                <b>{porcentajes.declaracionJurada}%</b>
               </div>
             </div>
           </IonItem>
@@ -142,13 +143,14 @@ const ReportPage: React.FC = ({
           <IonItem>
             <div className="percentage-container">
               <div className="percentage-text">Idoneidad conductiva</div>
-              <div className="percentage-number">
-                <progress
-                  id="file"
-                  value={porcentajes.practico}
-                  max="100"
-                  className="percentage-bar"></progress>
-                {porcentajes.practico}%
+              <div className="percentage-number" id="file">
+                <div className="w3-light-grey w3-round naranja">
+                  <div className="w3-container w3-blue w3-round " 
+                  style={{ width: porcentajes.practico}}
+                  /*style={{ width: "30%"}}*/
+                  ></div>
+                </div>
+                <b>{porcentajes.practico}%</b>
               </div>
             </div>
           </IonItem>
@@ -161,61 +163,100 @@ const ReportPage: React.FC = ({
                 <p>legislación</p>
                 <p>accidentes y modo de prevenirlos</p>
               </div>
-              <div className="percentage-number">
-                <progress
-                  id="file"
-                  value={porcentajes.teorico}
-                  max="100"
-                  className="percentage-bar"
-                ></progress>{porcentajes.teorico}%
+              <div className="percentage-number" id="file">
+                <div className="w3-light-grey w3-round celeste">
+                  <div className="w3-container w3-blue w3-round " 
+                  style={{ width: porcentajes.teorico}}
+                  /* style={{ width: "30%"}} */
+                  >
+
+                  </div>
+                </div>
+                <b>{porcentajes.teorico}%</b>
               </div>
             </div>
           </IonItem>
           <IonTitle className="report-title">Prueba psíquica - Porcentaje mínimo para aprobación 70%</IonTitle>
+<<<<<<< HEAD
+=======
+          <div className="reporte-psiquica">
+>>>>>>> eeaf178152911e0e93455c0eead1e36b04368517
             <div className="percentage-container">
               <div className="percentage-text">
                 <p>prueba 1</p>
               </div>
-              <div className="percentage-number">
-                <progress
-                  id="file"
-                  value="32"
-                  max="100"
-                  className="percentage-bar"></progress>%
+              <div className="percentage-number" id="file">
+                <div className="w3-light-grey w3-round rojo">
+                  <div className="w3-container w3-blue w3-round " 
+                  /*style={{ width: porcentajes.teorico}}*/
+                  style={{ width: "32%"}}
+                  >
+                  </div>
+                </div>
+                <b>32%</b>
               </div>
             </div>
             <div className="percentage-container">
               <div className="percentage-text">
                 <p>prueba 2</p>
               </div>
-              <div className="percentage-number">
-                <progress id="file" value="32" max="100" className="percentage-bar"></progress>%
+              <div className="percentage-number" id="file">
+                <div className="w3-light-grey w3-round rojo">
+                  <div className="w3-container w3-blue w3-round " 
+                  /*style={{ width: porcentajes.teorico}}*/
+                  style={{ width: "32%"}}
+                  >
+                  </div>
+                </div>
+                <b>32%</b>
               </div>
             </div>
             <div className="percentage-container">
               <div className="percentage-text">
                 <p>prueba 3</p>
               </div>
-              <div className="percentage-number">
-                <progress id="file" value="32" max="100" className="percentage-bar"></progress>%
+              <div className="percentage-number" id="file">
+                <div className="w3-light-grey w3-round rojo">
+                  <div className="w3-container w3-blue w3-round " 
+                  /*style={{ width: porcentajes.teorico}}*/
+                  style={{ width: "32%"}}
+                  >
+                  </div>
+                </div>
+                <b>32%</b>
               </div>
             </div>
             <div className="percentage-container">
               <div className="percentage-text">
                 <p>prueba 4</p>
               </div>
-              <div className="percentage-number">
-                <progress id="file" value="32" max="100" className="percentage-bar"></progress>%
+              <div className="percentage-number" id="file">
+                <div className="w3-light-grey w3-round rojo">
+                  <div className="w3-container w3-blue w3-round " 
+                  /*style={{ width: porcentajes.teorico}}*/
+                  style={{ width: "32%"}}
+                  >
+                  </div>
+                </div>
+                <b>32%</b>
               </div>
             </div>
             <div className="percentage-container">
               <div className="percentage-text">
                 <p>prueba 5</p>
               </div>
-              <div className="percentage-number">
-                <progress id="file" value="32" max="100" className="percentage-bar"></progress>%
+              <div className="percentage-number" id="file">
+                <div className="w3-light-grey w3-round rojo">
+                  <div className="w3-container w3-blue w3-round " 
+                  /*style={{ width: porcentajes.teorico}}*/
+                  style={{ width: "32%"}}
+                  >
+                  </div>
+                </div>
+                <b>32%</b>
               </div>
             </div>
+          </div>
           <IonButton className="back-to-main" color="favorite" onClick={returnMenu}>Pagina principal</IonButton>
         </>
         }

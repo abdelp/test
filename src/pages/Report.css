@@ -1,5 +1,11 @@
 .report-title {
-  background-color: gray;
+  background-color: #e3e3e3;
+  border-radius: 4px;
+  PADDING: 6px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 17px;
 }
 
 .percentage-container {
@@ -9,15 +15,88 @@
 }
 
 .percentage-text {
-  width: 40%; 
+  width: 50%; 
   text-align: end;
-  padding: 10px;
+  padding: 10px 10px 10px 0;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+.reporte-psiquica .percentage-text p{
+  margin: 0 0 0 0;
+}
+.reporte-psiquica{
+  margin-bottom: 32px;
 }
 
 .percentage-number {
-  width: 60%;
+  width: 50%;
+  align-items: center;
+  display: flex;
 }
 
 .percentage-bar {
   width: 90%;
+}
+progress{
+  height:40px
+}
+
+
+.w3-round, .w3-round-medium {
+  border-radius: 4px;
+}
+
+.w3-container:after, .w3-container:before, .w3-panel:after, .w3-panel:before, .w3-row:after, .w3-row:before, .w3-row-padding:after, .w3-row-padding:before, .w3-cell-row:before, .w3-cell-row:after, .w3-clear:after, .w3-clear:before, .w3-bar:before, .w3-bar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.w3-light-grey, .w3-hover-light-grey:hover, .w3-light-gray, .w3-hover-light-gray:hover {
+  color: #000!important;
+  background-color: #f1f1f1!important;
+  width: calc(100% - 59px);
+  margin-right: 12px;
+  height: 20px;
+}
+
+.w3-container:after, .w3-container:before, .w3-panel:after, .w3-panel:before, .w3-row:after, .w3-row:before, .w3-row-padding:after, .w3-row-padding:before, .w3-cell-row:before, .w3-cell-row:after, .w3-clear:after, .w3-clear:before, .w3-bar:before, .w3-bar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.w3-blue, .w3-hover-blue:hover {
+  color: #fff!important;
+  background-color: #2196F3!important;
+}
+
+.naranja{
+  background-color: #f9a134 !important;
+}
+.naranja .w3-container{
+  background-color: #ea7f00 !important;
+}
+
+.verde{
+  background-color: #d1e256 !important;
+}
+.verde .w3-container{
+  background-color: #b2cb00 !important;
+}
+
+
+.celeste{
+  background-color: #009ca4 !important;
+  height: 120px;
+}
+.celeste .w3-container{
+  background-color: #00b1c3 !important;
+}
+
+
+
+.rojo{
+  background-color: #e72e44 !important;
+}
+.rojo .w3-container{
+  background-color: #d2001b !important;
 }
