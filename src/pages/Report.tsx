@@ -85,21 +85,60 @@ const ReportPage: React.FC = ({
 
     const respuestasMemorizarNumeros = usuario.examenes[categoria].psiquica["memorizar numeros"];
 
-    let respuestasCorrectasMemorizarNumeros = [];
+    let respuestasCorrectasMemorizarNumeros = 0;
 
-    // for(let i = 0; i < respuestasMemorizarNumeros.numerosAElegir.length; i++) {
-    //   if(JSON.stringify(respuestasMemorizarNumeros.numerosAElegir[i]) === JSON.stringify(respuestasMemorizarNumeros.numerosElegidos[i])) {
-    //     respuestasMemorizarNumeros.push()
-    //   }
-    // }
-  
-    console.log(respuestasMemorizarNumeros);
+    for(let i = 0; i < respuestasMemorizarNumeros.numerosAElegir.length; i++) {
+      if(JSON.stringify(respuestasMemorizarNumeros.numerosAElegir[i]) === JSON.stringify(respuestasMemorizarNumeros.numerosElegidos[i])) {
+        respuestasCorrectasMemorizarNumeros++;
+      }
+    }
+
+    const porcentajeMemorizarNumeros = round(respuestasCorrectasMemorizarNumeros * 100 / respuestasMemorizarNumeros.numerosAElegir.length);
+
+    const respuestasColores = usuario.examenes[categoria].psiquica["test-colores"];
+
+    const respuestasCorrectasColores = respuestasColores.filter((r: any) => {
+      return (r.indiceAElegir === r.indiceCodigo && r.respuestaUsuario) || (r.indiceAElegir !== r.indiceCodigo && !r.respuestaUsuario)
+    });
+
+    const porcentajeTestColores = round(respuestasCorrectasColores.length * 100 / respuestasColores.length);
+
+    const respuestasDirecciones = usuario.examenes[categoria].psiquica["test-direcciones"];
+
+    const respuestasCorrectasDirecciones = respuestasDirecciones.filter((r: any) => r.indiceAElegir === r.respustaUsuario);
+
+    const porcentajeTestDirecciones = round(respuestasCorrectasDirecciones.length * 100 / respuestasDirecciones.length);
+
+    const respuestasNumerosGrandes = usuario.examenes[categoria].psiquica["numero-grande"];
+
+    const respuestasCorrectasNumerosGrandes = respuestasNumerosGrandes.filter((r: any) => r.numeroAElegir === r.respustaUsuario);
+
+    const porcentajeTestNumerosGrandes = round(respuestasCorrectasNumerosGrandes.length * 100 / respuestasNumerosGrandes.length);
+
+    const respuestasPosicionesBloques = usuario.examenes[categoria].psiquica["posiciones bloques"];
+
+    let respuestasCorrectasPosicionesBloques = 0;
+
+    for(let i = 0; i < respuestasPosicionesBloques.bloquesAElegir.length; i++) {
+      if(JSON.stringify(respuestasPosicionesBloques.bloquesAElegir[i]) === JSON.stringify(respuestasPosicionesBloques.bloquesElegidos[i])) {
+        respuestasCorrectasPosicionesBloques++;
+      }
+    }
+
+    const porcentajePosicionesBloques = round(respuestasCorrectasPosicionesBloques * 100 / respuestasPosicionesBloques.bloquesAElegir.length);
 
     let nuevosPorcentajes = {
       declaracionJurada,
       practico: porcentajePractico,
-      teorico: porcentajeTeorico
+      teorico: porcentajeTeorico,
+      testMemorizarNumeros: porcentajeMemorizarNumeros,
+      testColores: porcentajeTestColores,
+      testDirecciones: porcentajeTestDirecciones,
+      testNumerosGrandes: porcentajeTestNumerosGrandes,
+      testPosicionesBloques: porcentajePosicionesBloques
     };
+
+    console.log(nuevosPorcentajes);
 
     setState((state: any) => ({
       ...state,
@@ -131,8 +170,10 @@ const ReportPage: React.FC = ({
               <div className="percentage-number" id="file">
                 <div className="w3-light-grey w3-round verde">
                   <div className="w3-container w3-blue w3-round " 
-                  style={{ width: porcentajes.declaracionJurada}}
-                  /*style={{ width: "30%"}}*/
+                  style={{
+                     width: `${porcentajes.declaracionJurada}%`,
+                     height: '100%'
+                    }}
                   ></div>
                 </div>
                 <b>{porcentajes.declaracionJurada}%</b>
@@ -147,7 +188,6 @@ const ReportPage: React.FC = ({
                 <div className="w3-light-grey w3-round naranja">
                   <div className="w3-container w3-blue w3-round " 
                   style={{ width: porcentajes.practico}}
-                  /*style={{ width: "30%"}}*/
                   ></div>
                 </div>
                 <b>{porcentajes.practico}%</b>
@@ -166,10 +206,11 @@ const ReportPage: React.FC = ({
               <div className="percentage-number" id="file">
                 <div className="w3-light-grey w3-round celeste">
                   <div className="w3-container w3-blue w3-round " 
-                  style={{ width: porcentajes.teorico}}
-                  /* style={{ width: "30%"}} */
+                  style={{
+                    width: `${porcentajes.teorico}%`,
+                    height: '100%'
+                  }}
                   >
-
                   </div>
                 </div>
                 <b>{porcentajes.teorico}%</b>
@@ -177,23 +218,22 @@ const ReportPage: React.FC = ({
             </div>
           </IonItem>
           <IonTitle className="report-title">Prueba psíquica - Porcentaje mínimo para aprobación 70%</IonTitle>
-<<<<<<< HEAD
-=======
           <div className="reporte-psiquica">
->>>>>>> eeaf178152911e0e93455c0eead1e36b04368517
             <div className="percentage-container">
               <div className="percentage-text">
                 <p>prueba 1</p>
               </div>
               <div className="percentage-number" id="file">
                 <div className="w3-light-grey w3-round rojo">
-                  <div className="w3-container w3-blue w3-round " 
-                  /*style={{ width: porcentajes.teorico}}*/
-                  style={{ width: "32%"}}
+                  <div className="w3-container w3-blue w3-round" 
+                  style={{
+                    width: `${porcentajes.testMemorizarNumeros}%`,
+                    height: '100%'
+                   }}
                   >
                   </div>
                 </div>
-                <b>32%</b>
+                <b>{porcentajes.testMemorizarNumeros}%</b>
               </div>
             </div>
             <div className="percentage-container">
@@ -203,12 +243,13 @@ const ReportPage: React.FC = ({
               <div className="percentage-number" id="file">
                 <div className="w3-light-grey w3-round rojo">
                   <div className="w3-container w3-blue w3-round " 
-                  /*style={{ width: porcentajes.teorico}}*/
-                  style={{ width: "32%"}}
-                  >
+                  style={{ 
+                    width: `${porcentajes.testColores}%`,
+                    height: '100%'
+                    }}>
                   </div>
                 </div>
-                <b>32%</b>
+                <b>{porcentajes.testColores}%</b>
               </div>
             </div>
             <div className="percentage-container">
@@ -217,13 +258,15 @@ const ReportPage: React.FC = ({
               </div>
               <div className="percentage-number" id="file">
                 <div className="w3-light-grey w3-round rojo">
-                  <div className="w3-container w3-blue w3-round " 
-                  /*style={{ width: porcentajes.teorico}}*/
-                  style={{ width: "32%"}}
+                  <div className="w3-container w3-blue w3-round" 
+                  style={{ 
+                    width: `${porcentajes.testDirecciones}%`,
+                    height: '100%'
+                  }}
                   >
                   </div>
                 </div>
-                <b>32%</b>
+                <b>{porcentajes.testDirecciones}%</b>
               </div>
             </div>
             <div className="percentage-container">
@@ -233,12 +276,14 @@ const ReportPage: React.FC = ({
               <div className="percentage-number" id="file">
                 <div className="w3-light-grey w3-round rojo">
                   <div className="w3-container w3-blue w3-round " 
-                  /*style={{ width: porcentajes.teorico}}*/
-                  style={{ width: "32%"}}
+                  style={{
+                    width: `${porcentajes.testNumerosGrandes}%`,
+                    height: '100%'
+                  }}
                   >
                   </div>
                 </div>
-                <b>32%</b>
+                <b>{porcentajes.testNumerosGrandes}%</b>
               </div>
             </div>
             <div className="percentage-container">
@@ -248,12 +293,14 @@ const ReportPage: React.FC = ({
               <div className="percentage-number" id="file">
                 <div className="w3-light-grey w3-round rojo">
                   <div className="w3-container w3-blue w3-round " 
-                  /*style={{ width: porcentajes.teorico}}*/
-                  style={{ width: "32%"}}
+                  style={{
+                     width: `${porcentajes.testPosicionesBloques}%`,
+                     height: '100%'
+                    }}
                   >
                   </div>
                 </div>
-                <b>32%</b>
+                <b>{porcentajes.testPosicionesBloques}%</b>
               </div>
             </div>
           </div>

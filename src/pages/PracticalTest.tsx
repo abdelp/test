@@ -84,7 +84,7 @@ const PracticalTestPage: React.FC = (props: any) => {
 
       setTimeout(() => {
         setState((state: any) => ({...state, loading: false}))
-        history.push('/page/test-types');
+        history.push('/page/report');
       }, 2000);
     } else {
       setState((state: any) => ({...state, showAlertNotCompleted: true }));
