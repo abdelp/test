@@ -15,10 +15,11 @@
 }
 
 .percentage-text {
-  width: 40%; 
+  width: 50%; 
   text-align: end;
-  padding: 10px;
+  padding: 10px 10px 10px 0;
   text-transform: uppercase;
+  font-size: 16px;
 }
 .reporte-psiquica .percentage-text p{
   margin: 0 0 0 0;
@@ -28,7 +29,7 @@
 }
 
 .percentage-number {
-  width: 60%;
+  width: 50%;
   align-items: center;
   display: flex;
 }
@@ -85,7 +86,7 @@ progress{
 
 .celeste{
   background-color: #009ca4 !important;
-  height: 200px;
+  height: 120px;
 }
 .celeste .w3-container{
   background-color: #00b1c3 !important;
