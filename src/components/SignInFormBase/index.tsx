@@ -40,8 +40,6 @@ const SignInFormBase = ({
     [ error, result] = await to(Auth
       .signInWithUsernameAndPassword(username, password));
 
-    console.log(result);
-
     if(!error) {
       const { CodError, Ticket: ticket, ListaMensajes } = result;
 
