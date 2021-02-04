@@ -92,7 +92,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
 
     if(!turnoUsuario) {
       if(roundFinished) {
-        if(round === 4) {
+        if(round === 3) {
           rotationInterval = window.setTimeout(() => {
             const { cookies } = props;
             const ticket = cookies.get('ticket');
@@ -142,7 +142,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
           }, 2000);
         }
       } else {
-        if(round >= 1 && round <= 4) {
+        if(round >= 1 && round <= 3) {
           if(mensaje === 'Atención') {        
             rotationInterval = window.setTimeout(() => {
               setState((state: any) => ({...state, mensaje: '' }));
