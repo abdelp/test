@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   IonItem,
-  IonLabel,
   IonInput,
   IonSpinner
 } from '@ionic/react';
@@ -11,7 +10,6 @@ import * as ROUTES from '../../constants/routes';
 import * as Auth from '../Auth/auth';
 import { signInWithUsernameAndPassword } from '../Auth/auth';
 import { withCookies, Cookies } from 'react-cookie';
-
 import to from 'await-to-js';
 import { compose } from 'recompose';
 
@@ -25,7 +23,7 @@ const INITIAL_STATE = {
 };
 
 const SignInFormBase = ({
-  // auth,
+  auth,
   history,
   cookies,
   setShowLogin
@@ -33,47 +31,45 @@ const SignInFormBase = ({
   const [state, setState] = useState({ ...INITIAL_STATE });
   const { username, password, error, loading } = state;
 
-  const onSubmit = async (event: any) => {
+  const onSubmit = async (event: any) => {    
     event.preventDefault();
+    
     setState((state: any) => ({ ...state, loading: true }));
     let error: any, result;
 
     [ error, result] = await to(Auth
       .signInWithUsernameAndPassword(username, password));
 
+    console.log(result);
+
     if(!error) {
+      const { CodError, Ticket: ticket, ListaMensajes } = result;
 
-      /*
-      * start of temporal implementation
-      */
-     
-     const ticket = 'x';
-     
-     cookies.set("usuario", JSON.stringify({ username, ticket }), {
-       path: "/"
-      });
+      if ( CodError.text === "0") {
+        cookies.set("usuario", JSON.stringify({ username, ticket }), {
+          path: "/"
+          });
 
-     cookies.remove("usuario_testeado", {
-       path: "/"
-      });
-      
-      if(setShowLogin) {
-        setShowLogin(false);
+        cookies.remove("usuario_testeado", {
+          path: "/"
+          });
+          
+          if(setShowLogin) {
+            setShowLogin(false);
+          }
+
+          setState((state: any) => ({ ...state, ...INITIAL_STATE }));
+
+          history.replace(ROUTES.REGIST_USER);
+      } else {
+        const { Mensaje: { text: errorMessage} } = ListaMensajes.MensajesError[parseInt(CodError.text)];
+
+        setState((state: any) => ({ ...state, loading: false, error: errorMessage }));
       }
-
-      setState((state: any) => ({ ...state, ...INITIAL_STATE }));
-
-      history.replace(ROUTES.REGIST_USER);
-
-      /*
-       * end of temporal implementation
-       */
-
     } else {
       // const error = { ...err }; // LEAVE EXACT ERRORS FOR LATER
       setState((state: any) => ({ ...state, loading: false, error: error.message }));
     }
-
   };
 
   const onChange = (e: any) =>
