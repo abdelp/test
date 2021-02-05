@@ -1,7 +1,7 @@
 import axios from 'axios';
 import to from 'await-to-js';
 import { HTTP } from '@ionic-native/http';
-import { xml2js, xml2json } from 'xml-js';
+import { xml2js } from 'xml-js';
 
 const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
 

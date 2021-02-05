@@ -19,7 +19,7 @@ const DataList = ({
       <IonLabel><strong>Apellidos:</strong> {user.apellidos}</IonLabel>
     </IonItem>
     <IonItem>
-      <IonLabel><strong>Nro. Antecedente:</strong> {user.nroAntecedente}</IonLabel>
+      <IonLabel><strong>Nro. Antecedente:</strong> {user.idAntecedente}</IonLabel>
     </IonItem>
     <IonItem lines="none">
       <IonLabel><strong>Categoría:</strong> {user.categoria}</IonLabel>

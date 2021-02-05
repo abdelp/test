@@ -26,7 +26,7 @@ import { set, get } from 'idb-keyval';
 const RegistUserPage: React.FC = () => {
   const history = useHistory();
   const [state, setState]: any = useState<any>({
-    cedula: '',
+    nroDocumento: '',
     user: null,
     loading: false,
     error: null
@@ -48,32 +48,40 @@ const RegistUserPage: React.FC = () => {
 
     if(result && result.length > 0) {
       setUsuariosTesteados((state: any) => result);
-      const usuario = usuariosTesteados.find((u: any) => u.cedula === state.cedula);
+      const usuario = usuariosTesteados.find((u: any) => u.nroDocumento === state.nroDocumento);
 
       if(usuario) {
         setState((state: any) => ({...state, user: usuario, loading: false}));
       } else {
-        [err, result] = await to(getTestedUserData('token', state.cedula, 'cedula'));
+        [err, result] = await to(getTestedUserData('token', state.nroDocumento, 'cedula'));
 
         if(err) {
           setState((state: any) => ({...state, error: err, loading: false}));
         } else {
-          setState((state: any) => ({...state, user: result, loading: false}));
+          if (result.cantidad === "0")  {
+            setState((state: any) => ({...state, error: {message: 'Nro. de antecedente no encontrado, favor verifique que el número de documento esté correcto.'}, loading: false}));
+          } else {
+            setState((state: any) => ({...state, user: result, loading: false}));
+          }
         }
       }
     } else {
-      [err, result ] = await to(getTestedUserData('token', state.cedula, 'cedula'));
+      [err, result ] = await to(getTestedUserData('token', state.nroDocumento, 'cedula'));
 
       if(err) {
         setState((state: any) => ({...state, error: err, loading: false}));
       } else {
-        setState((state: any) => ({...state, user: result, loading: false}));
+        if (user.cantidad === "0")  {
+          setState((state: any) => ({...state, user: result, loading: false}));
+        } else {
+          setState((state: any) => ({...state, error: {message: 'Nro. de antecedente no encontrado, favor verifique que el número de documento esté correcto.'}, loading: false}));
+        }
       }
     }
   }
   
   const confirmUserTested = () => {
-    const userT = usuariosTesteados.find((u: any) => u.cedula === state.cedula);
+    const userT = usuariosTesteados.find((u: any) => u.nroDocumento === state.nroDocumento);
   
     if(!userT) {
       usuariosTesteados.push(state.user);
@@ -83,7 +91,7 @@ const RegistUserPage: React.FC = () => {
     setCookie('usuario_testeado', {
       nombres: state.user.nombres,
       apellidos: state.user.apellidos,
-      cedula: state.user.cedula,
+      nroDocumento: state.user.nroDocumento,
       nroAntecedente: state.user.nroAntecedente,
       renovacion: state.user.renovacion
     }, {path: '/'});
@@ -104,11 +112,11 @@ const RegistUserPage: React.FC = () => {
 
     // x().then((result: any) => console.log(result));
 
-    setState((state: any) => ({...state, cedula: '', user: null}));
+    setState((state: any) => ({...state, nroDocumento: '', user: null}));
   }, []);
 
-  const { cedula, user, error, loading } = state;
-
+  const { nroDocumento, user, error, loading } = state;
+  
   return (
     <IonPage>
       <IonHeader>
@@ -125,13 +133,13 @@ const RegistUserPage: React.FC = () => {
           <SearchTestedUserFormBase
             onSubmit={consultUserData}
             handleChange={handleChange}
-            cedula={cedula}
+            nroDocumento={nroDocumento}
             error={error}
           />
 
           { loading && <IonItem><IonSpinner className="loading" /></IonItem> }
 
-          { user &&
+          { user?.nombres &&
             <>
               <DataList user={user} />
               <input type="button" onClick={confirmUserTested} className="submit-btn confirm-btn" value="Confirmar" />

@@ -7,104 +7,86 @@ import PREGUNTAS_PRIMEROS_AUXILIOS from './preguntas_primeros_auxilios.json';
 import axios from 'axios';
 import to from 'await-to-js';
 import { HTTP } from '@ionic-native/http';
+import { xml2js } from 'xml-js';
 
 const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
 
-const getUserD = async () => {
-  const data = `<?xml version="1.0" encoding="utf-8"?>
-  <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-    <soap:Body>
-      <ConsultarAntecedente xmlns="http://rut.antsv.gov.py/">
-        <Token>string</Token>
-        <Documento>490610</Documento>
-        <TipoDocumento>string</TipoDocumento>
-      </ConsultarAntecedente>
-    </soap:Body>
-  </soap:Envelope>`;
+const getTestedUserData = async (
+  token: string,
+  nroDocumento: string,
+  tipoDocumento: string
+) => {
+  try {
+    const data = `<?xml version="1.0" encoding="utf-8"?>
+    <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <soap:Body>
+        <ConsultarAntecedente xmlns="http://rut.antsv.gov.py/">
+          <Token>${token}</Token>
+          <Documento>${nroDocumento}</Documento>
+          <TipoDocumento>string</TipoDocumento>
+        </ConsultarAntecedente>
+      </soap:Body>
+    </soap:Envelope>`;
 
-  HTTP.setDataSerializer('utf8');
+    HTTP.setDataSerializer('utf8');
 
-  let [error, result]: any = await to(HTTP.post(
-    url,
-    data,
-    {"Access-Control-Allow-Origin": "*",
-    "Content-Type": "text/xml; charset=utf-8",
-    "SOAPAction": "http://rut.antsv.gov.py/ConsultarAntecedente"}));
-
-  if (error === 'cordova_not_available') {
-    [error, result] = await to(axios.post(url,
+    let [error, result]: any = await to(HTTP.post(
+      url,
       data,
-      {headers: 
-        {"Access-Control-Allow-Origin": "*",
-        "Content-Type": "text/xml; charset=utf-8",
-        "SOAPAction": "http://rut.antsv.gov.py/ConsultarAntecedente"}}));
+      {"Access-Control-Allow-Origin": "*",
+      "Content-Type": "text/xml; charset=utf-8",
+      "SOAPAction": "http://rut.antsv.gov.py/ConsultarAntecedente"}));
 
-    console.log(error);
-  }
+    if (error === 'cordova_not_available') {
+      [error, result] = await to(axios.post(url,
+        data,
+        {headers: 
+          {"Access-Control-Allow-Origin": "*",
+          "Content-Type": "text/xml; charset=utf-8",
+          "SOAPAction": "http://rut.antsv.gov.py/ConsultarAntecedente"}}));
+    }
 
-  if (error) throw error;
+    if (error) throw error;
 
-  return result;
-};
-
-const getTestedUserData = (
-  token: any,
-  nroDocumento: any,
-  tipoDocumento: any
-  ) => {
-  return new Promise((resolve, reject) => {
-    setInterval(() => {
-      if(nroDocumento == 111) {
-        resolve(
-          {
-            nombres: 'Pedro Marcelo',
-            apellidos: 'Benitez Martinez',
-            fechaNac: '04/02/1980',
-            nroDocumento: '111',
-            tipoDocumento: 'cedula',
-            cedula: '111',
-            rut: '111',
-            domicilio: 'LAMBARE',
-            nacionalidad: 'PARAGUAYA',
-            categoria: 'Motocicleta',
-            renovacion: true,
-            nroAntecedente: 1701,
-            examenes:
-              {
-              }
-          }
-        )
-      } else if (nroDocumento == 222) {
-        resolve(
-          {
-            nombres: 'Gustavo Marcelo',
-            apellidos: 'Dominguez Britos',
-            fechaNac: '04/09/1991',
-            nroDocumento: '222',
-            tipoDocumento: 'cedula',
-            rut: '222',
-            cedula: '222',
-            domicilio: 'LAMBARE',
-            nacionalidad: 'PARAGUAYA',
-            categoria: 'Profesional B',
-            renovacion: false,
-            nroAntecedente: 1702,
-            examenes:
-              {
-                Motocicleta: {
-                  examenTeorico: {
-                    fecha: '2020-12-23',
-                    puntaje: 80
-                  }
+    { /*
+      //@ts-ignore */}
+    const { ["soap:Envelope"]: { "soap:Body": {
+          ConsultarAntecedenteResponse: {
+            ConsultarAntecedenteResult: {
+              Antecedentes: {
+                ConsultaAntecedente = {
+                  Nombres: {text: null},
+                  Apellidos: {text: null},
+                  Categoria: {text: null},
+                  IdAntecedente: {text: null},
+                  Tramite: {text: null}
                 }
-              }
+              },
+              Cantidad: {text: cantidad}
+            }
           }
-        )
-      } else {
-        reject({codError: 1, message: 'Usuario no registrado, favor verifique que esté correcto.'})
+        }
       }
-    }, 2000)
-  });
+    } = xml2js(result.data,
+    {
+      ignoreDeclaration: true,
+      ignoreAttributes: true,
+      compact: true,
+      textKey: "text"
+    });
+
+    const {
+      Nombres: { text:nombres },
+      Apellidos: { text:apellidos },
+      Categoria: { text:categoria },
+      IdAntecedente: { text:idAntecedente },
+      Tramite: { text:tramite }
+    } = ConsultaAntecedente;
+
+    return { cantidad, nombres, apellidos, categoria, nroDocumento, idAntecedente, tramite };
+  } catch (e) {
+    throw e;
+  }
 };
 
 const getCategories = async () =>
@@ -192,6 +174,5 @@ export {
   getExamDate,
   getDeclaracionJurada,
   getPracticalTestItems,
-  saveDeclaracionJurada,
-  getUserD
+  saveDeclaracionJurada
 };

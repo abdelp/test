@@ -8,13 +8,14 @@ import {
 const SearchTestedUserFormBase = ({
   onSubmit,
   handleChange,
-  cedula,
+  nroDocumento,
   error
 }: any) => {
+  console.log(`error: ${error}`)
   return (
     <form className="ion-padding login-list" onSubmit={onSubmit}>
       <IonItem lines="none">
-        <IonInput name="cedula" value={cedula} onIonChange={handleChange} autofocus placeholder="C.I. N°" />
+        <IonInput name="nroDocumento" value={nroDocumento} onIonChange={handleChange} autofocus placeholder="C.I. N°" />
       </IonItem>
       <input type="submit" className="submit-btn" value="Aceptar" />
       {error && <p className="error-msg">{error.message}</p>}
