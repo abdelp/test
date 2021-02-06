@@ -5,24 +5,16 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonButton,
-  IonAlert
+  IonButton
 } from '@ionic/react';
-// import Timer from './Timer';
 import { useHistory } from 'react-router-dom';
-// import { getPreguntasSenhales } from '../APIs';
 import { set } from 'idb-keyval';
-// import { sendResult } from '../APIs';
-// import { updateUserTest } from '../utils/db';
-import { withCookies, Cookies } from 'react-cookie';
+import { withCookies } from 'react-cookie';
 import { sendResult } from '../APIs';
-import { updateUserTest, actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
+import { actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
 import './MemorizeNumbers.css';
-import { debug } from 'console';
 import _ from 'lodash';
 import './BlockPositionsTest.css';
-
-// import { setMaxListeners } from 'process';
 
 const defaultPositions = [
   {justify: '', align: '', color: ''},
@@ -47,9 +39,6 @@ const defaultState = {
 const MemorizeNumbers: React.FC = (props: any) => {
   const [state, setState] = useState<any>({..._.cloneDeep(defaultState)});
   const history = useHistory();
-
-  const doSaveExamProgress = async (exam: any) =>
-    await set("exam", {exam});
 
   const randomNumber = (length: any) =>  
     Math.floor(Math.random() * (length - 0) + 0);
@@ -107,9 +96,13 @@ const MemorizeNumbers: React.FC = (props: any) => {
 
         setState((state: any) => ({ ...state, mensaje, action: ''}));
       } else if (mensaje === 'Correcto' || mensaje === 'Incorrecto') {
-        rotationInterval = window.setTimeout(() => {
-          setState((state: any) => ({ ...state, mensaje: 'Atención', round: state.round + 1, bloquesAMostrar: _.cloneDeep(defaultPositions)}));
-        }, 2000);
+        if(round < 4) {
+          rotationInterval = window.setTimeout(() => {
+            setState((state: any) => ({ ...state, mensaje: 'Atención', round: state.round + 1, bloquesAMostrar: _.cloneDeep(defaultPositions)}));
+          }, 2000);
+        } else {
+          setState((state: any) => ({ ...state, round: state.round + 1 }));
+        }
       }
     } else {
       rotationInterval = window.setTimeout(() => {
@@ -132,15 +125,10 @@ const MemorizeNumbers: React.FC = (props: any) => {
         };
 
         actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)
-        .then(result => {
-          sendResult('x', 'firma', 1, true)
-          .then(result => {
-            setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
+        .then(() => {
+          setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
 
-            history.replace('/page/test-finished', {type: 'psiquica', test: 'posiciones-bloques'});
-
-          })
-          .catch((error: any) => console.log(error));
+          history.replace('/page/test-finished', {type: 'psiquica', test: 'posiciones-bloques'});
         })
         .catch((error: any) => {
           console.log(error);
