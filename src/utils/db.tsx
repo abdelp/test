@@ -39,10 +39,10 @@ const agregarUsuarioTesteado = async (usuario: any) => {
   }
 };
 
-const eliminarUsuarioTesteadoPorCedula = async (cedula: any) => {
+const eliminarUsuarioTesteadoPorNroDocumento = async (nroDocumento: string) => {
   try {
     const TABLA = 'usuarios_testeados';
-    const USUARIO_TESTEADO_IDX = await obtenerIndiceUsuarioTesteadoPorCedula(cedula);
+    const USUARIO_TESTEADO_IDX = await obtenerIndiceUsuarioTesteadoPorNroDocumento(nroDocumento);
     let usuariosTesteados: any = await get(TABLA) || [];
 
     usuariosTesteados = [...usuariosTesteados.slice(0, USUARIO_TESTEADO_IDX), ...usuariosTesteados.slice(USUARIO_TESTEADO_IDX + 1)]
@@ -54,11 +54,11 @@ const eliminarUsuarioTesteadoPorCedula = async (cedula: any) => {
   }
 };
 
-const obtenerIndiceUsuarioTesteadoPorCedula = async (cedula: any) => {
+const obtenerIndiceUsuarioTesteadoPorNroDocumento = async (nroDocumento: string) => {
   try {
     const TABLA = 'usuarios_testeados';
     const usuariosTesteados: any = await get(TABLA) || [];
-    const usuarioTesteadoIdx = usuariosTesteados.findIndex((u: any) => u.cedula === cedula);
+    const usuarioTesteadoIdx = usuariosTesteados.findIndex((u: any) => u.nroDocumento === nroDocumento);
 
     return usuarioTesteadoIdx;
   } catch(e) {
@@ -66,11 +66,11 @@ const obtenerIndiceUsuarioTesteadoPorCedula = async (cedula: any) => {
   }
 };
 
-const obtenerDatosUsuarioTesteadoPorCedula = async (cedula: any) => {
+const obtenerDatosUsuarioTesteadoPorNroDocumento = async (nroDocumento: any) => {
   try {
     const TABLA = 'usuarios_testeados';
     const usuariosTesteados: any = await get(TABLA) || [];
-    const usuarioTesteadoIdx = usuariosTesteados.findIndex((u: any) => u.cedula === cedula);
+    const usuarioTesteadoIdx = usuariosTesteados.findIndex((u: any) => u.nroDocumento === nroDocumento);
     const usuarioTesteado = usuariosTesteados[usuarioTesteadoIdx];
 
     return usuarioTesteado;
@@ -79,16 +79,16 @@ const obtenerDatosUsuarioTesteadoPorCedula = async (cedula: any) => {
   }
 };
 
-const actualizarDatosUsuarioTesteadoPorCedula = async (cedula: any, datos: any) => {
+const actualizarDatosUsuarioTesteadoPorNroDocumento = async (nroDocumento: string, datos: any) => {
   try {
     const TABLA = 'usuarios_testeados';
-    const DATOS_USUARIO = await obtenerDatosUsuarioTesteadoPorCedula(cedula) || {};
+    const DATOS_USUARIO = await obtenerDatosUsuarioTesteadoPorNroDocumento(nroDocumento) || {};
     const NUEVOS_DATOS = _.merge(DATOS_USUARIO, datos);
 
     let usuariosTesteados: any = await get(TABLA) || [];
-    const USUARIO_TESTEADO_IDX = await obtenerIndiceUsuarioTesteadoPorCedula(cedula);
+    const USUARIO_TESTEADO_IDX = await obtenerIndiceUsuarioTesteadoPorNroDocumento(nroDocumento);
 
-    if (USUARIO_TESTEADO_IDX === -1) return {cod: 0, mensaje: `Usuario con cédula de identidad nro.: ${cedula} no encontrado`};
+    if (USUARIO_TESTEADO_IDX === -1) return {cod: 0, mensaje: `Usuario con nro. de documento: ${nroDocumento} no encontrado`};
 
     usuariosTesteados[USUARIO_TESTEADO_IDX] = NUEVOS_DATOS;
 
@@ -109,14 +109,14 @@ const actualizarUsuarioTesteado = async (usuario: any) => {
  */
 
 const actualizarTestDeUsuario = async (
-  cedula: any,
+  nroDocumento: string,
   categoria: any,
   test: any,
   data: any) => {
   const TABLA = 'usuarios_testeados';
   const FECHA = new Date();
   const USUARIOS_TESTEADOS: any = await get(TABLA) || [];
-  const usuarioTesteado: any = await obtenerDatosUsuarioTesteadoPorCedula(cedula) || {};
+  const usuarioTesteado: any = await obtenerDatosUsuarioTesteadoPorNroDocumento(nroDocumento) || {};
 
   let nuevoExamen: any = {
     [categoria]: {
@@ -161,13 +161,8 @@ const actualizarFechaDeTest = async (cedula: any, categoria: string, test: strin
       let testGuardado = usuarioTesteado.categoria[test] || {};
 
       testGuardado.fecha = new Date();
-
-      console.log(usuarioTesteado);
-      console.log(usuariosTesteados);
-
     } else {
-      
-      
+ 
     }
 
     await set(TABLA, usuariosTesteados);
@@ -179,10 +174,15 @@ const actualizarFechaDeTest = async (cedula: any, categoria: string, test: strin
   }
 };
 
-const updateUserTest = async (cedula: any, categoria: any, test: any, result: any) => {
+const updateUserTest = async (
+  nroDocumento: any,
+  categoria: any,
+  test: any,
+  result: any
+) => {
   const date = new Date();
   const usuariosTesteados: any = await get('usuarios_testeados');
-  const idx = usuariosTesteados.findIndex((u: any) => u.cedula === cedula);
+  const idx = usuariosTesteados.findIndex((u: any) => u.nroDocumento === nroDocumento);
   let cat: any;
 
   if (!usuariosTesteados[idx][categoria.toLowerCase()]) {
@@ -200,7 +200,7 @@ const updateUserTest = async (cedula: any, categoria: any, test: any, result: an
 export {
   updateUserTest,
   agregarUsuarioTesteado,
-  obtenerDatosUsuarioTesteadoPorCedula,
-  actualizarDatosUsuarioTesteadoPorCedula,
-  eliminarUsuarioTesteadoPorCedula
+  obtenerDatosUsuarioTesteadoPorNroDocumento,
+  actualizarDatosUsuarioTesteadoPorNroDocumento,
+  eliminarUsuarioTesteadoPorNroDocumento
 };

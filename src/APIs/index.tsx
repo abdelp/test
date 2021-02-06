@@ -23,7 +23,7 @@ const getTestedUserData = async (
         <ConsultarAntecedente xmlns="http://rut.antsv.gov.py/">
           <Token>${token}</Token>
           <Documento>${nroDocumento}</Documento>
-          <TipoDocumento>string</TipoDocumento>
+          <TipoDocumento>${tipoDocumento}</TipoDocumento>
         </ConsultarAntecedente>
       </soap:Body>
     </soap:Envelope>`;
@@ -106,41 +106,69 @@ const getPreguntasSenhales = () => {
   });
 };
 
-const sendResult = (ticket: any, ci: any, result: any) => {
-  return new Promise((resolve, reject) => {
-    resolve(true);
-    // try {
-    //   const xhr = new XMLHttpRequest();
-    //   xhr.open("POST", url);
-    //   xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-    //   xhr.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-    //   xhr.setRequestHeader("SOAPAction", "http://rut.antsv.gov.py/EnviarResultado");
+const sendResult = async (
+  token: any,
+  firma: any,
+  idAntecedente: number,
+  aprobado: boolean
+) => {
+  try {
+    const data = `<?xml version="1.0" encoding="utf-8"?>
+    <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <soap:Body>
+        <EnviarResultado xmlns="http://rut.antsv.gov.py/">
+          <Token>${token}</Token>
+          <Firma>${firma}</Firma>
+          <IdAntecedente>${idAntecedente}</IdAntecedente>
+          <Aprobado>${aprobado}</Aprobado>
+          <DatosExamenXML>string</DatosExamenXML>
+        </EnviarResultado>
+      </soap:Body>
+    </soap:Envelope>`;
 
-    //   xhr.onreadystatechange = function () {
-    //     if (xhr.readyState === 4) {
-    //       resolve(xhr);
-    //     }
-    //   };
+    HTTP.setDataSerializer('utf8');
 
-    //   const data = `<?xml version="1.0" encoding="utf-8"?>
-    //   <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-    //     <soap:Body>
-    //       <EnviarResultado xmlns="http://rut.antsv.gov.py/">
-    //         <Token>${ticket}</Token>
-    //         <Firma>string</Firma>
-    //         <Entidad>string</Entidad>
-    //         <CI>${ci}</CI>
-    //         <DatosExamenXML>${result}</DatosExamenXML>
-    //       </EnviarResultado>
-    //     </soap:Body>
-    //   </soap:Envelope>
-    // `;
+    let [error, result]: any = await to(HTTP.post(
+      url,
+      data,
+      {"Access-Control-Allow-Origin": "*",
+      "Content-Type": "text/xml; charset=utf-8",
+      "SOAPAction": "http://rut.antsv.gov.py/ConsultarAntecedente"}));
 
-    //   xhr.send(data);
-    // } catch(error) {
-    //   reject(error);
-    // }
-  });
+    if (error === 'cordova_not_available') {
+      [error, result] = await to(axios.post(url,
+        data,
+        {headers: 
+          {"Access-Control-Allow-Origin": "*",
+          "Content-Type": "text/xml; charset=utf-8",
+          "SOAPAction": "http://rut.antsv.gov.py/ConsultarAntecedente"}}));
+    }
+
+    if (error) throw error;
+
+    console.log(xml2js(result.data,
+      {
+        ignoreDeclaration: true,
+        ignoreAttributes: true,
+        compact: true,
+        textKey: "text"
+      }));
+
+    { /*
+      //@ts-ignore */}
+    // const { 
+    // } = xml2js(result.data,
+    // {
+    //   ignoreDeclaration: true,
+    //   ignoreAttributes: true,
+    //   compact: true,
+    //   textKey: "text"
+    // });
+
+    return;
+  } catch (e) {
+    throw e;
+  }
 };
 
 const getExamDate = async ({categoria, ticket, ci, test}: any) =>

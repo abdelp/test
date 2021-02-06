@@ -16,7 +16,7 @@ import { set } from 'idb-keyval';
 // import { updateUserTest } from '../utils/db';
 import { withCookies, Cookies } from 'react-cookie';
 import { sendResult } from '../APIs';
-import { updateUserTest, actualizarDatosUsuarioTesteadoPorCedula } from '../utils/db';
+import { updateUserTest, actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
 import './MemorizeNumbers.css';
 import { debug } from 'console';
 import _ from 'lodash';
@@ -117,7 +117,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
         const ticket = cookies.get('ticket');
         const categoria = cookies.get('categoria');
         const usuarioTesteado = cookies.get('usuario_testeado');
-        const { cedula } = usuarioTesteado;
+        const { nroDocumento } = usuarioTesteado;
         const { bloquesAElegir, bloquesElegidos } = state;
 
         const examen = {
@@ -131,9 +131,9 @@ const MemorizeNumbers: React.FC = (props: any) => {
           }
         };
 
-        actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
+        actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)
         .then(result => {
-          sendResult(ticket, cedula, 100)
+          sendResult('x', 'firma', 1, true)
           .then(result => {
             setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
 

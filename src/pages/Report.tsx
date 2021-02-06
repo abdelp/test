@@ -12,7 +12,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { obtenerDatosUsuarioTesteadoPorCedula } from '../utils/db';
+import { obtenerDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
 import DataList from '../components/DataList';
 import './Report.css';
 import { withCookies } from 'react-cookie';
@@ -24,14 +24,14 @@ const round = (value: any) => {
 };
 
 const ReportPage: React.FC = ({
-  cedula,
+  nroDocumento,
   cookies
 }: any) => {
-  cedula = '222';
+  nroDocumento = '222';
 
   const history = useHistory();
   const [state, setState]: any = useState<any>({
-    cedula: '',
+    nroDocumento: '',
     user: null,
     porcentajes: {
       declaracionJurada: 0,
@@ -48,7 +48,7 @@ const ReportPage: React.FC = ({
   });
 
   useEffect(() => {
-    obtenerDatosUsuarioTesteadoPorCedula(cedula)
+    obtenerDatosUsuarioTesteadoPorNroDocumento(nroDocumento)
     .then((result: any) => {
       setState((state: any) => ({...state, user: result}));
       calculateResults(result);

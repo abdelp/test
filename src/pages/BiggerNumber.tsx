@@ -13,7 +13,7 @@ import { useHistory, withRouter } from 'react-router-dom';
 import { set } from 'idb-keyval';
 import { sendResult } from '../APIs';
 import { withCookies, Cookies } from 'react-cookie';
-import { updateUserTest, actualizarDatosUsuarioTesteadoPorCedula } from '../utils/db';
+import { updateUserTest, actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
 import './BiggerNumber.css';
 import { debug } from 'console';
 import { compose } from 'recompose';
@@ -71,7 +71,7 @@ const BiggerNumber: React.FC = (props: any) => {
             const ticket = cookies.get('ticket');
             const categoria = cookies.get('categoria');
             const usuarioTesteado = cookies.get('usuario_testeado');
-            const { cedula } = usuarioTesteado;
+            const { nroDocumento } = usuarioTesteado;
   
             const examen = {
               examenes: {
@@ -84,9 +84,9 @@ const BiggerNumber: React.FC = (props: any) => {
               }
             };
 
-            actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
+            actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)
             .then(result => {
-              sendResult(ticket, cedula, 100)
+              sendResult('x', 'firma', 1, true)
               .then(result => {    
                 history.replace('/page/instrucciones', {type: 'psiquica', test: 'posiciones-bloques'});
               })

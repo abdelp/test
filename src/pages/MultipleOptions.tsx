@@ -17,7 +17,7 @@ import { useHistory } from 'react-router-dom';
 import { getPreguntasSenhales } from '../APIs';
 import { set } from 'idb-keyval';
 import { sendResult } from '../APIs';
-import { actualizarDatosUsuarioTesteadoPorCedula } from '../utils/db';
+import { actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
 import { withCookies } from 'react-cookie';
 import './MultipleOptions.css';
 
@@ -36,7 +36,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
     const ticket = cookies.get('ticket');
     const categoria = cookies.get('categoria');
     const usuarioTesteado = cookies.get('usuario_testeado');
-    const { cedula } = usuarioTesteado;
+    const { nroDocumento } = usuarioTesteado;
 
     const updateUserTest = async () => {
 
@@ -76,7 +76,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
         const ticket = cookies.get('ticket');
         const categoria = cookies.get('categoria');
         const usuarioTesteado = cookies.get('usuario_testeado');
-        const { cedula } = usuarioTesteado;
+        const { nroDocumento } = usuarioTesteado;
 
         const examen = {
           examenes: {
@@ -89,9 +89,9 @@ const MultipleOptionsPage: React.FC = (props: any) => {
           }
         };
 
-        actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)
+        actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)
         .then(result => {
-          sendResult(ticket, cedula, 100)
+          sendResult('x', 'firma', 1, true)
           .then(result => { 
             history.replace('/page/test-finished', { state: 'prueba practica' });
           })

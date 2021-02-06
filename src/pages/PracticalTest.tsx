@@ -22,7 +22,7 @@ import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from "react-cookie";
 import to from 'await-to-js';
 import { set, get } from 'idb-keyval';
-import { obtenerDatosUsuarioTesteadoPorCedula, actualizarDatosUsuarioTesteadoPorCedula } from '../utils/db';
+import { obtenerDatosUsuarioTesteadoPorNroDocumento, actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
 
 import './PracticalTest.css';
 
@@ -68,8 +68,8 @@ const PracticalTestPage: React.FC = (props: any) => {
       };
 
       const { cookies } = props;
-      const { cedula } = cookies.get('usuario_testeado');
-      const usuarioTesteado = await obtenerDatosUsuarioTesteadoPorCedula(cedula);
+      const { nroDocumento } = cookies.get('usuario_testeado');
+      const usuarioTesteado = await obtenerDatosUsuarioTesteadoPorNroDocumento(nroDocumento);
       const categoria = cookies.get('categoria');
 
       const examen = {
@@ -80,7 +80,7 @@ const PracticalTestPage: React.FC = (props: any) => {
         }
       };
 
-      ([err, result] = await to(actualizarDatosUsuarioTesteadoPorCedula(cedula, examen)));
+      ([err, result] = await to(actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)));
 
       setTimeout(() => {
         setState((state: any) => ({...state, loading: false}))
