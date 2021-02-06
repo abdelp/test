@@ -21,7 +21,7 @@ import { useHistory } from 'react-router-dom';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from "react-cookie";
 import to from 'await-to-js';
-import { set, get } from 'idb-keyval';
+import { get } from 'idb-keyval';
 import { obtenerDatosUsuarioTesteadoPorNroDocumento, actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
 
 import './PracticalTest.css';
@@ -52,10 +52,10 @@ const PracticalTestPage: React.FC = (props: any) => {
   const confirmar = async () => {
     setState((state: any) => ({ ...state, showAlert: false }));
 
-    // console.log(questions);
     /*
      * poner webservice
      */
+
     if(!incompleteForm()) {
       setState((state: any) => ({...state, loading: true}))
       let err: any, result: any;
@@ -84,7 +84,10 @@ const PracticalTestPage: React.FC = (props: any) => {
 
       setTimeout(() => {
         setState((state: any) => ({...state, loading: false}))
-        history.push('/page/report');
+        history.replace({
+          pathname: '/page/report',
+          state: { nroDocumento }
+        });
       }, 2000);
     } else {
       setState((state: any) => ({...state, showAlertNotCompleted: true }));

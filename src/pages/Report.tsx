@@ -16,6 +16,7 @@ import { obtenerDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
 import DataList from '../components/DataList';
 import './Report.css';
 import { withCookies } from 'react-cookie';
+import { sendResult } from '../APIs';
 
 const round = (value: any) => {
   {/*
@@ -24,11 +25,9 @@ const round = (value: any) => {
 };
 
 const ReportPage: React.FC = ({
-  nroDocumento,
+  location,
   cookies
 }: any) => {
-  nroDocumento = '222';
-
   const history = useHistory();
   const [state, setState]: any = useState<any>({
     nroDocumento: '',
@@ -48,8 +47,10 @@ const ReportPage: React.FC = ({
   });
 
   useEffect(() => {
+    const { nroDocumento } = cookies.get('usuario_testeado');
     obtenerDatosUsuarioTesteadoPorNroDocumento(nroDocumento)
     .then((result: any) => {
+      console.log(result);
       setState((state: any) => ({...state, user: result}));
       calculateResults(result);
     })
@@ -61,7 +62,9 @@ const ReportPage: React.FC = ({
     history.push('/page/test-types');
   }
 
-  const calculateResults = (usuario: any) => {
+  const examPassed = (examPercentage: any) => examPercentage >= 70;
+
+  const calculateResults = async (usuario: any) => {
     const categoria = cookies.get('categoria');
     const declaracionJurada = usuario.examenes[categoria].declaracionJurada ? 100 : 0;
 
@@ -127,6 +130,31 @@ const ReportPage: React.FC = ({
 
     const porcentajePosicionesBloques = round(respuestasCorrectasPosicionesBloques * 100 / respuestasPosicionesBloques.bloquesAElegir.length);
 
+    if ([
+      declaracionJurada,
+      porcentajePractico,
+      porcentajeTeorico,
+      porcentajeMemorizarNumeros,
+      porcentajeTestColores,
+      porcentajeTestDirecciones,
+      porcentajeTestNumerosGrandes,
+      porcentajePosicionesBloques
+    ].every(examPassed)) {
+      console.log('pasados todos los examenes');
+    } else {
+      console.log('no se pasaron todos los examenes');
+    }
+
+    const { ticket } = cookies.get('usuario');
+    const { idAntecedente } = cookies.get('usuario_testeado');
+
+    console.log(ticket.text);
+    console.log(idAntecedente);
+
+    const enviado = await sendResult(ticket.text, '', idAntecedente, true);
+
+    console.log(enviado);
+
     let nuevosPorcentajes = {
       declaracionJurada,
       practico: porcentajePractico,
@@ -137,8 +165,6 @@ const ReportPage: React.FC = ({
       testNumerosGrandes: porcentajeTestNumerosGrandes,
       testPosicionesBloques: porcentajePosicionesBloques
     };
-
-    console.log(nuevosPorcentajes);
 
     setState((state: any) => ({
       ...state,

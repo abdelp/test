@@ -6,9 +6,7 @@ import {
   IonTitle,
   IonToolbar,
   IonItem,
-  IonIcon,
-  IonImg,
-  IonText
+  IonImg
 } from '@ionic/react';
 import React, {
   useState,
@@ -18,9 +16,6 @@ import React, {
 import { useHistory } from 'react-router-dom';
 
 import './Instructions.css';
-import { cog } from 'ionicons/icons';
-import multipleSelectionImg from '../assets/multiple-selection.png';
-// import logoPruebaTeorica from '../assets/logo_prueba_teorica.svg';
 import instruccionesPruebaTeorica from '../assets/instrucciones_prueba_teorica.svg';
 import instruccionesPruebaMemorizarNumeros from '../assets/instrucciones_prueba_psiquica_memorizar_numeros.svg';
 import instruccionesPruebaColores from '../assets/instrucciones_prueba_psiquica_colores.svg';
@@ -64,21 +59,6 @@ const InstructionsPage: React.FC = (props: any) => {
     });
   };
 
-  const skipButton = () => {
-    if (showSkip) {
-      return (
-        <IonButton routerDirection="forward" 
-                   routerLink="/game" 
-                   color="light">Skip
-        </IonButton>
-        );
-    } else {
-      return (<span></span>);
-    }
-  }
-
-  const handleNext = () => slider.current?.slideNext();
-
   const getHeaderColor = (type: any) => {
     let color;
 
@@ -89,9 +69,6 @@ const InstructionsPage: React.FC = (props: any) => {
         break;
       case 'psiquica':
         color = 'alert';
-
-        console.log(type);
-        console.log(test);
 
         switch(test) {
           case 'memorize-numbers':

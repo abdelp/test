@@ -90,11 +90,12 @@ const RegistUserPage: React.FC = () => {
     }
 
     set("usuarios_testeados", usuariosTesteados);
+    console.log(state.user);
     setCookie('usuario_testeado', {
       nombres: state.user.nombres,
       apellidos: state.user.apellidos,
       nroDocumento: state.user.nroDocumento,
-      nroAntecedente: state.user.nroAntecedente,
+      idAntecedente: state.user.idAntecedente,
       categoria: state.user.categoria,
       tramite: state.user.tramite
     }, {path: '/'});
