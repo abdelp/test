@@ -26,7 +26,6 @@ import { getDeclaracionJurada, saveDeclaracionJurada } from '../APIs';
 import { obtenerDatosUsuarioTesteadoPorNroDocumento, actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
 import './DeclaracionJurada.css';
 
-
 const DeclaracionJuradaPage: React.FC = (props: any) => {
   const [questions, setQuestions] = useState<any>([]);
   const [state, setState] = useState<any>({showAlert: false, showAlertNotCompleted: false});
@@ -74,34 +73,8 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
         }
       };
 
-      // const usuarioActualizado = _.merge(usuarioTesteado, examen);
-
-      // console.log(usuarioActualizado);
-      // const usuarioIdx = result.findIndex((u: any) => u.cedula === usuarioTesteado.cedula);
-
-      // let examenes: any = usuarioTesteado["examenes"];
-
-      // let cat: any;
-
-      // if (!usuarioTesteado.examenes[categoria.toLowerCase()]) {
-      //   cat = usuarioTesteado["examenes"][categoria.toLowerCase()] = {};
-      // } else {
-      //   cat = usuarioTesteado.examenes[categoria.toLowerCase()];
-      // }
-
-      // cat["declaracionJurada"] = { date: new Date(), declaracion: questions };
-      // result[usuarioIdx] = usuarioTesteado;
-
-      // set('usuarios_testeados', result);
-
       ([err, result] = await to(actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)));
       ([err, result] = await to(saveDeclaracionJurada(questions)));
-
-      // if (err) {
-      //   setState((state: any) => ({...state, loading: false}));
-
-      //   return err;
-      // }
 
       setState((state: any) => ({...state, loading: false}));
       history.replace('/page/test-types');

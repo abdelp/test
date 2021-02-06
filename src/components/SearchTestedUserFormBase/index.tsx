@@ -11,7 +11,6 @@ const SearchTestedUserFormBase = ({
   nroDocumento,
   error
 }: any) => {
-  console.log(`error: ${error}`)
   return (
     <form className="ion-padding login-list" onSubmit={onSubmit}>
       <IonItem lines="none">

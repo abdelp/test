@@ -66,15 +66,15 @@ const RegistUserPage: React.FC = () => {
         }
       }
     } else {
-      [err, result ] = await to(getTestedUserData('token', state.nroDocumento, 'cedula'));
+      [err, result ] = await to(getTestedUserData(cookies.usuario.ticket.text, state.nroDocumento, 'cedula'));
 
       if(err) {
         setState((state: any) => ({...state, error: err, loading: false}));
       } else {
-        if (user.cantidad === "0")  {
-          setState((state: any) => ({...state, user: result, loading: false}));
-        } else {
+        if (result.cantidad === "0")  {
           setState((state: any) => ({...state, error: {message: 'Nro. de antecedente no encontrado, favor verifique que el número de documento esté correcto.'}, loading: false}));
+        } else {
+          setState((state: any) => ({...state, user: result, loading: false}));
         }
       }
     }
@@ -93,7 +93,8 @@ const RegistUserPage: React.FC = () => {
       apellidos: state.user.apellidos,
       nroDocumento: state.user.nroDocumento,
       nroAntecedente: state.user.nroAntecedente,
-      renovacion: state.user.renovacion
+      categoria: state.user.categoria,
+      tramite: state.user.tramite
     }, {path: '/'});
     setCookie('categoria', state.user.categoria, {path: '/'});
 

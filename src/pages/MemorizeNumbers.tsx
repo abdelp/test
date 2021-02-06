@@ -8,19 +8,11 @@ import {
   IonButton,
   IonAlert
 } from '@ionic/react';
-// import Timer from './Timer';
 import { useHistory } from 'react-router-dom';
-// import { getPreguntasSenhales } from '../APIs';
-import { set } from 'idb-keyval';
-// import { sendResult } from '../APIs';
-// import { updateUserTest } from '../utils/db';
-import { withCookies, Cookies } from 'react-cookie';
-import { sendResult } from '../APIs';
-import { updateUserTest, actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
+import { withCookies } from 'react-cookie';
+import { actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
 import './MemorizeNumbers.css';
-import { debug } from 'console';
 import _ from 'lodash';
-// import { setMaxListeners } from 'process';
 
 const btnsInitialState = [
   {
@@ -61,8 +53,6 @@ const defaultState = {
   numerosAElegir: [[],[],[],[]],
   turnoUsuario: false,
   numerosElegidos: [[],[],[],[]],
-  // min: 0,
-  // sec: 5,
   roundFinished: false,
   showButtons: false,
   btns: btnsInitialState.map(v => ({...v}))
@@ -70,13 +60,9 @@ const defaultState = {
 
 const MemorizeNumbers: React.FC = (props: any) => {
   const [state, setState] = useState<any>({..._.cloneDeep(defaultState)});
-  const [showTimer, setShowTimer] = useState<any>(true);
   const history = useHistory();
   let continuar: boolean = false;
   const [showAlert, setShowAlert] = useState(false);
-
-  const doSaveExamProgress = async (exam: any) =>
-    await set("exam", {exam});
 
   const randomNumber = () =>  
     Math.floor(Math.random() * (9 - 0) + 0);
@@ -114,13 +100,8 @@ const MemorizeNumbers: React.FC = (props: any) => {
 
             actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)
             .then(result => {
-              sendResult('x', 'firma', 1, true)
-              .then(result => {
-                setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
-
-                history.replace('/page/instrucciones', {type: 'psiquica', test: 'test-colores'});
-              })
-              .catch((error: any) => console.log(error));
+              setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
+              history.replace('/page/instrucciones', {type: 'psiquica', test: 'test-colores'});
             })
             .catch((error: any) => {
               console.log(error);
