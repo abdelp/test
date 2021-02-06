@@ -5,21 +5,17 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonItem,
   IonImg,
   IonButton
 } from '@ionic/react';
-import { useHistory, withRouter } from 'react-router-dom';
-import { set } from 'idb-keyval';
+import { withRouter } from 'react-router-dom';
 import { sendResult } from '../APIs';
-import { withCookies, Cookies } from 'react-cookie';
-import { updateUserTest, actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
+import { withCookies } from 'react-cookie';
+import { actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
 import './BiggerNumber.css';
-import { debug } from 'console';
 import { compose } from 'recompose';
 import correctSymbol from '../assets/correcto.svg';
 import incorrectSymbol from '../assets/incorrecto.svg';
-// import { setMaxListeners } from 'process';
 
 const defaultTime = {
   min: 0,
@@ -85,12 +81,8 @@ const BiggerNumber: React.FC = (props: any) => {
             };
 
             actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)
-            .then(result => {
-              sendResult('x', 'firma', 1, true)
-              .then(result => {    
-                history.replace('/page/instrucciones', {type: 'psiquica', test: 'posiciones-bloques'});
-              })
-              .catch((error: any) => console.log(error));
+            .then(() => { 
+              history.replace('/page/instrucciones', {type: 'psiquica', test: 'posiciones-bloques'});
             })
             .catch((error: any) => {
               console.log(error);
