@@ -83,6 +83,8 @@ const RegistUserPage: React.FC = () => {
   const confirmUserTested = () => {
     const userT = usuariosTesteados.find((u: any) => u.nroDocumento === state.nroDocumento);
   
+    /* verificar por categoria tambien!! */
+
     if(!userT) {
       usuariosTesteados.push(state.user);
     }

@@ -16,7 +16,6 @@ import Timer from './Timer';
 import { useHistory } from 'react-router-dom';
 import { getPreguntasSenhales } from '../APIs';
 import { set } from 'idb-keyval';
-import { sendResult } from '../APIs';
 import { actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
 import { withCookies } from 'react-cookie';
 import './MultipleOptions.css';
@@ -91,11 +90,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
 
         actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)
         .then(result => {
-          sendResult('x', 'firma', 1, true)
-          .then(result => { 
-            history.replace('/page/test-finished', { state: 'prueba practica' });
-          })
-          .catch((error: any) => console.log(error));
+          history.replace('/page/test-finished', { state: 'prueba practica' });
         })
         .catch((error: any) => {
           console.log(error);
