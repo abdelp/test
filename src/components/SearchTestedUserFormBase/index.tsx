@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   IonItem,
-  IonLabel,
   IonInput
 } from '@ionic/react';
 
