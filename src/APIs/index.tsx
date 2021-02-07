@@ -117,7 +117,7 @@ const sendResult = async (
     <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
       <soap:Body>
         <EnviarResultado xmlns="http://rut.antsv.gov.py/">
-          <Token></Token>
+          <Token>${token}</Token>
           <Firma>${firma}</Firma>
           <IdAntecedente>${idAntecedente}</IdAntecedente>
           <Aprobado>${aprobado}</Aprobado>
@@ -125,9 +125,7 @@ const sendResult = async (
         </EnviarResultado>
       </soap:Body>
     </soap:Envelope>`;
-
-    console.log(data);
-
+    
     HTTP.setDataSerializer('utf8');
 
     let [error, result]: any = await to(HTTP.post(
@@ -135,7 +133,7 @@ const sendResult = async (
       data,
       {"Access-Control-Allow-Origin": "*",
       "Content-Type": "text/xml; charset=utf-8",
-      "SOAPAction": "http://rut.antsv.gov.py/ConsultarAntecedente"}));
+      "SOAPAction": "http://rut.antsv.gov.py/EnviarResultado"}));
 
     if (error === 'cordova_not_available') {
       [error, result] = await to(axios.post(url,
@@ -143,18 +141,10 @@ const sendResult = async (
         {headers: 
           {"Access-Control-Allow-Origin": "*",
           "Content-Type": "text/xml; charset=utf-8",
-          "SOAPAction": "http://rut.antsv.gov.py/ConsultarAntecedente"}}));
+          "SOAPAction": "http://rut.antsv.gov.py/EnviarResultado"}}));
     }
 
     if (error) throw error;
-
-    console.log(xml2js(result.data,
-      {
-        ignoreDeclaration: true,
-        ignoreAttributes: true,
-        compact: true,
-        textKey: "text"
-      }));
 
     { /*
       //@ts-ignore */}
