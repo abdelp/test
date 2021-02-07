@@ -10,7 +10,7 @@ import {
 } from '@ionic/react';
 import { withRouter } from 'react-router-dom';
 import { withCookies } from 'react-cookie';
-import { actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
+import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from '../utils/db';
 import './DirectionsTest.css';
 import { compose } from 'recompose';
 import correctSymbol from '../assets/correcto.svg';
@@ -67,7 +67,7 @@ const DirectionsTest: React.FC = (props: any) => {
             const ticket = cookies.get('ticket');
             const categoria = cookies.get('categoria');
             const usuarioTesteado = cookies.get('usuario_testeado');
-            const { nroDocumento } = usuarioTesteado;
+            const { nroDocumento, idAntecedente } = usuarioTesteado;
   
             const examen = {
               examenes: {
@@ -80,7 +80,11 @@ const DirectionsTest: React.FC = (props: any) => {
               }
             };
   
-            actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)
+            actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
+              nroDocumento,
+              'cedula',
+              idAntecedente,
+              examen)
             .then(() => {
               history.replace('/page/instrucciones', { type: 'psiquica', test: 'numeros-grandes' });
             })

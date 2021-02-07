@@ -11,7 +11,7 @@ import { useHistory } from 'react-router-dom';
 import { set } from 'idb-keyval';
 import { withCookies } from 'react-cookie';
 import { sendResult } from '../APIs';
-import { actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
+import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from '../utils/db';
 import './MemorizeNumbers.css';
 import _ from 'lodash';
 import './BlockPositionsTest.css';
@@ -110,7 +110,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
         const ticket = cookies.get('ticket');
         const categoria = cookies.get('categoria');
         const usuarioTesteado = cookies.get('usuario_testeado');
-        const { nroDocumento } = usuarioTesteado;
+        const { nroDocumento, idAntecedente } = usuarioTesteado;
         const { bloquesAElegir, bloquesElegidos } = state;
 
         const examen = {
@@ -124,7 +124,11 @@ const MemorizeNumbers: React.FC = (props: any) => {
           }
         };
 
-        actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)
+        actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
+          nroDocumento,
+          'cedula',
+          idAntecedente,
+          examen)
         .then(() => {
           setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
 

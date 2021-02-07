@@ -10,7 +10,7 @@ import {
 } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { withCookies } from 'react-cookie';
-import { actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
+import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from '../utils/db';
 import './MemorizeNumbers.css';
 import _ from 'lodash';
 
@@ -84,7 +84,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
             const ticket = cookies.get('ticket');
             const categoria = cookies.get('categoria');
             const usuarioTesteado = cookies.get('usuario_testeado');
-            const { nroDocumento } = usuarioTesteado;
+            const { nroDocumento, idAntecedente } = usuarioTesteado;
             const { numerosAElegir, numerosElegidos } = state;
 
             const examen = {
@@ -98,7 +98,11 @@ const MemorizeNumbers: React.FC = (props: any) => {
               }
             };
 
-            actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)
+            actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
+              nroDocumento,
+              'cedula',
+              idAntecedente,
+              examen)
             .then(result => {
               setState((state: any) => ({...state, ..._.cloneDeep(defaultState)}));
               history.replace('/page/instrucciones', {type: 'psiquica', test: 'test-colores'});

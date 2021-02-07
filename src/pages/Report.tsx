@@ -12,7 +12,9 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { obtenerDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
+import {
+  obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente
+} from '../utils/db';
 import DataList from '../components/DataList';
 import './Report.css';
 import { withCookies } from 'react-cookie';
@@ -48,8 +50,11 @@ const ReportPage: React.FC = ({
   });
 
   useEffect(() => {
-    const { nroDocumento } = cookies.get('usuario_testeado');
-    obtenerDatosUsuarioTesteadoPorNroDocumento(nroDocumento)
+    const { nroDocumento, idAntecedente } = cookies.get('usuario_testeado');
+    obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
+      nroDocumento,
+      'cedula',
+      idAntecedente)
     .then((result: any) => {
       setState((state: any) => ({...state, user: result}));
       calculateResults(result);
@@ -159,10 +164,14 @@ const ReportPage: React.FC = ({
       const { ticket } = cookies.get('usuario');
       const { idAntecedente } = cookies.get('usuario_testeado');
 
-      const [error, enviado] = await to(sendResult(ticket.text, '', idAntecedente, true));
+      // const [error, enviado] = await to(sendResult(ticket.text, '', idAntecedente, true));
+
+      let error;
 
       if(error) {
         alert(error);
+      } else {
+        // const [error, result] = await to(eliminarUsuarioTesteadoPorNroDocumento(usuario.nroDocumento, 'cedula'));
       }
     } else {
       console.log('no se pasaron todos los examenes');

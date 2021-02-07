@@ -22,8 +22,10 @@ import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from "react-cookie";
 import to from 'await-to-js';
 import { get } from 'idb-keyval';
-import { obtenerDatosUsuarioTesteadoPorNroDocumento, actualizarDatosUsuarioTesteadoPorNroDocumento } from '../utils/db';
-
+import {
+  obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente,
+  actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente
+} from '../utils/db';
 import './PracticalTest.css';
 
 const PracticalTestPage: React.FC = (props: any) => {
@@ -68,8 +70,12 @@ const PracticalTestPage: React.FC = (props: any) => {
       };
 
       const { cookies } = props;
-      const { nroDocumento } = cookies.get('usuario_testeado');
-      const usuarioTesteado = await obtenerDatosUsuarioTesteadoPorNroDocumento(nroDocumento);
+      const { nroDocumento, idAntecedente } = cookies.get('usuario_testeado');
+      const usuarioTesteado = await obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
+        nroDocumento,
+        'cedula',
+        idAntecedente);
+
       const categoria = cookies.get('categoria');
 
       const examen = {
@@ -80,7 +86,11 @@ const PracticalTestPage: React.FC = (props: any) => {
         }
       };
 
-      ([err, result] = await to(actualizarDatosUsuarioTesteadoPorNroDocumento(nroDocumento, examen)));
+      ([err, result] = await to(actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
+        nroDocumento,
+        'cedula',
+        idAntecedente,
+        examen)));
 
       setTimeout(() => {
         setState((state: any) => ({...state, loading: false}))
