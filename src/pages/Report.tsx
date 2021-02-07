@@ -115,7 +115,7 @@ const ReportPage: React.FC = ({
 
     const respuestasDirecciones = usuario.examenes[categoria].psiquica["test-direcciones"];
 
-    const respuestasCorrectasDirecciones = respuestasDirecciones.filter((r: any) => r.indiceAElegir === r.respustaUsuario);
+    const respuestasCorrectasDirecciones = respuestasDirecciones.filter((r: any) => r.indiceAElegir === r.respuestaUsuario);
 
     const porcentajeTestDirecciones = round(respuestasCorrectasDirecciones.length * 100 / respuestasDirecciones.length);
 
