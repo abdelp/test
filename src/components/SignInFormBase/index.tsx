@@ -43,7 +43,7 @@ const SignInFormBase = ({
     if(!error) {
       const { CodError, Ticket: ticket, ListaMensajes } = result;
 
-      if ( CodError.text === "0") {
+      if (CodError.text === "0") {
         cookies.set("usuario", JSON.stringify({ username, ticket }), {
           path: "/"
           });
