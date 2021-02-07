@@ -50,7 +50,6 @@ const ReportPage: React.FC = ({
     const { nroDocumento } = cookies.get('usuario_testeado');
     obtenerDatosUsuarioTesteadoPorNroDocumento(nroDocumento)
     .then((result: any) => {
-      console.log(result);
       setState((state: any) => ({...state, user: result}));
       calculateResults(result);
     })
@@ -68,30 +67,38 @@ const ReportPage: React.FC = ({
     const categoria = cookies.get('categoria');
     const declaracionJurada = usuario.examenes[categoria].declaracionJurada ? 100 : 0;
 
-    const respuestasPractico = usuario
-        .examenes[categoria]
-        .practico
-        .declaracion
-        .map((i: any) => i.items.map((si: any) => si.respuesta)).flat();
+    let respuestasPractico,
+        respuestasCorrectasPractico,
+        porcentajePractico = 0,
+        respuestasTeorico,
+        respuestasCorrectasTeorico,
+        porcentajeTeorico = 0;
 
-    const respuestasCorrectasPractico = respuestasPractico.filter((correcta: any) => correcta);
-  
-    const porcentajePractico = respuestasCorrectasPractico.length * 100 / respuestasPractico.length;
-
-    const respuestasTeorico = usuario.examenes[categoria]
-      .teorica
-      .result;
-
-    const respuestasCorrectasTeorico = respuestasTeorico.filter((q: any) => q.respuesta === q.selected);
-
-    const porcentajeTeorico = round(respuestasCorrectasTeorico.length * 100 / respuestasTeorico.length);
+    if (categoria !== 'EXTRANJERO' && usuario.tramite !== 'RENOVACIÓN') {
+      respuestasPractico = usuario
+          .examenes[categoria]
+          .practico
+          .declaracion
+          .map((i: any) => i.items.map((si: any) => si.respuesta)).flat();
+      
+      respuestasCorrectasPractico = respuestasPractico.filter((correcta: any) => correcta);
+      porcentajePractico = respuestasCorrectasPractico.length * 100 / respuestasPractico.length;
+      respuestasTeorico = usuario.examenes[categoria]
+        .teorica
+        .result;
+      respuestasCorrectasTeorico = respuestasTeorico.filter((q: any) => q.respuesta === q.selected);
+      porcentajeTeorico = round(respuestasCorrectasTeorico.length * 100 / respuestasTeorico.length);
+    }
 
     const respuestasMemorizarNumeros = usuario.examenes[categoria].psiquica["memorizar numeros"];
 
     let respuestasCorrectasMemorizarNumeros = 0;
 
     for(let i = 0; i < respuestasMemorizarNumeros.numerosAElegir.length; i++) {
-      if(JSON.stringify(respuestasMemorizarNumeros.numerosAElegir[i]) === JSON.stringify(respuestasMemorizarNumeros.numerosElegidos[i])) {
+      const numerosAElegir = JSON.stringify(respuestasMemorizarNumeros.numerosAElegir[i]);
+      const numerosElegidos = JSON.stringify(respuestasMemorizarNumeros.numerosElegidos[i].map((n: any) => n.toString()));
+
+      if(numerosAElegir === numerosElegidos) {
         respuestasCorrectasMemorizarNumeros++;
       }
     }
@@ -130,30 +137,29 @@ const ReportPage: React.FC = ({
 
     const porcentajePosicionesBloques = round(respuestasCorrectasPosicionesBloques * 100 / respuestasPosicionesBloques.bloquesAElegir.length);
 
-    if ([
+    const testsArray = [
       declaracionJurada,
-      porcentajePractico,
-      porcentajeTeorico,
       porcentajeMemorizarNumeros,
       porcentajeTestColores,
       porcentajeTestDirecciones,
       porcentajeTestNumerosGrandes,
       porcentajePosicionesBloques
-    ].every(examPassed)) {
-      console.log('pasados todos los examenes');
+    ];
+
+    if (categoria !== 'EXTRANJERO' && usuario.tramite !== 'RENOVACIÓN') {
+      testsArray.push(porcentajePractico);
+      testsArray.push(porcentajeTeorico);
+    }
+
+    if (testsArray.every(examPassed)) {
+      const { ticket } = cookies.get('usuario');
+      const { idAntecedente } = cookies.get('usuario_testeado');
+
+      // const enviado = await sendResult(ticket.text, '', idAntecedente, true);
+      console.log('resultado enviado')
     } else {
       console.log('no se pasaron todos los examenes');
     }
-
-    const { ticket } = cookies.get('usuario');
-    const { idAntecedente } = cookies.get('usuario_testeado');
-
-    console.log(ticket.text);
-    console.log(idAntecedente);
-
-    const enviado = await sendResult(ticket.text, '', idAntecedente, true);
-
-    console.log(enviado);
 
     let nuevosPorcentajes = {
       declaracionJurada,
