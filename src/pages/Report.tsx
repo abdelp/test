@@ -121,7 +121,7 @@ const ReportPage: React.FC = ({
 
     const respuestasNumerosGrandes = usuario.examenes[categoria].psiquica["numero-grande"];
 
-    const respuestasCorrectasNumerosGrandes = respuestasNumerosGrandes.filter((r: any) => r.numeroAElegir === r.respustaUsuario);
+    const respuestasCorrectasNumerosGrandes = respuestasNumerosGrandes.filter((r: any) => r.numeroAElegir === r.respuestaUsuario);
 
     const porcentajeTestNumerosGrandes = round(respuestasCorrectasNumerosGrandes.length * 100 / respuestasNumerosGrandes.length);
 
@@ -130,7 +130,10 @@ const ReportPage: React.FC = ({
     let respuestasCorrectasPosicionesBloques = 0;
 
     for(let i = 0; i < respuestasPosicionesBloques.bloquesAElegir.length; i++) {
-      if(JSON.stringify(respuestasPosicionesBloques.bloquesAElegir[i]) === JSON.stringify(respuestasPosicionesBloques.bloquesElegidos[i])) {
+      const bloquesAElegir = JSON.stringify(respuestasPosicionesBloques.bloquesAElegir[i]);
+      const bloquesElegidos = JSON.stringify(respuestasPosicionesBloques.bloquesElegidos[i]);
+
+      if(bloquesAElegir === bloquesElegidos) {
         respuestasCorrectasPosicionesBloques++;
       }
     }
