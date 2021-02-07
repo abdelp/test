@@ -39,7 +39,7 @@ const agregarUsuarioTesteado = async (usuario: any) => {
   }
 };
 
-const eliminarUsuarioTesteadoPorNroDocumento = async (nroDocumento: string) => {
+const eliminarUsuarioTesteadoPorNroDocumento = async (nroDocumento: string, tipoDocumento: string) => {
   try {
     const TABLA = 'usuarios_testeados';
     const USUARIO_TESTEADO_IDX = await obtenerIndiceUsuarioTesteadoPorNroDocumento(nroDocumento);
