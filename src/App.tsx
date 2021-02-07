@@ -20,7 +20,7 @@ import BlockPositionsPage from './pages/BlockPositionsTest';
 import PrivateRoute from './components/PrivateRoute';
 import UnloggedRoute from './components/UnloggedRoute';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane, setupConfig } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { CookiesProvider, withCookies } from "react-cookie";
@@ -44,8 +44,19 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+import { Network } from '@ionic-native/network';
+
 const App: React.FC = (props: any) => {
   
+  useEffect(() => {
+    Network.onConnect().subscribe(() => {
+      alert('internet connected');
+    });
+    Network.onDisconnect().subscribe(() => {
+      alert('internet disconnected');
+    });
+  }, []);
+
   setupConfig({
     swipeBackEnabled: false,// also prevent swiping back on either platform
     hardwareBackButton: false// this is what you need (android only)
