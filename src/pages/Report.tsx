@@ -17,6 +17,7 @@ import DataList from '../components/DataList';
 import './Report.css';
 import { withCookies } from 'react-cookie';
 import { sendResult } from '../APIs';
+import to from 'await-to-js';
 
 const round = (value: any) => {
   {/*
@@ -158,8 +159,11 @@ const ReportPage: React.FC = ({
       const { ticket } = cookies.get('usuario');
       const { idAntecedente } = cookies.get('usuario_testeado');
 
-      // const enviado = await sendResult(ticket.text, '', idAntecedente, true);
-      console.log('resultado enviado')
+      const [error, enviado] = await to(sendResult(ticket.text, '', idAntecedente, true));
+
+      if(error) {
+        alert(error);
+      }
     } else {
       console.log('no se pasaron todos los examenes');
     }
