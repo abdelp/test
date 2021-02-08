@@ -16,7 +16,7 @@ const obtenerUsuariosTesteadosNoSincronizados = async () => {
   try {
     const TABLA = 'usuarios_testeados';
     const USUARIOS_TESTEADOS: any = await get(TABLA) || []; // Debe haber alguna forma de filtrar ya en el get, averiguar luego.
-    const USUARIOS_TESTEADOS_NO_SINCRONIZADOS = USUARIOS_TESTEADOS.filter((u: any) => typeof u.sincronizado === 'undefined');
+    const USUARIOS_TESTEADOS_NO_SINCRONIZADOS = USUARIOS_TESTEADOS.filter((u: any) => typeof u.sincronizado === 'undefined' && u.aprobado);
 
     return USUARIOS_TESTEADOS_NO_SINCRONIZADOS;
   } catch(e) {

@@ -134,7 +134,7 @@ const sendResult = async (
       {"Access-Control-Allow-Origin": "*",
       "Content-Type": "text/xml; charset=utf-8",
       "SOAPAction": "http://rut.antsv.gov.py/EnviarResultado"}));
-
+  
     if (error === 'cordova_not_available') {
       [error, result] = await to(axios.post(url,
         data,
