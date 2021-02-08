@@ -51,10 +51,10 @@ const App: React.FC = (props: any) => {
   
   useEffect(() => {
     Network.onConnect().subscribe(() => {
-      const { ticket } = props.cookies;
+      const { ticket } = props.cookies.get('usuario');
 
-      if(ticket) {
-        sincronizarResultados(ticket);
+      if(ticket.text) {
+        sincronizarResultados(ticket.text);
       }
     });
   }, []);
