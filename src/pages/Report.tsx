@@ -13,7 +13,8 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import {
-  obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente
+  obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente,
+  actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente
 } from '../utils/db';
 import DataList from '../components/DataList';
 import './Report.css';
@@ -161,6 +162,8 @@ const ReportPage: React.FC = ({
     }
 
     if (testsArray.every(examPassed)) {
+      await actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(usuario.nroDocumento, 'cedula', usuario.idAntecedente, {aprobado: true});
+
       const { ticket } = cookies.get('usuario');
       const { idAntecedente } = cookies.get('usuario_testeado');
 
@@ -171,7 +174,7 @@ const ReportPage: React.FC = ({
       if(error) {
         alert(error);
       } else {
-        // const [error, result] = await to(eliminarUsuarioTesteadoPorNroDocumento(usuario.nroDocumento, 'cedula'));
+        await actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(usuario.nroDocumento, 'cedula', usuario.idAntecedente, {sincronizado: true});
       }
     } else {
       console.log('no se pasaron todos los examenes');
@@ -218,10 +221,10 @@ const ReportPage: React.FC = ({
               <div className="percentage-number" id="file">
                 <div className="w3-light-grey w3-round verde">
                   <div className="w3-container w3-blue w3-round " 
-                  style={{
-                     width: `${porcentajes.declaracionJurada}%`,
-                     height: '100%'
-                    }}
+                    style={{
+                      width: `${porcentajes.declaracionJurada}%`,
+                      height: '100%'
+                      }}
                   ></div>
                 </div>
                 <b>{porcentajes.declaracionJurada}%</b>

@@ -227,5 +227,6 @@ export {
   agregarUsuarioTesteado,
   obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente,
   actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente,
-  eliminarUsuarioTesteadoPorNroDocumentoYAntecedente
+  eliminarUsuarioTesteadoPorNroDocumentoYAntecedente,
+  obtenerUsuariosTesteadosNoSincronizados
 };

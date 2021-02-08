@@ -45,15 +45,17 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 import { Network } from '@ionic-native/network';
+import { sincronizarResultados } from './utils/synchronizer';
 
 const App: React.FC = (props: any) => {
   
   useEffect(() => {
     Network.onConnect().subscribe(() => {
-      alert('internet connected');
-    });
-    Network.onDisconnect().subscribe(() => {
-      alert('internet disconnected');
+      const { ticket } = props.cookies;
+
+      if(ticket) {
+        sincronizarResultados(ticket);
+      }
     });
   }, []);
 
