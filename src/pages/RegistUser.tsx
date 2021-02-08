@@ -19,7 +19,6 @@ import SearchTestedUserFormBase from '../components/SearchTestedUserFormBase';
 import DataList from '../components/DataList';
 
 import { useCookies } from "react-cookie";
-import { set, get } from 'idb-keyval';
 
 import {
   obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente,
@@ -58,8 +57,7 @@ const RegistUserPage: React.FC = () => {
     }
   }
   
-  const confirmUserTested = async () => {  
-    state.user.idAntecedente = 3;
+  const confirmUserTested = async () => {
     const [error, result] = await to(obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente(state.user.nroDocumento, 'cedula', state.user.idAntecedente));
 
     if(!result) agregarUsuarioTesteado(state.user);
