@@ -5,6 +5,8 @@ import to from 'await-to-js';
 const sincronizarResultados = async (token: string) => {
   const [error, usuariosNoSincronizados] = await to(obtenerUsuariosTesteadosNoSincronizados());
 
+  alert(JSON.stringify(usuariosNoSincronizados));
+
   usuariosNoSincronizados.forEach((item: any) => {
       sendResult(token, 'firma', item.idAntecedente, !!item.aprobado)
       .then((result: any) => {
