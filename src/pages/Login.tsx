@@ -20,6 +20,7 @@ const LoginPage: React.FC = () => (
       <div className="grilla">
         <SignInFormBase />
       </div>
+      <p>v1.0.0</p>
     </IonContent>
   </IonPage>
 );
