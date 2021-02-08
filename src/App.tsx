@@ -139,6 +139,7 @@ const App: React.FC = (props: any) => {
           >
           </UnloggedRoute>
         </IonReactRouter>
+        <p>v1.0.0</p>
       </IonApp>
     </CookiesProvider>
   );

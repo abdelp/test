@@ -157,7 +157,7 @@ const sendResult = async (
     //   textKey: "text"
     // });
 
-    return;
+    return {codError: 0};
   } catch (e) {
     throw e;
   }

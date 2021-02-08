@@ -62,11 +62,14 @@ const ReportPage: React.FC = ({
     })
     .catch((error: any) => console.log(error));
 
+    return () => {
+      console.log('componente desmontado');
+    }
   }, []);
 
   const returnMenu = () => {
-    history.push('/page/test-types');
-  }
+    history.replace('/page/test-types');
+  };
 
   const examPassed = (examPercentage: any) => examPercentage >= 70;
 
@@ -162,16 +165,16 @@ const ReportPage: React.FC = ({
     }
 
     if (testsArray.every(examPassed)) {
-      await actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(usuario.nroDocumento, 'cedula', usuario.idAntecedente, {aprobado: true});
+      let [error, result] = await to(
+        actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(usuario.nroDocumento, 'cedula', usuario.idAntecedente, {aprobado: true})
+      );
 
       const { ticket } = cookies.get('usuario');
       const { idAntecedente } = cookies.get('usuario_testeado');
 
-      // const [error, enviado] = await to(sendResult(ticket.text, '', idAntecedente, true));
+      let [err, enviado] = await to(sendResult(ticket.text, '', idAntecedente, true));
 
-      let error;
-
-      if(error) {
+      if(err) {
         alert(error);
       } else {
         await actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(usuario.nroDocumento, 'cedula', usuario.idAntecedente, {sincronizado: true});
