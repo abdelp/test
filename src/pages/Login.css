@@ -25,7 +25,6 @@
   text-decoration-color: rgb(255, 255, 255);
   text-decoration-line: none;
   text-decoration-style: solid;
-  /* text-decoration-thickness: auto; */
   text-overflow: ellipsis;
   text-rendering: optimizelegibility;
   text-size-adjust: 100%;
@@ -33,7 +32,6 @@
   user-select: none;
   visibility: visible;
   white-space: nowrap;
-  /* width: 95.0938px; */
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-color: #62B766;
@@ -277,11 +275,6 @@ ion-menu.md ion-item {
   display: flex;
 }
 
-.radio-row {
-  /* width: 30vw; */
-  /* margin: 0 auto; */
-}
-
 .alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
   padding: 40px 56px;
   font-weight: bold;
@@ -306,19 +299,13 @@ ion-menu.md ion-item {
   text-align: center;
   width: 100%;
   display: block;
-  /* justify-content: center; */
-  /* flex-direction: row; */
   text-align: center;
-
 }
 
 .counter .time {
-
-
   font-weight: bolder;
   font-size: 4.6vw !important;
   display: block;
-  /* align-items: center; */
   width: 100%;
   margin-bottom: 32px;
 }
