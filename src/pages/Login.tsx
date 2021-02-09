@@ -7,7 +7,7 @@ import "./Login.css";
 const LoginPage: React.FC = () => (
   <IonPage>
     <Header color="favorite" title="Login" />
-    <IonContent className="ion-padding vertical-center">
+    <IonContent id="login-content" className="ion-padding">
       <div className="grilla">
         <SignInFormBase />
       </div>
