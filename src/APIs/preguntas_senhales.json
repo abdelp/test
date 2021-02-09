@@ -2,11 +2,7 @@
   {
     "id": 1,
     "pregunta": "La luz amarilla intermitente del semáforo significa",
-    "opciones": [
-      "Pare",
-      "Precaución",
-      "Continuar"
-    ],
+    "opciones": ["Pare", "Precaución", "Continuar"],
     "respuesta": 1
   },
   {
@@ -19,8 +15,7 @@
       "Detención completa, en todos los casos"
     ],
     "respuesta": 2
-  }
-  ,
+  },
   {
     "id": 3,
     "img": "q3.svg",
@@ -31,8 +26,7 @@
       "Detención completa, en todos los casos"
     ],
     "respuesta": 2
-  }
-  ,
+  },
   {
     "id": 4,
     "img": "q4.svg",
@@ -43,8 +37,7 @@
       "Prohibida la circulación de vehículos automotores"
     ],
     "respuesta": 0
-  }
-  ,
+  },
   {
     "id": 5,
     "img": "q5.svg",
@@ -55,8 +48,7 @@
       "Cambiar de carril"
     ],
     "respuesta": 1
-  }
-  ,
+  },
   {
     "id": 6,
     "img": "q6.svg",
@@ -67,8 +59,7 @@
       "cruce de vías"
     ],
     "respuesta": 0
-  }
-  ,
+  },
   {
     "id": 7,
     "img": "q7.svg",
@@ -79,20 +70,14 @@
       "Prohibido girar a la derecha"
     ],
     "respuesta": 2
-  }
-  ,
+  },
   {
     "id": 8,
     "img": "q8.svg",
     "pregunta": "Qué indica la siguiente señal?",
-    "opciones": [
-      "Siga de frente",
-      "Estacionamiento prohibido",
-      "Contramano"
-    ],
+    "opciones": ["Siga de frente", "Estacionamiento prohibido", "Contramano"],
     "respuesta": 2
-  }
-  ,
+  },
   {
     "id": 9,
     "img": "q9.svg",
@@ -103,8 +88,7 @@
       "Prohibido detenerse"
     ],
     "respuesta": 1
-  }
-  ,
+  },
   {
     "id": 10,
     "img": "q10.svg",

@@ -9,17 +9,20 @@ import {
   IonToolbar,
   IonList,
   IonItem,
-  IonLabel
-} from '@ionic/react';
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+  IonLabel,
+} from "@ionic/react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-import './Notice.css';
+import "./Notice.css";
 
 const NoticePage: React.FC = (props: any) => {
   const [cookies, setCookie] = useCookies(["usuario"]);
-  const { categoria, usuario_testeado: { ci } } = cookies;
+  const {
+    categoria,
+    usuario_testeado: { ci },
+  } = cookies;
 
   let fechaExamen, fechaHabilitacion, tipoExamen;
 
@@ -30,8 +33,8 @@ const NoticePage: React.FC = (props: any) => {
   const history = useHistory();
 
   const returnMenu = () => {
-    history.push('/page/test-types');
-  }
+    history.push("/page/test-types");
+  };
 
   return (
     <IonPage>
@@ -46,18 +49,31 @@ const NoticePage: React.FC = (props: any) => {
 
       <IonContent id="test-finished-content" fullscreen>
         <h1>Lo sentimos, el examen no se encuentra habilitado</h1>
-        <br/>
+        <br />
         <IonList>
           <IonItem>
-            <IonLabel className="ion-text-wrap">La persona con CI <strong>{ci}</strong> ha realizado el examen <strong>{tipoExamen}</strong> para la categoría <strong>{categoria}</strong> en fecha <strong>{fechaExamen}</strong> y necesita aguardar 30 días para poder volver a realizarlo
-            Fecha habilitada para volver a tomar el examen: <strong>{fechaHabilitacion}</strong></IonLabel>
+            <IonLabel className="ion-text-wrap">
+              La persona con CI <strong>{ci}</strong> ha realizado el examen{" "}
+              <strong>{tipoExamen}</strong> para la categoría{" "}
+              <strong>{categoria}</strong> en fecha{" "}
+              <strong>{fechaExamen}</strong> y necesita aguardar 30 días para
+              poder volver a realizarlo Fecha habilitada para volver a tomar el
+              examen: <strong>{fechaHabilitacion}</strong>
+            </IonLabel>
           </IonItem>
           <IonItem>
-            <IonButton onClick={returnMenu} size="large" color="favorite" className="confirm-btn">Volver a los tests</IonButton>
+            <IonButton
+              onClick={returnMenu}
+              size="large"
+              color="favorite"
+              className="confirm-btn"
+            >
+              Volver a los tests
+            </IonButton>
           </IonItem>
         </IonList>
       </IonContent>
-  </IonPage>
+    </IonPage>
   );
 };
 

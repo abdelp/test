@@ -1,100 +1,102 @@
-[{
+[
+  {
     "id": 1,
-    "pregunta": "¿Qué función cumple el sistema de lubricación del vehículo?"
-    , "opciones": [
+    "pregunta": "¿Qué función cumple el sistema de lubricación del vehículo?",
+    "opciones": [
       "Tiene la función de reducir la fricción y el deterioro entre las distintas partes móviles",
       "Disminuye la cantidad de aire de la mezcla para que el motor parta",
       "Tiene la función de mantener el motor a una temperatura adecuada"
     ],
     "respuesta": 0
   },
-{
+  {
     "id": 2,
-    "pregunta": "El conductor debe constatar el correcto funcionamiento de los comandos del vehículo (palanca de cambios, freno, dirección, etc.)"
-    , "opciones": [
+    "pregunta": "El conductor debe constatar el correcto funcionamiento de los comandos del vehículo (palanca de cambios, freno, dirección, etc.)",
+    "opciones": [
       "Una vez por semana",
       "Una vez al año",
       "Cada vez que se disponga a utilizar el vehículo"
     ],
     "respuesta": 2
   },
-{
+  {
     "id": 3,
-    "pregunta": "Para realizar la medición del nivel de aceite del motor se debe primeramente"
-    , "opciones": [
+    "pregunta": "Para realizar la medición del nivel de aceite del motor se debe primeramente",
+    "opciones": [
       "Poner en marcha el motor y esperar que se caliente",
       "Revisar el nivel de agua en las celdas de la batería",
       "Limpiar el extremo de la varilla de medición, donde se encuentran las marcas de referencia"
     ],
     "respuesta": 2
   },
-{
+  {
     "id": 4,
-    "pregunta": "Cuando hablamos de cambio de marcha, ¿qué entendemos por “enganche”?"
-    , "opciones": [
+    "pregunta": "Cuando hablamos de cambio de marcha, ¿qué entendemos por “enganche”?",
+    "opciones": [
       "El enganche es una reducción de velocidad a través de la caja de cambios",
       "El enganche es cuando sujetamos un vehículo a la parte posterior de otro para remolcarlo",
       "El enganche es cuando pasamos de la 1º velocidad a la 2º velocidad de marcha"
     ],
     "respuesta": 0
   },
-{
+  {
     "id": 5,
-    "pregunta": "¿Qué debe hacer el conductor en caso que el indicador de temperatura supere el límite normal?"
-    , "opciones": [
+    "pregunta": "¿Qué debe hacer el conductor en caso que el indicador de temperatura supere el límite normal?",
+    "opciones": [
       "Detener y desconectar la batería durante 5 minutos; luego reiniciar el viaje",
       "Detenerse y retirar inmediatamente la tapa del radiador, para permitir que el sistema de refrigeración se recupere",
       "Detenerse lo antes posible, parar el motor, esperar que se enfríe y luego revisar el radiador y las mangueras de conexión"
     ],
     "respuesta": 2
   },
-{
+  {
     "id": 6,
-    "pregunta": "¿Para qué sirve el volante de dirección?"
-    , "opciones": [
+    "pregunta": "¿Para qué sirve el volante de dirección?",
+    "opciones": [
       "Permite que los mandos de la bocina estén al alcance de la mano",
       "Sirve para dar direccionalidad al vehículo, mantenerlo en la ruta o cambiar de dirección según el conductor lo desee",
       "Sirve para impulsar el auto hacia un andar más veloz"
     ],
     "respuesta": 1
   },
-{
+  {
     "id": 7,
-    "pregunta": "El oleómetro"
-    , "opciones": [
+    "pregunta": "El oleómetro",
+    "opciones": [
       "Indica a qué velocidad se está circulando",
       "Indica la temperatura que tiene el agua del radiador",
       "Indica la presión del aceite"
     ],
     "respuesta": 2
   },
-{
+  {
     "id": 8,
-    "pregunta": "El velocímetro"
-    , "opciones": [
+    "pregunta": "El velocímetro",
+    "opciones": [
       "Indica a qué velocidad se está circulando",
       "Indica la cantidad de combustible que existe en el tanque del vehículo",
       "Indica si la batería o acumulador de su vehículo está recibiendo la carga adecuada"
     ],
     "respuesta": 0
   },
-{
+  {
     "id": 9,
-    "pregunta": "El amperímetro"
-    , "opciones": [
+    "pregunta": "El amperímetro",
+    "opciones": [
       "Indica a qué velocidad se está circulando",
       "Indica si la batería o acumulador de su vehículo está recibiendo la carga adecuada",
       "Indica la presión del aceite"
     ],
     "respuesta": 1
   },
-{
+  {
     "id": 10,
-    "pregunta": "El gasómetro"
-    , "opciones": [
+    "pregunta": "El gasómetro",
+    "opciones": [
       "Indica la presión del aceite",
       "Indica si la batería o acumulador de su vehículo está recibiendo la carga adecuada",
       "Indicador de la cantidad de combustible que existe en el tanque del vehículo"
     ],
     "respuesta": 2
- }]
+  }
+]

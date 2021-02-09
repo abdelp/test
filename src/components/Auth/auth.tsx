@@ -1,7 +1,7 @@
-import axios from 'axios';
-import to from 'await-to-js';
-import { HTTP } from '@ionic-native/http';
-import { xml2js } from 'xml-js';
+import axios from "axios";
+import to from "await-to-js";
+import { HTTP } from "@ionic-native/http";
+import { xml2js } from "xml-js";
 
 const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
 
@@ -21,38 +21,49 @@ const signInWithUsernameAndPassword = async (
   </s:Body>
 </s:Envelope>`;
 
-    HTTP.setDataSerializer('utf8');
+    HTTP.setDataSerializer("utf8");
 
-    let [error, result]: any = await to(HTTP.post(
-      url,
-      data,
-      {"Access-Control-Allow-Origin": "*",
-      "Content-Type": "text/xml; charset=utf-8",
-      "SOAPAction": "http://rut.antsv.gov.py/AutenticarExaminador"}));
+    let [error, result]: any = await to(
+      HTTP.post(url, data, {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "text/xml; charset=utf-8",
+        SOAPAction: "http://rut.antsv.gov.py/AutenticarExaminador",
+      })
+    );
 
-    if (error === 'cordova_not_available') {
-      [error, result] = await to(axios.post(url,
-        data,
-        {headers: 
-          {"Access-Control-Allow-Origin": "*",
-          "Content-Type": "text/xml; charset=utf-8",
-          "SOAPAction": "http://rut.antsv.gov.py/AutenticarExaminador"}}));
+    if (error === "cordova_not_available") {
+      [error, result] = await to(
+        axios.post(url, data, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "text/xml; charset=utf-8",
+            SOAPAction: "http://rut.antsv.gov.py/AutenticarExaminador",
+          },
+        })
+      );
     }
 
     if (error) throw error;
 
-    {/*
-     //@ts-ignore */}
-    const { ["soap:Envelope"]: { ["soap:Body"]: { AutenticarExaminadorResponse: { AutenticarExaminadorResult } } } } = xml2js(result.data,
-      {
-        ignoreDeclaration: true,
-        ignoreAttributes: true,
-        compact: true,
-        textKey: "text"
-      });
+    {
+      /*
+     //@ts-ignore */
+    }
+    const {
+      ["soap:Envelope"]: {
+        ["soap:Body"]: {
+          AutenticarExaminadorResponse: { AutenticarExaminadorResult },
+        },
+      },
+    } = xml2js(result.data, {
+      ignoreDeclaration: true,
+      ignoreAttributes: true,
+      compact: true,
+      textKey: "text",
+    });
 
     return AutenticarExaminadorResult;
-  } catch(e) {
+  } catch (e) {
     throw e;
   }
 };

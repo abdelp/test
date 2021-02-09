@@ -6,34 +6,30 @@ import {
   IonTitle,
   IonToolbar,
   IonItem,
-  IonImg
-} from '@ionic/react';
-import React, {
-  useState,
-  useRef,
-  useEffect
-} from 'react';
-import { useHistory } from 'react-router-dom';
+  IonImg,
+} from "@ionic/react";
+import React, { useState, useRef, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
-import './Instructions.css';
-import instruccionesPruebaTeorica from '../assets/instrucciones_prueba_teorica.svg';
-import instruccionesPruebaMemorizarNumeros from '../assets/instrucciones_prueba_psiquica_memorizar_numeros.svg';
-import instruccionesPruebaColores from '../assets/instrucciones_prueba_psiquica_colores.svg';
-import instruccionesPruebaNumerosGrandes from '../assets/instrucciones_prueba_psiquica_numeros_grandes.svg';
-import instruccionesPruebaDirecciones from '../assets/instrucciones_prueba_psiquica_direcciones.svg';
-import instruccionesPruebaPosicionesBloques from '../assets/instrucciones_prueba_psiquica_posiciones_bloques.svg';
-import confirmarBtn from '../assets/confirmar_btn.svg';
+import "./Instructions.css";
+import instruccionesPruebaTeorica from "../assets/instrucciones_prueba_teorica.svg";
+import instruccionesPruebaMemorizarNumeros from "../assets/instrucciones_prueba_psiquica_memorizar_numeros.svg";
+import instruccionesPruebaColores from "../assets/instrucciones_prueba_psiquica_colores.svg";
+import instruccionesPruebaNumerosGrandes from "../assets/instrucciones_prueba_psiquica_numeros_grandes.svg";
+import instruccionesPruebaDirecciones from "../assets/instrucciones_prueba_psiquica_direcciones.svg";
+import instruccionesPruebaPosicionesBloques from "../assets/instrucciones_prueba_psiquica_posiciones_bloques.svg";
+import confirmarBtn from "../assets/confirmar_btn.svg";
 
 const InstructionsPage: React.FC = (props: any) => {
-  const { categoria, test, type } = props.location.state || '';
+  const { categoria, test, type } = props.location.state || "";
 
   let [showSkip, setSkip] = useState(true);
-  let [state, setState] = useState({color: 'success'});
+  let [state, setState] = useState({ color: "success" });
   let backgroundImg;
 
   const slideOpts = {
     initialSlide: 0,
-    speed: 400
+    speed: 400,
   };
 
   const slider = useRef<HTMLIonSlidesElement>(null);
@@ -45,52 +41,52 @@ const InstructionsPage: React.FC = (props: any) => {
   const history = useHistory();
 
   const startTest = () => {
-    let page = '';
+    let page = "";
 
-    if(type === 'teórica') {
-      page = 'multiple-options';
-    } else if (type === 'psiquica') {
+    if (type === "teórica") {
+      page = "multiple-options";
+    } else if (type === "psiquica") {
       page = test;
     }
-  
+
     history.replace({
       pathname: `/page/${page}`,
-      state: ''
+      state: "",
     });
   };
 
   const getHeaderColor = (type: any) => {
     let color;
 
-    switch(type) {
-      case 'teórica':
-        color = 'light-blue';
-        backgroundImg = instruccionesPruebaTeorica
+    switch (type) {
+      case "teórica":
+        color = "light-blue";
+        backgroundImg = instruccionesPruebaTeorica;
         break;
-      case 'psiquica':
-        color = 'alert';
+      case "psiquica":
+        color = "alert";
 
-        switch(test) {
-          case 'memorize-numbers':
+        switch (test) {
+          case "memorize-numbers":
             backgroundImg = instruccionesPruebaMemorizarNumeros;
             break;
-          case 'test-colores':
+          case "test-colores":
             backgroundImg = instruccionesPruebaColores;
             break;
-          case 'test-direcciones':
+          case "test-direcciones":
             backgroundImg = instruccionesPruebaDirecciones;
             break;
-          case 'numeros-grandes':
+          case "numeros-grandes":
             backgroundImg = instruccionesPruebaNumerosGrandes;
             break;
-          case 'posiciones-bloques':
+          case "posiciones-bloques":
             backgroundImg = instruccionesPruebaPosicionesBloques;
             break;
         }
 
         break;
       default:
-        color = 'success';
+        color = "success";
     }
 
     return color;
@@ -99,22 +95,30 @@ const InstructionsPage: React.FC = (props: any) => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color={
-          getHeaderColor(type)
-          }>
-          <IonTitle className="ion-text-center title ion-text-capitalize">Prueba {type}</IonTitle>
+        <IonToolbar color={getHeaderColor(type)}>
+          <IonTitle className="ion-text-center title ion-text-capitalize">
+            Prueba {type}
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen>
         <IonItem lines="none">
-          <IonImg src={backgroundImg} style={{maxWidth: '100%', width: '100%'}}/>
+          <IonImg
+            src={backgroundImg}
+            style={{ maxWidth: "100%", width: "100%" }}
+          />
         </IonItem>
-          <IonButton onClick={startTest} color="none" className="confirmar-btn" size="large">
+        <IonButton
+          onClick={startTest}
+          color="none"
+          className="confirmar-btn"
+          size="large"
+        >
           CONFIRMAR
-          </IonButton>
-    </IonContent>
-  </IonPage>
+        </IonButton>
+      </IonContent>
+    </IonPage>
   );
 };
 

@@ -1,72 +1,74 @@
-import React, { useState } from 'react';
-import {
-  IonItem,
-  IonInput,
-  IonSpinner
-} from '@ionic/react';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import * as ROUTES from '../../constants/routes';
-import * as Auth from '../Auth/auth';
-import { signInWithUsernameAndPassword } from '../Auth/auth';
-import { withCookies, Cookies } from 'react-cookie';
-import to from 'await-to-js';
-import { compose } from 'recompose';
+import React, { useState } from "react";
+import { IonItem, IonInput, IonSpinner } from "@ionic/react";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import * as ROUTES from "../../constants/routes";
+import * as Auth from "../Auth/auth";
+import { signInWithUsernameAndPassword } from "../Auth/auth";
+import { withCookies, Cookies } from "react-cookie";
+import to from "await-to-js";
+import { compose } from "recompose";
 
 // import * as ERRORS from '../../constants/errors';
 
 const INITIAL_STATE = {
-  username: '',
-  password: '',
+  username: "",
+  password: "",
   error: null,
-  loading: false
+  loading: false,
 };
 
-const SignInFormBase = ({
-  auth,
-  history,
-  cookies,
-  setShowLogin
-}: any) => {
+const SignInFormBase = ({ auth, history, cookies, setShowLogin }: any) => {
   const [state, setState] = useState({ ...INITIAL_STATE });
   const { username, password, error, loading } = state;
 
-  const onSubmit = async (event: any) => {    
+  const onSubmit = async (event: any) => {
     event.preventDefault();
-    
+
     setState((state: any) => ({ ...state, loading: true }));
     let error: any, result;
 
-    [ error, result] = await to(Auth
-      .signInWithUsernameAndPassword(username, password));
+    [error, result] = await to(
+      Auth.signInWithUsernameAndPassword(username, password)
+    );
 
-    if(!error) {
+    if (!error) {
       const { CodError, Ticket: ticket, ListaMensajes } = result;
 
       if (CodError.text === "0") {
         cookies.set("usuario", JSON.stringify({ username, ticket }), {
-          path: "/"
-          });
+          path: "/",
+        });
 
         cookies.remove("usuario_testeado", {
-          path: "/"
-          });
-          
-          if(setShowLogin) {
-            setShowLogin(false);
-          }
+          path: "/",
+        });
 
-          setState((state: any) => ({ ...state, ...INITIAL_STATE }));
+        if (setShowLogin) {
+          setShowLogin(false);
+        }
 
-          history.replace(ROUTES.REGIST_USER);
+        setState((state: any) => ({ ...state, ...INITIAL_STATE }));
+
+        history.replace(ROUTES.REGIST_USER);
       } else {
-        const { Mensaje: { text: errorMessage} } = ListaMensajes.MensajesError[parseInt(CodError.text)];
+        const {
+          Mensaje: { text: errorMessage },
+        } = ListaMensajes.MensajesError[parseInt(CodError.text)];
 
-        setState((state: any) => ({ ...state, loading: false, error: errorMessage }));
+        setState((state: any) => ({
+          ...state,
+          loading: false,
+          error: errorMessage,
+        }));
       }
     } else {
       // const error = { ...err }; // LEAVE EXACT ERRORS FOR LATER
-      setState((state: any) => ({ ...state, loading: false, error: error.message }));
+      setState((state: any) => ({
+        ...state,
+        loading: false,
+        error: error.message,
+      }));
     }
   };
 
@@ -76,9 +78,7 @@ const SignInFormBase = ({
   const isInvalid = !password || !username;
 
   return (
-    <form
-      className="ion-padding login-list"
-      onSubmit={onSubmit}>
+    <form className="ion-padding login-list" onSubmit={onSubmit}>
       <IonItem lines="none">
         <IonInput
           name="username"
@@ -96,7 +96,7 @@ const SignInFormBase = ({
           type="password"
           onIonChange={onChange}
           placeholder="CONTRASEÑA"
-          />
+        />
       </IonItem>
 
       <input
@@ -105,20 +105,17 @@ const SignInFormBase = ({
         value="ACEPTAR"
         color="favorite"
       />
-      {
-        loading &&
-
+      {loading && (
         <IonItem>
           <IonSpinner className="loading" />
         </IonItem>
+      )}
+      {
+        // @ts-ignore
+        error && <p className="error-msg">{error}</p>
       }
-      { // @ts-ignore
-        error && <p className="error-msg">{error}</p> }
     </form>
   );
-}
+};
 
-export default compose(
-  withRouter,
-  withCookies
-)(SignInFormBase);
+export default compose(withRouter, withCookies)(SignInFormBase);

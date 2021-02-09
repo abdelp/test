@@ -1,30 +1,36 @@
-import React from 'react';
+import React from "react";
 import {
   IonItem,
   IonLabel,
   IonList,
   IonListHeader,
-  IonTitle
-} from '@ionic/react';
+  IonTitle,
+} from "@ionic/react";
 
-const DataList = ({
-  user
-}: any) => {
+const DataList = ({ user }: any) => {
   return (
-  <IonList className="datosdeinteresado">
-    <IonItem>
-      <IonLabel><strong>Nombres:</strong> {user.nombres}</IonLabel>
-    </IonItem>
-    <IonItem>
-      <IonLabel><strong>Apellidos:</strong> {user.apellidos}</IonLabel>
-    </IonItem>
-    <IonItem>
-      <IonLabel><strong>Nro. Antecedente:</strong> {user.idAntecedente}</IonLabel>
-    </IonItem>
-    <IonItem lines="none">
-      <IonLabel><strong>Categoría:</strong> {user.categoria}</IonLabel>
-    </IonItem>
-  </IonList>
+    <IonList className="datosdeinteresado">
+      <IonItem>
+        <IonLabel>
+          <strong>Nombres:</strong> {user.nombres}
+        </IonLabel>
+      </IonItem>
+      <IonItem>
+        <IonLabel>
+          <strong>Apellidos:</strong> {user.apellidos}
+        </IonLabel>
+      </IonItem>
+      <IonItem>
+        <IonLabel>
+          <strong>Nro. Antecedente:</strong> {user.idAntecedente}
+        </IonLabel>
+      </IonItem>
+      <IonItem lines="none">
+        <IonLabel>
+          <strong>Categoría:</strong> {user.categoria}
+        </IonLabel>
+      </IonItem>
+    </IonList>
   );
 };
 

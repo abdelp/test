@@ -1,7 +1,7 @@
 self.onmessage = async ($event) => {
-  if ($event && $event.data && $event.data.msg === 'sumTomato') {
-      const sum = await sumTomato();
-      self.postMessage(sum);
+  if ($event && $event.data && $event.data.msg === "sumTomato") {
+    const sum = await sumTomato();
+    self.postMessage(sum);
   }
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   IonContent,
   IonHeader,
@@ -6,41 +6,43 @@ import {
   IonTitle,
   IonToolbar,
   IonImg,
-  IonButton
-} from '@ionic/react';
-import { withRouter } from 'react-router-dom';
-import { withCookies } from 'react-cookie';
-import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from '../utils/db';
-import './DirectionsTest.css';
-import { compose } from 'recompose';
-import correctSymbol from '../assets/correcto.svg';
-import incorrectSymbol from '../assets/incorrecto.svg';
-import flecha from '../assets/flecharoja.svg';
+  IonButton,
+} from "@ionic/react";
+import { withRouter } from "react-router-dom";
+import { withCookies } from "react-cookie";
+import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from "../utils/db";
+import "./DirectionsTest.css";
+import { compose } from "recompose";
+import correctSymbol from "../assets/correcto.svg";
+import incorrectSymbol from "../assets/incorrecto.svg";
+import flecha from "../assets/flecharoja.svg";
 
-const directions = [ 'arriba', 'izquierda', 'derecha', 'abajo' ];
+const directions = ["arriba", "izquierda", "derecha", "abajo"];
 
 const defaultTime = {
   min: 0,
-  sec: 30
+  sec: 30,
 };
 
 const defaultQuestionTime = {
   min: 0,
-  sec: 3
+  sec: 3,
 };
 
 const DirectionsTest: React.FC = (props: any) => {
-  const [time, setTime] = useState<any>({...defaultTime});
-  const [questionTime, setQuestionTime] = useState<any>({...defaultQuestionTime});
+  const [time, setTime] = useState<any>({ ...defaultTime });
+  const [questionTime, setQuestionTime] = useState<any>({
+    ...defaultQuestionTime,
+  });
   const [results, setResults] = useState<any>([]);
   const [round, setRound] = useState<any>(0); // or probably one
   const [isActive, setIsActive] = useState(true);
   const [message, setMessage] = useState<any>();
   const [showCorrectSymbol, setShowCorrectSymbol] = useState<any>(false);
   const [showIncorrectSymbol, setShowIncorrectSymbol] = useState<any>(false);
-  
+
   useEffect(() => {
-    if(round === 0) {
+    if (round === 0) {
       setRound((state: any) => state + 1);
       nextDirection();
     }
@@ -55,71 +57,70 @@ const DirectionsTest: React.FC = (props: any) => {
         const { sec, min } = time;
 
         if (sec > 0) {
-          setTime((state: any) => ({...state,
-            sec: state.sec - 1
-          }));
+          setTime((state: any) => ({ ...state, sec: state.sec - 1 }));
         }
 
         if (sec === 0) {
           if (min === 0) {
             const { cookies } = props;
 
-            const ticket = cookies.get('ticket');
-            const categoria = cookies.get('categoria');
-            const usuarioTesteado = cookies.get('usuario_testeado');
+            const ticket = cookies.get("ticket");
+            const categoria = cookies.get("categoria");
+            const usuarioTesteado = cookies.get("usuario_testeado");
             const { nroDocumento, idAntecedente } = usuarioTesteado;
-  
+
             const examen = {
               examenes: {
                 [categoria]: {
-                  "psiquica": {
+                  psiquica: {
                     "test-direcciones": results,
-                    fecha: new Date()
-                  }
-                }
-              }
+                    fecha: new Date(),
+                  },
+                },
+              },
             };
-  
+
             actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
               nroDocumento,
-              'cedula',
+              "cedula",
               idAntecedente,
-              examen)
-            .then(() => {
-              history.replace('/page/instrucciones', { type: 'psiquica', test: 'numeros-grandes' });
-            })
-            .catch((error: any) => {
-              console.log(error);
-            });
+              examen
+            )
+              .then(() => {
+                history.replace("/page/instrucciones", {
+                  type: "psiquica",
+                  test: "numeros-grandes",
+                });
+              })
+              .catch((error: any) => {
+                console.log(error);
+              });
           } else {
             setTime((state: any) => ({
               min: state.min - 1,
-              sec: 59
-            }))
+              sec: 59,
+            }));
           }
-        } 
-        
+        }
       }, 1000);
     }
 
     return () => {
       clearInterval(interval);
-    }
+    };
   }, [isActive, time]);
 
   useEffect(() => {
     let questionInterval: any = null;
 
-    if (isActive) {      
+    if (isActive) {
       questionInterval = setInterval(() => {
         setShowCorrectSymbol(false);
         setShowIncorrectSymbol(false);
         const { sec, min } = questionTime;
 
         if (sec > 0) {
-          setQuestionTime((state: any) => ({...state,
-            sec: state.sec - 1
-            }));
+          setQuestionTime((state: any) => ({ ...state, sec: state.sec - 1 }));
         }
 
         if (sec <= 0) {
@@ -128,44 +129,46 @@ const DirectionsTest: React.FC = (props: any) => {
           } else {
             setTime((state: any) => ({
               min: state.min - 1,
-              sec: 59
-            }))
+              sec: 59,
+            }));
           }
-        } 
-
+        }
       }, 1000);
     }
 
     return () => {
       clearInterval(questionInterval);
-    }
+    };
   }, [isActive, questionTime]);
 
-  const randomNumber = () =>  
+  const randomNumber = () =>
     Math.floor(Math.random() * (directions.length - 0) + 0);
 
-  const nextDirection = () =>{
+  const nextDirection = () => {
     const directionIdx = randomNumber();
 
     setMessage(directions[directionIdx]);
 
-    setResults((state: any) => ([...state,
+    setResults((state: any) => [
+      ...state,
       {
         direccionAelegir: directions[directionIdx],
-        indiceAElegir: directionIdx
-      }]));
-  }
+        indiceAElegir: directionIdx,
+      },
+    ]);
+  };
 
   const checkAnswer = (answer: any) => {
     results[results.length - 1].respuestaUsuario = answer;
     setResults([...results]);
 
-    const resultado = 
-    ((results[results.length - 1].indiceAElegir === results[results.length - 1].respuestaUsuario));
-    
+    const resultado =
+      results[results.length - 1].indiceAElegir ===
+      results[results.length - 1].respuestaUsuario;
+
     setShowCorrectSymbol(resultado);
     setShowIncorrectSymbol(!resultado);
-    setQuestionTime({...defaultQuestionTime});
+    setQuestionTime({ ...defaultQuestionTime });
 
     setRound((state: any) => state + 1);
 
@@ -178,35 +181,62 @@ const DirectionsTest: React.FC = (props: any) => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="alert">
-          <IonTitle className="ion-text-uppercase ion-text-center title">prueba psiquica</IonTitle>
+          <IonTitle className="ion-text-uppercase ion-text-center title">
+            prueba psiquica
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <div className="grilla">
           <div className="container contenedor-direcciones">
             <div className="row">
-              <IonButton className="flechita cf_arriba" onClick={() => checkAnswer(0)} ><IonImg className="flechaarriba" src={flecha} /> </IonButton>
+              <IonButton
+                className="flechita cf_arriba"
+                onClick={() => checkAnswer(0)}
+              >
+                <IonImg className="flechaarriba" src={flecha} />{" "}
+              </IonButton>
             </div>
             <div className="row">
               <div className="col">
-              <IonButton className="flechita cf_izquierda" onClick={() => checkAnswer(1)}><IonImg className="flechaizquierda" src={flecha} /> </IonButton>
+                <IonButton
+                  className="flechita cf_izquierda"
+                  onClick={() => checkAnswer(1)}
+                >
+                  <IonImg className="flechaizquierda" src={flecha} />{" "}
+                </IonButton>
               </div>
-              <div className="col mensajeflechas">
-                {message}
-              </div>
+              <div className="col mensajeflechas">{message}</div>
               <div className="col">
-                <IonButton className="flechita cf_derecha" onClick={() => checkAnswer(2)}><IonImg className="flechaderecha" src={flecha} /> </IonButton>
+                <IonButton
+                  className="flechita cf_derecha"
+                  onClick={() => checkAnswer(2)}
+                >
+                  <IonImg className="flechaderecha" src={flecha} />{" "}
+                </IonButton>
               </div>
             </div>
             <div className="row">
-              <IonButton className="flechita cf_abajo" onClick={() => checkAnswer(3)}><IonImg className="flechaabajo" src={flecha} /> </IonButton>
+              <IonButton
+                className="flechita cf_abajo"
+                onClick={() => checkAnswer(3)}
+              >
+                <IonImg className="flechaabajo" src={flecha} />{" "}
+              </IonButton>
             </div>
 
-            <div className="check-symbol" style={{
-                position: 'absolute', 
-                right: 0, left: 0, width: '30vw', margin: '0 auto'}}>
-                { showCorrectSymbol && <IonImg src={correctSymbol} /> }
-                { showIncorrectSymbol && <IonImg src={incorrectSymbol} /> }
+            <div
+              className="check-symbol"
+              style={{
+                position: "absolute",
+                right: 0,
+                left: 0,
+                width: "30vw",
+                margin: "0 auto",
+              }}
+            >
+              {showCorrectSymbol && <IonImg src={correctSymbol} />}
+              {showIncorrectSymbol && <IonImg src={incorrectSymbol} />}
             </div>
           </div>
         </div>
@@ -215,7 +245,4 @@ const DirectionsTest: React.FC = (props: any) => {
   );
 };
 
-export default compose(
-  withRouter,
-  withCookies
-)(DirectionsTest);
+export default compose(withRouter, withCookies)(DirectionsTest);

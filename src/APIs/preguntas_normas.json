@@ -1,4 +1,5 @@
-[{
+[
+  {
     "id": 151,
     "pregunta": "PODRÁN SER RETIRADOS DE LA VÍA PÚBLICA CON GRÚA",
     "opciones": [
@@ -8,7 +9,7 @@
     ],
     "respuesta": 0
   },
-{
+  {
     "id": 152,
     "pregunta": "SI UD. ESTÁ SIENDO ADELANTADO POR OTRO VEHÍCULO, SU DEBER ES",
     "opciones": [
@@ -18,7 +19,7 @@
     ],
     "respuesta": 1
   },
-{
+  {
     "id": 153,
     "pregunta": "CUANDO USTED ABROCHA EL CINTURÓN DE SEGURIDAD, DEBE ASEGURARSE DE",
     "opciones": [
@@ -28,7 +29,7 @@
     ],
     "respuesta": 2
   },
-{
+  {
     "id": 154,
     "pregunta": "¿EN QUÉ CASO PUEDE USTED ESTACIONAR EN UN LUGAR PROHIBIDO?",
     "opciones": [
@@ -38,7 +39,7 @@
     ],
     "respuesta": 1
   },
-{
+  {
     "id": 155,
     "pregunta": "EVITAR LA EMISIÓN VEHICULAR DE GASES DENSOS (HUMO NEGRO) ES UNA RESPONSABILIDAD DE",
     "opciones": [
@@ -48,7 +49,7 @@
     ],
     "respuesta": 2
   },
-{
+  {
     "id": 156,
     "pregunta": "UNA CHAPA O MATRÍCULA ASIGNADA A UN VEHICULO ¿PODRÁ SER UTILIZADA POR OTRO VEHÍCULO?",
     "opciones": [
@@ -58,7 +59,7 @@
     ],
     "respuesta": 2
   },
-{
+  {
     "id": 157,
     "pregunta": "EL USO DE BUSCAHUELLAS ESTÁ PERMITIDO",
     "opciones": [
@@ -68,7 +69,7 @@
     ],
     "respuesta": 2
   },
-{
+  {
     "id": 158,
     "pregunta": "CUANDO LA CALZADA PRESENTE DETERIOROS O BACHES, EL CONDUCTOR DEBERÁ",
     "opciones": [
@@ -78,7 +79,7 @@
     ],
     "respuesta": 0
   },
-{
+  {
     "id": 159,
     "pregunta": "LAS CICLOVÍAS O BICISENDAS SON ZONAS DESTINADAS AL USO EXCLUSIVO DEL CICLISTA",
     "opciones": [
@@ -88,7 +89,7 @@
     ],
     "respuesta": 1
   },
-{
+  {
     "id": 160,
     "pregunta": "AL CONDUCIR, USTED VE A UN PEATÓN QUE INTENTA CRUZAR A MITAD DE CUADRA ¿QUÉ DEBE HACER?",
     "opciones": [
@@ -97,4 +98,5 @@
       "Continuar la marcha indiferente, ya que la imprudencia es exclusivamente del peatón"
     ],
     "respuesta": 0
-  }]
+  }
+]

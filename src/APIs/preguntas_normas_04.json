@@ -1,4 +1,5 @@
-[{
+[
+  {
     "id": 22,
     "pregunta": "LA DEFINICIÓN DE \"LOMADA\" ES:",
     "opciones": [
@@ -8,7 +9,7 @@
     ],
     "respuesta": 2
   },
-{
+  {
     "id": 23,
     "pregunta": "SI UN VEHÍCULO CIRCULA POR LA VÍA PÚBLICA CONTAMINANDO EL AIRE CON EMISIONES DE HUMO NEGRO, LA RESPONSABILIDAD Y LA SANCIÓN CORRESPONDERÁN",
     "opciones": [
@@ -19,7 +20,7 @@
     "respuesta": 2
   },
 
-{
+  {
     "id": 24,
     "pregunta": "AL APROXIMARSE A UNA ESQUINA, USTED OBSERVA PEATONES INTENTANDO CRUZAR",
     "opciones": [
@@ -30,18 +31,14 @@
     "respuesta": 1
   },
 
-{
+  {
     "id": 25,
     "pregunta": "AL CONDUCIR SU VEHICULO, USTED DEBE CIRCULAR EXCLUSIVAMENTE POR:",
-    "opciones": [
-      "la banquina",
-      "la calzada",
-      "la acera"
-    ],
+    "opciones": ["la banquina", "la calzada", "la acera"],
     "respuesta": 2
   },
 
-{
+  {
     "id": 26,
     "pregunta": "EL ÚNICO DOCUMENTO QUE HABILITA A MANEJAR VEHÍCULO AUTOMOTOR ES",
     "opciones": [
@@ -52,7 +49,7 @@
     "respuesta": 1
   },
 
-{
+  {
     "id": 27,
     "pregunta": "LOS NIÑOS DE ENTRE 5 y 10 AÑOS DEBEN",
     "opciones": [
@@ -63,7 +60,7 @@
     "respuesta": 2
   },
 
-{
+  {
     "id": 28,
     "pregunta": "UN ESTACIONAMIENTO RESERVADO EN LA VÍA PÚBLICA",
     "opciones": [
@@ -74,7 +71,7 @@
     "respuesta": 0
   },
 
-{
+  {
     "id": 29,
     "pregunta": "¿EN QUÉ CASO PUEDE USTED CONDUCIR UN VEHICULO QUE TENGA FALLAS EN EL SISTEMA DE DIRECCIÓN O EN EL MECANISMO DE FRENO?",
     "opciones": [
@@ -85,7 +82,7 @@
     "respuesta": 2
   },
 
-{
+  {
     "id": 30,
     "pregunta": "AL SER ADELANTADO POR OTRO VEHICULO ¿QUÉ SE DEBE HACER?",
     "opciones": [
@@ -96,14 +93,10 @@
     "respuesta": 2
   },
 
-{
+  {
     "id": 31,
     "pregunta": "CIRCULANDO EN RUTA, USTED DEBE LLEVAR ENCENDIDAS PERMANENTEMENTE:",
-    "opciones": [
-      "Las luces bajas",
-      "Las luces altas",
-      "Ninguna de ellas"
-    ],
+    "opciones": ["Las luces bajas", "Las luces altas", "Ninguna de ellas"],
     "respuesta": 0
   }
 ]

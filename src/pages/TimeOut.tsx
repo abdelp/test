@@ -6,19 +6,19 @@ import {
   IonMenuButton,
   IonPage,
   IonTitle,
-  IonToolbar
-} from '@ionic/react';
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+  IonToolbar,
+} from "@ionic/react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 
-import './TimeOut.css';
+import "./TimeOut.css";
 
 const TimeOutPage: React.FC = () => {
   const history = useHistory();
 
   const returnMenu = () => {
-    history.push('/page/test-types');
-  }
+    history.push("/page/test-types");
+  };
 
   return (
     <IonPage>
@@ -32,11 +32,17 @@ const TimeOutPage: React.FC = () => {
       </IonHeader>
 
       <IonContent id="test-finished-content" fullscreen>
-        <h1 style={{margin: '3vh auto'}}>Se ha terminado el tiempo :(</h1>
-        <br/>
-        <IonButton className="back-to-main" color="favorite" onClick={returnMenu}>Pagina principal</IonButton>
+        <h1 style={{ margin: "3vh auto" }}>Se ha terminado el tiempo :(</h1>
+        <br />
+        <IonButton
+          className="back-to-main"
+          color="favorite"
+          onClick={returnMenu}
+        >
+          Pagina principal
+        </IonButton>
       </IonContent>
-  </IonPage>
+    </IonPage>
   );
 };
 

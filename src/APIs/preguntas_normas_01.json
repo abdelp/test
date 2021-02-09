@@ -45,11 +45,7 @@
     {
       "id": 5,
       "pregunta": "AL TRANSITAR CON SU VEHICULO DURANTE LA NOCHE EN VÍAS URBANAS, USTED DEBE UTILIZAR",
-      "opciones": [
-        "Luces altas",
-        "Luces bajas",
-        "Luces de estacionamiento"
-      ],
+      "opciones": ["Luces altas", "Luces bajas", "Luces de estacionamiento"],
       "respuesta": 1
     },
     {
@@ -115,11 +111,7 @@
     {
       "id": 12,
       "pregunta": "¿A QUÉ DISTANCIA  DE UN GRIFO DE AGUA PARA INCENDIOS DEBE ESTACIONARSE UN VEHÍCULO?",
-      "opciones": [
-        "Más de tres metros.",
-        "Menos de dos metros.",
-        "Un metro"
-      ],
+      "opciones": ["Más de tres metros.", "Menos de dos metros.", "Un metro"],
       "respuesta": 0
     }
   ],
@@ -259,11 +251,7 @@
     {
       "id": 25,
       "pregunta": "AL CONDUCIR SU VEHICULO, USTED DEBE CIRCULAR EXCLUSIVAMENTE POR:",
-      "opciones": [
-        "la banquina",
-        "la calzada",
-        "la acera"
-      ],
+      "opciones": ["la banquina", "la calzada", "la acera"],
       "respuesta": 2
     },
     {
@@ -319,11 +307,7 @@
     {
       "id": 31,
       "pregunta": "CIRCULANDO EN RUTA, USTED DEBE LLEVAR ENCENDIDAS PERMANENTEMENTE:",
-      "opciones": [
-        "Las luces bajas",
-        "Las luces altas",
-        "Ninguna de ellas"
-      ],
+      "opciones": ["Las luces bajas", "Las luces altas", "Ninguna de ellas"],
       "respuesta": 0
     }
   ]

@@ -4,10 +4,10 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-} from '@ionic/react';
-import React from 'react';
-import SignInFormBase from '../components/SignInFormBase';
-import './Login.css';
+} from "@ionic/react";
+import React from "react";
+import SignInFormBase from "../components/SignInFormBase";
+import "./Login.css";
 
 const LoginPage: React.FC = () => (
   <IonPage>
@@ -16,7 +16,7 @@ const LoginPage: React.FC = () => (
         <IonTitle className="title">Login</IonTitle>
       </IonToolbar>
     </IonHeader>
-    <IonContent className="ion-padding vertical-center" >
+    <IonContent className="ion-padding vertical-center">
       <div className="grilla">
         <SignInFormBase />
       </div>

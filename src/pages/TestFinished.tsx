@@ -10,17 +10,16 @@ import {
   IonList,
   IonItem,
   IonLabel,
-  IonImg
-} from '@ionic/react';
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { get } from 'idb-keyval';
+  IonImg,
+} from "@ionic/react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { get } from "idb-keyval";
 
-import './TestFinished.css';
-import successImg from '../assets/green-checkmark.svg';
+import "./TestFinished.css";
+import successImg from "../assets/green-checkmark.svg";
 
-
-const TestFinishedPage: React.FC = props => {
+const TestFinishedPage: React.FC = (props) => {
   const [total, setTotal] = useState(0);
   const [correctas, setCorrectas] = useState(0);
   const [incorrectas, setIncorrectas] = useState(0);
@@ -29,8 +28,8 @@ const TestFinishedPage: React.FC = props => {
   const history = useHistory();
 
   const returnMenu = () => {
-    history.replace('/page/test-types');
-  }
+    history.replace("/page/test-types");
+  };
 
   async function getExam() {
     const exam = await get("exam");
@@ -39,28 +38,28 @@ const TestFinishedPage: React.FC = props => {
 
   useEffect(() => {
     getExam()
-    .then((result: any) => {
-      if(result) {
-        setTotal(result.exam.length);
+      .then((result: any) => {
+        if (result) {
+          setTotal(result.exam.length);
 
-        const cc = result.exam.filter((exam: any) =>
-                      exam.respuesta == exam.selected
-                    ).length;
+          const cc = result.exam.filter(
+            (exam: any) => exam.respuesta == exam.selected
+          ).length;
 
-        const ic = result.exam.length - cc;
+          const ic = result.exam.length - cc;
 
-        setIncorrectas(ic);
+          setIncorrectas(ic);
 
-        const nac = result.exam.filter((exam: any) =>
-                      typeof exam.selected === 'undefined'
-                    ).length;
+          const nac = result.exam.filter(
+            (exam: any) => typeof exam.selected === "undefined"
+          ).length;
 
-        setCorrectas(cc);
-        setPorcentaje(cc * 100 / result.exam.length);
-        setNoRespondidas(nac);
-      }
-    })
-    .catch(error => console.log(error));
+          setCorrectas(cc);
+          setPorcentaje((cc * 100) / result.exam.length);
+          setNoRespondidas(nac);
+        }
+      })
+      .catch((error) => console.log(error));
   });
 
   return (
@@ -76,11 +75,19 @@ const TestFinishedPage: React.FC = props => {
 
       <IonContent id="test-finished-content" fullscreen>
         <div className="grilla">
-          <IonImg src={successImg}  style={{width: '20vw'}} />
+          <IonImg src={successImg} style={{ width: "20vw" }} />
           <h4 className="texto-finalizado">PRUEBA FINALIZADA</h4>
-          <IonButton onClick={returnMenu} size="large" className="confirm-btn confirmar-btn" color="favorite" style={{margin: '3vh auto'}}>aceptar</IonButton>
+          <IonButton
+            onClick={returnMenu}
+            size="large"
+            className="confirm-btn confirmar-btn"
+            color="favorite"
+            style={{ margin: "3vh auto" }}
+          >
+            aceptar
+          </IonButton>
         </div>
-      
+
         {/*
         <h1>El test ha finalizado</h1>
         <br/>
@@ -96,9 +103,8 @@ const TestFinishedPage: React.FC = props => {
           </IonItem> 
         </IonList>
          */}
-        
       </IonContent>
-  </IonPage>
+    </IonPage>
   );
 };
 

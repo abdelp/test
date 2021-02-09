@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   IonContent,
   IonHeader,
@@ -10,36 +10,34 @@ import {
   IonItem,
   IonImg,
   IonSpinner,
-  IonPopover
-} from '@ionic/react';
-import Timer from './Timer';
-import { useHistory } from 'react-router-dom';
-import { getPreguntasSenhales } from '../APIs';
-import { set } from 'idb-keyval';
-import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from '../utils/db';
-import { withCookies } from 'react-cookie';
-import './MultipleOptions.css';
+  IonPopover,
+} from "@ionic/react";
+import Timer from "./Timer";
+import { useHistory } from "react-router-dom";
+import { getPreguntasSenhales } from "../APIs";
+import { set } from "idb-keyval";
+import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from "../utils/db";
+import { withCookies } from "react-cookie";
+import "./MultipleOptions.css";
 
 const MultipleOptionsPage: React.FC = (props: any) => {
   const [questions, setQuestions] = useState<any>([]);
   const [currentQuestion, setCurrentQuestion] = useState<any>();
   const [questionIdx, setQuestionIdx] = useState<number>(0);
-  const [time, setTime] = useState<any>({min: 3, sec: 0});
+  const [time, setTime] = useState<any>({ min: 3, sec: 0 });
   const history = useHistory();
   const [loading, setLoading] = useState<boolean>(false);
   const [isActive, setIsActive] = useState(true);
-  
+
   useEffect(() => {
     const { cookies } = props;
 
-    const ticket = cookies.get('ticket');
-    const categoria = cookies.get('categoria');
-    const usuarioTesteado = cookies.get('usuario_testeado');
+    const ticket = cookies.get("ticket");
+    const categoria = cookies.get("categoria");
+    const usuarioTesteado = cookies.get("usuario_testeado");
     const { nroDocumento } = usuarioTesteado;
 
-    const updateUserTest = async () => {
-
-    };
+    const updateUserTest = async () => {};
 
     // updateUserTest(ci, categoria, 'multiple options')
     // .then(result => {
@@ -50,62 +48,60 @@ const MultipleOptionsPage: React.FC = (props: any) => {
     // });
 
     getPreguntasSenhales()
-    .then((result: any) => {
-      setQuestions(result);
-      setCurrentQuestion(result[questionIdx]);
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      .then((result: any) => {
+        setQuestions(result);
+        setCurrentQuestion(result[questionIdx]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const nextQuestion = (opt: number) => {
-      setTime({min: 3, sec: 0});
-      questions[questionIdx].selected = opt;
-      
-      if (questionIdx + 1 < questions.length) {
-        doSaveExamProgress(questions);
-        setQuestionIdx(idx => idx + 1);
-      } else {
-        doSaveExamProgress(questions);
-        setLoading(true);
+    setTime({ min: 3, sec: 0 });
+    questions[questionIdx].selected = opt;
 
-        const { cookies } = props;
+    if (questionIdx + 1 < questions.length) {
+      doSaveExamProgress(questions);
+      setQuestionIdx((idx) => idx + 1);
+    } else {
+      doSaveExamProgress(questions);
+      setLoading(true);
 
-        const ticket = cookies.get('ticket');
-        const categoria = cookies.get('categoria');
-        const usuarioTesteado = cookies.get('usuario_testeado');
-        const { nroDocumento, idAntecedente } = usuarioTesteado;
+      const { cookies } = props;
 
-        const examen = {
-          examenes: {
-            [categoria]: {
-              "teorica": {
-                "result": questions,
-                fecha: new Date()
-              }
-            }
-          }
-        };
+      const ticket = cookies.get("ticket");
+      const categoria = cookies.get("categoria");
+      const usuarioTesteado = cookies.get("usuario_testeado");
+      const { nroDocumento, idAntecedente } = usuarioTesteado;
 
-        actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
-          nroDocumento,
-          'cedula',
-          idAntecedente,
-          examen
-        )
-        .then(result => {
-          history.replace('/page/test-finished', { state: 'prueba practica' });
+      const examen = {
+        examenes: {
+          [categoria]: {
+            teorica: {
+              result: questions,
+              fecha: new Date(),
+            },
+          },
+        },
+      };
+
+      actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
+        nroDocumento,
+        "cedula",
+        idAntecedente,
+        examen
+      )
+        .then((result) => {
+          history.replace("/page/test-finished", { state: "prueba practica" });
         })
         .catch((error: any) => {
           console.log(error);
         });
-      }
+    }
   };
 
-  const doSaveExamProgress = async (exam: any) =>
-    await set("exam", {exam});
-
+  const doSaveExamProgress = async (exam: any) => await set("exam", { exam });
 
   useEffect(() => {
     let interval: any = null;
@@ -115,28 +111,25 @@ const MultipleOptionsPage: React.FC = (props: any) => {
         const { sec, min } = time;
 
         if (sec > 0) {
-          setTime((state: any) => ({...state,
-            sec: state.sec - 1
-            }));
+          setTime((state: any) => ({ ...state, sec: state.sec - 1 }));
         }
 
         if (sec === 0) {
           if (min === 0) {
-            history.replace('/page/time-out');
+            history.replace("/page/time-out");
           } else {
             setTime((state: any) => ({
               min: state.min - 1,
-              sec: 59
-            }))
+              sec: 59,
+            }));
           }
-        } 
-
+        }
       }, 1000);
     }
 
     return () => {
       clearInterval(interval);
-    }
+    };
   }, [isActive, time]);
 
   const { min, sec } = time;
@@ -145,49 +138,68 @@ const MultipleOptionsPage: React.FC = (props: any) => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="light-blue">
-          <IonTitle className="ion-text-uppercase ion-text-center title ion-text-capitalize">prueba teórica</IonTitle>
+          <IonTitle className="ion-text-uppercase ion-text-center title ion-text-capitalize">
+            prueba teórica
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonList className="ms-list question-details" lines="none">
-          { loading &&
+          {loading && (
             <IonPopover
-              cssClass='loading-popover ion-text-center'
+              cssClass="loading-popover ion-text-center"
               isOpen={loading}
             >
-              <IonSpinner style={{margin: '2em'}}></IonSpinner>
+              <IonSpinner style={{ margin: "2em" }}></IonSpinner>
             </IonPopover>
-          }
+          )}
 
-          <div style={{minHeight: '310px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+          <div
+            style={{
+              minHeight: "310px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
             <IonItem>
-              <IonLabel className="ion-text-center question-text texto" style={{fontSize: '3em', witheSpace: 'normal'}}><strong className='texto'>{currentQuestion ? questions[questionIdx].pregunta : ''}:</strong></IonLabel>
+              <IonLabel
+                className="ion-text-center question-text texto"
+                style={{ fontSize: "3em", witheSpace: "normal" }}
+              >
+                <strong className="texto">
+                  {currentQuestion ? questions[questionIdx].pregunta : ""}:
+                </strong>
+              </IonLabel>
             </IonItem>
-            {currentQuestion && questions[questionIdx].img &&
-            <div className="question-img-container" key="img">
-              <IonImg
-                className="question-img"
-                src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''}
-              />
-            </div>
-            }
+            {currentQuestion && questions[questionIdx].img && (
+              <div className="question-img-container" key="img">
+                <IonImg
+                  className="question-img"
+                  src={
+                    currentQuestion
+                      ? require(`../assets/${questions[questionIdx].img}`)
+                      : ""
+                  }
+                />
+              </div>
+            )}
           </div>
 
           <div className="answers-container">
-            {questions[questionIdx] && questions[questionIdx].opciones.map((opt: any, idx: number) => {
-              return (
-                <p
-                  key={opt}
-                  className="opt-btn"
-                  onClick={() => nextQuestion(idx)}
+            {questions[questionIdx] &&
+              questions[questionIdx].opciones.map((opt: any, idx: number) => {
+                return (
+                  <p
+                    key={opt}
+                    className="opt-btn"
+                    onClick={() => nextQuestion(idx)}
                   >
-                  {opt}
-                </p>
-              )
-              })
-            }
+                    {opt}
+                  </p>
+                );
+              })}
           </div>
-
         </IonList>
         <IonItem lines="none" className="counter">
           <Timer min={min} sec={sec}></Timer>

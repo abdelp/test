@@ -1,33 +1,28 @@
-import React, { useState } from 'react';
-import {
-  IonItem,
-  IonLabel,
-  IonInput,
-  IonSpinner
-} from '@ionic/react';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import * as ROUTES from '../../constants/routes';
-import * as Auth from '../Auth/auth';
-import { signInWithUsernameAndPassword } from '../Auth/auth';
-import { withCookies, Cookies } from 'react-cookie';
-import to from 'await-to-js';
-import { compose } from 'recompose';
+import React, { useState } from "react";
+import { IonItem, IonLabel, IonInput, IonSpinner } from "@ionic/react";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import * as ROUTES from "../../constants/routes";
+import * as Auth from "../Auth/auth";
+import { signInWithUsernameAndPassword } from "../Auth/auth";
+import { withCookies, Cookies } from "react-cookie";
+import to from "await-to-js";
+import { compose } from "recompose";
 
 // import * as ERRORS from '../../constants/errors';
 
 const INITIAL_STATE = {
-  username: '',
-  password: '',
+  username: "",
+  password: "",
   error: null,
-  loading: false
+  loading: false,
 };
 
 const AuthenticateFormBase = ({
   // auth,
   history,
   cookies,
-  setShowLogin
+  setShowLogin,
 }: any) => {
   const [state, setState] = useState({ ...INITIAL_STATE });
   const { username, password, error, loading } = state;
@@ -40,23 +35,22 @@ const AuthenticateFormBase = ({
     // [ error, result] = await to(Auth
     //   .signInWithUsernameAndPassword(username, password));
 
-    if(!error) {
-
+    if (!error) {
       /*
-      * start of temporal implementation
-      */
-     
-     const ticket = 'x';
-     
-    //  cookies.set("usuario", JSON.stringify({ username, ticket }), {
-    //    path: "/"
-    //   });
+       * start of temporal implementation
+       */
 
-    //  cookies.remove("usuario_testeado", {
-    //    path: "/"
-    //   });
-      
-      if(setShowLogin) {
+      const ticket = "x";
+
+      //  cookies.set("usuario", JSON.stringify({ username, ticket }), {
+      //    path: "/"
+      //   });
+
+      //  cookies.remove("usuario_testeado", {
+      //    path: "/"
+      //   });
+
+      if (setShowLogin) {
         setShowLogin(false);
       }
 
@@ -67,12 +61,10 @@ const AuthenticateFormBase = ({
       /*
        * end of temporal implementation
        */
-
     } else {
       // const error = { ...err }; // LEAVE EXACT ERRORS FOR LATER
       setState((state: any) => ({ ...state, loading: false, error }));
     }
-
   };
 
   const onChange = (e: any) =>
@@ -81,9 +73,7 @@ const AuthenticateFormBase = ({
   const isInvalid = !password || !username;
 
   return (
-    <form
-      className="ion-padding login-list"
-      onSubmit={onSubmit}>
+    <form className="ion-padding login-list" onSubmit={onSubmit}>
       <IonItem lines="none">
         <IonInput
           name="username"
@@ -101,7 +91,7 @@ const AuthenticateFormBase = ({
           type="password"
           onIonChange={onChange}
           placeholder="CONTRASEÑA"
-          />
+        />
       </IonItem>
 
       <input
@@ -110,20 +100,17 @@ const AuthenticateFormBase = ({
         value="ACEPTAR"
         color="favorite"
       />
-      {
-        loading &&
-
+      {loading && (
         <IonItem>
           <IonSpinner className="loading" />
         </IonItem>
+      )}
+      {
+        // @ts-ignore
+        error && <p className="error-msg">{error}</p>
       }
-      { // @ts-ignore
-        error && <p className="error-msg">{error}</p> }
     </form>
   );
-}
+};
 
-export default compose(
-  withRouter,
-  withCookies
-)(AuthenticateFormBase);
+export default compose(withRouter, withCookies)(AuthenticateFormBase);

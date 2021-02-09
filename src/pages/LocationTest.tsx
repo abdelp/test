@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   IonContent,
   IonHeader,
@@ -8,22 +8,22 @@ import {
   IonButton,
   IonItem,
   IonAlert,
-  IonButtons
-} from '@ionic/react';
-import { useHistory } from 'react-router-dom';
-import { set } from 'idb-keyval';
-import { withCookies } from 'react-cookie';
-import './LocationTest.css';
+  IonButtons,
+} from "@ionic/react";
+import { useHistory } from "react-router-dom";
+import { set } from "idb-keyval";
+import { withCookies } from "react-cookie";
+import "./LocationTest.css";
 
 const defaultState = {
   round: 0,
-  mensaje: '',
+  mensaje: "",
   numerosAElegir: [],
   turnoUsuario: false,
   numerosElegidos: [],
   min: 3,
   sec: 0,
-  roundFinished: false
+  roundFinished: false,
 };
 
 const LocationTestPage: React.FC = (props: any) => {
@@ -51,82 +51,103 @@ const LocationTestPage: React.FC = (props: any) => {
   // const [statex, setState] = useState({min: 3, sec: 0});
   // const [isActive, setIsActive] = useState(true);
 
-  const doSaveExamProgress = async (exam: any) =>
-    await set("exam", {exam});
+  const doSaveExamProgress = async (exam: any) => await set("exam", { exam });
 
-  const randomNumber = () =>  
-    Math.floor(Math.random() * (9 - 0) + 0);
+  const randomNumber = () => Math.floor(Math.random() * (9 - 0) + 0);
 
   useEffect(() => {
-    const {mensaje, numerosAElegir, turnoUsuario, numerosElegidos, roundFinished, btns } = state;
+    const {
+      mensaje,
+      numerosAElegir,
+      turnoUsuario,
+      numerosElegidos,
+      roundFinished,
+      btns,
+    } = state;
     let { round } = state;
     let rotationInterval: any;
 
-    if(!turnoUsuario) {
-      if(roundFinished) {
-        if(round === 4) {
-          history.replace('/page/test-finished', {state: 'prueba psiquica' })
+    if (!turnoUsuario) {
+      if (roundFinished) {
+        if (round === 4) {
+          history.replace("/page/test-finished", { state: "prueba psiquica" });
         } else {
           round++;
 
           rotationInterval = window.setTimeout(() => {
             setState((state: any) => ({
               ...defaultState,
-              mensaje: 'Atención',
+              mensaje: "Atención",
               round,
               numerosAElegir: [],
               turnoUsuario: false,
-              numerosElegidos: []
+              numerosElegidos: [],
             }));
           }, 2000);
         }
       } else {
-        if(round >= 1 && round <= 4) {
-          if(mensaje === 'Atención') {        
+        if (round >= 1 && round <= 4) {
+          if (mensaje === "Atención") {
             rotationInterval = window.setTimeout(() => {
-              setState((state: any) => ({...state, mensaje: '' }));
+              setState((state: any) => ({ ...state, mensaje: "" }));
             }, 2000);
-          } else if (mensaje === '' && numerosAElegir.length < round + 1) {
+          } else if (mensaje === "" && numerosAElegir.length < round + 1) {
             const randNum: any = randomNumber().toString();
             numerosAElegir.push(randNum);
             rotationInterval = window.setTimeout(() => {
-              setState((state: any) => ({...state, mensaje: randNum, numerosAElegir}));
+              setState((state: any) => ({
+                ...state,
+                mensaje: randNum,
+                numerosAElegir,
+              }));
             });
-          } else if (mensaje != '' && mensaje != 'Atención') {
+          } else if (mensaje != "" && mensaje != "Atención") {
             rotationInterval = window.setTimeout(() => {
-              setState((state: any) => ({...state, mensaje: '' }));
+              setState((state: any) => ({ ...state, mensaje: "" }));
             }, 2000);
           } else if (numerosAElegir.length === round + 1) {
-            setState((state: any) => ({...state, mensaje: 'Tu turno', turnoUsuario: true}));
+            setState((state: any) => ({
+              ...state,
+              mensaje: "Tu turno",
+              turnoUsuario: true,
+            }));
           }
         }
       }
-    } else {  
-      if(numerosAElegir.length === numerosElegidos.length) {
-        const mensaje = numerosAElegir.join('') === numerosElegidos.join('') ? 'Correcto' : 'Incorrecto';
+    } else {
+      if (numerosAElegir.length === numerosElegidos.length) {
+        const mensaje =
+          numerosAElegir.join("") === numerosElegidos.join("")
+            ? "Correcto"
+            : "Incorrecto";
 
-        setState((state: any) => ({...state, mensaje, turnoUsuario: false, roundFinished: true }));
+        setState((state: any) => ({
+          ...state,
+          mensaje,
+          turnoUsuario: false,
+          roundFinished: true,
+        }));
       }
     }
     return () => {
-      clearTimeout(rotationInterval)
-    }
+      clearTimeout(rotationInterval);
+    };
   }, [state]);
 
   const empezar = () =>
-    setState((state: any) => ({...state, mensaje: 'Atención', round: 1}));
+    setState((state: any) => ({ ...state, mensaje: "Atención", round: 1 }));
 
   const { round, mensaje } = state;
 
   const pickNumber = (number: any) => {
     let { numerosElegidos, numerosAElegir, btns } = state;
-  
-    btns[number].color = 'success';
 
-    if(numerosElegidos.length < numerosAElegir.length) {
+    btns[number].color = "success";
+
+    if (numerosElegidos.length < numerosAElegir.length) {
       numerosElegidos.push(number);
 
-      setState((state: any) => ({...state, numerosElegidos, btns}));
+      setState((state: any) => ({ ...state, numerosElegidos, btns }));
     }
   };
 
@@ -136,7 +157,9 @@ const LocationTestPage: React.FC = (props: any) => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="alert">
-          <IonTitle className="ion-text-uppercase ion-text-center title">prueba psiquica</IonTitle>
+          <IonTitle className="ion-text-uppercase ion-text-center title">
+            prueba psiquica
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -149,9 +172,7 @@ const LocationTestPage: React.FC = (props: any) => {
               <IonButton>Izquierda</IonButton>
             </div>
             <div className="text-container">
-              <IonItem>
-
-              </IonItem>
+              <IonItem></IonItem>
             </div>
             <div className="btn-container">
               <IonButton>Derecha</IonButton>

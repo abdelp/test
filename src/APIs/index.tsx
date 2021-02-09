@@ -1,13 +1,13 @@
-import PREGUNTAS_SENHALES from './preguntas_senhales.json';
-import PREGUNTAS_DECLARACION_JURADA from './declaracion_jurada.json';
-import ITEMS_MOTOCICLETA_PRACTICO from './motocicleta_practico.json';
-import PREGUNTAS_MECANICA from './preguntas_mecanica.json';
-import PREGUNTAS_NORMAS from './preguntas_normas_01.json';
-import PREGUNTAS_PRIMEROS_AUXILIOS from './preguntas_primeros_auxilios.json';
-import axios from 'axios';
-import to from 'await-to-js';
-import { HTTP } from '@ionic-native/http';
-import { xml2js } from 'xml-js';
+import PREGUNTAS_SENHALES from "./preguntas_senhales.json";
+import PREGUNTAS_DECLARACION_JURADA from "./declaracion_jurada.json";
+import ITEMS_MOTOCICLETA_PRACTICO from "./motocicleta_practico.json";
+import PREGUNTAS_MECANICA from "./preguntas_mecanica.json";
+import PREGUNTAS_NORMAS from "./preguntas_normas_01.json";
+import PREGUNTAS_PRIMEROS_AUXILIOS from "./preguntas_primeros_auxilios.json";
+import axios from "axios";
+import to from "await-to-js";
+import { HTTP } from "@ionic-native/http";
+import { xml2js } from "xml-js";
 
 const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
 
@@ -28,87 +28,103 @@ const getTestedUserData = async (
       </soap:Body>
     </soap:Envelope>`;
 
-    HTTP.setDataSerializer('utf8');
+    HTTP.setDataSerializer("utf8");
 
-    let [error, result]: any = await to(HTTP.post(
-      url,
-      data,
-      {"Access-Control-Allow-Origin": "*",
-      "Content-Type": "text/xml; charset=utf-8",
-      "SOAPAction": "http://rut.antsv.gov.py/ConsultarAntecedente"}));
+    let [error, result]: any = await to(
+      HTTP.post(url, data, {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "text/xml; charset=utf-8",
+        SOAPAction: "http://rut.antsv.gov.py/ConsultarAntecedente",
+      })
+    );
 
-    if (error === 'cordova_not_available') {
-      [error, result] = await to(axios.post(url,
-        data,
-        {headers: 
-          {"Access-Control-Allow-Origin": "*",
-          "Content-Type": "text/xml; charset=utf-8",
-          "SOAPAction": "http://rut.antsv.gov.py/ConsultarAntecedente"}}));
+    if (error === "cordova_not_available") {
+      [error, result] = await to(
+        axios.post(url, data, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "text/xml; charset=utf-8",
+            SOAPAction: "http://rut.antsv.gov.py/ConsultarAntecedente",
+          },
+        })
+      );
     }
 
     if (error) throw error;
 
-    { /*
-      //@ts-ignore */}
-    const { ["soap:Envelope"]: { "soap:Body": {
+    {
+      /*
+      //@ts-ignore */
+    }
+    const {
+      ["soap:Envelope"]: {
+        "soap:Body": {
           ConsultarAntecedenteResponse: {
             ConsultarAntecedenteResult: {
               Antecedentes: {
                 ConsultaAntecedente = {
-                  Nombres: {text: null},
-                  Apellidos: {text: null},
-                  Categoria: {text: null},
-                  IdAntecedente: {text: null},
-                  Tramite: {text: null}
-                }
+                  Nombres: { text: null },
+                  Apellidos: { text: null },
+                  Categoria: { text: null },
+                  IdAntecedente: { text: null },
+                  Tramite: { text: null },
+                },
               },
-              Cantidad: {text: cantidad}
-            }
-          }
-        }
-      }
-    } = xml2js(result.data,
-    {
+              Cantidad: { text: cantidad },
+            },
+          },
+        },
+      },
+    } = xml2js(result.data, {
       ignoreDeclaration: true,
       ignoreAttributes: true,
       compact: true,
-      textKey: "text"
+      textKey: "text",
     });
 
     const {
-      Nombres: { text:nombres },
-      Apellidos: { text:apellidos },
-      Categoria: { text:categoria },
-      IdAntecedente: { text:idAntecedente },
-      Tramite: { text:tramite }
+      Nombres: { text: nombres },
+      Apellidos: { text: apellidos },
+      Categoria: { text: categoria },
+      IdAntecedente: { text: idAntecedente },
+      Tramite: { text: tramite },
     } = ConsultaAntecedente;
 
-    return { cantidad, nombres, apellidos, categoria, nroDocumento, idAntecedente, tramite };
+    return {
+      cantidad,
+      nombres,
+      apellidos,
+      categoria,
+      nroDocumento,
+      idAntecedente,
+      tramite,
+    };
   } catch (e) {
     throw e;
   }
 };
 
-const getCategories = async () =>
+const getCategories = async () => (
   // @ts-ignore
-  ({
-    name: 'Conductor B2',
-    description: 'A description'
+  {
+    name: "Conductor B2",
+    description: "A description",
   },
   {
-    name: 'Profesional',
-    description: 'A description'
-  });
+    name: "Profesional",
+    description: "A description",
+  }
+);
 
-const randomNumber = (length: any) =>  
+const randomNumber = (length: any) =>
   Math.floor(Math.random() * (length - 0) + 0);
 
 const getPreguntasSenhales = () => {
   return new Promise((resolve, reject) => {
-
     resolve([
-      // ...PREGUNTAS_SENHALES, ...PREGUNTAS_MECANICA, ...PREGUNTAS_PRIMEROS_AUXILIOS, 
-      ...PREGUNTAS_NORMAS[randomNumber(PREGUNTAS_NORMAS.length)]]);
+      // ...PREGUNTAS_SENHALES, ...PREGUNTAS_MECANICA, ...PREGUNTAS_PRIMEROS_AUXILIOS,
+      ...PREGUNTAS_NORMAS[randomNumber(PREGUNTAS_NORMAS.length)],
+    ]);
   });
 };
 
@@ -131,30 +147,36 @@ const sendResult = async (
         </EnviarResultado>
       </soap:Body>
     </soap:Envelope>`;
-    
-    HTTP.setDataSerializer('utf8');
 
-    let [error, result]: any = await to(HTTP.post(
-      url,
-      data,
-      {"Access-Control-Allow-Origin": "*",
-      "Content-Type": "text/xml; charset=utf-8",
-      "SOAPAction": "http://rut.antsv.gov.py/EnviarResultado"}));
-  
-    if (error === 'cordova_not_available') {
-      [error, result] = await to(axios.post(url,
-        data,
-        {headers: 
-          {"Access-Control-Allow-Origin": "*",
-          "Content-Type": "text/xml; charset=utf-8",
-          "SOAPAction": "http://rut.antsv.gov.py/EnviarResultado"}}));
+    HTTP.setDataSerializer("utf8");
+
+    let [error, result]: any = await to(
+      HTTP.post(url, data, {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "text/xml; charset=utf-8",
+        SOAPAction: "http://rut.antsv.gov.py/EnviarResultado",
+      })
+    );
+
+    if (error === "cordova_not_available") {
+      [error, result] = await to(
+        axios.post(url, data, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "text/xml; charset=utf-8",
+            SOAPAction: "http://rut.antsv.gov.py/EnviarResultado",
+          },
+        })
+      );
     }
 
     if (error) throw error;
 
-    { /*
-      //@ts-ignore */}
-    // const { 
+    {
+      /*
+      //@ts-ignore */
+    }
+    // const {
     // } = xml2js(result.data,
     // {
     //   ignoreDeclaration: true,
@@ -163,14 +185,19 @@ const sendResult = async (
     //   textKey: "text"
     // });
 
-    return {codError: 0};
+    return { codError: 0 };
   } catch (e) {
     throw e;
   }
 };
 
-const getExamDate = async ({categoria, ticket, ci, test}: any) =>
-  ({ ci: '111', categoria: 'motocicleta', test, date: '2020-01-22', nroAntecedente: 1701 });
+const getExamDate = async ({ categoria, ticket, ci, test }: any) => ({
+  ci: "111",
+  categoria: "motocicleta",
+  test,
+  date: "2020-01-22",
+  nroAntecedente: 1701,
+});
 
 const getDeclaracionJurada = async () => {
   return new Promise((resolve, reject) => {
@@ -186,9 +213,11 @@ const getPracticalTestItems = () => {
 
 const saveDeclaracionJurada = (declaracion: any) => {
   return new Promise((resolve, reject) => {
-    setInterval(() =>
-      resolve({cod: 200, message: 'Declaración guardada correctamente'})
-    , 2000);
+    setInterval(
+      () =>
+        resolve({ cod: 200, message: "Declaración guardada correctamente" }),
+      2000
+    );
   });
 };
 
@@ -200,5 +229,5 @@ export {
   getExamDate,
   getDeclaracionJurada,
   getPracticalTestItems,
-  saveDeclaracionJurada
+  saveDeclaracionJurada,
 };

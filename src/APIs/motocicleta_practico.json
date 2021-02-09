@@ -1,76 +1,133 @@
 [
-{
- "id": 1, "titulo": "ANTES DE PONER EN MARCHA EL MOTOR", "items": [
-{"id": 1, "pregunta": "Ajusta el ángulo de los espejos retrovisores"}
-]},{
- "id": 2, "titulo":"DESPUES DE PONER EN MARCHA EL MOTOR", "items": [
-{"id": 1, "pregunta": "Revisa el tablero o panel"},
-{"id": 2, "pregunta": "Revisa el juego libre de embrague"},
-{"id": 3, "pregunta": "Prueba el acelerador"},
-{"id": 4, "pregunta": "Prueba la palanca y la caja de velocidades"},
-{"id": 5, "pregunta": "Prueba el juego libre del freno"}
-]},{
- "id": 3, "titulo":"AL INCORPORARSE A LA CIRCULACIÒN", "items": [
-{"id": 1, "pregunta": "Mira hacia atrás y verifica las condiciones del tránsito"},
-{"id": 2, "pregunta": "Hace señales apropiadas"},
-{"id": 3, "pregunta": "Espera por tránsito en movimiento"},
-{"id": 4, "pregunta": "Hace una salida suave"}
-]},{
- "id": 4, "titulo":"USO DE LOS CONTROLES DE MANDO", "items": [
-{"id": 1, "pregunta": "Utiliza en forma adecuada el embrague"},
-{"id": 2, "pregunta": "Utiliza en forma adecuada el freno"},
-{"id": 3, "pregunta": "Hace sonar los cambios"},
-{"id": 4, "pregunta": "Utiliza los cambios a tiempo"},
-{"id": 5, "pregunta": "Sostiene el manubrio con ambas manos"},
-{"id": 6, "pregunta": "Acelera el motor innecesariamente"},
-{"id": 7, "pregunta": "Deja parar el motor"}
-]},{
- "id": 5, "titulo":"DURANTE LA MARCHA", "items": [
-{"id": 1, "pregunta": "Excede la velocidad máxima permitida"},
-{"id": 2, "pregunta": "Guía por el carril correcto"},
-{"id": 3, "pregunta": "Reduce la velocidad en sitios específicos"},
-{"id": 4, "pregunta": "Adecua la velocidad de acuerdo al tránsito del lugar"},
-{"id": 5, "pregunta": "Domina el manubrio"},
-{"id": 6, "pregunta": "Detiene la marcha ante vías preferenciales"},
-{"id": 7, "pregunta": "Toma las precauciones adecuadas"},
-{"id": 8, "pregunta": "Cede el paso a los peatones"},
-{"id": 9, "pregunta": "Cede el paso a los otros conductores"},
-{"id": 10, "pregunta": "Guarda la distancia prudencial entre los vehículos"},
-{"id": 11, "pregunta": "Respeta las señales de tránsito"},
-{"id": 12, "pregunta": "Respeta la señal de 'PARE'"},
-{"id": 13, "pregunta": "En pendientes: circula en punto muerto"}
-]},{
- "id": 6, "titulo":"AL ENFRENAR EN UN SEMAFORO", "items": [
-{"id": 1, "pregunta": "Disminuye la velocidad ante la luz amarilla"},
-{"id": 2, "pregunta": "Detiene la marcha ante la luz roja"},
-{"id": 3, "pregunta": "Se detiene sobre la franja peatonal"}
-]},{
- "id": 7, "titulo":"AL ADELANTAR", "items": [
-{"id": 1, "pregunta": "Hace las señales debidas y a tiempo"},
-{"id": 2, "pregunta": "Lo hace en una boca calle o próxima a ella"},
-{"id": 3, "pregunta": "Lo hace a un ómnibus detenido"},
-{"id": 4, "pregunta": "Lo hace en una curva, cuesta, vía angosta"},
-{"id": 5, "pregunta": "Señaliza el desplazamiento a la izquierda y a la derecha"}
-]},{
- "id": 8, "titulo":"REDUCIENDO Y PARANDO", "items": [
-{"id": 1, "pregunta": "Mira por el espejo retrovisor"},
-{"id": 2, "pregunta": "Se detiene suavemente"},
-{"id": 3, "pregunta": "Usa el motor como freno"}
-]},{
- "id": 9, "titulo":"COMPORTAMIENTO EN LOS CRUCES", "items": [
-{"id": 1, "pregunta": "Disminuye la velocidad en los cruces no regulados"},
-{"id": 2, "pregunta": "Cede el paso al vehículo con preferencia"},
-{"id": 3, "pregunta": "Detiene el vehiculo en la bocacalle"}
-]},{
- "id": 10, "titulo":"AL GIRAR A LA DERECHA O LA IZQUIERDA", "items": [
-{"id": 1, "pregunta": "Lo hace desde el carril correcto"},
-{"id": 2, "pregunta": "Entra al carril correcto"},
-{"id": 3, "pregunta": "Sube sobre la vereda"},
-{"id": 4, "pregunta": "Lo hace muy abiertamente"},
-{"id": 5, "pregunta": "Lo hace muy a prisa"},
-{"id": 6, "pregunta": "Hace las señales apropiadas y a tiempo"}
- ]
-},{
-  "id": 11, "titulo": "Otros", "descripcion": "", "items": []
-}
+  {
+    "id": 1,
+    "titulo": "ANTES DE PONER EN MARCHA EL MOTOR",
+    "items": [
+      { "id": 1, "pregunta": "Ajusta el ángulo de los espejos retrovisores" }
+    ]
+  },
+  {
+    "id": 2,
+    "titulo": "DESPUES DE PONER EN MARCHA EL MOTOR",
+    "items": [
+      { "id": 1, "pregunta": "Revisa el tablero o panel" },
+      { "id": 2, "pregunta": "Revisa el juego libre de embrague" },
+      { "id": 3, "pregunta": "Prueba el acelerador" },
+      { "id": 4, "pregunta": "Prueba la palanca y la caja de velocidades" },
+      { "id": 5, "pregunta": "Prueba el juego libre del freno" }
+    ]
+  },
+  {
+    "id": 3,
+    "titulo": "AL INCORPORARSE A LA CIRCULACIÒN",
+    "items": [
+      {
+        "id": 1,
+        "pregunta": "Mira hacia atrás y verifica las condiciones del tránsito"
+      },
+      { "id": 2, "pregunta": "Hace señales apropiadas" },
+      { "id": 3, "pregunta": "Espera por tránsito en movimiento" },
+      { "id": 4, "pregunta": "Hace una salida suave" }
+    ]
+  },
+  {
+    "id": 4,
+    "titulo": "USO DE LOS CONTROLES DE MANDO",
+    "items": [
+      { "id": 1, "pregunta": "Utiliza en forma adecuada el embrague" },
+      { "id": 2, "pregunta": "Utiliza en forma adecuada el freno" },
+      { "id": 3, "pregunta": "Hace sonar los cambios" },
+      { "id": 4, "pregunta": "Utiliza los cambios a tiempo" },
+      { "id": 5, "pregunta": "Sostiene el manubrio con ambas manos" },
+      { "id": 6, "pregunta": "Acelera el motor innecesariamente" },
+      { "id": 7, "pregunta": "Deja parar el motor" }
+    ]
+  },
+  {
+    "id": 5,
+    "titulo": "DURANTE LA MARCHA",
+    "items": [
+      { "id": 1, "pregunta": "Excede la velocidad máxima permitida" },
+      { "id": 2, "pregunta": "Guía por el carril correcto" },
+      { "id": 3, "pregunta": "Reduce la velocidad en sitios específicos" },
+      {
+        "id": 4,
+        "pregunta": "Adecua la velocidad de acuerdo al tránsito del lugar"
+      },
+      { "id": 5, "pregunta": "Domina el manubrio" },
+      { "id": 6, "pregunta": "Detiene la marcha ante vías preferenciales" },
+      { "id": 7, "pregunta": "Toma las precauciones adecuadas" },
+      { "id": 8, "pregunta": "Cede el paso a los peatones" },
+      { "id": 9, "pregunta": "Cede el paso a los otros conductores" },
+      {
+        "id": 10,
+        "pregunta": "Guarda la distancia prudencial entre los vehículos"
+      },
+      { "id": 11, "pregunta": "Respeta las señales de tránsito" },
+      { "id": 12, "pregunta": "Respeta la señal de 'PARE'" },
+      { "id": 13, "pregunta": "En pendientes: circula en punto muerto" }
+    ]
+  },
+  {
+    "id": 6,
+    "titulo": "AL ENFRENAR EN UN SEMAFORO",
+    "items": [
+      { "id": 1, "pregunta": "Disminuye la velocidad ante la luz amarilla" },
+      { "id": 2, "pregunta": "Detiene la marcha ante la luz roja" },
+      { "id": 3, "pregunta": "Se detiene sobre la franja peatonal" }
+    ]
+  },
+  {
+    "id": 7,
+    "titulo": "AL ADELANTAR",
+    "items": [
+      { "id": 1, "pregunta": "Hace las señales debidas y a tiempo" },
+      { "id": 2, "pregunta": "Lo hace en una boca calle o próxima a ella" },
+      { "id": 3, "pregunta": "Lo hace a un ómnibus detenido" },
+      { "id": 4, "pregunta": "Lo hace en una curva, cuesta, vía angosta" },
+      {
+        "id": 5,
+        "pregunta": "Señaliza el desplazamiento a la izquierda y a la derecha"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "titulo": "REDUCIENDO Y PARANDO",
+    "items": [
+      { "id": 1, "pregunta": "Mira por el espejo retrovisor" },
+      { "id": 2, "pregunta": "Se detiene suavemente" },
+      { "id": 3, "pregunta": "Usa el motor como freno" }
+    ]
+  },
+  {
+    "id": 9,
+    "titulo": "COMPORTAMIENTO EN LOS CRUCES",
+    "items": [
+      {
+        "id": 1,
+        "pregunta": "Disminuye la velocidad en los cruces no regulados"
+      },
+      { "id": 2, "pregunta": "Cede el paso al vehículo con preferencia" },
+      { "id": 3, "pregunta": "Detiene el vehiculo en la bocacalle" }
+    ]
+  },
+  {
+    "id": 10,
+    "titulo": "AL GIRAR A LA DERECHA O LA IZQUIERDA",
+    "items": [
+      { "id": 1, "pregunta": "Lo hace desde el carril correcto" },
+      { "id": 2, "pregunta": "Entra al carril correcto" },
+      { "id": 3, "pregunta": "Sube sobre la vereda" },
+      { "id": 4, "pregunta": "Lo hace muy abiertamente" },
+      { "id": 5, "pregunta": "Lo hace muy a prisa" },
+      { "id": 6, "pregunta": "Hace las señales apropiadas y a tiempo" }
+    ]
+  },
+  {
+    "id": 11,
+    "titulo": "Otros",
+    "descripcion": "",
+    "items": []
+  }
 ]
