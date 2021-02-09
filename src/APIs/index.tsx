@@ -2,7 +2,7 @@ import PREGUNTAS_SENHALES from './preguntas_senhales.json';
 import PREGUNTAS_DECLARACION_JURADA from './declaracion_jurada.json';
 import ITEMS_MOTOCICLETA_PRACTICO from './motocicleta_practico.json';
 import PREGUNTAS_MECANICA from './preguntas_mecanica.json';
-import PREGUNTAS_NORMAS from './preguntas_normas.json';
+import PREGUNTAS_NORMAS from './preguntas_normas_01.json';
 import PREGUNTAS_PRIMEROS_AUXILIOS from './preguntas_primeros_auxilios.json';
 import axios from 'axios';
 import to from 'await-to-js';
@@ -100,9 +100,15 @@ const getCategories = async () =>
     description: 'A description'
   });
 
+const randomNumber = (length: any) =>  
+  Math.floor(Math.random() * (length - 0) + 0);
+
 const getPreguntasSenhales = () => {
   return new Promise((resolve, reject) => {
-    resolve([...PREGUNTAS_SENHALES, ...PREGUNTAS_MECANICA, ...PREGUNTAS_PRIMEROS_AUXILIOS, ...PREGUNTAS_NORMAS]);
+
+    resolve([
+      // ...PREGUNTAS_SENHALES, ...PREGUNTAS_MECANICA, ...PREGUNTAS_PRIMEROS_AUXILIOS, 
+      ...PREGUNTAS_NORMAS[randomNumber(PREGUNTAS_NORMAS.length)]]);
   });
 };
 

@@ -165,7 +165,10 @@ const MultipleOptionsPage: React.FC = (props: any) => {
             </IonItem>
             {currentQuestion && questions[questionIdx].img &&
             <div className="question-img-container" key="img">
-              <IonImg className="question-img" src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''} />
+              <IonImg
+                className="question-img"
+                src={currentQuestion ? require(`../assets/${questions[questionIdx].img}`) : ''}
+              />
             </div>
             }
           </div>
@@ -187,8 +190,8 @@ const MultipleOptionsPage: React.FC = (props: any) => {
 
         </IonList>
         <IonItem lines="none" className="counter">
-            <Timer min={min} sec={sec}></Timer>
-          </IonItem>
+          <Timer min={min} sec={sec}></Timer>
+        </IonItem>
       </IonContent>
     </IonPage>
   );

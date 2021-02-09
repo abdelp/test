@@ -1,0 +1,330 @@
+[
+  [
+    {
+      "id": 1,
+      "img": "senal_pare.svg",
+      "pregunta": "La siguiente señal indica",
+      "opciones": [
+        "Estacionamiento prohibido",
+        "Estacionamiento permitido",
+        "Estacionamiento reglamentado por hora"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 2,
+      "img": "senal_pare.svg",
+      "pregunta": "La siguiente señal indica",
+      "opciones": [
+        "Estacionamiento prohibido",
+        "Estacionamiento permitido",
+        "Estacionamiento reglamentado por hora"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 3,
+      "pregunta": "Acera o vereda es",
+      "opciones": [
+        "Franja comprendida entre la calzada y la línea de construcción de los inmuebles, reservada al tránsito de peatones.",
+        "Vía especialmente diseñada para dar paso al caudal de aguas superficiales.",
+        "Depresión de la vía a un costado de la calzada que se utiliza para circulación de biciclos."
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": 4,
+      "pregunta": "EL PEATÓN QUE ATRAVIESA LA CALZADA POR LA FRANJA PEATONAL O EN LAS ESQUINAS ¿TIENE PREFERENCIA SOBRE LOS VEHÍCULOS?",
+      "opciones": [
+        "Tiene preferencia solamente cuando se trate de una zona céntrica.",
+        "Tiene preferencia siempre, salvo cuando se trate de una vía de tránsito preferencial.",
+        "Tiene preferencia siempre, salvo que un semáforo o agente indique lo contrario."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 5,
+      "pregunta": "AL TRANSITAR CON SU VEHICULO DURANTE LA NOCHE EN VÍAS URBANAS, USTED DEBE UTILIZAR",
+      "opciones": [
+        "Luces altas",
+        "Luces bajas",
+        "Luces de estacionamiento"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 6,
+      "pregunta": "EL USO DE LA BOCINA ESTÁ PERMITIDO",
+      "opciones": [
+        "Para apurar al vehículo que va adelante",
+        "Para anunciar que se estacionará",
+        "Para prevenir un accidente, en caso de peligro inminente"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 7,
+      "pregunta": "ES OBLIGACION DE TODO CONDUCTOR",
+      "opciones": [
+        "Usar la bocina ante de cruzar la boca-calle",
+        "Exhibir su licencia de conducir ante el requerimiento de la autoridad competente",
+        "Mantener el pedal del embrague oprimido durante la circulación"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 8,
+      "pregunta": "CUANDO DOS VEHÍCULOS CIRCULAN EN SENTIDOS OPUESTOS Y DESEAN GIRAR HACIA EL MISMO LADO ¿CUÁL TIENE PREFERENCIA?",
+      "opciones": [
+        "Ambos",
+        "El que va girar a la izquierda",
+        "El que va girar a la derecha"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 9,
+      "pregunta": "CUANDO UN VEHÍCULO ESTACIONADO SE DISPONE A INCORPORARSE A LA CIRCULACION, SE DEBE TENER PRESENTE EL SIGUIENTE ORDEN",
+      "opciones": [
+        "Mirar hacia atrás, mirar por el retrovisor, tocar la bocina y salir",
+        "Encender el señalero, mirar por el retrovisor, girar la cabeza para observar y ceder siempre el paso",
+        "Tocar la bocina para salir "
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 10,
+      "pregunta": "¿CUÁNDO PIERDE UN VEHÍCULO SU PREFERENCIA DE CRUCE Y PASO?",
+      "opciones": [
+        "Cuando se disponga a realizar maniobra de giro.",
+        "Cuando es adelantado por un ómnibus de transporte colectivo",
+        "Cuando lleve encendidas sus luces reglamentarias"
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": 11,
+      "pregunta": "LOS LÍMITES DE VELOCIDAD MÁXIMA PERMITIDA SON",
+      "opciones": [
+        "60 km/h en zona urbana y 80 km/h para zona rural",
+        "40 km/h en zona urbana y 120 km/h para zona rural.",
+        "50 km/h en zona urbana y 110 km/h para zona rural"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 12,
+      "pregunta": "¿A QUÉ DISTANCIA  DE UN GRIFO DE AGUA PARA INCENDIOS DEBE ESTACIONARSE UN VEHÍCULO?",
+      "opciones": [
+        "Más de tres metros.",
+        "Menos de dos metros.",
+        "Un metro"
+      ],
+      "respuesta": 0
+    }
+  ],
+  [
+    {
+      "id": 12,
+      "pregunta": "SI POSEE UNA LICENCIA DE CONDUCIR CORRESPONDIENTE A UN MUNICIPIO EN DONDE USTED YA NO RESIDE",
+      "opciones": [
+        "Debe realizar el trámite de cancelación ante el municipio de su residencia actual, adjuntando una copia de la denuncia policial correspondiente.",
+        "Debe realizar el trámite de cancelación ante el municipio correspondiente y solicitar una nueva licencia en el municipio de su residencia actual.",
+        "Puede seguir manejando con la misma licencia, toda vez que la misma se encuentre al día."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 13,
+      "pregunta": "\"PEATÓN\" SE DEFINE COMO",
+      "opciones": [
+        "Toda persona que se encuentre cruzando la calzada por la franja peatonal.",
+        "Toda persona que se encuentre circulando por la acera.",
+        "Toda persona física que utiliza la vía pública a pie, en carro de criatura, silla de rueda o similar"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 14,
+      "pregunta": "NO SE DEBE CONDUCIR UN VEHICULO AUTOMOTOR BAJO LA INFLUENCIA DEL ALCOHOL",
+      "opciones": [
+        "Solamente si lleva pasajeros o acompañantes",
+        "Excepto cuando exista luz natural del día",
+        "Porque disminuye los reflejos y afecta la concentración"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 15,
+      "pregunta": "EL USO DEL CINTURÓN EN EL CASO DE LOS ACOMPAÑANTES O PASAJEROS ES RESPONSABILIDAD DE",
+      "opciones": [
+        "El conductor.",
+        "El agente de tránsito.",
+        "Los acompañantes."
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": 16,
+      "pregunta": "AL CIRCULAR EN ZONA URBANA, CUANDO NO EXISTA LUZ NATURAL DEL DÍA, SE DEBE UTILIZAR",
+      "opciones": [
+        "luz interior para una buena circulación",
+        "luz baja o de cruce",
+        "luz de balizamiento"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 17,
+      "pregunta": "AL ESTACIONAR EN UNA VÍA CON PENDIENTE (BAJADA) EL VEHÍCULO DEBE ESTAR",
+      "opciones": [
+        "con freno de mano activado y la palanca de cambio en primera marcha.",
+        "con la palanca de cambio en reversa y las ruedas orientadas hacia el cordón.",
+        "con freno de mano activado, en punto muerto (neutro) y las ruedas delanteras orientadas hacia el cordón de la vereda."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 18,
+      "pregunta": "\"AVENIDA\" SE ENTIENDE COMO",
+      "opciones": [
+        "La vía pública que cuenta con un carril por cada sentido de circulación, y separados por medio físico o con doble línea amarilla, donde el tránsito circula con carácter preferencial con respecto a las calles transversales.",
+        "Una vía especialmente diseñada para altas velocidades de operación.",
+        "La vía pública de más de un carril  por cada sentido de circulación, y separados por medio físico o con doble línea amarilla, donde el tránsito circula con carácter preferencial con respecto a las calles transversales."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 19,
+      "pregunta": "EL ADELANTAMIENTO REGLAMENTARIO ES LA MANIOBRA EFECTUADA:",
+      "opciones": [
+        "por el costado derecho de la calzada",
+        "por el costado izquierdo de la calzada",
+        "por cualquiera de los lados"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 20,
+      "pregunta": "LA MANIOBRA DE REVERSA O MARCHA ATRÁS ESTÁ PERMITIDA:",
+      "opciones": [
+        "solamente hasta 30 metros",
+        "cuando se trate de un vehículo de uso particular",
+        "en presencia de obstáculos o para maniobra de estacionamiento."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 21,
+      "pregunta": "EN CASO DE SINIESTRO VIAL LO PRINCIPAL SIEMPRE ES",
+      "opciones": [
+        "huir del sitio del suceso",
+        "avisar a la autoridad competente y al servicio de emergencias",
+        "legar a un acuerdo amistoso"
+      ],
+      "respuesta": 2
+    }
+  ],
+  [
+    {
+      "id": 22,
+      "pregunta": "LA DEFINICIÓN DE \"LOMADA\" ES:",
+      "opciones": [
+        "Elevación del terreno de poca altura, normalmente de forma redondeada, que viene a ser el primer grado después de la llanura.",
+        "Pequeña formación geográfica que es más alta que la llanura, señalizada con doble raya amarilla",
+        "Elevación construida sobre la vía de tránsito en forma transversal, cuya finalidad es reducir la velocidad de circulación"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 23,
+      "pregunta": "SI UN VEHÍCULO CIRCULA POR LA VÍA PÚBLICA CONTAMINANDO EL AIRE CON EMISIONES DE HUMO NEGRO, LA RESPONSABILIDAD Y LA SANCIÓN CORRESPONDERÁN",
+      "opciones": [
+        "Solamente al conductor del vehículo",
+        "Solamente al propietario del vehículo.",
+        "A ambos, al conductor y al propietario del vehículo."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 24,
+      "pregunta": "AL APROXIMARSE A UNA ESQUINA, USTED OBSERVA PEATONES INTENTANDO CRUZAR",
+      "opciones": [
+        "Debe detenerse y ceder el paso a los peatones, solamente cuando exista franja o cruce peatonal.",
+        "Debe detenerse y ceder el paso a los peatones, aunque no exista franja o cruce peatonal.",
+        "Porque disminuye los reflejos y afecta la concentración"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 25,
+      "pregunta": "AL CONDUCIR SU VEHICULO, USTED DEBE CIRCULAR EXCLUSIVAMENTE POR:",
+      "opciones": [
+        "la banquina",
+        "la calzada",
+        "la acera"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 26,
+      "pregunta": "EL ÚNICO DOCUMENTO QUE HABILITA A MANEJAR VEHÍCULO AUTOMOTOR ES",
+      "opciones": [
+        "la cédula de identidad",
+        "la licencia de conducir",
+        "una denuncia policial de extravío de documentos"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 27,
+      "pregunta": "LOS NIÑOS DE ENTRE 5 y 10 AÑOS DEBEN",
+      "opciones": [
+        "viajar en el asiento delantero, al lado del conductor",
+        "ir en el regazo del acompañante.",
+        "viajar en los asientos traseros, con el cinturón abrochado."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 28,
+      "pregunta": "UN ESTACIONAMIENTO RESERVADO EN LA VÍA PÚBLICA",
+      "opciones": [
+        "Puede ser utilizado exclusivamente por su titular o quien tenga autorización del mismo.",
+        "Puede ser utilizado por cualquier vehículo, hasta que se presente el titular y lo reclame.",
+        "Puede ser utilizado libremente en horas pico."
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": 29,
+      "pregunta": "¿EN QUÉ CASO PUEDE USTED CONDUCIR UN VEHICULO QUE TENGA FALLAS EN EL SISTEMA DE DIRECCIÓN O EN EL MECANISMO DE FRENO?",
+      "opciones": [
+        "cuando se presente una situación de emergencia.",
+        "cuando circule exclusivamente en calles empedradas o de tierra.",
+        "en ningún caso."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 30,
+      "pregunta": "AL SER ADELANTADO POR OTRO VEHICULO ¿QUÉ SE DEBE HACER?",
+      "opciones": [
+        "aumentar la velocidad",
+        "frenar bruscamente para ceder el paso",
+        "permitir que el conductor que adelanta pueda retomar su derecha lo antes posible"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 31,
+      "pregunta": "CIRCULANDO EN RUTA, USTED DEBE LLEVAR ENCENDIDAS PERMANENTEMENTE:",
+      "opciones": [
+        "Las luces bajas",
+        "Las luces altas",
+        "Ninguna de ellas"
+      ],
+      "respuesta": 0
+    }
+  ]
+]

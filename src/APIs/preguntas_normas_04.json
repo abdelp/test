@@ -1,0 +1,109 @@
+[{
+    "id": 22,
+    "pregunta": "LA DEFINICIÓN DE \"LOMADA\" ES:",
+    "opciones": [
+      "Elevación del terreno de poca altura, normalmente de forma redondeada, que viene a ser el primer grado después de la llanura.",
+      "Pequeña formación geográfica que es más alta que la llanura, señalizada con doble raya amarilla",
+      "Elevación construida sobre la vía de tránsito en forma transversal, cuya finalidad es reducir la velocidad de circulación"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 23,
+    "pregunta": "SI UN VEHÍCULO CIRCULA POR LA VÍA PÚBLICA CONTAMINANDO EL AIRE CON EMISIONES DE HUMO NEGRO, LA RESPONSABILIDAD Y LA SANCIÓN CORRESPONDERÁN",
+    "opciones": [
+      "Solamente al conductor del vehículo",
+      "Solamente al propietario del vehículo.",
+      "A ambos, al conductor y al propietario del vehículo."
+    ],
+    "respuesta": 2
+  },
+
+{
+    "id": 24,
+    "pregunta": "AL APROXIMARSE A UNA ESQUINA, USTED OBSERVA PEATONES INTENTANDO CRUZAR",
+    "opciones": [
+      "Debe detenerse y ceder el paso a los peatones, solamente cuando exista franja o cruce peatonal.",
+      "Debe detenerse y ceder el paso a los peatones, aunque no exista franja o cruce peatonal.",
+      "Porque disminuye los reflejos y afecta la concentración"
+    ],
+    "respuesta": 1
+  },
+
+{
+    "id": 25,
+    "pregunta": "AL CONDUCIR SU VEHICULO, USTED DEBE CIRCULAR EXCLUSIVAMENTE POR:",
+    "opciones": [
+      "la banquina",
+      "la calzada",
+      "la acera"
+    ],
+    "respuesta": 2
+  },
+
+{
+    "id": 26,
+    "pregunta": "EL ÚNICO DOCUMENTO QUE HABILITA A MANEJAR VEHÍCULO AUTOMOTOR ES",
+    "opciones": [
+      "la cédula de identidad",
+      "la licencia de conducir",
+      "una denuncia policial de extravío de documentos"
+    ],
+    "respuesta": 1
+  },
+
+{
+    "id": 27,
+    "pregunta": "LOS NIÑOS DE ENTRE 5 y 10 AÑOS DEBEN",
+    "opciones": [
+      "viajar en el asiento delantero, al lado del conductor",
+      "ir en el regazo del acompañante.",
+      "viajar en los asientos traseros, con el cinturón abrochado."
+    ],
+    "respuesta": 2
+  },
+
+{
+    "id": 28,
+    "pregunta": "UN ESTACIONAMIENTO RESERVADO EN LA VÍA PÚBLICA",
+    "opciones": [
+      "Puede ser utilizado exclusivamente por su titular o quien tenga autorización del mismo.",
+      "Puede ser utilizado por cualquier vehículo, hasta que se presente el titular y lo reclame.",
+      "Puede ser utilizado libremente en horas pico."
+    ],
+    "respuesta": 0
+  },
+
+{
+    "id": 29,
+    "pregunta": "¿EN QUÉ CASO PUEDE USTED CONDUCIR UN VEHICULO QUE TENGA FALLAS EN EL SISTEMA DE DIRECCIÓN O EN EL MECANISMO DE FRENO?",
+    "opciones": [
+      "cuando se presente una situación de emergencia.",
+      "cuando circule exclusivamente en calles empedradas o de tierra.",
+      "en ningún caso."
+    ],
+    "respuesta": 2
+  },
+
+{
+    "id": 30,
+    "pregunta": "AL SER ADELANTADO POR OTRO VEHICULO ¿QUÉ SE DEBE HACER?",
+    "opciones": [
+      "aumentar la velocidad",
+      "frenar bruscamente para ceder el paso",
+      "permitir que el conductor que adelanta pueda retomar su derecha lo antes posible"
+    ],
+    "respuesta": 2
+  },
+
+{
+    "id": 31,
+    "pregunta": "CIRCULANDO EN RUTA, USTED DEBE LLEVAR ENCENDIDAS PERMANENTEMENTE:",
+    "opciones": [
+      "Las luces bajas",
+      "Las luces altas",
+      "Ninguna de ellas"
+    ],
+    "respuesta": 0
+  }
+]

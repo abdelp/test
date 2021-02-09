@@ -1,0 +1,100 @@
+{
+    "id": 81,
+    "pregunta": "¿PUEDE UNA PERSONA CONDUCIR SIN LICENCIA?"
+    "opciones": [
+      "Sí, toda vez que tenga copia de su denuncia policial de robo o extravío",
+      "Sí, pero solamente cuando circule por calles empedradas, sin salir de su barrio",
+      "No puede; salvo que esté acompañado de un instructor habilitado"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 82,
+    "pregunta": "¿EN QUÉ CASO SE PUEDE CONDUCIR UN VEHÍCULO CON DESPERFECTOS MECÁNICOS?"
+    "opciones": [
+      "Cuando no afecte el funcionamiento del motor y el sistema de dirección.",
+      "En ningún caso",
+      "Cuando no se sobrepase una velocidad de 20 km/h"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 83,
+    "pregunta": "SI UNA SEÑAL VIAL INDICA UN LÍMITE DE VELOCIDAD MENOR A LO ESTABLECIDO EN LAS NORMAS, USTED DEBE"
+    "opciones": [
+      "Obedecer el límite establecido en las normas",
+      "Cumplir la indicación de la señal",
+      "Aplicar su propio criterio"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 84,
+    "pregunta": "LAS EMISIONES DE HUMO NEGRO Y OTRAS SUSTANCIAS CONTAMINANTES"
+    "opciones": [
+      "Son una infracción a las normas, con penas de multa y pasibles de ser intervenidos por la fiscalía",
+      "Son una infracción a las normas, solamente con penas de multa administrativa",
+      "Se verifican únicamente en zonas urbanas"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 85,
+    "pregunta": "AL ENFRENTAR LA LUZ VERDE DEL SEMÁFORO, USTED DEBE PRIMERAMENTE OBSERVAR LA SIGUIENTE CONDICIÓN, ANTES DE AVANZAR"
+    "opciones": [
+      "Debe encenderse previamente la luz amarilla del semáforo",
+      "Debe existir un espacio despejado en el centro de la intersección",
+      "Debe existir un espacio despejado después del cruce"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 86,
+    "pregunta": "“FRANJA O CEBRA PEATONAL” SE DEFINE COMO"
+    "opciones": [
+      "La línea pintada en el medio de la vía en color amarillo, que indican la prohibición de adelantamiento",
+      "Espacio de seguridad afectado a la vía y sus instalaciones adjuntas, comprendido hasta las propiedades lindantes",
+      "La franja de seguridad señalada o marcada en la vía pública por donde deben cruzar los peatones"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 87,
+    "pregunta": "¿EN QUÉ ZONA DE LA VÍA PÚBLICA TIENE PREFERENCIA EL PEATÓN?"
+    "opciones": [
+      "En las esquinas o bocacalles",
+      "A mitad de cuadra",
+      "Donde exista rotonda"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 88,
+    "pregunta": "SI USTED SE ENCUENTRA AL VOLANTE ¿EN QUÉ CASO PUEDE UTILIZAR SU TELÉFONO CELULAR?"
+    "opciones": [
+      "Exclusivamente en los semáforos, mientras dure la luz roja",
+      "Cuando se haya detenido por causa de un congestionamiento vehicular",
+      "En ningún caso"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 89,
+    "pregunta": "EN DÍAS DE LLUVIA O CUANDO LA CALZADA ESTÉ MOJADA, UD. DEBE"
+    "opciones": [
+      "Aumentar la velocidad para llegar más rápido a destino",
+      "Circular a velocidad reducida",
+      "Frenar bruscamente"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 90,
+    "pregunta": "PARA ADELANTAR A UN MOTOCICLISTA O A UN CICLISTA, DEBE TENER EN CUENTA QUE"
+    "opciones": [
+      "Puede realizar la maniobra compartiendo el mismo carril con el motociclista o ciclista",
+      "Debe realizar igual maniobra como si fuera a adelantar a un automóvil o camioneta",
+      "Puede hacerlo de cualquier manera, si considera que el motociclista o ciclista va muy lento"
+    ],
+    "respuesta": 1
+  },

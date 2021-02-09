@@ -1,0 +1,100 @@
+{
+    "id": 91,
+    "pregunta": "SI USTED TOMA LA DECISIÓN DEFINITIVA DE NO VOLVER A MANEJAR POR RECOMENDACIÓN MÉDICA O CUALQUIER OTRO MOTIVO"
+    "opciones": [
+      "Debe realizar una denuncia, entregando el carnet a la autoridad policial de su zona",
+      "No debe preocuparse en cancelar su licencia",
+      "Debe realizar el trámite de cancelación de su licencia de conducir, ante su municipalidad"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 92,
+    "pregunta": "USTED VA CONDUCIENDO Y SE PERCATA DE QUE HAY UN GRUPO DE NIÑOS A UN COSTADO DE LA VÍA"
+    "opciones": [
+      "Debe reducir la velocidad y estar listo para detenerse, a fin de garantizar la seguridad de los mismos",
+      "Debe frenar bruscamente y dar aviso a la autoridad competente",
+      "Debe intentar salir rápidamente de la zona de peligro"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 93,
+    "pregunta": "PARA ADELANTAR A UN MOTOCICLISTA O A UN CICLISTA, DEBE TENER EN CUENTA QUE"
+    "opciones": [
+      "Puede realizar la maniobra compartiendo el mismo carril con el motociclista o ciclista",
+      "Debe realizar igual maniobra como si fuera a adelantar a un automóvil o camioneta",
+      "Puede hacerlo de cualquier manera, si considera que el motociclista o ciclista va muy lento"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 94,
+    "pregunta": "UN VEHÍCULO QUE SALE DE UN GARAJE ¿TIENE DERECHO PREFERENTE DE PASO?"
+    "opciones": [
+      "Cuando el vehículo es camión",
+      "En ningún caso",
+      "Cuando el vehículo es de uso particular"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 95,
+    "pregunta": "¿QUÉ DEBE HACER USTED CUANDO ES ADELANTADO POR OTRO VEHÍCULO?"
+    "opciones": [
+      "Encender las luces bajas",
+      "Frenar bruscamente para dar paso",
+      "Disminuir la velocidad y ceder el paso"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 96,
+    "pregunta": "¿QUÉ SE DEBE HACER AL ACERCARSE A UNA ZONA ESCOLAR?"
+    "opciones": [
+      "Disminuir la velocidad",
+      "Tocar la bocina",
+      "Mantener la misma velocidad"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 97,
+    "pregunta": "¿QUÉ HACER CUANDO LA CALZADA ESTÁ HUMEDA POR LLUVIA O SUSTANCIA RESVALOSA?"
+    "opciones": [
+      "Aumentar la velocidad",
+      "Circular a velocidad reducida",
+      "Detenerse inmediatamente"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 98,
+    "pregunta": "¿A CUÁNTOS METROS DE UNA SEÑAL “PARE” O “CEDA EL PASO” SE PUEDE ESTACIONAR?"
+    "opciones": [
+      "A 10 metros o más",
+      "A 5 metros o más",
+      "A 1 metros o más"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 99,
+    "pregunta": "¿CÓMO HAY QUE COMPORTARSE AL ACERCARSE A UN PASO DE FERROCARRIL QUE NO TIENE BARRERA NI LUZ INTERMITENTE?"
+    "opciones": [
+      "Acercarse a gran velocidad",
+      "No tiene ninguna obligación que cumplir",
+      "Disminuir la velocidad y observar la vía férrea hacia ambos lados y cruzar con precaución"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 100,
+    "pregunta": "CONDUCIR CON ZAPATILLAS (CALZADOS ABIERTOS)"
+    "opciones": [
+      "Está permitido, especialmente en días de mucho calor",
+      "Está prohibido, por dificultar el uso de los pedales",
+      "Está prohibido solamente para conductores de transporte colectivo"
+    ],
+    "respuesta": 1
+  },
