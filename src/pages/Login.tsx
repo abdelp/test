@@ -10,7 +10,7 @@ const LoginPage: React.FC = () => (
     <IonContent id="login-content" className="ion-padding">
       <div className="grilla">
         <SignInFormBase />
-        <p>v1.0.1</p>  
+        <p>v1.0.1</p>
       </div>
     </IonContent>
   </IonPage>
