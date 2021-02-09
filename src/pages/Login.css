@@ -1,12 +1,3 @@
-@font-face {
-  font-family: 'Calibri';
-  src: url('../assets/fonts/CalibriRegular.ttf');
-}
-
-* {
-  font-family: 'Calibri';
-}
-
 .submit-btn,
 .confirmar-btn,
 .back-to-main,

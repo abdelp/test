@@ -286,3 +286,12 @@ http://ionicframework.com/docs/theming/ */
     --ion-card-background: #1e1e1e;
   }
 }
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('../assets/fonts/CalibriRegular.ttf');
+}
+
+* {
+  font-family: 'Calibri';
+}
