@@ -1,12 +1,3 @@
-:root {
-  --ion-color-yellow: #b0c60d;
-  --ion-color-yellow-rgb: 176, 198, 13;
-  --ion-color-yellow-contrast: #ffffff;
-  --ion-color-yellow-contrast-rgb: 255,255,255;
-  --ion-color-yellow-shade: #5ca56c;
-  --ion-color-yellow-tint: #b0c60d;
-}
-
 .ion-color-yellow {
   --ion-color-base: var(--ion-color-yellow);
   --ion-color-base-rgb: var(--ion-color-yellow-rgb);

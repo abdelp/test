@@ -74,6 +74,62 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** favorite **/
+  --ion-color-favorite: #63a856;
+  --ion-color-favorite-rgb: 98,	183, 102;
+  --ion-color-favorite-contrast: #ffffff;
+  --ion-color-favorite-contrast-rgb: 255,255,255;
+  --ion-color-favorite-shade: #5ca56c;
+  --ion-color-favorite-tint: #78c288;
+
+  /** alert **/
+  --ion-color-alert: #e93a49;
+  --ion-color-alert-rgb: 0, 175, 194;
+  --ion-color-alert-contrast: #ffffff;
+  --ion-color-alert-contrast-rgb: 255,255,255;
+  --ion-color-alert-shade:#d62534;
+  --ion-color-alert-tint: #78c288;
+
+  /** yellow **/
+  --ion-color-yellow: #b0c60d;
+  --ion-color-yellow-rgb: 176, 198, 13;
+  --ion-color-yellow-contrast: #ffffff;
+  --ion-color-yellow-contrast-rgb: 255,255,255;
+  --ion-color-yellow-shade: #5ca56c;
+  --ion-color-yellow-tint: #b0c60d;
+
+  /** light gray **/
+  --ion-color-light-gray: #e7e7e7;
+  --ion-color-light-gray-rgb: 246, 161, 62;
+  --ion-color-light-gray-contrast: #ffffff;
+  --ion-color-light-gray-contrast-rgb: 255,255,255;
+  --ion-color-light-gray-shade: #5ca56c;
+  --ion-color-light-gray-tint: #78c288;
+
+  /** light blue **/
+  --ion-color-light-blue: #00afc2;
+  --ion-color-light-blue-rgb: 0, 175, 194;
+  --ion-color-light-blue-contrast: #ffffff;
+  --ion-color-light-blue-contrast-rgb: 255,255,255;
+  --ion-color-light-blue-shade:#018594;
+  --ion-color-light-blue-tint: #78c288;
+
+  /** lighter blue **/
+  --ion-color-lighter-blue:#B8E8ED;
+  --ion-color-lighter-blue-rgb: 184, 232, 237;
+  --ion-color-lighter-blue-contrast: #ffffff;
+  --ion-color-lighter-blue-contrast-rgb: 255,255,255;
+  --ion-color-lighter-blue-shade:#B8E8ED;
+  --ion-color-lighter-blue-tint: #78c288;
+
+  /** orange **/
+  --ion-color-orange: #F6A13E;
+  --ion-color-orange-rgb: 246, 161, 62;
+  --ion-color-orange-contrast: #ffffff;
+  --ion-color-orange-contrast-rgb: 255,255,255;
+  --ion-color-orange-shade: #5ca56c;
+  --ion-color-orange-tint: #78c288;
 }
 
 @media (prefers-color-scheme: dark) {
