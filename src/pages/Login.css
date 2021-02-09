@@ -110,12 +110,12 @@
 }
 
 .grilla {
+  position: relative;
   display: flex;
-  align-items: center;
-  text-align: justify;
-  height: 90vh;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 ion-input,
