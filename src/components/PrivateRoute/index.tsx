@@ -1,10 +1,10 @@
+// @ts-nocheck
 import React from "react";
 import { Route } from "react-router-dom";
 import { withCookies, Cookies } from "react-cookie";
 import { instanceOf } from "prop-types";
 import LoginPage from "../../pages/Login";
 
-// @ts-ignore
 const PrivateRoute: React.FC = ({
   component: Component,
   cookies,

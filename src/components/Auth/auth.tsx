@@ -1,3 +1,4 @@
+// @ts-nocheck
 import axios from "axios";
 import to from "await-to-js";
 import { HTTP } from "@ionic-native/http";
@@ -45,10 +46,6 @@ const signInWithUsernameAndPassword = async (
 
     if (error) throw error;
 
-    {
-      /*
-     //@ts-ignore */
-    }
     const {
       ["soap:Envelope"]: {
         ["soap:Body"]: {

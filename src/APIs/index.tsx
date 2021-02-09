@@ -1,3 +1,4 @@
+// @ts-nocheck
 import PREGUNTAS_SENHALES from "./preguntas_senhales.json";
 import PREGUNTAS_DECLARACION_JURADA from "./declaracion_jurada.json";
 import ITEMS_MOTOCICLETA_PRACTICO from "./motocicleta_practico.json";
@@ -52,10 +53,6 @@ const getTestedUserData = async (
 
     if (error) throw error;
 
-    {
-      /*
-      //@ts-ignore */
-    }
     const {
       ["soap:Envelope"]: {
         "soap:Body": {
@@ -105,7 +102,6 @@ const getTestedUserData = async (
 };
 
 const getCategories = async () => (
-  // @ts-ignore
   {
     name: "Conductor B2",
     description: "A description",

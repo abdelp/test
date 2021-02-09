@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Menu from "./components/Menu";
 
 import LoginPage from "./pages/Login";
@@ -75,112 +76,78 @@ const App: React.FC = (props: any) => {
           <IonSplitPane contentId="main" when={false}>
             <Menu />
             <IonRouterOutlet id="main">
-              {/*
-                // @ts-ignore */}
               <PrivateRoute
                 path="/regist-user"
                 component={RegistUserPage}
                 exact
               />
-              {/* 
-                // @ts-ignore */}
               <PrivateRoute
                 path="/page/test-types"
                 component={TestTypesPage}
                 exact
               />
-              {/* 
-                // @ts-ignore */}
               <PrivateRoute
                 path="/page/multiple-options"
                 component={MultipleOptionsPage}
                 exact
               />
-              {/* 
-                // @ts-ignore */}
               <PrivateRoute
                 path="/page/memorize-numbers"
                 component={MemorizeNumbersPage}
                 exact
               />
-              {/* 
-                // @ts-ignore */}
               <PrivateRoute
                 path="/page/test-practico"
                 component={PracticalTestPage}
                 exact
               />
-              {/* 
-                // @ts-ignore */}
               <PrivateRoute
                 path="/page/instrucciones"
                 component={InstructionsPage}
                 exact
               />
-              {/* 
-                // @ts-ignore */}
               <PrivateRoute
                 path="/page/test-finished"
                 component={TestFinishedPage}
                 exact
               />
-              {/* 
-                // @ts-ignore */}
               <PrivateRoute
                 path="/page/time-out"
                 component={TimeOutPage}
                 exact
               />
-              {/* 
-                // @ts-ignore */}
               <PrivateRoute path="/page/notice" component={NoticePage} exact />
-              {/*
-                // @ts-ignore */}
               <PrivateRoute
                 path="/page/declaracion-jurada"
                 component={DeclaracionJuradaPage}
                 exact
               />
-              {/*
-                // @ts-ignore */}
               <PrivateRoute
                 path="/page/test-ubicaciones"
                 component={LocationTestPage}
                 exact
               />
-              {/*
-                // @ts-ignore */}
               <PrivateRoute
                 path="/page/test-colores"
                 component={ColorsTestPage}
                 exact
               />
-              {/*
-                // @ts-ignore */}
               <PrivateRoute
                 path="/page/test-direcciones"
                 component={DirectionsTestPage}
                 exact
               />
-              {/*
-              // @ts-ignore */}
               <PrivateRoute
                 path="/page/numeros-grandes"
                 component={BiggerNumberPage}
                 exact
               />
-              {/*
-              // @ts-ignore */}
               <PrivateRoute
                 path="/page/posiciones-bloques"
                 component={BlockPositionsPage}
                 exact
               />
-              {/*
-              // @ts-ignore */}
               <PrivateRoute path="/page/report" component={ReportPage} exact />
-              {/*
-              // @ts-ignore */}
               <PrivateRoute path="/" exact>
                 {props.cookies.get("usuario") ? (
                   <RegistUserPage />
