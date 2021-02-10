@@ -114,10 +114,6 @@ const RegistUserPage: React.FC<UserProps> = ({
     return;
   };
 
-  useEffect(() => {
-    return () => console.log('desmontando...');
-  }, []);
-
   const { nroDocumento, user, error, loading } = state;
 
   return (

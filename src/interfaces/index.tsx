@@ -1,7 +1,7 @@
 import { RouteComponentProps  } from "react-router-dom";
 interface Title {
   color: string;
-  title: string;
+  children: any;
 }
 
 interface UserProps extends RouteComponentProps {};

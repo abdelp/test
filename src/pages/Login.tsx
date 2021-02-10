@@ -6,7 +6,7 @@ import "./Login.css";
 
 const LoginPage: React.FC = () => (
   <IonPage id="login-page">
-    <Header color="favorite" title="Login" />
+    <Header color="favorite">Login</Header>
     <IonContent className="ion-padding">
       <div className="grilla">
         <SignInFormBase />
