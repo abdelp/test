@@ -53,6 +53,8 @@ import "./theme/variables.css";
 import { Network } from "@ionic-native/network";
 import { sincronizarResultados } from "./utils/synchronizer";
 
+import { Route } from "react-router-dom";
+
 const App: React.FC = (props: any) => {
   useEffect(() => {
     Network.onConnect().subscribe(() => {
@@ -76,7 +78,7 @@ const App: React.FC = (props: any) => {
           <IonSplitPane contentId="main" when={false}>
             <Menu />
             <IonRouterOutlet id="main">
-              <PrivateRoute
+              <Route
                 path="/regist-user"
                 component={RegistUserPage}
                 exact

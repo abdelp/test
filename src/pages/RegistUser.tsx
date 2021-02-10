@@ -12,7 +12,7 @@ import {
 import React, { useState, useEffect } from "react";
 import to from "await-to-js";
 
-import { useHistory } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { getTestedUserData } from "../APIs";
 import "./RegistUser.css";
 import SearchTestedUserFormBase from "../components/SearchTestedUserFormBase";
@@ -25,8 +25,11 @@ import {
   agregarUsuarioTesteado,
 } from "../utils/db";
 
-const RegistUserPage: React.FC = () => {
-  const history = useHistory();
+import { UserProps } from '../interfaces';
+
+const RegistUserPage: React.FC<UserProps> = ({
+  history
+}) => {
   const [state, setState]: any = useState<any>({
     nroDocumento: "",
     user: null,
@@ -34,7 +37,6 @@ const RegistUserPage: React.FC = () => {
     error: null,
   });
 
-  const [usuariosTesteados, setUsuariosTesteados]: any = useState([]);
   const [cookies, setCookie] = useCookies(["usuario_testeado"]);
 
   const handleChange = (event: any) =>
@@ -113,15 +115,7 @@ const RegistUserPage: React.FC = () => {
   };
 
   useEffect(() => {
-    // const x = async () => {
-    //   const result = await eliminarUsuarioTesteadoPorCedula('111');
-
-    //   return result;
-    // };
-
-    // x().then((result: any) => console.log(result));
-
-    setState((state: any) => ({ ...state, nroDocumento: "", user: null }));
+    return () => console.log('desmontando...');
   }, []);
 
   const { nroDocumento, user, error, loading } = state;
@@ -171,4 +165,4 @@ const RegistUserPage: React.FC = () => {
   );
 };
 
-export default RegistUserPage;
+export default withRouter(RegistUserPage);

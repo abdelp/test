@@ -48,8 +48,9 @@ const SignInFormBase = ({ auth, history, cookies, setShowLogin }: any) => {
           setShowLogin(false);
         }
 
-        setState((state: any) => ({ ...state, ...INITIAL_STATE }));
+        // setState((state: any) => ({ ...state, ...INITIAL_STATE }));
 
+        console.log(ROUTES.REGIST_USER)
         history.replace(ROUTES.REGIST_USER);
       } else {
         const {
