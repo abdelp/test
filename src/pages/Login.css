@@ -123,12 +123,14 @@ ion-textarea {
   text-align: center;
   height: 6vh;
   margin-bottom: 3vh !important;
-  font-size: 4vh !important;
+  font-size: 2.4em !important;
 }
 
-.native-input.sc-ion-input-md:-webkit-autofill,
-.native-input.sc-ion-input-md {
-  font-size: 4vh;
+@media screen and (max-width: 1200px) {
+  .native-input.sc-ion-input-md:-webkit-autofill,
+  .native-input.sc-ion-input-md {
+    font-size: 2.0em;
+  }
 }
 
 .datosdeinteresado ion-item {

@@ -3,7 +3,6 @@ import { IonItem, IonInput, IonSpinner } from "@ionic/react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import * as ROUTES from "../../constants/routes";
-import * as Auth from "../Auth/auth";
 import { signInWithUsernameAndPassword } from "../Auth/auth";
 import { withCookies, Cookies } from "react-cookie";
 import to from "await-to-js";
@@ -29,7 +28,7 @@ const SignInFormBase = ({ auth, history, cookies, setShowLogin }: any) => {
     let error: any, result;
 
     [error, result] = await to(
-      Auth.signInWithUsernameAndPassword(username, password)
+      signInWithUsernameAndPassword(username, password)
     );
 
     if (!error) {
@@ -48,9 +47,6 @@ const SignInFormBase = ({ auth, history, cookies, setShowLogin }: any) => {
           setShowLogin(false);
         }
 
-        // setState((state: any) => ({ ...state, ...INITIAL_STATE }));
-
-        console.log(ROUTES.REGIST_USER)
         history.replace(ROUTES.REGIST_USER);
       } else {
         const {
@@ -105,6 +101,7 @@ const SignInFormBase = ({ auth, history, cookies, setShowLogin }: any) => {
         className="submit-btn"
         value="ACEPTAR"
         color="favorite"
+        disabled={isInvalid}
       />
       {loading && (
         <IonItem>
