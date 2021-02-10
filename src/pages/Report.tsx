@@ -8,6 +8,7 @@ import {
   IonTitle,
   IonToolbar,
   IonItem,
+  IonAlert
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -48,6 +49,8 @@ const ReportPage: React.FC = ({ location, cookies }: any) => {
     loading: false,
     error: null,
   });
+
+  const [showAlert, setShowAlert] = useState<any>({show: false, message: '', title: ''});
 
   useEffect(() => {
     const { nroDocumento, idAntecedente } = cookies.get("usuario_testeado");
@@ -226,15 +229,26 @@ const ReportPage: React.FC = ({ location, cookies }: any) => {
         sendResult(ticket.text, "", idAntecedente, true)
       );
 
+      console.log(err);
       if (err) {
-        alert(error);
+        const mensaje = 'No se pudo enviar el resultado'
+        setShowAlert({show: true, message: mensaje, title: 'Error'});
       } else {
-        await actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
-          usuario.nroDocumento,
-          "cedula",
-          usuario.idAntecedente,
-          { sincronizado: true }
-        );
+
+        console.log(enviado);
+
+        if(enviado?.codError === "0") {
+          await actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
+            usuario.nroDocumento,
+            "cedula",
+            usuario.idAntecedente,
+            { sincronizado: true }
+          );
+          setShowAlert({show: true, message: 'Resultado enviado correctamente', title: 'Confirmación'});
+
+        } else {
+          setShowAlert({show: true, message: "No se pudo enviar el resultado, favor verifique su conexión a internet", title: 'Error'});
+        }
       }
     } else {
       console.log("no se pasaron todos los examenes");
@@ -271,6 +285,24 @@ const ReportPage: React.FC = ({ location, cookies }: any) => {
       </IonHeader>
 
       <IonContent className="ion-padding">
+        <IonAlert
+            isOpen={showAlert.show}
+            onDidDismiss={() => setShowAlert({show: false, message: '', title: ''})}
+            cssClass="my-custom-class"
+            header={showAlert.title}
+            message={
+              showAlert.message
+            }
+            buttons={[
+              {
+                text: "Ok",
+                handler: () => {
+                  // setShowAlert(false)
+                },
+              },
+            ]}
+          />
+
         {user && (
           <>
             <DataList user={user} />

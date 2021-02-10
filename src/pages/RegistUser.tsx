@@ -9,7 +9,7 @@ import {
   IonMenuButton,
   IonSpinner,
 } from "@ionic/react";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import to from "await-to-js";
 
 import { withRouter } from "react-router-dom";
@@ -36,11 +36,11 @@ const RegistUserPage: React.FC<UserProps> = ({
     loading: false,
     error: null,
   });
-
-  const [cookies, setCookie] = useCookies(["usuario_testeado"]);
-
+  
+  const [cookies, setCookie] = useCookies(["usuario_testeado"]);  
+  
   const handleChange = (event: any) =>
-    setState((state: any) => ({
+  setState((state: any) => ({
       ...state,
       [event.target.name]: event.target.value,
     }));

@@ -98,3 +98,121 @@
     ],
     "respuesta": 1
   },
+
+// señales
+    [
+    {
+      "id": 1,
+      "img": "senal_pare.svg",
+      "pregunta": "La siguiente señal indica",
+      "opciones": [
+        "Estacionamiento prohibido",
+        "Estacionamiento permitido",
+        "Estacionamiento reglamentado por hora"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 2,
+      "img": "senal_pare.svg",
+      "pregunta": "La siguiente señal indica",
+      "opciones": [
+        "Estacionamiento prohibido",
+        "Estacionamiento permitido",
+        "Estacionamiento reglamentado por hora"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 3,
+      "pregunta": "Acera o vereda es",
+      "opciones": [
+        "Franja comprendida entre la calzada y la línea de construcción de los inmuebles, reservada al tránsito de peatones.",
+        "Vía especialmente diseñada para dar paso al caudal de aguas superficiales.",
+        "Depresión de la vía a un costado de la calzada que se utiliza para circulación de biciclos."
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": 4,
+      "pregunta": "EL PEATÓN QUE ATRAVIESA LA CALZADA POR LA FRANJA PEATONAL O EN LAS ESQUINAS ¿TIENE PREFERENCIA SOBRE LOS VEHÍCULOS?",
+      "opciones": [
+        "Tiene preferencia solamente cuando se trate de una zona céntrica.",
+        "Tiene preferencia siempre, salvo cuando se trate de una vía de tránsito preferencial.",
+        "Tiene preferencia siempre, salvo que un semáforo o agente indique lo contrario."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 5,
+      "pregunta": "AL TRANSITAR CON SU VEHICULO DURANTE LA NOCHE EN VÍAS URBANAS, USTED DEBE UTILIZAR",
+      "opciones": ["Luces altas", "Luces bajas", "Luces de estacionamiento"],
+      "respuesta": 1
+    },
+    {
+      "id": 6,
+      "pregunta": "EL USO DE LA BOCINA ESTÁ PERMITIDO",
+      "opciones": [
+        "Para apurar al vehículo que va adelante",
+        "Para anunciar que se estacionará",
+        "Para prevenir un accidente, en caso de peligro inminente"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 7,
+      "pregunta": "ES OBLIGACION DE TODO CONDUCTOR",
+      "opciones": [
+        "Usar la bocina ante de cruzar la boca-calle",
+        "Exhibir su licencia de conducir ante el requerimiento de la autoridad competente",
+        "Mantener el pedal del embrague oprimido durante la circulación"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 8,
+      "pregunta": "CUANDO DOS VEHÍCULOS CIRCULAN EN SENTIDOS OPUESTOS Y DESEAN GIRAR HACIA EL MISMO LADO ¿CUÁL TIENE PREFERENCIA?",
+      "opciones": [
+        "Ambos",
+        "El que va girar a la izquierda",
+        "El que va girar a la derecha"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 9,
+      "pregunta": "CUANDO UN VEHÍCULO ESTACIONADO SE DISPONE A INCORPORARSE A LA CIRCULACION, SE DEBE TENER PRESENTE EL SIGUIENTE ORDEN",
+      "opciones": [
+        "Mirar hacia atrás, mirar por el retrovisor, tocar la bocina y salir",
+        "Encender el señalero, mirar por el retrovisor, girar la cabeza para observar y ceder siempre el paso",
+        "Tocar la bocina para salir "
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 10,
+      "pregunta": "¿CUÁNDO PIERDE UN VEHÍCULO SU PREFERENCIA DE CRUCE Y PASO?",
+      "opciones": [
+        "Cuando se disponga a realizar maniobra de giro.",
+        "Cuando es adelantado por un ómnibus de transporte colectivo",
+        "Cuando lleve encendidas sus luces reglamentarias"
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": 11,
+      "pregunta": "LOS LÍMITES DE VELOCIDAD MÁXIMA PERMITIDA SON",
+      "opciones": [
+        "60 km/h en zona urbana y 80 km/h para zona rural",
+        "40 km/h en zona urbana y 120 km/h para zona rural.",
+        "50 km/h en zona urbana y 110 km/h para zona rural"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 12,
+      "pregunta": "¿A QUÉ DISTANCIA  DE UN GRIFO DE AGUA PARA INCENDIOS DEBE ESTACIONARSE UN VEHÍCULO?",
+      "opciones": ["Más de tres metros.", "Menos de dos metros.", "Un metro"],
+      "respuesta": 0
+    }
+  ],

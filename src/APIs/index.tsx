@@ -118,8 +118,8 @@ const randomNumber = (length: any) =>
 const getPreguntasSenhales = () => {
   return new Promise((resolve, reject) => {
     resolve([
-      // ...PREGUNTAS_SENHALES, ...PREGUNTAS_MECANICA, ...PREGUNTAS_PRIMEROS_AUXILIOS,
-      ...PREGUNTAS_NORMAS[randomNumber(PREGUNTAS_NORMAS.length)],
+      ...PREGUNTAS_SENHALES, ...PREGUNTAS_MECANICA, ...PREGUNTAS_PRIMEROS_AUXILIOS,
+      ...PREGUNTAS_NORMAS[0],
     ]);
   });
 };
@@ -168,20 +168,25 @@ const sendResult = async (
 
     if (error) throw error;
 
+    const {
+      ["soap:Envelope"]: {
+        "soap:Body": {
+          EnviarResultadoResponse: {
+            EnviarResultadoResult: {
+              CodError: { text }
+            },
+          },
+        },
+      },
+    } = xml2js(result.data,
     {
-      /*
-      //@ts-ignore */
-    }
-    // const {
-    // } = xml2js(result.data,
-    // {
-    //   ignoreDeclaration: true,
-    //   ignoreAttributes: true,
-    //   compact: true,
-    //   textKey: "text"
-    // });
+      ignoreDeclaration: true,
+      ignoreAttributes: true,
+      compact: true,
+      textKey: "text"
+    });
 
-    return { codError: 0 };
+    return { codError: text };
   } catch (e) {
     throw e;
   }
