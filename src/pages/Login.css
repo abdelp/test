@@ -121,15 +121,21 @@ ion-textarea {
   border: solid 2px var(--ion-color-favorite);
   font-weight: bold;
   text-align: center;
-  height: 6vh;
   margin-bottom: 3vh !important;
-  font-size: 2.4em !important;
 }
 
-@media screen and (max-width: 1200px) {
+@media (min-width: 1200px) and (max-width: 1200px) {
   .native-input.sc-ion-input-md:-webkit-autofill,
   .native-input.sc-ion-input-md {
-    font-size: 2.0em;
+    font-size: 1.2em;
+  }
+}
+
+@media (min-width: 1200px) {
+  ion-input,
+  ion-textarea {
+    height: 2em;
+    font-size: 3em !important;
   }
 }
 
