@@ -49,7 +49,7 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
   useEffect(() => {
     getDeclaracionJurada()
       .then((result) => {
-        setQuestions(result);
+        setQuestions(_.cloneDeep(result));
       })
       .catch((error) => console.log(error));
   }, []);
