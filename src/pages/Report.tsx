@@ -8,7 +8,8 @@ import {
   IonTitle,
   IonToolbar,
   IonItem,
-  IonAlert
+  IonAlert,
+  IonLabel
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -36,6 +37,7 @@ const ReportPage: React.FC = ({ location, cookies }: any) => {
   const [state, setState]: any = useState<any>({
     nroDocumento: "",
     user: null,
+    aprobado: false,
     porcentajes: {
       declaracionJurada: 0,
       practico: 0,
@@ -212,7 +214,10 @@ const ReportPage: React.FC = ({ location, cookies }: any) => {
       testsArray.push(porcentajeTeorico);
     }
 
+    let aprobado = false;
+  
     if (testsArray.every(examPassed)) {
+      aprobado = true;
       let [error, result] = await to(
         actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
           usuario.nroDocumento,
@@ -229,14 +234,10 @@ const ReportPage: React.FC = ({ location, cookies }: any) => {
         sendResult(ticket.text, "", idAntecedente, true)
       );
 
-      console.log(err);
       if (err) {
         const mensaje = 'No se pudo enviar el resultado'
         setShowAlert({show: true, message: mensaje, title: 'Error'});
       } else {
-
-        console.log(enviado);
-
         if(enviado?.codError === "0") {
           await actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
             usuario.nroDocumento,
@@ -268,10 +269,11 @@ const ReportPage: React.FC = ({ location, cookies }: any) => {
     setState((state: any) => ({
       ...state,
       porcentajes: nuevosPorcentajes,
+      aprobado: aprobado
     }));
   };
 
-  const { user, porcentajes } = state;
+  const { user, porcentajes, aprobado } = state;
 
   return (
     <IonPage>
@@ -306,6 +308,11 @@ const ReportPage: React.FC = ({ location, cookies }: any) => {
         {user && (
           <>
             <DataList user={user} />
+            <IonItem>
+              <IonLabel>
+                <strong>Resultado:</strong> {aprobado ? 'APROBADO' : 'NO APROBADO'}
+              </IonLabel>
+            </IonItem>
             <IonTitle className="report-title">Declaración Jurada</IonTitle>
             <IonItem>
               <div className="percentage-container">
