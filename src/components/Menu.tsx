@@ -7,7 +7,6 @@ import {
   IonListHeader,
   IonMenu,
   IonMenuToggle,
-  IonButton,
   IonPopover,
   IonHeader,
   IonToolbar,
@@ -24,7 +23,6 @@ import SignInFormBase from "../components/SignInFormBase";
 import { withCookies } from "react-cookie";
 import iconoFinalizar from "../assets/menu-check.svg";
 import iconoCerrar from "../assets/menu-power.svg";
-
 interface AppPage {
   url: string;
   iosIcon: string;
@@ -92,7 +90,6 @@ const Menu: React.FC = (props: any) => {
                   className={
                     location.pathname === appPage.url ? "selected" : ""
                   }
-                  // routerLink={appPage.url}
                   routerDirection="none"
                   lines="none"
                   detail={false}
@@ -117,11 +114,9 @@ const Menu: React.FC = (props: any) => {
           </IonMenuToggle>
 
           <section>
-            {/* {props.cookies.get('usuario_testeado') && */}
-            <IonItem className="botonmenu" onClick={logoutAction}>
+            <IonItem className="botonmenu">
               Salir
             </IonItem>
-            {/* } */}
             {props.cookies.get("usuario_testeado") && (
               <IonItem className="botonmenu" onClick={logoutAction}>
                 <IonImg className="iconomenu" src={iconoFinalizar}></IonImg>{" "}
