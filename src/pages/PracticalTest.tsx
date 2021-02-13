@@ -47,7 +47,7 @@ const PracticalTestPage: React.FC = (props: any) => {
   useEffect(() => {
     getPracticalTestItems()
       .then((result) => {
-        setQuestions(result);
+        setQuestions(_.cloneDeep(result));
       })
       .catch((error) => console.log(error));
   });
