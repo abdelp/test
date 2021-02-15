@@ -4,16 +4,6 @@
 [react-scripts] i ｢wds｣: Content not from webpack is served from D:\Users\Abdel\Documents\freelancing\test\public
 [react-scripts] i ｢wds｣: 404s will fallback to /
 [react-scripts] Starting the development server...
-[react-scripts] ./src/pages/TestFinished.tsx
-[react-scripts]   Line 10:3:   'IonList' is defined but never used                 @typescript-eslint/no-unused-vars
-[react-scripts]   Line 11:3:   'IonItem' is defined but never used                 @typescript-eslint/no-unused-vars
-[react-scripts]   Line 12:3:   'IonLabel' is defined but never used                @typescript-eslint/no-unused-vars
-[react-scripts]   Line 23:10:  'total' is assigned a value but never used          @typescript-eslint/no-unused-vars
-[react-scripts]   Line 24:10:  'correctas' is assigned a value but never used      @typescript-eslint/no-unused-vars
-[react-scripts]   Line 25:10:  'incorrectas' is assigned a value but never used    @typescript-eslint/no-unused-vars
-[react-scripts]   Line 26:10:  'noRespondidas' is assigned a value but never used  @typescript-eslint/no-unused-vars
-[react-scripts]   Line 27:10:  'porcentaje' is assigned a value but never used     @typescript-eslint/no-unused-vars
-[react-scripts]   Line 46:43:  Expected '===' and instead saw '=='                 eqeqeq
 [react-scripts] ./src/pages/BlockPositionsTest.tsx
 [react-scripts]   Line 11:10:   'set' is defined but never used                                                                                                                                  @typescript-eslint/no-unused-vars
 [react-scripts]   Line 13:10:   'sendResult' is defined but never used                                                                                                                           @typescript-eslint/no-unused-vars
@@ -38,6 +28,13 @@
 [react-scripts]   Line 1:38:   'Fragment' is defined but never used                  @typescript-eslint/no-unused-vars
 [react-scripts]   Line 65:21:  'result' is assigned a value but never used           @typescript-eslint/no-unused-vars
 [react-scripts]   Line 76:13:  'usuarioTesteado' is assigned a value but never used  @typescript-eslint/no-unused-vars
+[react-scripts] ./src/pages/TestFinished.tsx
+[react-scripts]   Line 20:10:  'total' is assigned a value but never used          @typescript-eslint/no-unused-vars
+[react-scripts]   Line 21:10:  'correctas' is assigned a value but never used      @typescript-eslint/no-unused-vars
+[react-scripts]   Line 22:10:  'incorrectas' is assigned a value but never used    @typescript-eslint/no-unused-vars
+[react-scripts]   Line 23:10:  'noRespondidas' is assigned a value but never used  @typescript-eslint/no-unused-vars
+[react-scripts]   Line 24:10:  'porcentaje' is assigned a value but never used     @typescript-eslint/no-unused-vars
+[react-scripts]   Line 43:43:  Expected '===' and instead saw '=='                 eqeqeq
 [react-scripts] ./src/pages/Notice.tsx
 [react-scripts]   Line 21:19:  'setCookie' is assigned a value but never used  @typescript-eslint/no-unused-vars
 [react-scripts] ./src/pages/Instructions.tsx

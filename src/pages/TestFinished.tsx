@@ -7,9 +7,6 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonList,
-  IonItem,
-  IonLabel,
   IonImg,
 } from "@ionic/react";
 import React, { useState, useEffect } from "react";
@@ -87,22 +84,6 @@ const TestFinishedPage: React.FC = (props) => {
             aceptar
           </IonButton>
         </div>
-
-        {/*
-        <h1>El test ha finalizado</h1>
-        <br/>
-        <IonList>
-          <IonItem>
-            <IonLabel><strong>Correctas:</strong> {correctas}/{total}</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel><strong>Incorrectas:</strong> {incorrectas}/{total}</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel><strong>Porcentaje:</strong> {porcentaje}%</IonLabel>
-          </IonItem> 
-        </IonList>
-         */}
       </IonContent>
     </IonPage>
   );
