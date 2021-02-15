@@ -4,16 +4,6 @@
 [react-scripts] i ｢wds｣: Content not from webpack is served from D:\Users\Abdel\Documents\freelancing\test\public
 [react-scripts] i ｢wds｣: 404s will fallback to /
 [react-scripts] Starting the development server...
-[react-scripts] ./src/pages/BlockPositionsTest.tsx
-[react-scripts]   Line 11:10:   'set' is defined but never used                                                                                                                                  @typescript-eslint/no-unused-vars
-[react-scripts]   Line 13:10:   'sendResult' is defined but never used                                                                                                                           @typescript-eslint/no-unused-vars
-[react-scripts]   Line 155:15:  'ticket' is assigned a value but never used                                                                                                                      @typescript-eslint/no-unused-vars
-[react-scripts]   Line 209:6:   React Hook useEffect has missing dependencies: 'alignBlocks', 'checkBlocksSelected', 'history', and 'props'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
-[react-scripts]   Line 211:9:   'empezar' is assigned a value but never used                                                                                                                     @typescript-eslint/no-unused-vars
-[react-scripts]   Line 245:11:  'min' is assigned a value but never used                                                                                                                         @typescript-eslint/no-unused-vars
-[react-scripts]   Line 245:16:  'sec' is assigned a value but never used                                                                                                                         @typescript-eslint/no-unused-vars
-[react-scripts]   Line 245:21:  'btns' is assigned a value but never used                                                                                                                        @typescript-eslint/no-unused-vars
-[react-scripts]   Line 245:27:  'showButtons' is assigned a value but never used                                                                                                                 @typescript-eslint/no-unused-vars
 [react-scripts] ./src/pages/BiggerNumber.tsx
 [react-scripts]   Line 12:10:  'sendResult' is defined but never used                                                                                                                                                                                     @typescript-eslint/no-unused-vars
 [react-scripts]   Line 37:20:  'setIsActive' is assigned a value but never used                                                                                                                                                                           @typescript-eslint/no-unused-vars
@@ -28,6 +18,8 @@
 [react-scripts]   Line 1:38:   'Fragment' is defined but never used                  @typescript-eslint/no-unused-vars
 [react-scripts]   Line 65:21:  'result' is assigned a value but never used           @typescript-eslint/no-unused-vars
 [react-scripts]   Line 76:13:  'usuarioTesteado' is assigned a value but never used  @typescript-eslint/no-unused-vars
+[react-scripts] ./src/pages/BlockPositionsTest.tsx
+[react-scripts]   Line 206:6:  React Hook useEffect has missing dependencies: 'alignBlocks', 'checkBlocksSelected', 'history', and 'props'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
 [react-scripts] ./src/pages/TestFinished.tsx
 [react-scripts]   Line 20:10:  'total' is assigned a value but never used          @typescript-eslint/no-unused-vars
 [react-scripts]   Line 21:10:  'correctas' is assigned a value but never used      @typescript-eslint/no-unused-vars

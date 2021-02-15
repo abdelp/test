@@ -8,9 +8,7 @@ import {
   IonButton,
 } from "@ionic/react";
 import { useHistory } from "react-router-dom";
-import { set } from "idb-keyval";
 import { withCookies } from "react-cookie";
-import { sendResult } from "../APIs";
 import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from "../utils/db";
 import "./MemorizeNumbers.css";
 import _ from "lodash";
@@ -152,7 +150,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
     } else {
       rotationInterval = window.setTimeout(() => {
         const { cookies } = props;
-        const ticket = cookies.get("ticket");
         const categoria = cookies.get("categoria");
         const usuarioTesteado = cookies.get("usuario_testeado");
         const { nroDocumento, idAntecedente } = usuarioTesteado;
@@ -208,9 +205,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
     };
   }, [state]);
 
-  const empezar = () =>
-    setState((state: any) => ({ ...state, mensaje: "Atención", round: 1 }));
-
   const { round, mensaje } = state;
 
   const pickBlock = (number: any) => {
@@ -242,7 +236,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
     return result;
   };
 
-  const { min, sec, btns, showButtons, bloquesAMostrar: bloques } = state;
+  const { bloquesAMostrar: bloques } = state;
 
   return (
     <IonPage>
