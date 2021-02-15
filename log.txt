@@ -6,25 +6,6 @@
 [react-scripts] Starting the development server...
 [react-scripts] ./src/pages/BlockPositionsTest.tsx
 [react-scripts]   Line 206:6:  React Hook useEffect has missing dependencies: 'alignBlocks', 'checkBlocksSelected', 'history', and 'props'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
-[react-scripts] ./src/components/AuthenticateFormBase/index.tsx
-[react-scripts]   Line 2:19:   'IonLabel' is defined but never used                       @typescript-eslint/no-unused-vars
-[react-scripts]   Line 4:8:    'PropTypes' is defined but never used                      @typescript-eslint/no-unused-vars
-[react-scripts]   Line 6:13:   'Auth' is defined but never used                           @typescript-eslint/no-unused-vars
-[react-scripts]   Line 7:10:   'signInWithUsernameAndPassword' is defined but never used  @typescript-eslint/no-unused-vars
-[react-scripts]   Line 8:23:   'Cookies' is defined but never used                        @typescript-eslint/no-unused-vars
-[react-scripts]   Line 9:8:    'to' is defined but never used                             @typescript-eslint/no-unused-vars
-[react-scripts]   Line 33:21:  'result' is defined but never used                         @typescript-eslint/no-unused-vars
-[react-scripts]   Line 43:13:  'ticket' is assigned a value but never used                @typescript-eslint/no-unused-vars
-[react-scripts]   Line 73:9:   'isInvalid' is assigned a value but never used             @typescript-eslint/no-unused-vars
-[react-scripts] ./src/pages/MultipleOptions.tsx
-[react-scripts]   Line 30:20:  'setIsActive' is assigned a value but never used                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
-[react-scripts]   Line 35:11:  'ticket' is assigned a value but never used                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
-[react-scripts]   Line 36:11:  'categoria' is assigned a value but never used                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
-[react-scripts]   Line 38:13:  'nroDocumento' is assigned a value but never used                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
-[react-scripts]   Line 40:11:  'updateUserTest' is assigned a value but never used                                                                                                                                                                                                              @typescript-eslint/no-unused-vars
-[react-scripts]   Line 58:6:   React Hook useEffect has missing dependencies: 'props' and 'questionIdx'. Either include them or remove the dependency array. You can also replace multiple useState variables with useReducer if 'setCurrentQuestion' needs the current value of 'questionIdx'  react-hooks/exhaustive-deps
-[react-scripts]   Line 73:13:  'ticket' is assigned a value but never used                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
-[react-scripts]   Line 133:6:  React Hook useEffect has a missing dependency: 'history'. Either include it or remove the dependency array                                                                                                                                                       react-hooks/exhaustive-deps
 [react-scripts] ./src/pages/DirectionsTest.tsx
 [react-scripts]   Line 39:20:  'setIsActive' is assigned a value but never used                                                                                                                                                                        @typescript-eslint/no-unused-vars
 [react-scripts]   Line 44:3:   React Hook useEffect contains a call to 'setRound'. Without a list of dependencies, this can lead to an infinite chain of updates. To fix this, pass [round, nextDirection] as a second argument to the useEffect Hook  react-hooks/exhaustive-deps
@@ -36,6 +17,9 @@
 [react-scripts]   Line 66:19:  'ticket' is assigned a value but never used                                                                                                                                                                                @typescript-eslint/no-unused-vars
 [react-scripts]   Line 110:6:  React Hook useEffect has missing dependencies: 'props' and 'results'. Either include them or remove the dependency array                                                                                                   react-hooks/exhaustive-deps
 [react-scripts]   Line 141:6:  React Hook useEffect has a missing dependency: 'checkAnswer'. Either include it or remove the dependency array                                                                                                             react-hooks/exhaustive-deps
+[react-scripts] ./src/pages/MultipleOptions.tsx
+[react-scripts]   Line 41:6:   React Hook useEffect has a missing dependency: 'questionIdx'. Either include it or remove the dependency array. You can also replace multiple useState variables with useReducer if 'setCurrentQuestion' needs the current value of 'questionIdx'  react-hooks/exhaustive-deps
+[react-scripts]   Line 115:6:  React Hook useEffect has a missing dependency: 'history'. Either include it or remove the dependency array                                                                                                                                         react-hooks/exhaustive-deps
 [react-scripts] ./src/components/Menu.tsx
 [react-scripts]   Line 43:10:  'cookies' is assigned a value but never used                                                                                                                                                                        @typescript-eslint/no-unused-vars
 [react-scripts]   Line 43:19:  'setCookie' is assigned a value but never used                                                                                                                                                                      @typescript-eslint/no-unused-vars
@@ -120,3 +104,4 @@
 
 [[40mINFO[49m] Browser window opened to http://localhost:8100!
 
+[react-scripts] Terminate batch job (Y/N)? 

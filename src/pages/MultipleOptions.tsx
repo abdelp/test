@@ -27,26 +27,9 @@ const MultipleOptionsPage: React.FC = (props: any) => {
   const [time, setTime] = useState<any>({ min: 3, sec: 0 });
   const history = useHistory();
   const [loading, setLoading] = useState<boolean>(false);
-  const [isActive, setIsActive] = useState(true);
+  const [isActive] = useState(true);
 
   useEffect(() => {
-    const { cookies } = props;
-
-    const ticket = cookies.get("ticket");
-    const categoria = cookies.get("categoria");
-    const usuarioTesteado = cookies.get("usuario_testeado");
-    const { nroDocumento } = usuarioTesteado;
-
-    const updateUserTest = async () => {};
-
-    // updateUserTest(ci, categoria, 'multiple options')
-    // .then(result => {
-    //   console.log(result);
-    // })
-    // .catch(err => {
-    //   console.log(err);
-    // });
-
     getPreguntasSenhales()
       .then((result: any) => {
         setQuestions(result);
@@ -70,7 +53,6 @@ const MultipleOptionsPage: React.FC = (props: any) => {
 
       const { cookies } = props;
 
-      const ticket = cookies.get("ticket");
       const categoria = cookies.get("categoria");
       const usuarioTesteado = cookies.get("usuario_testeado");
       const { nroDocumento, idAntecedente } = usuarioTesteado;
@@ -92,7 +74,7 @@ const MultipleOptionsPage: React.FC = (props: any) => {
         idAntecedente,
         examen
       )
-        .then((result) => {
+        .then(() => {
           history.replace("/page/test-finished", { state: "prueba practica" });
         })
         .catch((error: any) => {
