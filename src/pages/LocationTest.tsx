@@ -7,11 +7,8 @@ import {
   IonToolbar,
   IonButton,
   IonItem,
-  IonAlert,
-  IonButtons,
 } from "@ionic/react";
 import { useHistory } from "react-router-dom";
-import { set } from "idb-keyval";
 import { withCookies } from "react-cookie";
 import "./LocationTest.css";
 
@@ -28,31 +25,7 @@ const defaultState = {
 
 const LocationTestPage: React.FC = (props: any) => {
   const [state, setState] = useState<any>(defaultState);
-
-  // const [iniciado, setIniciado] = useState<boolean>(false);
-  // const [round, setRound] = useState<number>(0);
-  // const [numerosAElegir, setNumerosAElegir] = useState<any>([]);
-  // // const [bloquearBotones, setBloquearBotones] = useState<boolean>(false);
-  // const [turnoUsuario, setTurnoUsuario] = useState<boolean>(false);
-  // const [mensaje, setMensaje] = useState<string>('');
-  // const [time, setTime] = useState<number>(2000);
-
-  // const [selected, setSelected] = useState<string>();
-  // const [questions, setQuestions] = useState<any>([]);
-  // const [currentQuestion, setCurrentQuestion] = useState<any>();
-  // const [questionIdx, setQuestionIdx] = useState<number>(0);
-  // const [minutes, setMinutes] = useState<any>({val: 3});
-  const [showTimer, setShowTimer] = useState<any>(true);
   const history = useHistory();
-  // const [loading, setLoading] = useState<boolean>(false);
-  let continuar: boolean = false;
-  const [showAlert, setShowAlert] = useState(false);
-
-  // const [statex, setState] = useState({min: 3, sec: 0});
-  // const [isActive, setIsActive] = useState(true);
-
-  const doSaveExamProgress = async (exam: any) => await set("exam", { exam });
-
   const randomNumber = () => Math.floor(Math.random() * (9 - 0) + 0);
 
   useEffect(() => {
@@ -62,7 +35,6 @@ const LocationTestPage: React.FC = (props: any) => {
       turnoUsuario,
       numerosElegidos,
       roundFinished,
-      btns,
     } = state;
     let { round } = state;
     let rotationInterval: any;
@@ -133,25 +105,6 @@ const LocationTestPage: React.FC = (props: any) => {
       clearTimeout(rotationInterval);
     };
   }, [state]);
-
-  const empezar = () =>
-    setState((state: any) => ({ ...state, mensaje: "Atención", round: 1 }));
-
-  const { round, mensaje } = state;
-
-  const pickNumber = (number: any) => {
-    let { numerosElegidos, numerosAElegir, btns } = state;
-
-    btns[number].color = "success";
-
-    if (numerosElegidos.length < numerosAElegir.length) {
-      numerosElegidos.push(number);
-
-      setState((state: any) => ({ ...state, numerosElegidos, btns }));
-    }
-  };
-
-  const { min, sec, btns } = state;
 
   return (
     <IonPage>
