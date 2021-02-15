@@ -1,10 +1,10 @@
-import axios from 'axios';
-import { obtenerDatosUsuarioTesteado } from './';
+import axios from "axios";
+import { obtenerDatosUsuarioTesteado } from "./";
 
-jest.mock('axios');
+jest.mock("axios");
 
-describe('obtenerDatosUsuarioTesteado', () => {
-  it('obtiene exitosamente los datos del usuario a ser testeado', async () => {
+describe("obtenerDatosUsuarioTesteado", () => {
+  it("obtiene exitosamente los datos del usuario a ser testeado", async () => {
     const data = `<?xml version="1.0" encoding="utf-8"?>
       <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <soap:Body>
@@ -29,24 +29,26 @@ describe('obtenerDatosUsuarioTesteado', () => {
         </soap:Body>
       </soap:Envelope>`;
 
-      const AxiosPostResponse = {data, status: 200, statusText: "OK"};
+    const AxiosPostResponse = { data, status: 200, statusText: "OK" };
 
-      {/*
-      //@ts-ignore */}
-      axios.post.mockImplementationOnce(() => Promise.resolve(AxiosPostResponse));
+    {
+      /*
+      //@ts-ignore */
+    }
+    axios.post.mockImplementationOnce(() => Promise.resolve(AxiosPostResponse));
 
-      await expect(obtenerDatosUsuarioTesteado('valid token', '0', 'cedula')).resolves.toEqual(
-        {"apellidos": "ANTUNEZ VILLAGRA ",
-         "cantidad": "1",
-         "categoria": "MOTOCICLISTA",
-         "idAntecedente": "2",
-         "nombres": "MARIA SOL",
-         "nroDocumento": "0",
-        "tramite": "PRIMERA VEZ"}
-      );
+    await expect(
+      obtenerDatosUsuarioTesteado("valid token", "0", "cedula")
+    ).resolves.toEqual({
+      apellidos: "ANTUNEZ VILLAGRA ",
+      cantidad: "1",
+      categoria: "MOTOCICLISTA",
+      idAntecedente: "2",
+      nombres: "MARIA SOL",
+      nroDocumento: "0",
+      tramite: "PRIMERA VEZ",
+    });
   });
- 
-  it('obtiene erroneamente los datos del usuario a ser testeado', async () => {
- 
-  });
+
+  it("obtiene erroneamente los datos del usuario a ser testeado", async () => {});
 });

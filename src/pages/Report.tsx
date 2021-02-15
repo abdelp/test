@@ -9,7 +9,7 @@ import {
   IonToolbar,
   IonItem,
   IonAlert,
-  IonLabel
+  IonLabel,
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -46,7 +46,11 @@ const ReportPage: React.FC = ({ cookies }: any) => {
     error: null,
   });
 
-  const [showAlert, setShowAlert] = useState<any>({show: false, message: '', title: ''});
+  const [showAlert, setShowAlert] = useState<any>({
+    show: false,
+    message: "",
+    title: "",
+  });
 
   useEffect(() => {
     const { nroDocumento, idAntecedente } = cookies.get("usuario_testeado");
@@ -209,7 +213,7 @@ const ReportPage: React.FC = ({ cookies }: any) => {
     }
 
     let aprobado = false;
-  
+
     if (testsArray.every(examPassed)) {
       aprobado = true;
       let [error, result] = await to(
@@ -229,20 +233,28 @@ const ReportPage: React.FC = ({ cookies }: any) => {
       );
 
       if (err) {
-        const mensaje = 'No se pudo enviar el resultado'
-        setShowAlert({show: true, message: mensaje, title: 'Error'});
+        const mensaje = "No se pudo enviar el resultado";
+        setShowAlert({ show: true, message: mensaje, title: "Error" });
       } else {
-        if(enviado?.codError === "0") {
+        if (enviado?.codError === "0") {
           await actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
             usuario.nroDocumento,
             "cedula",
             usuario.idAntecedente,
             { sincronizado: true }
           );
-          setShowAlert({show: true, message: 'Resultado enviado correctamente', title: 'Confirmación'});
-
+          setShowAlert({
+            show: true,
+            message: "Resultado enviado correctamente",
+            title: "Confirmación",
+          });
         } else {
-          setShowAlert({show: true, message: "No se pudo enviar el resultado, favor verifique su conexión a internet", title: 'Error'});
+          setShowAlert({
+            show: true,
+            message:
+              "No se pudo enviar el resultado, favor verifique su conexión a internet",
+            title: "Error",
+          });
         }
       }
     } else {
@@ -263,7 +275,7 @@ const ReportPage: React.FC = ({ cookies }: any) => {
     setState((state: any) => ({
       ...state,
       porcentajes: nuevosPorcentajes,
-      aprobado: aprobado
+      aprobado: aprobado,
     }));
   };
 
@@ -282,29 +294,30 @@ const ReportPage: React.FC = ({ cookies }: any) => {
 
       <IonContent className="ion-padding">
         <IonAlert
-            isOpen={showAlert.show}
-            onDidDismiss={() => setShowAlert({show: false, message: '', title: ''})}
-            cssClass="my-custom-class"
-            header={showAlert.title}
-            message={
-              showAlert.message
-            }
-            buttons={[
-              {
-                text: "Ok",
-                handler: () => {
-                  // setShowAlert(false)
-                },
+          isOpen={showAlert.show}
+          onDidDismiss={() =>
+            setShowAlert({ show: false, message: "", title: "" })
+          }
+          cssClass="my-custom-class"
+          header={showAlert.title}
+          message={showAlert.message}
+          buttons={[
+            {
+              text: "Ok",
+              handler: () => {
+                // setShowAlert(false)
               },
-            ]}
-          />
+            },
+          ]}
+        />
 
         {user && (
           <>
             <DataList user={user} />
             <IonItem>
               <IonLabel>
-                <strong>Resultado:</strong> {aprobado ? 'APROBADO' : 'NO APROBADO'}
+                <strong>Resultado:</strong>{" "}
+                {aprobado ? "APROBADO" : "NO APROBADO"}
               </IonLabel>
             </IonItem>
             <IonTitle className="report-title">Declaración Jurada</IonTitle>

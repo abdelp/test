@@ -226,5 +226,5 @@ export {
   eliminarUsuarioTesteadoPorNroDocumentoYAntecedente,
   obtenerUsuariosTesteadosNoSincronizados,
   update,
-  actualizarFechaDeTest
+  actualizarFechaDeTest,
 };

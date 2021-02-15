@@ -78,11 +78,7 @@ const App: React.FC = (props: any) => {
           <IonSplitPane contentId="main" when={false}>
             <Menu />
             <IonRouterOutlet id="main">
-              <Route
-                path="/regist-user"
-                component={RegistUserPage}
-                exact
-              />
+              <Route path="/regist-user" component={RegistUserPage} exact />
               <PrivateRoute
                 path="/page/test-types"
                 component={TestTypesPage}

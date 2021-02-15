@@ -25,22 +25,20 @@ import {
   agregarUsuarioTesteado,
 } from "../utils/db";
 
-import { UserProps } from '../interfaces';
+import { UserProps } from "../interfaces";
 
-const RegistUserPage: React.FC<UserProps> = ({
-  history
-}) => {
+const RegistUserPage: React.FC<UserProps> = ({ history }) => {
   const [state, setState]: any = useState<any>({
     nroDocumento: "",
     user: null,
     loading: false,
     error: null,
   });
-  
-  const [cookies, setCookie] = useCookies(["usuario_testeado"]);  
-  
+
+  const [cookies, setCookie] = useCookies(["usuario_testeado"]);
+
   const handleChange = (event: any) =>
-  setState((state: any) => ({
+    setState((state: any) => ({
       ...state,
       [event.target.name]: event.target.value,
     }));

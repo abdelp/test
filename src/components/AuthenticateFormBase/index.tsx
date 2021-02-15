@@ -12,10 +12,7 @@ const INITIAL_STATE = {
   loading: false,
 };
 
-const AuthenticateFormBase = ({
-  history,
-  setShowLogin,
-}: any) => {
+const AuthenticateFormBase = ({ history, setShowLogin }: any) => {
   const [state, setState] = useState({ ...INITIAL_STATE });
   const { username, password, error, loading } = state;
 

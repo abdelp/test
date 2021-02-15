@@ -121,7 +121,9 @@ const randomNumber = (length: any) =>
 const getPreguntasSenhales = () => {
   return new Promise((resolve, reject) => {
     resolve([
-      ...PREGUNTAS_SENHALES, ...PREGUNTAS_MECANICA, ...PREGUNTAS_PRIMEROS_AUXILIOS,
+      ...PREGUNTAS_SENHALES,
+      ...PREGUNTAS_MECANICA,
+      ...PREGUNTAS_PRIMEROS_AUXILIOS,
       ...PREGUNTAS_NORMAS[0],
     ]);
   });
@@ -176,17 +178,16 @@ const sendResult = async (
         "soap:Body": {
           EnviarResultadoResponse: {
             EnviarResultadoResult: {
-              CodError: { text }
+              CodError: { text },
             },
           },
         },
       },
-    } = xml2js(result.data,
-    {
+    } = xml2js(result.data, {
       ignoreDeclaration: true,
       ignoreAttributes: true,
       compact: true,
-      textKey: "text"
+      textKey: "text",
     });
 
     return { codError: text };

@@ -114,9 +114,7 @@ const Menu: React.FC = (props: any) => {
           </IonMenuToggle>
 
           <section>
-            <IonItem className="botonmenu">
-              Salir
-            </IonItem>
+            <IonItem className="botonmenu">Salir</IonItem>
             {props.cookies.get("usuario_testeado") && (
               <IonItem className="botonmenu" onClick={logoutAction}>
                 <IonImg className="iconomenu" src={iconoFinalizar}></IonImg>{" "}

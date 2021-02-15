@@ -17,8 +17,7 @@ import successImg from "../assets/green-checkmark.svg";
 const TestFinishedPage: React.FC = (props) => {
   const history = useHistory();
 
-  const returnMenu = () =>
-    history.replace("/page/test-types");
+  const returnMenu = () => history.replace("/page/test-types");
 
   return (
     <IonPage>
