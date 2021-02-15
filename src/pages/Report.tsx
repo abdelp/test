@@ -24,15 +24,9 @@ import { withCookies } from "react-cookie";
 import { sendResult } from "../APIs";
 import to from "await-to-js";
 
-const round = (value: any) => {
-  {
-    /*
-  //@ts-ignore */
-  }
-  return value.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
-};
+const round = (value: any) => value.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
 
-const ReportPage: React.FC = ({ location, cookies }: any) => {
+const ReportPage: React.FC = ({ cookies }: any) => {
   const history = useHistory();
   const [state, setState]: any = useState<any>({
     nroDocumento: "",

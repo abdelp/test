@@ -6,13 +6,6 @@
 [react-scripts] Starting the development server...
 [react-scripts] ./src/pages/BlockPositionsTest.tsx
 [react-scripts]   Line 206:6:  React Hook useEffect has missing dependencies: 'alignBlocks', 'checkBlocksSelected', 'history', and 'props'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
-[react-scripts] ./src/pages/Notice.tsx
-[react-scripts]   Line 21:19:  'setCookie' is assigned a value but never used  @typescript-eslint/no-unused-vars
-[react-scripts] ./src/pages/Report.tsx
-[react-scripts]   Line 28:3:    Nested block is redundant                                                                                                            no-lone-blocks
-[react-scripts]   Line 73:6:    React Hook useEffect has missing dependencies: 'calculateResults' and 'cookies'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
-[react-scripts]   Line 221:12:  'error' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
-[react-scripts]   Line 221:19:  'result' is assigned a value but never used                                                                                          @typescript-eslint/no-unused-vars
 [react-scripts] ./src/components/AuthenticateFormBase/index.tsx
 [react-scripts]   Line 2:19:   'IonLabel' is defined but never used                       @typescript-eslint/no-unused-vars
 [react-scripts]   Line 4:8:    'PropTypes' is defined but never used                      @typescript-eslint/no-unused-vars
@@ -94,6 +87,10 @@
 [react-scripts]   Line 96:19:  'ticket' is assigned a value but never used                                                                                                                                                                         @typescript-eslint/no-unused-vars
 [react-scripts]   Line 140:6:  React Hook useEffect has missing dependencies: 'props' and 'results'. Either include them or remove the dependency array                                                                                            react-hooks/exhaustive-deps
 [react-scripts]   Line 171:6:  React Hook useEffect has a missing dependency: 'checkAnswer'. Either include it or remove the dependency array                                                                                                      react-hooks/exhaustive-deps
+[react-scripts] ./src/pages/Report.tsx
+[react-scripts]   Line 67:6:    React Hook useEffect has missing dependencies: 'calculateResults' and 'cookies'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+[react-scripts]   Line 215:12:  'error' is assigned a value but never used                                                                                           @typescript-eslint/no-unused-vars
+[react-scripts]   Line 215:19:  'result' is assigned a value but never used                                                                                          @typescript-eslint/no-unused-vars
 [react-scripts] ./src/App.tsx
 [react-scripts]   Line 67:6:  React Hook useEffect has a missing dependency: 'props.cookies'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
 [react-scripts] ./src/components/DataList/index.tsx
