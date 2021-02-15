@@ -9,7 +9,6 @@ import {
   IonButton,
 } from "@ionic/react";
 import { withRouter } from "react-router-dom";
-import { sendResult } from "../APIs";
 import { withCookies } from "react-cookie";
 import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from "../utils/db";
 import "./BiggerNumber.css";
@@ -34,7 +33,7 @@ const BiggerNumber: React.FC = (props: any) => {
   });
   const [results, setResults] = useState<any>([]);
   const [round, setRound] = useState<any>(0);
-  const [isActive, setIsActive] = useState(true);
+  const [isActive] = useState(true);
   const [numbersToDisplay, setNumbersToDisplay] = useState<any>([]);
   const [showCorrectSymbol, setShowCorrectSymbol] = useState<any>(false);
   const [showIncorrectSymbol, setShowIncorrectSymbol] = useState<any>(false);
