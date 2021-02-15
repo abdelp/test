@@ -13,7 +13,7 @@ import React, { useState } from "react";
 import to from "await-to-js";
 
 import { withRouter } from "react-router-dom";
-import { getTestedUserData } from "../APIs";
+import { obtenerDatosUsuarioTesteado } from "../APIs";
 import "./RegistUser.css";
 import SearchTestedUserFormBase from "../components/SearchTestedUserFormBase";
 import DataList from "../components/DataList";
@@ -55,7 +55,7 @@ const RegistUserPage: React.FC<UserProps> = ({
     event.preventDefault();
 
     const [err, result] = await to(
-      getTestedUserData(
+      obtenerDatosUsuarioTesteado(
         cookies.usuario.ticket.text,
         state.nroDocumento,
         "cedula"

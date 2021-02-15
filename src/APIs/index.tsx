@@ -10,15 +10,16 @@ import to from "await-to-js";
 import { HTTP } from "@ionic-native/http";
 import { xml2js } from "xml-js";
 
-const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
+const URL = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
+const RUT_URL = "http://rut.antsv.gov.py";
 
-const getTestedUserData = async (
+const obtenerDatosUsuarioTesteado = async (
   token: string,
   nroDocumento: string,
   tipoDocumento: string
 ) => {
   try {
-    const data = `<?xml version="1.0" encoding="utf-8"?>
+    const DATA = `<?xml version="1.0" encoding="utf-8"?>
     <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
       <soap:Body>
         <ConsultarAntecedente xmlns="http://rut.antsv.gov.py/">
@@ -29,23 +30,25 @@ const getTestedUserData = async (
       </soap:Body>
     </soap:Envelope>`;
 
+    const SOAP_ACTION = `${RUT_URL}/ConsultarAntecedente`;
+
     HTTP.setDataSerializer("utf8");
 
     let [error, result]: any = await to(
-      HTTP.post(url, data, {
+      HTTP.post(URL, DATA, {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "text/xml; charset=utf-8",
-        SOAPAction: "http://rut.antsv.gov.py/ConsultarAntecedente",
+        SOAPAction: SOAP_ACTION,
       })
     );
 
     if (error === "cordova_not_available") {
       [error, result] = await to(
-        axios.post(url, data, {
+        axios.post(URL, data, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "text/xml; charset=utf-8",
-            SOAPAction: "http://rut.antsv.gov.py/ConsultarAntecedente",
+            SOAPAction: SOAP_ACTION,
           },
         })
       );
@@ -147,7 +150,7 @@ const sendResult = async (
     HTTP.setDataSerializer("utf8");
 
     let [error, result]: any = await to(
-      HTTP.post(url, data, {
+      HTTP.post(URL, data, {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "text/xml; charset=utf-8",
         SOAPAction: "http://rut.antsv.gov.py/EnviarResultado",
@@ -156,7 +159,7 @@ const sendResult = async (
 
     if (error === "cordova_not_available") {
       [error, result] = await to(
-        axios.post(url, data, {
+        axios.post(URL, data, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "text/xml; charset=utf-8",
@@ -223,8 +226,8 @@ const saveDeclaracionJurada = (declaracion: any) => {
 };
 
 export {
+  obtenerDatosUsuarioTesteado,
   getCategories,
-  getTestedUserData,
   getPreguntasSenhales,
   sendResult,
   getExamDate,
