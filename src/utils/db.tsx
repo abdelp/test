@@ -153,45 +153,6 @@ const actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente = async (
  *
  */
 
-const actualizarTestDeUsuario = async (
-  nroDocumento: string,
-  tipoDocumento: string,
-  idAntecedente: number,
-  categoria: any,
-  test: any,
-  data: any
-) => {
-  const TABLA = "usuarios_testeados";
-  const FECHA = new Date();
-  const USUARIOS_TESTEADOS: any = (await get(TABLA)) || [];
-  const usuarioTesteado: any =
-    (await obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
-      nroDocumento,
-      tipoDocumento,
-      idAntecedente
-    )) || {};
-
-  let nuevoExamen: any = {
-    [categoria]: {
-      [test]: data,
-    },
-  };
-
-  // const idx = usuariosTesteados.findIndex((u: any) => u.ci === ci);
-  // let cat: any;
-
-  // if (!usuariosTesteados[idx][categoria.toLowerCase()]) {
-  //   cat = usuariosTesteados[idx]["examenes"][categoria.toLowerCase()] = {};
-  // } else {
-  //   cat = usuariosTesteados[idx]["examenes"][categoria.toLowerCase()];
-  // }
-
-  // cat[test] = { date: new Date(), result }
-  // await set("usuarios_testeados", usuariosTesteados);
-
-  // return;
-};
-
 const update = async (table: string, data: any) => {
   try {
     await set(table, data);
@@ -257,10 +218,13 @@ const updateUserTest = async (
 };
 
 export {
+  obtenerUsuariosTesteados,
   updateUserTest,
   agregarUsuarioTesteado,
   obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente,
   actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente,
   eliminarUsuarioTesteadoPorNroDocumentoYAntecedente,
   obtenerUsuariosTesteadosNoSincronizados,
+  update,
+  actualizarFechaDeTest
 };
