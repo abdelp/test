@@ -17,7 +17,7 @@ const INITIAL_STATE = {
   loading: false,
 };
 
-const SignInFormBase = ({ auth, history, cookies, setShowLogin }: any) => {
+const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
   const [state, setState] = useState({ ...INITIAL_STATE });
   const { username, password, error, loading } = state;
 
