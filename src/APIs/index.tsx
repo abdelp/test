@@ -104,17 +104,6 @@ const obtenerDatosUsuarioTesteado = async (
   }
 };
 
-const getCategories = async () => (
-  {
-    name: "Conductor B2",
-    description: "A description",
-  },
-  {
-    name: "Profesional",
-    description: "A description",
-  }
-);
-
 const randomNumber = (length: any) =>
   Math.floor(Math.random() * (length - 0) + 0);
 
@@ -228,7 +217,6 @@ const saveDeclaracionJurada = (declaracion: any) => {
 
 export {
   obtenerDatosUsuarioTesteado,
-  getCategories,
   getPreguntasSenhales,
   sendResult,
   getExamDate,
