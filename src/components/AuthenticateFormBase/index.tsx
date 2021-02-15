@@ -1,15 +1,9 @@
 import React, { useState } from "react";
-import { IonItem, IonLabel, IonInput, IonSpinner } from "@ionic/react";
+import { IonItem, IonInput, IonSpinner } from "@ionic/react";
 import { withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
 import * as ROUTES from "../../constants/routes";
-import * as Auth from "../Auth/auth";
-import { signInWithUsernameAndPassword } from "../Auth/auth";
-import { withCookies, Cookies } from "react-cookie";
-import to from "await-to-js";
+import { withCookies } from "react-cookie";
 import { compose } from "recompose";
-
-// import * as ERRORS from '../../constants/errors';
 
 const INITIAL_STATE = {
   username: "",
@@ -19,9 +13,7 @@ const INITIAL_STATE = {
 };
 
 const AuthenticateFormBase = ({
-  // auth,
   history,
-  cookies,
   setShowLogin,
 }: any) => {
   const [state, setState] = useState({ ...INITIAL_STATE });
@@ -30,17 +22,12 @@ const AuthenticateFormBase = ({
   const onSubmit = async (event: any) => {
     event.preventDefault();
     setState((state: any) => ({ ...state, loading: true }));
-    let error: any, result;
-
-    // [ error, result] = await to(Auth
-    //   .signInWithUsernameAndPassword(username, password));
+    let error: any;
 
     if (!error) {
       /*
        * start of temporal implementation
        */
-
-      const ticket = "x";
 
       //  cookies.set("usuario", JSON.stringify({ username, ticket }), {
       //    path: "/"
@@ -62,7 +49,6 @@ const AuthenticateFormBase = ({
        * end of temporal implementation
        */
     } else {
-      // const error = { ...err }; // LEAVE EXACT ERRORS FOR LATER
       setState((state: any) => ({ ...state, loading: false, error }));
     }
   };
@@ -99,6 +85,7 @@ const AuthenticateFormBase = ({
         className="submit-btn"
         value="ACEPTAR"
         color="favorite"
+        disabled={isInvalid}
       />
       {loading && (
         <IonItem>
