@@ -36,7 +36,7 @@ const DirectionsTest: React.FC = (props: any) => {
   });
   const [results, setResults] = useState<any>([]);
   const [round, setRound] = useState<any>(0); // or probably one
-  const [isActive, setIsActive] = useState(true);
+  const [isActive] = useState(true);
   const [message, setMessage] = useState<any>();
   const [showCorrectSymbol, setShowCorrectSymbol] = useState<any>(false);
   const [showIncorrectSymbol, setShowIncorrectSymbol] = useState<any>(false);
@@ -63,8 +63,6 @@ const DirectionsTest: React.FC = (props: any) => {
         if (sec === 0) {
           if (min === 0) {
             const { cookies } = props;
-
-            const ticket = cookies.get("ticket");
             const categoria = cookies.get("categoria");
             const usuarioTesteado = cookies.get("usuario_testeado");
             const { nroDocumento, idAntecedente } = usuarioTesteado;
