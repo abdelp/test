@@ -18,7 +18,7 @@ import { useCookies } from "react-cookie";
 import "./Notice.css";
 
 const NoticePage: React.FC = (props: any) => {
-  const [cookies, setCookie] = useCookies(["usuario"]);
+  const [cookies] = useCookies(["usuario"]);
   const {
     categoria,
     usuario_testeado: { ci },

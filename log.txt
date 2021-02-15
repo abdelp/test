@@ -6,23 +6,8 @@
 [react-scripts] Starting the development server...
 [react-scripts] ./src/pages/BlockPositionsTest.tsx
 [react-scripts]   Line 206:6:  React Hook useEffect has missing dependencies: 'alignBlocks', 'checkBlocksSelected', 'history', and 'props'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
-[react-scripts] ./src/pages/TestFinished.tsx
-[react-scripts]   Line 20:10:  'total' is assigned a value but never used          @typescript-eslint/no-unused-vars
-[react-scripts]   Line 21:10:  'correctas' is assigned a value but never used      @typescript-eslint/no-unused-vars
-[react-scripts]   Line 22:10:  'incorrectas' is assigned a value but never used    @typescript-eslint/no-unused-vars
-[react-scripts]   Line 23:10:  'noRespondidas' is assigned a value but never used  @typescript-eslint/no-unused-vars
-[react-scripts]   Line 24:10:  'porcentaje' is assigned a value but never used     @typescript-eslint/no-unused-vars
-[react-scripts]   Line 43:43:  Expected '===' and instead saw '=='                 eqeqeq
 [react-scripts] ./src/pages/Notice.tsx
 [react-scripts]   Line 21:19:  'setCookie' is assigned a value but never used  @typescript-eslint/no-unused-vars
-[react-scripts] ./src/pages/Instructions.tsx
-[react-scripts]   Line 21:8:   'confirmarBtn' is defined but never used        @typescript-eslint/no-unused-vars
-[react-scripts]   Line 24:11:  'categoria' is assigned a value but never used  @typescript-eslint/no-unused-vars
-[react-scripts]   Line 26:8:   'showSkip' is assigned a value but never used   @typescript-eslint/no-unused-vars
-[react-scripts]   Line 26:18:  'setSkip' is assigned a value but never used    @typescript-eslint/no-unused-vars
-[react-scripts]   Line 27:8:   'state' is assigned a value but never used      @typescript-eslint/no-unused-vars
-[react-scripts]   Line 27:15:  'setState' is assigned a value but never used   @typescript-eslint/no-unused-vars
-[react-scripts]   Line 30:9:   'slideOpts' is assigned a value but never used  @typescript-eslint/no-unused-vars
 [react-scripts] ./src/pages/Report.tsx
 [react-scripts]   Line 28:3:    Nested block is redundant                                                                                                            no-lone-blocks
 [react-scripts]   Line 73:6:    React Hook useEffect has missing dependencies: 'calculateResults' and 'cookies'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
