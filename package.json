@@ -73,5 +73,11 @@
     "eslint-plugin-prettier": "^3.3.1",
     "prettier": "^2.2.1"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": ["node_modules/(?!@shotgunjed)/"]
+  }
 }
