@@ -44,7 +44,7 @@ const obtenerDatosUsuarioTesteado = async (
 
     if (error === "cordova_not_available") {
       [error, result] = await to(
-        axios.post(URL, data, {
+        axios.post(URL, DATA, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "text/xml; charset=utf-8",
