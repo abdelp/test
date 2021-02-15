@@ -2,6 +2,7 @@ import axios from "axios";
 import { obtenerDatosUsuarioTesteado } from "./";
 
 jest.mock("axios");
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe("obtenerDatosUsuarioTesteado", () => {
   it("obtiene exitosamente los datos del usuario a ser testeado", async () => {
@@ -31,11 +32,7 @@ describe("obtenerDatosUsuarioTesteado", () => {
 
     const AxiosPostResponse = { data, status: 200, statusText: "OK" };
 
-    {
-      /*
-      //@ts-ignore */
-    }
-    axios.post.mockImplementationOnce(() => Promise.resolve(AxiosPostResponse));
+    mockedAxios.post.mockImplementationOnce(() => Promise.resolve(AxiosPostResponse));
 
     await expect(
       obtenerDatosUsuarioTesteado("valid token", "0", "cedula")
