@@ -9,55 +9,16 @@ import {
   IonToolbar,
   IonImg,
 } from "@ionic/react";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { get } from "idb-keyval";
-
 import "./TestFinished.css";
 import successImg from "../assets/green-checkmark.svg";
 
 const TestFinishedPage: React.FC = (props) => {
-  const [total, setTotal] = useState(0);
-  const [correctas, setCorrectas] = useState(0);
-  const [incorrectas, setIncorrectas] = useState(0);
-  const [noRespondidas, setNoRespondidas] = useState(0);
-  const [porcentaje, setPorcentaje] = useState(0);
   const history = useHistory();
 
-  const returnMenu = () => {
+  const returnMenu = () =>
     history.replace("/page/test-types");
-  };
-
-  async function getExam() {
-    const exam = await get("exam");
-    return exam;
-  }
-
-  useEffect(() => {
-    getExam()
-      .then((result: any) => {
-        if (result) {
-          setTotal(result.exam.length);
-
-          const cc = result.exam.filter(
-            (exam: any) => exam.respuesta == exam.selected
-          ).length;
-
-          const ic = result.exam.length - cc;
-
-          setIncorrectas(ic);
-
-          const nac = result.exam.filter(
-            (exam: any) => typeof exam.selected === "undefined"
-          ).length;
-
-          setCorrectas(cc);
-          setPorcentaje((cc * 100) / result.exam.length);
-          setNoRespondidas(nac);
-        }
-      })
-      .catch((error) => console.log(error));
-  });
 
   return (
     <IonPage>
