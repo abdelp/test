@@ -8,7 +8,7 @@ import {
   IonItem,
   IonImg,
 } from "@ionic/react";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import "./Instructions.css";
@@ -18,20 +18,10 @@ import instruccionesPruebaColores from "../assets/instrucciones_prueba_psiquica_
 import instruccionesPruebaNumerosGrandes from "../assets/instrucciones_prueba_psiquica_numeros_grandes.svg";
 import instruccionesPruebaDirecciones from "../assets/instrucciones_prueba_psiquica_direcciones.svg";
 import instruccionesPruebaPosicionesBloques from "../assets/instrucciones_prueba_psiquica_posiciones_bloques.svg";
-import confirmarBtn from "../assets/confirmar_btn.svg";
 
 const InstructionsPage: React.FC = (props: any) => {
-  const { categoria, test, type } = props.location.state || "";
-
-  let [showSkip, setSkip] = useState(true);
-  let [state, setState] = useState({ color: "success" });
+  const { test, type } = props.location.state || "";
   let backgroundImg;
-
-  const slideOpts = {
-    initialSlide: 0,
-    speed: 400,
-  };
-
   const slider = useRef<HTMLIonSlidesElement>(null);
 
   useEffect(() => {
