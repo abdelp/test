@@ -32,7 +32,9 @@ describe("obtenerDatosUsuarioTesteado", () => {
 
     const AxiosPostResponse = { data, status: 200, statusText: "OK" };
 
-    mockedAxios.post.mockImplementationOnce(() => Promise.resolve(AxiosPostResponse));
+    mockedAxios.post.mockImplementationOnce(() =>
+      Promise.resolve(AxiosPostResponse)
+    );
 
     await expect(
       obtenerDatosUsuarioTesteado("valid token", "0", "cedula")
@@ -48,12 +50,13 @@ describe("obtenerDatosUsuarioTesteado", () => {
   });
 
   it("obtiene erroneamente los datos del usuario a ser testeado", async () => {
-    const errorMessage = 'Network Error';
+    const errorMessage = "Network Error";
     mockedAxios.post.mockImplementationOnce(() =>
-      Promise.reject(new Error(errorMessage)));
+      Promise.reject(new Error(errorMessage))
+    );
 
-      await expect(
-        obtenerDatosUsuarioTesteado("valid token", "0", "cedula")
-      ).rejects.toThrow(errorMessage);
+    await expect(
+      obtenerDatosUsuarioTesteado("valid token", "0", "cedula")
+    ).rejects.toThrow(errorMessage);
   });
 });
