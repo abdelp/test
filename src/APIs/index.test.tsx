@@ -172,7 +172,7 @@ describe("enviarResultado", () => {
     };
 
     const expectedResult = {
-      codError: "0"
+      codError: "0",
     };
 
     it("con el plugin nativo HTTP", async () => {
