@@ -1,0 +1,218 @@
+{
+    "id": 81,
+    "pregunta": "¿PUEDE UNA PERSONA CONDUCIR SIN LICENCIA?"
+    "opciones": [
+      "Sí, toda vez que tenga copia de su denuncia policial de robo o extravío",
+      "Sí, pero solamente cuando circule por calles empedradas, sin salir de su barrio",
+      "No puede; salvo que esté acompañado de un instructor habilitado"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 82,
+    "pregunta": "¿EN QUÉ CASO SE PUEDE CONDUCIR UN VEHÍCULO CON DESPERFECTOS MECÁNICOS?"
+    "opciones": [
+      "Cuando no afecte el funcionamiento del motor y el sistema de dirección.",
+      "En ningún caso",
+      "Cuando no se sobrepase una velocidad de 20 km/h"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 83,
+    "pregunta": "SI UNA SEÑAL VIAL INDICA UN LÍMITE DE VELOCIDAD MENOR A LO ESTABLECIDO EN LAS NORMAS, USTED DEBE"
+    "opciones": [
+      "Obedecer el límite establecido en las normas",
+      "Cumplir la indicación de la señal",
+      "Aplicar su propio criterio"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 84,
+    "pregunta": "LAS EMISIONES DE HUMO NEGRO Y OTRAS SUSTANCIAS CONTAMINANTES"
+    "opciones": [
+      "Son una infracción a las normas, con penas de multa y pasibles de ser intervenidos por la fiscalía",
+      "Son una infracción a las normas, solamente con penas de multa administrativa",
+      "Se verifican únicamente en zonas urbanas"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 85,
+    "pregunta": "AL ENFRENTAR LA LUZ VERDE DEL SEMÁFORO, USTED DEBE PRIMERAMENTE OBSERVAR LA SIGUIENTE CONDICIÓN, ANTES DE AVANZAR"
+    "opciones": [
+      "Debe encenderse previamente la luz amarilla del semáforo",
+      "Debe existir un espacio despejado en el centro de la intersección",
+      "Debe existir un espacio despejado después del cruce"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 86,
+    "pregunta": "“FRANJA O CEBRA PEATONAL” SE DEFINE COMO"
+    "opciones": [
+      "La línea pintada en el medio de la vía en color amarillo, que indican la prohibición de adelantamiento",
+      "Espacio de seguridad afectado a la vía y sus instalaciones adjuntas, comprendido hasta las propiedades lindantes",
+      "La franja de seguridad señalada o marcada en la vía pública por donde deben cruzar los peatones"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 87,
+    "pregunta": "¿EN QUÉ ZONA DE LA VÍA PÚBLICA TIENE PREFERENCIA EL PEATÓN?"
+    "opciones": [
+      "En las esquinas o bocacalles",
+      "A mitad de cuadra",
+      "Donde exista rotonda"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 88,
+    "pregunta": "SI USTED SE ENCUENTRA AL VOLANTE ¿EN QUÉ CASO PUEDE UTILIZAR SU TELÉFONO CELULAR?"
+    "opciones": [
+      "Exclusivamente en los semáforos, mientras dure la luz roja",
+      "Cuando se haya detenido por causa de un congestionamiento vehicular",
+      "En ningún caso"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 89,
+    "pregunta": "EN DÍAS DE LLUVIA O CUANDO LA CALZADA ESTÉ MOJADA, UD. DEBE"
+    "opciones": [
+      "Aumentar la velocidad para llegar más rápido a destino",
+      "Circular a velocidad reducida",
+      "Frenar bruscamente"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 90,
+    "pregunta": "PARA ADELANTAR A UN MOTOCICLISTA O A UN CICLISTA, DEBE TENER EN CUENTA QUE"
+    "opciones": [
+      "Puede realizar la maniobra compartiendo el mismo carril con el motociclista o ciclista",
+      "Debe realizar igual maniobra como si fuera a adelantar a un automóvil o camioneta",
+      "Puede hacerlo de cualquier manera, si considera que el motociclista o ciclista va muy lento"
+    ],
+    "respuesta": 1
+  },
+
+// señales
+    [
+    {
+      "id": 1,
+      "img": "senal_pare.svg",
+      "pregunta": "La siguiente señal indica",
+      "opciones": [
+        "Estacionamiento prohibido",
+        "Estacionamiento permitido",
+        "Estacionamiento reglamentado por hora"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 2,
+      "img": "senal_pare.svg",
+      "pregunta": "La siguiente señal indica",
+      "opciones": [
+        "Estacionamiento prohibido",
+        "Estacionamiento permitido",
+        "Estacionamiento reglamentado por hora"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 3,
+      "pregunta": "Acera o vereda es",
+      "opciones": [
+        "Franja comprendida entre la calzada y la línea de construcción de los inmuebles, reservada al tránsito de peatones.",
+        "Vía especialmente diseñada para dar paso al caudal de aguas superficiales.",
+        "Depresión de la vía a un costado de la calzada que se utiliza para circulación de biciclos."
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": 4,
+      "pregunta": "EL PEATÓN QUE ATRAVIESA LA CALZADA POR LA FRANJA PEATONAL O EN LAS ESQUINAS ¿TIENE PREFERENCIA SOBRE LOS VEHÍCULOS?",
+      "opciones": [
+        "Tiene preferencia solamente cuando se trate de una zona céntrica.",
+        "Tiene preferencia siempre, salvo cuando se trate de una vía de tránsito preferencial.",
+        "Tiene preferencia siempre, salvo que un semáforo o agente indique lo contrario."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 5,
+      "pregunta": "AL TRANSITAR CON SU VEHICULO DURANTE LA NOCHE EN VÍAS URBANAS, USTED DEBE UTILIZAR",
+      "opciones": ["Luces altas", "Luces bajas", "Luces de estacionamiento"],
+      "respuesta": 1
+    },
+    {
+      "id": 6,
+      "pregunta": "EL USO DE LA BOCINA ESTÁ PERMITIDO",
+      "opciones": [
+        "Para apurar al vehículo que va adelante",
+        "Para anunciar que se estacionará",
+        "Para prevenir un accidente, en caso de peligro inminente"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 7,
+      "pregunta": "ES OBLIGACION DE TODO CONDUCTOR",
+      "opciones": [
+        "Usar la bocina ante de cruzar la boca-calle",
+        "Exhibir su licencia de conducir ante el requerimiento de la autoridad competente",
+        "Mantener el pedal del embrague oprimido durante la circulación"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 8,
+      "pregunta": "CUANDO DOS VEHÍCULOS CIRCULAN EN SENTIDOS OPUESTOS Y DESEAN GIRAR HACIA EL MISMO LADO ¿CUÁL TIENE PREFERENCIA?",
+      "opciones": [
+        "Ambos",
+        "El que va girar a la izquierda",
+        "El que va girar a la derecha"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 9,
+      "pregunta": "CUANDO UN VEHÍCULO ESTACIONADO SE DISPONE A INCORPORARSE A LA CIRCULACION, SE DEBE TENER PRESENTE EL SIGUIENTE ORDEN",
+      "opciones": [
+        "Mirar hacia atrás, mirar por el retrovisor, tocar la bocina y salir",
+        "Encender el señalero, mirar por el retrovisor, girar la cabeza para observar y ceder siempre el paso",
+        "Tocar la bocina para salir "
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 10,
+      "pregunta": "¿CUÁNDO PIERDE UN VEHÍCULO SU PREFERENCIA DE CRUCE Y PASO?",
+      "opciones": [
+        "Cuando se disponga a realizar maniobra de giro.",
+        "Cuando es adelantado por un ómnibus de transporte colectivo",
+        "Cuando lleve encendidas sus luces reglamentarias"
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": 11,
+      "pregunta": "LOS LÍMITES DE VELOCIDAD MÁXIMA PERMITIDA SON",
+      "opciones": [
+        "60 km/h en zona urbana y 80 km/h para zona rural",
+        "40 km/h en zona urbana y 120 km/h para zona rural.",
+        "50 km/h en zona urbana y 110 km/h para zona rural"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 12,
+      "pregunta": "¿A QUÉ DISTANCIA  DE UN GRIFO DE AGUA PARA INCENDIOS DEBE ESTACIONARSE UN VEHÍCULO?",
+      "opciones": ["Más de tres metros.", "Menos de dos metros.", "Un metro"],
+      "respuesta": 0
+    }
+  ],

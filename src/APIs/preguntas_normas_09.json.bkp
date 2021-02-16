@@ -1,0 +1,100 @@
+{
+    "id": 71,
+    "pregunta": "EN ZONA URBANA, ESTÁ TOTALMENTE PROHIBIDO DETENERSE"
+    "opciones": [
+      "En las calles de sentido único, hacia el lado izquierdo",
+      "En cercanías de plazas, iglesias y centros de recreación",
+      "Dentro de un cruce o intersección"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 72,
+    "pregunta": "¿EN QUÉ CASO SE PERMITE AL CONDUCTOR LLEVAR UN MENOR EN EL REGAZO MIENTRAS MANEJA?"
+    "opciones": [
+      "Solamente cuando no cuente con una silla especial para el niño o la niña",
+      "Cuando circula en zonas rurales",
+      "En ningún caso"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 73,
+    "pregunta": "AL APROVISIONARSE DE COMBUSTIBLE, EL CONDUCTOR ESTÁ OBLIGADO A"
+    "opciones": [
+      "Mantener el motor del vehículo apagado",
+      "Asegurarse de que el combustible cargado sea el de su preferencia",
+      "Bajar del vehículo, para un mejor control del procedimiento de carga"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 74,
+    "pregunta": "MIENTRAS REALIZA UN ADELANTAMIENTO, ¿ESTÁ PERMITIDO SOBREPASAR LA VELOCIDAD MÁXIMA ESTABLECIDA?"
+    "opciones": [
+      "Sí, de manera que la maniobra pueda ser completada lo antes posible",
+      "No, la velocidad máxima permitida es absoluta, para todos los casos",
+      "Es indiferente, queda a criterio del conductor"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 75,
+    "pregunta": "CUANDO EXISTA AGUA SOBRE LA CALZADA, O CUALQUIER SUSTANCIA LÍQUIDA O VISCOSA"
+    "opciones": [
+      "El conductor debe evitar mojar o ensuciar a los peatones",
+      "El peatón no podrá transitar por los tramos afectados",
+      "El conductor no podrá circular por la vía afectada"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 76,
+    "pregunta": "PARA EL USO CORRECTO DEL CINTURÓN, SE DEBE TENER EN CUENTA"
+    "opciones": [
+      "Que el cinturón cruce por el hombro o sobre el cuello",
+      "Que el cinturón cruce por el medio del pecho y sobre el hombro; pero nunca sobre el cuello",
+      "Que el cinturón quede lo suficientemente flojo a la altura del bajo vientre"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 77,
+    "pregunta": "EN PENDIENTES PRONUNCIADAS, TODO CONDUCTOR DEBE"
+    "opciones": [
+      "Conducir a velocidad reducida",
+      "Frenar bruscamente",
+      "Hacer sonar la bocina"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 78,
+    "pregunta": "ESTÁ PROHIBIDO ESTACIONAR EN LAS PROXIMIDADES DE SEÑALES"
+    "opciones": [
+      "A menos de 3 metros de postes de semáforo, señal de Pare o Ceda el Paso",
+      "A menos de 10 metros de postes de semáforo, señal de Pare o Ceda el Paso",
+      "A menos de 30 metros de postes de semáforo, señal de Pare o Ceda el Paso"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 79,
+    "pregunta": "SI USTED VA A PARTICIRAR EN UN ACONTECIMIENTO SOCIAL (FIESTA) Y LUEGO TENDRÁ QUE CONDUCIR SU VEHÍCULO, DEBERÁ TENER PRESENTE QUE"
+    "opciones": [
+      "Unas cuantas cervezas, son lo mismo que una medida de whisky o un vaso de vino",
+      "A todo aquel que beba le afecta el alcohol, sin importar la cantidad ingerida",
+      "Las respuestas anteriores están correctas"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 80,
+    "pregunta": "SI SE PRODUCE UNA CONGESTIÓN DE TRÁFICO Y USTED SE PERCATA DE QUE EXISTE UNA BICISENDA O CICLOVÍA DESPEJADA A SU DERECHA"
+    "opciones": [
+      "Puede circular por la ciclovía o bicisenda, después de asegurarse de la misma esté libre",
+      "No puede circular por la ciclovía o bicisenda, aunque la misma esté libre",
+      "Puede circular por ella solamente cuando lleve mucha prisa"
+    ],
+    "respuesta": 1
+  },

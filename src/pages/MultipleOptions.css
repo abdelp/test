@@ -1,26 +1,3 @@
-:root {
-  --ion-color-orange: #F6A13E;
-  --ion-color-orange-rgb: 246, 161, 62;
-  --ion-color-orange-contrast: #ffffff;
-  --ion-color-orange-contrast-rgb: 255,255,255;
-  --ion-color-orange-shade: #5ca56c;
-  --ion-color-orange-tint: #78c288;
-
-  --ion-color-light-blue: #00afc2;
-  --ion-color-light-blue-rgb: 0, 175, 194;
-  --ion-color-light-blue-contrast: #ffffff;
-  --ion-color-light-blue-contrast-rgb: 255,255,255;
-  --ion-color-light-blue-shade:#018594;
-  --ion-color-light-blue-tint: #78c288;
-
-  --ion-color-lighter-blue:#B8E8ED;
-  --ion-color-lighter-blue-rgb: 184, 232, 237;
-  --ion-color-lighter-blue-contrast: #ffffff;
-  --ion-color-lighter-blue-contrast-rgb: 255,255,255;
-  --ion-color-lighter-blue-shade:#B8E8ED;
-  --ion-color-lighter-blue-tint: #78c288;
-}
-
 .ion-color-orange {
   --ion-color-base: var(--ion-color-orange);
   --ion-color-base-rgb: var(--ion-color-orange-rgb);
@@ -111,5 +88,21 @@ ion-button {
 
 .opt-btn {
   margin-top: 1em;
+  border-radius: 3vw !important;
+  padding: 3vh 3vw !important;
+  background-color: #68C7D4 !important;
+  box-shadow: 0 1vw 0 0.3vw #04A2B7;
+  color: black !important;
 }
 
+.opt-btn:nth-child(2){
+  background-color: #E5F6F8 !important;
+  box-shadow: 0 1vw 0 0.3vw #A1DDE4;
+  color: black !important;
+}
+
+.opt-btn:last-child{
+  background-color: #B3E3E9 !important;
+  box-shadow: 0 1vw 0 0.3vw #7ED0DA;
+  color: black !important;
+}

@@ -1,0 +1,101 @@
+{
+    "id": 41,
+    "pregunta": "¿PUEDE USTED CONDUCIR SIN LICENCIA?",
+    "opciones": [
+      "Sí, pero luego de haber realizado la denuncia policial de extravío",
+      "Sí, pero solamente en lugares de poco tránsito",
+      "No, en ningún caso"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 42,
+    "pregunta": "CUANDO UN CONDUCTOR RECIBE UNA LLAMADA POR TELEFONO O RADIO DURANTE LA CIRCULACION Y DESEA CONTESTAR:",
+    "opciones": [
+      "Puede contestar inmediatamente",
+      "Debe disminuir la velocidad y luego contestar",
+      "Debe detener la marcha en lugar permitido y luego contestar"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 43,
+    "pregunta": "AL APROXIMARSE A UNA CURVA ¿QUÉ SE DEBE HACER?",
+    "opciones": [
+      "Disminuir la velocidad",
+      "Circular por el centro de la calzada",
+      "Cambio de luces"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 44,
+    "pregunta": "EL ESTACIONAMIENTO ESTÁ PERMITIDO EN LOS SIGUIENTES CASOS",
+    "opciones": [
+      "En las avenidas, autopistas y vías preferenciales.",
+      "En las calles de sentido único hacia el lado izquierdo y en las calles de sentido doble, hacia el lado de la numeración par.",
+      "En las calles de sentido único hacia el lado derecho y en las calles de sentido doble, hacia el lado de la numeración impar."
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 45,
+    "pregunta": "CUANDO SE APROXIMA DESDE ATRÁS UN VEHICULO DE EMERGENCIA EN SERVICIO, LOS DEMÁS CONDUCTORES DEBERÁN",
+    "opciones": [
+      "Acelerar y circular delante del vehículo de emergencia.",
+      "Frenar bruscamente.",
+      "Conducir lo más cerca posible del borde de la calzada a fin de ceder el paso al vehículo de emergencia y detenerse si fuere necesario."
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 46,
+    "pregunta": "TODO CONDUCTOR ESTÁ OBLIGADO A MANEJAR TOMANDO EL VOLANTE CON AMBAS MANOS, SALVO CUANDO:	",
+    "opciones": [
+      "Realice un cambio de marcha.",
+      "Se disponga a contestar el celular.",
+      "Desee reposar el brazo izquierdo sobre la ventanilla, para mayor comodidad."
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 47,
+    "pregunta": "CUANDO LA CALZADA POSEA LÍNEAS DE CARRIL DEMARCADAS, ¿POR DONDE DEBEN CIRCULAR LOS VEHÍCULOS?",
+    "opciones": [
+      "Dentro de los carriles.",
+      "Por el centro de la calzada",
+      "Sobre las líneas de carril"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 48,
+    "pregunta": "ESTÁ PROHIBIDO ADELANTAR A",
+    "opciones": [
+      "Los vehículos de transporte pesado",
+      "Un ómnibus de transporte colectivo, detenido para ascenso y descenso de pasajeros",
+      "Las motocicletas"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 49,
+    "pregunta": "CUANDO DOS VEHÍCULOS QUE CIRCULAN EN SENTIDOS OPUESTOS SE DISPONGAN A GIRAR HACIA EL MISMO LADO, TIENE PREFERENCIA",
+    "opciones": [
+      "El que vaya a girar a la derecha.",
+      "El que vaya a girar a la izquierda",
+      "El vehículo de mayor porte."
+    ],
+    "respuesta": 0
+  },
+
+{
+    "id": 50,
+    "pregunta": "EL USO DEL CINTURÓN:",
+    "opciones": [
+      "Es obligatorio solamente para el conductor.",
+      "Es obligatorio para el conductor y los acompañantes",
+      "Es obligatorio solamente cuando se conduce en avenidas, rutas o autopistas"
+    ],
+    "respuesta": 1
+  },

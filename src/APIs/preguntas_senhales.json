@@ -2,16 +2,12 @@
   {
     "id": 1,
     "pregunta": "La luz amarilla intermitente del semáforo significa",
-    "opciones": [
-      "Pare",
-      "Precaución",
-      "Continuar"
-    ],
+    "opciones": ["Pare", "Precaución", "Continuar"],
     "respuesta": 1
   },
   {
     "id": 2,
-    "img": "q2.png",
+    "img": "q2.svg",
     "pregunta": "¿Qué indica esta señal?",
     "opciones": [
       "Disminuir la velocidad y ceder el paso a los demás vehículos",
@@ -19,11 +15,10 @@
       "Detención completa, en todos los casos"
     ],
     "respuesta": 2
-  }
-  ,
+  },
   {
     "id": 3,
-    "img": "q3.png",
+    "img": "q3.svg",
     "pregunta": "La siguiente señal se denomina",
     "opciones": [
       "Disminuir la velocidad y ceder el paso a los demás vehículos",
@@ -31,11 +26,10 @@
       "Detención completa, en todos los casos"
     ],
     "respuesta": 2
-  }
-  ,
+  },
   {
     "id": 4,
-    "img": "q4.png",
+    "img": "q4.svg",
     "pregunta": "La siguiente señal se denomina",
     "opciones": [
       "Prohibido adelantar",
@@ -43,11 +37,10 @@
       "Prohibida la circulación de vehículos automotores"
     ],
     "respuesta": 0
-  }
-  ,
+  },
   {
     "id": 5,
-    "img": "q5.png",
+    "img": "q5.svg",
     "pregunta": "Qué debe hacer el conductor que enfrente esta señal?",
     "opciones": [
       "Girar en U o retornar",
@@ -55,11 +48,10 @@
       "Cambiar de carril"
     ],
     "respuesta": 1
-  }
-  ,
+  },
   {
     "id": 6,
-    "img": "q6.png",
+    "img": "q6.svg",
     "pregunta": "La siguiente señal indica",
     "opciones": [
       "siga de frente, gire a la izquierda o gire a la derecha",
@@ -67,11 +59,10 @@
       "cruce de vías"
     ],
     "respuesta": 0
-  }
-  ,
+  },
   {
     "id": 7,
-    "img": "q7.png",
+    "img": "q7.svg",
     "pregunta": "Qué indica esta señal?",
     "opciones": [
       "Prohibido estacionar a la derecha",
@@ -79,23 +70,17 @@
       "Prohibido girar a la derecha"
     ],
     "respuesta": 2
-  }
-  ,
+  },
   {
     "id": 8,
-    "img": "q8.png",
+    "img": "q8.svg",
     "pregunta": "Qué indica la siguiente señal?",
-    "opciones": [
-      "Siga de frente",
-      "Estacionamiento prohibido",
-      "Contramano"
-    ],
+    "opciones": ["Siga de frente", "Estacionamiento prohibido", "Contramano"],
     "respuesta": 2
-  }
-  ,
+  },
   {
     "id": 9,
-    "img": "q9.png",
+    "img": "q9.svg",
     "pregunta": "La siguiente señal indica",
     "opciones": [
       "Tránsito prohibido",
@@ -103,11 +88,10 @@
       "Prohibido detenerse"
     ],
     "respuesta": 1
-  }
-  ,
+  },
   {
     "id": 10,
-    "img": "q10.png",
+    "img": "q10.svg",
     "pregunta": "La siguiente señal indica",
     "opciones": [
       "Estacionamiento prohibido",

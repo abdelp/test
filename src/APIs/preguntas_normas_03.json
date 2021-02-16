@@ -1,0 +1,102 @@
+[
+  {
+    "id": 12,
+    "pregunta": "SI POSEE UNA LICENCIA DE CONDUCIR CORRESPONDIENTE A UN MUNICIPIO EN DONDE USTED YA NO RESIDE",
+    "opciones": [
+      "Debe realizar el trámite de cancelación ante el municipio de su residencia actual, adjuntando una copia de la denuncia policial correspondiente.",
+      "Debe realizar el trámite de cancelación ante el municipio correspondiente y solicitar una nueva licencia en el municipio de su residencia actual.",
+      "Puede seguir manejando con la misma licencia, toda vez que la misma se encuentre al día."
+    ],
+    "respuesta": 2
+  },
+  {
+    "id": 13,
+    "pregunta": "\"PEATÓN\" SE DEFINE COMO",
+    "opciones": [
+      "Toda persona que se encuentre cruzando la calzada por la franja peatonal.",
+      "Toda persona que se encuentre circulando por la acera.",
+      "Toda persona física que utiliza la vía pública a pie, en carro de criatura, silla de rueda o similar"
+    ],
+    "respuesta": 2
+  },
+  {
+    "id": 14,
+    "pregunta": "NO SE DEBE CONDUCIR UN VEHICULO AUTOMOTOR BAJO LA INFLUENCIA DEL ALCOHOL",
+    "opciones": [
+      "Solamente si lleva pasajeros o acompañantes",
+      "Excepto cuando exista luz natural del día",
+      "Porque disminuye los reflejos y afecta la concentración"
+    ],
+    "respuesta": 2
+  },
+  {
+    "id": 15,
+    "pregunta": "EL USO DEL CINTURÓN EN EL CASO DE LOS ACOMPAÑANTES O PASAJEROS ES RESPONSABILIDAD DE",
+    "opciones": [
+      "El conductor.",
+      "El agente de tránsito.",
+      "Los acompañantes."
+    ],
+    "respuesta": 0
+  },
+  {
+    "id": 16,
+    "pregunta": "AL CIRCULAR EN ZONA URBANA, CUANDO NO EXISTA LUZ NATURAL DEL DÍA, SE DEBE UTILIZAR",
+    "opciones": [
+      "luz interior para una buena circulación",
+      "luz baja o de cruce",
+      "luz de balizamiento"
+    ],
+    "respuesta": 1
+  },
+  {
+    "id": 17,
+    "pregunta": "AL ESTACIONAR EN UNA VÍA CON PENDIENTE (BAJADA) EL VEHÍCULO DEBE ESTAR",
+    "opciones": [
+      "con freno de mano activado y la palanca de cambio en primera marcha.",
+      "con la palanca de cambio en reversa y las ruedas orientadas hacia el cordón.",
+      "con freno de mano activado, en punto muerto (neutro) y las ruedas delanteras orientadas hacia el cordón de la vereda."
+    ],
+    "respuesta": 2
+  },
+  {
+    "id": 18,
+    "pregunta": "\"AVENIDA\" SE ENTIENDE COMO",
+    "opciones": [
+      "La vía pública que cuenta con un carril por cada sentido de circulación, y separados por medio físico o con doble línea amarilla, donde el tránsito circula con carácter preferencial con respecto a las calles transversales.",
+      "Una vía especialmente diseñada para altas velocidades de operación.",
+      "La vía pública de más de un carril  por cada sentido de circulación, y separados por medio físico o con doble línea amarilla, donde el tránsito circula con carácter preferencial con respecto a las calles transversales."
+    ],
+    "respuesta": 2
+  },
+  {
+    "id": 19,
+    "pregunta": "EL ADELANTAMIENTO REGLAMENTARIO ES LA MANIOBRA EFECTUADA:",
+    "opciones": [
+      "por el costado derecho de la calzada",
+      "por el costado izquierdo de la calzada",
+      "por cualquiera de los lados"
+    ],
+    "respuesta": 1
+  },
+  {
+    "id": 20,
+    "pregunta": "LA MANIOBRA DE REVERSA O MARCHA ATRÁS ESTÁ PERMITIDA:",
+    "opciones": [
+      "solamente hasta 30 metros",
+      "cuando se trate de un vehículo de uso particular",
+      "en presencia de obstáculos o para maniobra de estacionamiento."
+    ],
+    "respuesta": 2
+  },
+  {
+    "id": 21,
+    "pregunta": "EN CASO DE SINIESTRO VIAL LO PRINCIPAL SIEMPRE ES",
+    "opciones": [
+      "huir del sitio del suceso",
+      "avisar a la autoridad competente y al servicio de emergencias",
+      "legar a un acuerdo amistoso"
+    ],
+    "respuesta": 2
+  }
+]

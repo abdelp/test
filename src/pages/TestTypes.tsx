@@ -6,24 +6,29 @@ import {
   IonToolbar,
   IonButtons,
   IonMenuButton,
-  IonImg
+  IonImg,
+  IonPopover
 } from '@ionic/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { get } from 'idb-keyval';
 import { getExamDate } from '../APIs';
 import { useCookies } from "react-cookie";
+import AuthenticateFormBase from '../components/AuthenticateFormBase';
+
 import './TestTypes.css';
 
-import pruebaTeoricaBtnImg from '../assets/prueba-teorica-btn-img.svg';
-import pruebaPsiquicaBtnImg from '../assets/prueba-psiquica-btn-img.svg';
-import pruebaPracticaBtnImg from '../assets/prueba-practica-btn-img.svg';
-import declaracionJuradaBtnImg from '../assets/declaracion-jurada-btn-img.svg';
+import pruebaTeoricaBtnImg from '../assets/icono-prueba-teorica.svg';
+import pruebaPsiquicaBtnImg from '../assets/icono-prueba-psiquica.svg';
+import pruebaPracticaBtnImg from '../assets/icono-prueba-practica.svg';
+import declaracionJuradaBtnImg from '../assets/declaracion-jurada.svg';
 
 const TestTypesPage: React.FC = () => {
   const history = useHistory();
   const [cookies, setCookie] = useCookies(["user"]);
   const { categoria, ticket, usuario_testeado } = cookies;
+  const [showLogin, setShowLogin] = useState<any>();
+
   let ci = '', renovacion;
 
   if (usuario_testeado) {
@@ -77,13 +82,20 @@ const TestTypesPage: React.FC = () => {
             pathname: '/page/declaracion-jurada'
           });
         } else if(test === 'practica') {
-          history.push({
-            pathname: '/page/test-practico'
-          });
+          // history.push({
+          //   pathname: '/page/test-practico'
+          // });
+          setShowLogin(true);
+
         } else if(test === 'teórica') {
           history.push({
             pathname: '/page/instrucciones',
-            state: {categoria, test, usuario_testeado }
+            state: {categoria, type: test, test, usuario_testeado }
+          });
+        } else if(test === 'psiquica') {
+          history.push({
+            pathname: '/page/instrucciones',
+            state: {categoria, type: 'psiquica', test: 'memorize-numbers', usuario_testeado }
           });
         }
       } else {
@@ -102,11 +114,20 @@ const TestTypesPage: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton autoHide={false} />
           </IonButtons>
-          <IonTitle className="ion-text-uppercase ion-text-center title">{categoria}</IonTitle>
+          <IonTitle className="ion-text-center title">{/* {categoria}*/}Pruebas</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent>
+      <IonPopover
+          cssClass='login-popover ion-text-center'
+          isOpen={showLogin}
+        >
+          {/*
+            //@ts-ignore */}
+          <AuthenticateFormBase setShowLogin={setShowLogin} />
+        </IonPopover>
+
         <div
           className="flex"
           style={{

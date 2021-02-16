@@ -7,58 +7,17 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonList,
-  IonItem,
-  IonLabel
-} from '@ionic/react';
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { get } from 'idb-keyval';
+  IonImg,
+} from "@ionic/react";
+import React from "react";
+import { useHistory } from "react-router-dom";
+import "./TestFinished.css";
+import successImg from "../assets/green-checkmark.svg";
 
-import './TestFinished.css';
-
-const TestFinishedPage: React.FC = props => {
-  const [total, setTotal] = useState(0);
-  const [correctas, setCorrectas] = useState(0);
-  const [incorrectas, setIncorrectas] = useState(0);
-  const [noRespondidas, setNoRespondidas] = useState(0);
-  const [porcentaje, setPorcentaje] = useState(0);
+const TestFinishedPage: React.FC = (props) => {
   const history = useHistory();
 
-  const returnMenu = () => {
-    history.replace('/page/test-types');
-  }
-
-  async function getExam() {
-    const exam = await get("exam");
-    return exam;
-  }
-
-  useEffect(() => {
-    getExam()
-    .then((result: any) => {
-      if(result) {
-        setTotal(result.exam.length);
-
-        const cc = result.exam.filter((exam: any) =>
-                      exam.respuesta == exam.selected
-                    ).length;
-
-        const ic = result.exam.length - cc;
-
-        setIncorrectas(ic);
-
-        const nac = result.exam.filter((exam: any) =>
-                      typeof exam.selected === 'undefined'
-                    ).length;
-
-        setCorrectas(cc);
-        setPorcentaje(cc * 100 / result.exam.length);
-        setNoRespondidas(nac);
-      }
-    })
-    .catch(error => console.log(error));
-  });
+  const returnMenu = () => history.replace("/page/test-types");
 
   return (
     <IonPage>
@@ -67,32 +26,26 @@ const TestFinishedPage: React.FC = props => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle className="ion-text-center">Test finalizado</IonTitle>
+          <IonTitle className="ion-text-center title">Test finalizado</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent id="test-finished-content" fullscreen>
-        <h1>El test ha finalizado</h1>
-        <br/>
-        <IonList>
-            <IonItem>
-              <IonLabel><strong>Correctas:</strong> {correctas}/{total}</IonLabel>
-            </IonItem>
-            <IonItem>
-              <IonLabel><strong>Incorrectas:</strong> {incorrectas}/{total}</IonLabel>
-            </IonItem>
-            <IonItem>
-              <IonLabel><strong>No respondidas:</strong> {noRespondidas}/{total}</IonLabel>
-            </IonItem>
-            <IonItem>
-              <IonLabel><strong>Porcentaje:</strong> {porcentaje}%</IonLabel>
-            </IonItem>
-            <IonItem>
-              <IonButton onClick={returnMenu} size="large" className="confirm-btn" color="favorite">Volver a los tests</IonButton>
-            </IonItem>
-          </IonList>
+        <div className="grilla">
+          <IonImg src={successImg} style={{ width: "20vw" }} />
+          <h4 className="texto-finalizado">PRUEBA FINALIZADA</h4>
+          <IonButton
+            onClick={returnMenu}
+            size="large"
+            className="confirm-btn confirmar-btn"
+            color="favorite"
+            style={{ margin: "3vh auto" }}
+          >
+            aceptar
+          </IonButton>
+        </div>
       </IonContent>
-  </IonPage>
+    </IonPage>
   );
 };
 

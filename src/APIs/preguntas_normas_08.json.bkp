@@ -1,0 +1,100 @@
+{
+    "id": 61,
+    "pregunta": "LAS LUCES DELANTERAS DE LOS VEHÍCULOS DEBEN SER",
+    "opciones": [
+      "De color rojo o naranjado",
+      "De color blanco o amarillo claro",
+      "De cualquier color"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 62,
+    "pregunta": "EL USO DEL CINTURÓN",
+    "opciones": [
+      "Es obligatorio solamente para el conductor",
+      "Es obligatorio para el conductor y los acompañantes",
+      "Es obligatorio solamente cuando se conduce en avenidas y calles asfaltadas"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 63,
+    "pregunta": "EL USO DE SILLAS DE RETENCIÓN INFANTIL ES OBLIGATORIO PARA",
+    "opciones": [
+      "Los niños menores de 8 años",
+      "Los niños menores de 3 años",
+      "Los niños menores de 5 años"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 64,
+    "pregunta": "¿EN QUÉ CASO PUEDE UNA PERSONA MANEJAR ESTANDO ALCOHOLIZADA?",
+    "opciones": [
+      "Cuando tenga a una persona sobria a su lado.",
+      "En ningún caso",
+      "Cuando el resultado de la prueba de alcoholimetría sea inferior a 0,8 mg/litro de sangre"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 65,
+    "pregunta": "¿EN QUÉ CASO SE PERMITE AL CONDUCTOR HACER USO DE LA BOCINA?",
+    "opciones": [
+      "En ningún caso",
+      "Todas las veces que se aproxime a una bocacalle no regulada",
+      "Cuando exista peligro inminente, para evitar accidentes"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 66,
+    "pregunta": "LOS PASAJEROS QUE VIAJAN EN LOS ASIENTOS TRASEROS DEL VEHÍCULO",
+    "opciones": [
+      "Deben utilizar el cinturón de seguridad cuando se transite por rutas asfaltadas",
+      "Deben utilizar siempre el cinturón de seguridad, en todos los casos",
+      "Deben utilizar el cinturón de seguridad si son menores de 10 años"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 67,
+    "pregunta": "ANTES DE INICIAR UN VIAJE, EL CONDUCTOR DEBE ASEGURARSE DE",
+    "opciones": [
+      "Que el vehículo tenga suficiente combustible para llegar al destino final",
+      "Que las condiciones atmosféricas sean las ideales para el confort del viaje",
+      "Que el vehículo se encuentre en condiciones de seguridad y cumpla con los requisitos legales"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 68,
+    "pregunta": "SI EL SEMÁFORO LO HABILITA CON LUZ VERDE, PERO LOS PEATONES AÚN SE ENCUENTRAN ATRAVEZANDO LA CALZADA Y EL CONDUCTOR DE ATRÁS LO APURA HACIENDO SONAR LA BOCINA, USTED DEBE",
+    "opciones": [
+      "Apurar a los peatones, haciendo sonar también la bocina",
+      "Reiniciar la marcha, esquivando a los peatones por algún lado",
+      "Esperar que los peatones suban a la vereda y luego reiniciar la marcha"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 69,
+    "pregunta": "PODRÁN SER RETIRADOS DE LA VÍA PÚBLICA CON GRÚA",
+    "opciones": [
+      "Los vehículos que obstaculicen la circulación por estar estacionados en lugar prohibido",
+      "Los vehículos que no cuenten con paragolpes",
+      "Los vehículos que circulen por el carril derecho"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 70,
+    "pregunta": "AL CIRCULAR ALREDEDOR DE UNA ROTONDA, DICHA ESTRUCTURA DEBE QUEDAR",
+    "opciones": [
+      "A la izquierda del conductor",
+      "A la derecha del conductor",
+      "En frente al conductor"
+    ],
+    "respuesta": 0
+  },

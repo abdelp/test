@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import {
   IonContent,
   IonHeader,
@@ -14,26 +14,26 @@ import {
   IonButton,
   IonImg,
   IonSpinner,
-  IonAlert
-} from '@ionic/react';
-import Timer from './Timer';
-import { useHistory } from 'react-router-dom';
+  IonAlert,
+} from "@ionic/react";
+import Timer from "./Timer";
+import { useHistory } from "react-router-dom";
 
-import { set } from 'idb-keyval';
-import { sendResult } from '../APIs';
-import { updateUserTest } from '../utils/db';
-import { withCookies, Cookies } from 'react-cookie';
+import { set } from "idb-keyval";
+import { enviarResultado } from "../APIs";
+import { updateUserTest } from "../utils/db";
+import { withCookies, Cookies } from "react-cookie";
 
 const DrivingTestPage: React.FC = (props: any) => {
-  const [minutes, setMinutes] = useState<any>({val: 3});
+  const [minutes, setMinutes] = useState<any>({ val: 3 });
   const [showTimer, setShowTimer] = useState<any>(true);
   const history = useHistory();
 
-  const [statex, setState] = useState({min: 3, sec: 0});
+  const [statex, setState] = useState({ min: 3, sec: 0 });
   const [isActive, setIsActive] = useState(true);
 
   async function doSaveExamProgress(exam: any) {
-    await set("exam", {exam});
+    await set("exam", { exam });
   }
 
   // useEffect(() => {
@@ -54,28 +54,25 @@ const DrivingTestPage: React.FC = (props: any) => {
         const { sec, min } = statex;
 
         if (sec > 0) {
-          setState(state => ({...state,
-            sec: state.sec - 1
-            }));
+          setState((state) => ({ ...state, sec: state.sec - 1 }));
         }
 
         if (sec === 0) {
           if (min === 0) {
-            history.replace('/page/time-out');
+            history.replace("/page/time-out");
           } else {
-            setState(state => ({
+            setState((state) => ({
               min: state.min - 1,
-              sec: 59
-            }))
+              sec: 59,
+            }));
           }
-        } 
-
+        }
       }, 1000);
     }
 
     return () => {
       clearInterval(interval);
-    }
+    };
   }, [isActive, statex]);
 
   const { min, sec } = statex;
@@ -114,7 +111,6 @@ const DrivingTestPage: React.FC = (props: any) => {
           /> */}
 
         <IonList lines="none">
-
           <IonItem>
             Tiempo restante: <Timer min={min} sec={sec}></Timer>
           </IonItem>
