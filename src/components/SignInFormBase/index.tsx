@@ -7,6 +7,7 @@ import { signInWithUsernameAndPassword } from "../Auth/auth";
 import { withCookies, Cookies } from "react-cookie";
 import to from "await-to-js";
 import { compose } from "recompose";
+import { UserAuth } from '../../interfaces';
 
 // import * as ERRORS from '../../constants/errors';
 
@@ -31,11 +32,9 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
       signInWithUsernameAndPassword(username, password)
     );
 
-    if (!error) {
-      const { CodError, Ticket: ticket, ListaMensajes } = result;
-
-      if (CodError.text === "0") {
-        cookies.set("usuario", JSON.stringify({ username, ticket }), {
+    if (!error) {    
+      if (result?.codError === "0") {
+        cookies.set("usuario", JSON.stringify({ username, ticket: result.ticket }), {
           path: "/",
         });
 
@@ -51,7 +50,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
       } else {
         const {
           Mensaje: { text: errorMessage },
-        } = ListaMensajes.MensajesError[parseInt(CodError.text)];
+        } = result?.ListaMensajes.MensajesError[parseInt(result.codError)];
 
         setState((state: any) => ({
           ...state,
