@@ -8,7 +8,7 @@ import {
   IonItem,
   IonMenuButton,
   IonSpinner,
-  IonAlert
+  IonAlert,
 } from "@ionic/react";
 import React, { useState } from "react";
 import to from "await-to-js";
@@ -35,7 +35,10 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
     loading: false,
     error: null,
   });
-  const [showAlert, setShowAlert]: any = useState<any>({show: false, message: ''});
+  const [showAlert, setShowAlert]: any = useState<any>({
+    show: false,
+    message: "",
+  });
   const [cookies, setCookie] = useCookies(["usuario_testeado"]);
 
   const handleChange = (event: any) =>
@@ -88,8 +91,8 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
       )
     );
 
-    if(error) {
-      setShowAlert({show: true, message: error.message });
+    if (error) {
+      setShowAlert({ show: true, message: error.message });
     } else {
       if (!result) agregarUsuarioTesteado(state.user);
 
@@ -146,9 +149,9 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
               handler: () => {
                 setState((state: any) => ({ ...state, showAlert: false }));
               },
-            }
+            },
           ]}
-          />
+        />
         <div className="grilla">
           <SearchTestedUserFormBase
             onSubmit={consultUserData}

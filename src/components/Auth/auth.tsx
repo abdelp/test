@@ -3,14 +3,14 @@ import axios from "axios";
 import to from "await-to-js";
 import { HTTP } from "@ionic-native/http";
 import { xml2js } from "xml-js";
-import { UserAuth } from '../../interfaces';
+import { UserAuth } from "../../interfaces";
 
 const url = "http://www.opaci.org.py:8082/ws/WSAA.asmx?wsdl";
 
 const signInWithUsernameAndPassword = async (
   username: string,
   password: string
-):Promise<UserAuth> => {
+): Promise<UserAuth> => {
   try {
     const data = `<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
   <s:Body>
@@ -50,14 +50,14 @@ const signInWithUsernameAndPassword = async (
     const {
       ["soap:Envelope"]: {
         ["soap:Body"]: {
-          AutenticarExaminadorResponse: { AutenticarExaminadorResult
-            : {
-            CodError: { text: codError },
-            Entidad: { text: entidad },
-            ListaMensajes,
-            Ticket: { text: ticket}
-          }
-        },
+          AutenticarExaminadorResponse: {
+            AutenticarExaminadorResult: {
+              CodError: { text: codError },
+              Entidad: { text: entidad },
+              ListaMensajes,
+              Ticket: { text: ticket },
+            },
+          },
         },
       },
     } = xml2js(result.data, {

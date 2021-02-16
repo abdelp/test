@@ -7,7 +7,7 @@ import { signInWithUsernameAndPassword } from "../Auth/auth";
 import { withCookies, Cookies } from "react-cookie";
 import to from "await-to-js";
 import { compose } from "recompose";
-import { UserAuth } from '../../interfaces';
+import { UserAuth } from "../../interfaces";
 
 // import * as ERRORS from '../../constants/errors';
 
@@ -32,11 +32,15 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
       signInWithUsernameAndPassword(username, password)
     );
 
-    if (!error) {    
+    if (!error) {
       if (result?.codError === "0") {
-        cookies.set("usuario", JSON.stringify({ username, ticket: result.ticket }), {
-          path: "/",
-        });
+        cookies.set(
+          "usuario",
+          JSON.stringify({ username, ticket: result.ticket }),
+          {
+            path: "/",
+          }
+        );
 
         cookies.remove("usuario_testeado", {
           path: "/",

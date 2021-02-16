@@ -18,7 +18,12 @@ const SearchTestedUserFormBase = ({
           placeholder="C.I. N°"
         />
       </IonItem>
-      <input type="submit" className="submit-btn" value="Aceptar" disabled={!nroDocumento} />
+      <input
+        type="submit"
+        className="submit-btn"
+        value="Aceptar"
+        disabled={!nroDocumento}
+      />
       {error && <p className="error-msg">{error.message}</p>}
     </form>
   );
