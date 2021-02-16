@@ -47,5 +47,13 @@ describe("obtenerDatosUsuarioTesteado", () => {
     });
   });
 
-  it("obtiene erroneamente los datos del usuario a ser testeado", async () => {});
+  it("obtiene erroneamente los datos del usuario a ser testeado", async () => {
+    const errorMessage = 'Network Error';
+    mockedAxios.post.mockImplementationOnce(() =>
+      Promise.reject(new Error(errorMessage)));
+
+      await expect(
+        obtenerDatosUsuarioTesteado("valid token", "0", "cedula")
+      ).rejects.toThrow(errorMessage);
+  });
 });
