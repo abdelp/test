@@ -10,6 +10,8 @@ const sincronizarResultados = async (token: string) => {
     obtenerUsuariosTesteadosNoSincronizados()
   );
 
+  if (error) return;
+
   usuariosNoSincronizados.forEach((item: any) => {
     enviarResultado(token, "firma", item.idAntecedente, !!item.aprobado).then(
       (result: any) => {
