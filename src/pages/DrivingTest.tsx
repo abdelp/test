@@ -20,7 +20,7 @@ import Timer from "./Timer";
 import { useHistory } from "react-router-dom";
 
 import { set } from "idb-keyval";
-import { sendResult } from "../APIs";
+import { enviarResultado } from "../APIs";
 import { updateUserTest } from "../utils/db";
 import { withCookies, Cookies } from "react-cookie";
 

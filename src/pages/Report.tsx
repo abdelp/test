@@ -21,7 +21,7 @@ import {
 import DataList from "../components/DataList";
 import "./Report.css";
 import { withCookies } from "react-cookie";
-import { sendResult } from "../APIs";
+import { enviarResultado } from "../APIs";
 import to from "await-to-js";
 
 const round = (value: any) => value.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
@@ -229,7 +229,7 @@ const ReportPage: React.FC = ({ cookies }: any) => {
       const { idAntecedente } = cookies.get("usuario_testeado");
 
       let [err, enviado] = await to(
-        sendResult(ticket.text, "", idAntecedente, true)
+        enviarResultado(ticket.text, "", idAntecedente, true)
       );
 
       if (err) {

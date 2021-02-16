@@ -118,8 +118,8 @@ const getPreguntasSenhales = () => {
   });
 };
 
-const sendResult = async (
-  token: any,
+const enviarResultado = async (
+  token: string,
   firma: any,
   idAntecedente: number,
   aprobado: boolean
@@ -218,7 +218,7 @@ const saveDeclaracionJurada = (declaracion: any) => {
 export {
   obtenerDatosUsuarioTesteado,
   getPreguntasSenhales,
-  sendResult,
+  enviarResultado,
   getExamDate,
   getDeclaracionJurada,
   getPracticalTestItems,

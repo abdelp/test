@@ -1,4 +1,4 @@
-import { sendResult } from "../APIs";
+import { enviarResultado } from "../APIs";
 import {
   obtenerUsuariosTesteadosNoSincronizados,
   actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente,
@@ -11,7 +11,7 @@ const sincronizarResultados = async (token: string) => {
   );
 
   usuariosNoSincronizados.forEach((item: any) => {
-    sendResult(token, "firma", item.idAntecedente, !!item.aprobado).then(
+    enviarResultado(token, "firma", item.idAntecedente, !!item.aprobado).then(
       (result: any) => {
         actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
           item.nroDocumento,
