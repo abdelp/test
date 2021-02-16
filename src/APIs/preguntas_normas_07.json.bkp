@@ -1,0 +1,100 @@
+{
+    "id": 51,
+    "pregunta": "LA LEY NACIONAL DE TRÁNSITO Y SEGURIDAD VIAL DEFINE AL “CONDUCTOR” COMO",
+    "opciones": [
+      "La persona que conduce un vehículo, cualquiera sea su tipo.",
+      "La persona habilitada, capacitada técnicamente y teóricamente para manejar un vehículo.",
+      "El aprendiz que maneja un vehículo, acompañado por un instructor autorizado."
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 52,
+    "pregunta": "LA REVALIDACIÓN DE UNA LICENCIA DE CONDUCIR DEBE REALIZARSE CADA",
+    "opciones": [
+      "2 años",
+      "5 años",
+      "1 año"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 53,
+    "pregunta": "QUEDA PROHIBIDO A TODOS LOS CONDUCTORES EN GENERAL",
+    "opciones": [
+      "Ensuciar la vía pública, arrojando envases o cualquier otro tipo de basura",
+      "Encender las luces  bajas en la ciudad ",
+      "Reducir la velocidad en la boca calles no reguladas"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 54,
+    "pregunta": "¿QUÉ DEBE HACER UN CONDUCTOR QUE HA TOMADO BEBIDA ALCOHÓLICA?",
+    "opciones": [
+      "Entregar la llave de su vehículo a otra persona que esté sobria y habilitada para conducir",
+      "Esperar por lo menos 3 horas y tomar un café negro, antes de volver a conducir",
+      "Las respuestas anteriores están correctas "
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 55,
+    "pregunta": "“AUTOPISTA” ES",
+    "opciones": [
+      "Una pista exclusiva para autos y vehículos de carga",
+      "Una vía especialmente diseñada para bajas velocidades",
+      "Una vía especialmente diseñada para altas velocidades de operación, con los sentidos de flujo aislados por medio de un separador central, sin intersecciones a nivel."
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 56,
+    "pregunta": "AL CONDUCIR SU VEHICULO DURANTE LA NOCHE EN ZONAS URBANAS, DEBE HACERLO CON",
+    "opciones": [
+      "Luces de estacionamiento",
+      "Luces altas",
+      "Luces bajas"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 57,
+    "pregunta": "¿QUÉ VEHICULOS TIENEN PREFERENCIAS ABSOLUTAS DE CRUCE Y PASO?",
+    "opciones": [
+      "Los ómnibus del trasporte público y taxis",
+      "Los vehículos de emergencia (bomberos, policías, ambulancias, etc.) en cualquier caso",
+      "Los vehículos de emergencia (bomberos, policías, ambulancias, etc.) con luces y sirenas encendidas"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 58,
+    "pregunta": "¿ESTÁ PERMITIDO ESTACIONAR AL COSTADO DE UN CORDÓN DE VEREDA PINTADO EN COLOR AMARILLO?",
+    "opciones": [
+      "Sí, en todos los casos.",
+      "No; el color amarillo no lo permite.",
+      "Sí, solamente para las motocicletas."
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 59,
+    "pregunta": "“ADELANTAMIENTO” ES",
+    "opciones": [
+      "La acción mediante la cual se supera en velocidad a otro vehículo",
+      "Maniobra mediante la cual un vehículo se sitúa delate de otro u otros que lo precedían en el mismo carril de una calzada",
+      "Cuando una motocicleta circula permanentemente por la banquina"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 60,
+    "pregunta": "EL CINTURÓN DE SEGURIDAD DEBE SER UTILIZADO",
+    "opciones": [
+      "Cuando se transite a más de 30 km/h.",
+      "Cuando se transite por avenidas o vías preferenciales.",
+      "Desde el inicio hasta el fin de cualquier viaje, sin importar la distancia recorrida"
+    ],
+    "respuesta": 2
+  },

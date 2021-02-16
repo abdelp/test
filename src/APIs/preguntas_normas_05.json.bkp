@@ -1,0 +1,100 @@
+{
+    "id": 31,
+    "pregunta": "ANTE EL EXTRAVÍO O ROBO DE SU LICENCIA DE CONDUCIR, USTED DEBE:",
+    "opciones": [
+      "Realizar la denuncia policial correspondiente y seguir manejando con la copia de la denuncia en su poder",
+      "Realizar la denuncia policial correspondiente y tramitar una nueva licencia de conducir ante su municipalidad",
+      "Realizar la denuncia en la municipalidad que corresponda"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 32,
+    "pregunta": "EN UN CRUCE PEATONAL DONDE NO HAY SEMAFOROS NI AGENTES ¿QUÉ DEBE HACERSE?",
+    "opciones": [
+      "Seguir siempre",
+      "Parar siempre, haya o no peatones",
+      "Ceder el paso a los peatones que crucen la calzada"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 33,
+    "pregunta": "¿ESTÁ PERMITIDO CIRCULAR CON EL ESCAPE LIBRE?",
+    "opciones": [
+      "Solamente en las carreteras",
+      "Cuando sea un vehículo de transporte público",
+      "En ningún caso"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 34,
+    "pregunta": "EN LAS OPERACIONES DE CARGAS Y DESCARGAS DEBE TENER PRESENTE",
+    "opciones": [
+      "Mantener el motor en marcha",
+      "No dificultar la circulación de vehículos ni peatones",
+      "Llevar los recibos de las mercaderías"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 35,
+    "pregunta": "¿EN QUÉ CASO SE PUEDE CONDUCIR UN VEHICULO EN ZAPATILLA?",
+    "opciones": [
+      "Cuando haga mucho calor",
+      "Cuando se circula por la periferia de la ciudad",
+      "En ningún caso"
+    ],
+    "respuesta": 2
+  },
+{
+    "id": 36,
+    "pregunta": "LA LICENCIA DE CONDUCIR DEBE RENOVARSE CADA",
+    "opciones": [
+      "10 años",
+      "5 años",
+      "1 año"
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 37,
+    "pregunta": "LOS NIÑOS MENORES DE 5 AÑOS DEBEN:",
+    "opciones": [
+      "Ir en el regazo del acompañante.",
+      "Viajar en sillas de retención infantil dispuestas en los asientos traseros, con cinturones abrochados",
+      "Viajar en sillas de retención infantil dispuestas en los asientos delanteros, con cinturones abrochados."
+    ],
+    "respuesta": 1
+  },
+{
+    "id": 38,
+    "pregunta": "SON ACCESORIOS OBLIGATORIOS PARA TODO VEHÍCULO",
+    "opciones": [
+      "Extintor de incendios, baliza o triángulo de seguridad y rueda neumática de auxilio.",
+      "Airbags y sensores computarizados",
+      "Sistema de dirección hidráulica y bocinas a aire."
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 39,
+    "pregunta": "ESTÁ PROHIBIDO DETENER UN VEHÍCULO EN",
+    "opciones": [
+      "Un cruce o bocacalle",
+      "Calles empedradas o terraplenadas",
+      "Avenidas y calles de sentido único"
+    ],
+    "respuesta": 0
+  },
+{
+    "id": 40,
+    "pregunta": "CUANDO DOS VEHÍCULOS SE ENCUENTRAN EN UNA INTERSECCIÓN FORMADA POR DOS CALLES DE DIFERENTES CATEGORÍAS, TENDRÁ PREFERENCIA",
+    "opciones": [
+      "El que aparece por la izquierda.",
+      "El que aparece por la derecha.",
+      "El que circula por la vía de mayor preferencia."
+    ],
+    "respuesta": 2
+  },

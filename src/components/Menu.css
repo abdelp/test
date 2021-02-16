@@ -111,3 +111,8 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 } 
+
+.login-popover {
+  --width: 90%;
+  --padding-bottom: 2em;
+}

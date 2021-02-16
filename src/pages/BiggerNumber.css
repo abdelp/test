@@ -1,0 +1,26 @@
+.numbers-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.numbers-container .numero-grande,
+.numbers-container .numero-chico{
+  font-size: 130px;
+  color: red;
+  background: #ecf0ee;
+  border-radius: 20px;
+  text-align: center;
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 22px;
+  padding: 0 !important;
+  --background: none;
+  --box-shadow: none;
+}
+
+.numbers-container .numero-chico{
+  font-size: 80px;
+  width: 190px;
+  height: 190px;
+}

@@ -1,23 +1,29 @@
-import React from 'react';
-import {
-  IonItem,
-  IonLabel,
-  IonInput
-} from '@ionic/react';
+import React from "react";
+import { IonItem, IonInput } from "@ionic/react";
 
 const SearchTestedUserFormBase = ({
   onSubmit,
   handleChange,
-  rut,
-  error
+  nroDocumento,
+  error,
 }: any) => {
   return (
     <form className="ion-padding login-list" onSubmit={onSubmit}>
-      <IonItem>
-        <IonLabel position="floating">C.I. N°</IonLabel>
-        <IonInput name="rut" value={rut} onIonChange={handleChange} autofocus />
+      <IonItem lines="none">
+        <IonInput
+          name="nroDocumento"
+          value={nroDocumento}
+          onIonChange={handleChange}
+          autofocus
+          placeholder="C.I. N°"
+        />
       </IonItem>
-      <input type="submit" className="submit-btn" value="Consultar" />
+      <input
+        type="submit"
+        className="submit-btn"
+        value="Aceptar"
+        disabled={!nroDocumento}
+      />
       {error && <p className="error-msg">{error.message}</p>}
     </form>
   );

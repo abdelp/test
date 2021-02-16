@@ -1,12 +1,3 @@
-:root {
-  --ion-color-orange: #F6A13E;
-  --ion-color-orange-rgb: 246, 161, 62;
-  --ion-color-orange-contrast: #ffffff;
-  --ion-color-orange-contrast-rgb: 255,255,255;
-  --ion-color-orange-shade: #5ca56c;
-  --ion-color-orange-tint: #78c288;
-}
-
 .ion-color-orange {
   --ion-color-base: var(--ion-color-orange);
   --ion-color-base-rgb: var(--ion-color-orange-rgb);
@@ -18,4 +9,8 @@
 
 strong {
   white-space: normal !important;
+}
+
+ion-radio[slot="end"] {
+  margin-inline-start: 10px;
 }

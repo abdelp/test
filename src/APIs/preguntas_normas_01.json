@@ -1,0 +1,300 @@
+[
+  [
+    {
+      "id": 13,
+      "pregunta": "SI POSEE UNA LICENCIA DE CONDUCIR CORRESPONDIENTE A UN MUNICIPIO EN DONDE USTED YA NO RESIDE",
+      "opciones": [
+        "Debe realizar el trámite de cancelación ante el municipio de su residencia actual, adjuntando una copia de la denuncia policial correspondiente.",
+        "Debe realizar el trámite de cancelación ante el municipio correspondiente y solicitar una nueva licencia en el municipio de su residencia actual.",
+        "Puede seguir manejando con la misma licencia, toda vez que la misma se encuentre al día."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 14,
+      "pregunta": "\"PEATÓN\" SE DEFINE COMO",
+      "opciones": [
+        "Toda persona que se encuentre cruzando la calzada por la franja peatonal.",
+        "Toda persona que se encuentre circulando por la acera.",
+        "Toda persona física que utiliza la vía pública a pie, en carro de criatura, silla de rueda o similar"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 15,
+      "pregunta": "NO SE DEBE CONDUCIR UN VEHICULO AUTOMOTOR BAJO LA INFLUENCIA DEL ALCOHOL",
+      "opciones": [
+        "Solamente si lleva pasajeros o acompañantes",
+        "Excepto cuando exista luz natural del día",
+        "Porque disminuye los reflejos y afecta la concentración"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 16,
+      "pregunta": "EL USO DEL CINTURÓN EN EL CASO DE LOS ACOMPAÑANTES O PASAJEROS ES RESPONSABILIDAD DE",
+      "opciones": [
+        "El conductor.",
+        "El agente de tránsito.",
+        "Los acompañantes."
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": 17,
+      "pregunta": "AL CIRCULAR EN ZONA URBANA, CUANDO NO EXISTA LUZ NATURAL DEL DÍA, SE DEBE UTILIZAR",
+      "opciones": [
+        "luz interior para una buena circulación",
+        "luz baja o de cruce",
+        "luz de balizamiento"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 18,
+      "pregunta": "AL ESTACIONAR EN UNA VÍA CON PENDIENTE (BAJADA) EL VEHÍCULO DEBE ESTAR",
+      "opciones": [
+        "con freno de mano activado y la palanca de cambio en primera marcha.",
+        "con la palanca de cambio en reversa y las ruedas orientadas hacia el cordón.",
+        "con freno de mano activado, en punto muerto (neutro) y las ruedas delanteras orientadas hacia el cordón de la vereda."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 19,
+      "pregunta": "\"AVENIDA\" SE ENTIENDE COMO",
+      "opciones": [
+        "La vía pública que cuenta con un carril por cada sentido de circulación, y separados por medio físico o con doble línea amarilla, donde el tránsito circula con carácter preferencial con respecto a las calles transversales.",
+        "Una vía especialmente diseñada para altas velocidades de operación.",
+        "La vía pública de más de un carril  por cada sentido de circulación, y separados por medio físico o con doble línea amarilla, donde el tránsito circula con carácter preferencial con respecto a las calles transversales."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 20,
+      "pregunta": "EL ADELANTAMIENTO REGLAMENTARIO ES LA MANIOBRA EFECTUADA:",
+      "opciones": [
+        "por el costado derecho de la calzada",
+        "por el costado izquierdo de la calzada",
+        "por cualquiera de los lados"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 21,
+      "pregunta": "LA MANIOBRA DE REVERSA O MARCHA ATRÁS ESTÁ PERMITIDA:",
+      "opciones": [
+        "solamente hasta 30 metros",
+        "cuando se trate de un vehículo de uso particular",
+        "en presencia de obstáculos o para maniobra de estacionamiento."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 22,
+      "pregunta": "EN CASO DE SINIESTRO VIAL LO PRINCIPAL SIEMPRE ES",
+      "opciones": [
+        "huir del sitio del suceso",
+        "avisar a la autoridad competente y al servicio de emergencias",
+        "legar a un acuerdo amistoso"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 23,
+      "pregunta": "LA DEFINICIÓN DE \"LOMADA\" ES:",
+      "opciones": [
+        "Elevación del terreno de poca altura, normalmente de forma redondeada, que viene a ser el primer grado después de la llanura.",
+        "Pequeña formación geográfica que es más alta que la llanura, señalizada con doble raya amarilla",
+        "Elevación construida sobre la vía de tránsito en forma transversal, cuya finalidad es reducir la velocidad de circulación"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 24,
+      "pregunta": "SI UN VEHÍCULO CIRCULA POR LA VÍA PÚBLICA CONTAMINANDO EL AIRE CON EMISIONES DE HUMO NEGRO, LA RESPONSABILIDAD Y LA SANCIÓN CORRESPONDERÁN",
+      "opciones": [
+        "Solamente al conductor del vehículo",
+        "Solamente al propietario del vehículo.",
+        "A ambos, al conductor y al propietario del vehículo."
+      ],
+      "respuesta": 2
+    }
+  ],
+  [
+    {
+      "id": 25,
+      "pregunta": "AL APROXIMARSE A UNA ESQUINA, USTED OBSERVA PEATONES INTENTANDO CRUZAR",
+      "opciones": [
+        "Debe detenerse y ceder el paso a los peatones, solamente cuando exista franja o cruce peatonal.",
+        "Debe detenerse y ceder el paso a los peatones, aunque no exista franja o cruce peatonal.",
+        "Porque disminuye los reflejos y afecta la concentración"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 26,
+      "pregunta": "AL CONDUCIR SU VEHICULO, USTED DEBE CIRCULAR EXCLUSIVAMENTE POR:",
+      "opciones": ["la banquina", "la calzada", "la acera"],
+      "respuesta": 2
+    },
+    {
+      "id": 27,
+      "pregunta": "EL ÚNICO DOCUMENTO QUE HABILITA A MANEJAR VEHÍCULO AUTOMOTOR ES",
+      "opciones": [
+        "la cédula de identidad",
+        "la licencia de conducir",
+        "una denuncia policial de extravío de documentos"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 28,
+      "pregunta": "LOS NIÑOS DE ENTRE 5 y 10 AÑOS DEBEN",
+      "opciones": [
+        "viajar en el asiento delantero, al lado del conductor",
+        "ir en el regazo del acompañante.",
+        "viajar en los asientos traseros, con el cinturón abrochado."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 29,
+      "pregunta": "UN ESTACIONAMIENTO RESERVADO EN LA VÍA PÚBLICA",
+      "opciones": [
+        "Puede ser utilizado exclusivamente por su titular o quien tenga autorización del mismo.",
+        "Puede ser utilizado por cualquier vehículo, hasta que se presente el titular y lo reclame.",
+        "Puede ser utilizado libremente en horas pico."
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": 30,
+      "pregunta": "¿EN QUÉ CASO PUEDE USTED CONDUCIR UN VEHICULO QUE TENGA FALLAS EN EL SISTEMA DE DIRECCIÓN O EN EL MECANISMO DE FRENO?",
+      "opciones": [
+        "cuando se presente una situación de emergencia.",
+        "cuando circule exclusivamente en calles empedradas o de tierra.",
+        "en ningún caso."
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 31,
+      "pregunta": "AL SER ADELANTADO POR OTRO VEHICULO ¿QUÉ SE DEBE HACER?",
+      "opciones": [
+        "aumentar la velocidad",
+        "frenar bruscamente para ceder el paso",
+        "permitir que el conductor que adelanta pueda retomar su derecha lo antes posible"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 32,
+      "pregunta": "CIRCULANDO EN RUTA, USTED DEBE LLEVAR ENCENDIDAS PERMANENTEMENTE:",
+      "opciones": ["Las luces bajas", "Las luces altas", "Ninguna de ellas"],
+      "respuesta": 0
+    }
+  ],
+  [
+    {
+      "id": 151,
+      "pregunta": "PODRÁN SER RETIRADOS DE LA VÍA PÚBLICA CON GRÚA",
+      "opciones": [
+        "Los vehículos que obstaculicen la circulación por estar estacionados en lugar prohibido",
+        "Los vehículos que no cuenten con paragolpes",
+        "Los vehículos que circulen por el carril derecho"
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": 152,
+      "pregunta": "SI UD. ESTÁ SIENDO ADELANTADO POR OTRO VEHÍCULO, SU DEBER ES",
+      "opciones": [
+        "Acelerar para dejar atrás al vehículo que ha iniciado la maniobra de adelantamiento",
+        "Disminuir la velocidad y permitir que el otro vehículo retome su derecha",
+        "Continuar avanzando en forma indiferente"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 153,
+      "pregunta": "CUANDO USTED ABROCHA EL CINTURÓN DE SEGURIDAD, DEBE ASEGURARSE DE",
+      "opciones": [
+        "Que el juego libre de la parte superior sea de por lo menos 50 cm",
+        "Que el cinturón cubra por completo al niño que usted lleva en su regazo",
+        "Que la hebilla produzca un sonido de clic, como señal de un correcto ajuste"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 154,
+      "pregunta": "¿EN QUÉ CASO PUEDE USTED ESTACIONAR EN UN LUGAR PROHIBIDO?",
+      "opciones": [
+        "Cuando sea solamente por 5 minutos o menos",
+        "En ningún caso",
+        "Durante horas de la noche y los fines de semana"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 155,
+      "pregunta": "EVITAR LA EMISIÓN VEHICULAR DE GASES DENSOS (HUMO NEGRO) ES UNA RESPONSABILIDAD DE",
+      "opciones": [
+        "El conductor del vehículo",
+        "El propietario del vehículo",
+        "Ambos, el conductor y el propietario"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 156,
+      "pregunta": "UNA CHAPA O MATRÍCULA ASIGNADA A UN VEHICULO ¿PODRÁ SER UTILIZADA POR OTRO VEHÍCULO?",
+      "opciones": [
+        "Sí, cuando el vehículo sea del mismo propietario",
+        "Sí, cuando el vehículo al que fue asignada la matrícula se encuentre fuera de circulación",
+        "No, en ningún caso"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 157,
+      "pregunta": "EL USO DE BUSCAHUELLAS ESTÁ PERMITIDO",
+      "opciones": [
+        "Cuando el vehículo está en circulación",
+        "Cuando el vehículo es de transporte de carga",
+        "Exclusivamente en zonas rurales, fuera de las zonas urbanas"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": 158,
+      "pregunta": "CUANDO LA CALZADA PRESENTE DETERIOROS O BACHES, EL CONDUCTOR DEBERÁ",
+      "opciones": [
+        "Tomar las debidas precauciones para evitar accidentes",
+        "Esquivar los desperfectos en la calzada y salir rápidamente de la zona de peligro",
+        "Continuar la marcha en forma indiferente"
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": 159,
+      "pregunta": "LAS CICLOVÍAS O BICISENDAS SON ZONAS DESTINADAS AL USO EXCLUSIVO DEL CICLISTA",
+      "opciones": [
+        "Que pueden ser utilizadas eventualmente por motociclistas o vehículos pequeños",
+        "Que no pueden ser utilizadas por vehículos automotores",
+        "Que pueden ser utilizadas como estacionamiento, en días feriados y durante horas de la noche"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": 160,
+      "pregunta": "AL CONDUCIR, USTED VE A UN PEATÓN QUE INTENTA CRUZAR A MITAD DE CUADRA ¿QUÉ DEBE HACER?",
+      "opciones": [
+        "Frenar preventivamente y hacer uso de la bocina para advertir sobre el peligro",
+        "Acelerar para salir de la situación de peligro lo antes posible",
+        "Continuar la marcha indiferente, ya que la imprudencia es exclusivamente del peatón"
+      ],
+      "respuesta": 0
+    }
+  ]
+]

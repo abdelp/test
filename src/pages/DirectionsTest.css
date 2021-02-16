@@ -1,0 +1,10 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.check-symbol {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
