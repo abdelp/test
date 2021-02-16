@@ -6,4 +6,11 @@ interface Title {
 
 interface UserProps extends RouteComponentProps {}
 
-export type { Title, UserProps };
+interface UserAuth {
+  codError: string,
+  entidad: string,
+  ListaMensajes: any,
+  ticket: string
+}
+
+export type { Title, UserProps, UserAuth };
