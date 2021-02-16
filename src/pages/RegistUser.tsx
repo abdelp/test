@@ -8,6 +8,7 @@ import {
   IonItem,
   IonMenuButton,
   IonSpinner,
+  IonAlert
 } from "@ionic/react";
 import React, { useState } from "react";
 import to from "await-to-js";
@@ -34,7 +35,7 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
     loading: false,
     error: null,
   });
-
+  const [showAlert, setShowAlert]: any = useState<any>({show: false, message: ''});
   const [cookies, setCookie] = useCookies(["usuario_testeado"]);
 
   const handleChange = (event: any) =>
@@ -78,7 +79,7 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
     }
   };
 
-  const confirmUserTested = async () => {
+  const confirmarUsuarioATestear = async () => {
     const [error, result] = await to(
       obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
         state.user.nroDocumento,
@@ -87,27 +88,31 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
       )
     );
 
-    if (!result) agregarUsuarioTesteado(state.user);
+    if(error) {
+      setShowAlert({show: true, message: error.message });
+    } else {
+      if (!result) agregarUsuarioTesteado(state.user);
 
-    setCookie(
-      "usuario_testeado",
-      {
-        nombres: state.user.nombres,
-        apellidos: state.user.apellidos,
-        nroDocumento: state.user.nroDocumento,
-        idAntecedente: state.user.idAntecedente,
-        categoria: state.user.categoria,
-        tramite: state.user.tramite,
-      },
-      { path: "/" }
-    );
+      setCookie(
+        "usuario_testeado",
+        {
+          nombres: state.user.nombres,
+          apellidos: state.user.apellidos,
+          nroDocumento: state.user.nroDocumento,
+          idAntecedente: state.user.idAntecedente,
+          categoria: state.user.categoria,
+          tramite: state.user.tramite,
+        },
+        { path: "/" }
+      );
 
-    setCookie("categoria", state.user.categoria, { path: "/" });
+      setCookie("categoria", state.user.categoria, { path: "/" });
 
-    history.replace({
-      pathname: "/page/test-types",
-      state: state.user,
-    });
+      history.replace({
+        pathname: "/page/test-types",
+        state: state.user,
+      });
+    }
 
     return;
   };
@@ -128,6 +133,22 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
       </IonHeader>
 
       <IonContent fullscreen className="ion-padding">
+        <IonAlert
+          isOpen={showAlert.show}
+          cssClass="my-custom-class"
+          header={"Error"}
+          message={showAlert.message}
+          buttons={[
+            {
+              text: "Aceptar",
+              role: "cancel",
+              cssClass: "secondary",
+              handler: () => {
+                setState((state: any) => ({ ...state, showAlert: false }));
+              },
+            }
+          ]}
+          />
         <div className="grilla">
           <SearchTestedUserFormBase
             onSubmit={consultUserData}
@@ -147,7 +168,7 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
               <DataList user={user} />
               <input
                 type="button"
-                onClick={confirmUserTested}
+                onClick={confirmarUsuarioATestear}
                 className="submit-btn confirm-btn"
                 value="Confirmar"
               />
