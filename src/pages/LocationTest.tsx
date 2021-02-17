@@ -73,7 +73,7 @@ const LocationTestPage: React.FC = (props: any) => {
                 numerosAElegir,
               }));
             });
-          } else if (mensaje != "" && mensaje != "Atención") {
+          } else if (mensaje !== "" && mensaje !== "Atención") {
             rotationInterval = window.setTimeout(() => {
               setState((state: any) => ({ ...state, mensaje: "" }));
             }, 2000);

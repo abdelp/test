@@ -11,7 +11,6 @@ import {
 } from '@ionic/react';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { get } from 'idb-keyval';
 import { getExamDate } from '../APIs';
 import { useCookies } from "react-cookie";
 import AuthenticateFormBase from '../components/AuthenticateFormBase';
@@ -25,7 +24,7 @@ import declaracionJuradaBtnImg from '../assets/declaracion-jurada.svg';
 
 const TestTypesPage: React.FC = () => {
   const history = useHistory();
-  const [cookies, setCookie] = useCookies(["user"]);
+  const [cookies] = useCookies(["user"]);
   const { categoria, ticket, usuario_testeado } = cookies;
   const [showLogin, setShowLogin] = useState<any>();
 

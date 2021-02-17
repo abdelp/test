@@ -62,8 +62,6 @@ const BiggerNumber: React.FC = (props: any) => {
         if (sec === 0) {
           if (min === 0) {
             const { cookies } = props;
-
-            const ticket = cookies.get("ticket");
             const categoria = cookies.get("categoria");
             const usuarioTesteado = cookies.get("usuario_testeado");
             const { nroDocumento, idAntecedente } = usuarioTesteado;

@@ -3,8 +3,6 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader,
-  IonTitle,
 } from "@ionic/react";
 
 const DataList = ({ user }: any) => {
