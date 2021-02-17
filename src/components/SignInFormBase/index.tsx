@@ -111,7 +111,6 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
         // @ts-ignore
         error && <p className="error-msg">{error}</p>
       }
-      <p className="error-msg">Network error</p>
     </form>
   );
 };
