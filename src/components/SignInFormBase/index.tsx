@@ -26,7 +26,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
     event.preventDefault();
 
     setState((state: any) => ({ ...state, loading: true }));
-    let error: any, result;
+    let error: any, result: any;
 
     [error, result] = await to(
       signInWithUsernameAndPassword(username, password)
@@ -52,14 +52,10 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
 
         history.replace(ROUTES.REGIST_USER);
       } else {
-        const {
-          Mensaje: { text: errorMessage },
-        } = result?.ListaMensajes.MensajesError[parseInt(result.codError)];
-
         setState((state: any) => ({
           ...state,
           loading: false,
-          error: errorMessage,
+          error: result?.mensaje,
         }));
       }
     } else {
