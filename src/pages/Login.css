@@ -100,7 +100,12 @@
 
 .error-msg {
   color: red;
-  font-size: 3em;
+}
+
+@media (min-width: 1190px) {
+  .error-msg {
+    font-size: 3em;
+  }
 }
 
 .loading {
