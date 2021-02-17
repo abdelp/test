@@ -176,4 +176,33 @@ describe("signInWithUsernameAndPassword", () => {
         ).resolves.toEqual(expectedResult);
       });
   });
+
+  describe("loguea erroneamente al usuario", () => {
+    it("con el plugin nativo HTTP", async () => {
+      const error = {
+        status: -1,
+        error:
+          "There was an error with the request: Failed to connect to www.opaci.org.py/190.128.227.98:8082",
+      };
+
+      mockedHTTP.post.mockRejectedValueOnce(error);
+
+      await expect(
+        signInWithUsernameAndPassword("username", "password")
+      ).rejects.toEqual(error);
+    });
+
+    it("con axios", async () => {
+      const errorMessage = "Network Error";
+      mockedHTTP.post.mockRejectedValueOnce("cordova_not_available");
+
+      mockedAxios.post.mockImplementationOnce(() =>
+        Promise.reject(new Error(errorMessage))
+      );
+
+      await expect(
+        signInWithUsernameAndPassword("username", "password")
+      ).rejects.toThrow(errorMessage);
+    });
+  });
 });
