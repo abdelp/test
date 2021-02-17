@@ -63,7 +63,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
       setState((state: any) => ({
         ...state,
         loading: false,
-        error: error.message,
+        error: error.message || 'Error de conexión',
       }));
     }
   };
@@ -111,6 +111,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
         // @ts-ignore
         error && <p className="error-msg">{error}</p>
       }
+      <p className="error-msg">Network error</p>
     </form>
   );
 };
