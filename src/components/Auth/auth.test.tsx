@@ -9,7 +9,7 @@ jest.mock("@ionic-native/http");
 const mockedHTTP = HTTP as jest.Mocked<typeof HTTP>;
 
 describe("signInWithUsernameAndPassword", () => {
-  describe("loguea al empleado que realizará el test de manera exitosa", () => {
+  describe("retorna datos del empleado que realizará el test de manera exitosa", () => {
     const data = `<?xml version="1.0" encoding="utf-8"?>
     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
       <soap:Body>
@@ -122,5 +122,56 @@ describe("signInWithUsernameAndPassword", () => {
         signInWithUsernameAndPassword("username", "password")
       ).resolves.toEqual(expectedResult);
     });
+  });
+
+  describe("", () => {
+    const data = `<?xml version="1.0" encoding="utf-8"?>
+      <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <soap:Body>
+          <AutenticarExaminadorResponse xmlns="http://rut.antsv.gov.py/">
+            <AutenticarExaminadorResult>
+              <CodError>6</CodError>
+              <ListaMensajes>
+                <MensajesError>
+                  <CodError>0</CodError>
+                  <Mensaje>OK</Mensaje>
+                </MensajesError>
+                <MensajesError>
+                  <CodError>1</CodError>
+                  <Mensaje>Error General</Mensaje>
+                </MensajesError>
+                <MensajesError>
+                  <CodError>2</CodError>
+                  <Mensaje>Error generico en Base de Datos</Mensaje>
+                </MensajesError>
+                <MensajesError>
+                  <CodError>3</CodError>
+                  <Mensaje>No se encontraron coincidencias</Mensaje>
+                </MensajesError>
+                <MensajesError>
+                  <CodError>4</CodError>
+                  <Mensaje>No tiene permisos para esta operación</Mensaje>
+                </MensajesError>
+                <MensajesError>
+                  <CodError>5</CodError>
+                  <Mensaje>Token expirado</Mensaje>
+                </MensajesError>
+                <MensajesError>
+                  <CodError>6</CodError>
+                  <Mensaje>Usuario y/o contraseña incorrecta</Mensaje>
+                </MensajesError>
+                <MensajesError>
+                  <CodError>7</CodError>
+                  <Mensaje>Usuario inhabilitado</Mensaje>
+                </MensajesError>
+                <MensajesError>
+                  <CodError>8</CodError>
+                  <Mensaje>No existe ningún filtro de búsqueda</Mensaje>
+                </MensajesError>
+              </ListaMensajes>
+            </AutenticarExaminadorResult>
+          </AutenticarExaminadorResponse>
+        </soap:Body>
+      </soap:Envelope>`;
   });
 });

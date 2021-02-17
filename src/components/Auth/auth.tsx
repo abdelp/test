@@ -52,10 +52,10 @@ const signInWithUsernameAndPassword = async (
         ["soap:Body"]: {
           AutenticarExaminadorResponse: {
             AutenticarExaminadorResult: {
-              CodError: { text: codError },
-              Entidad: { text: entidad },
+              CodError: { text: codError } = { text: null},
+              Entidad: { text: entidad } = { text: null},
               ListaMensajes,
-              Ticket: { text: ticket },
+              Ticket: { text: ticket } = { text: null},
             },
           },
         },
