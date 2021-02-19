@@ -100,7 +100,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
         className="submit-btn"
         value="ACEPTAR"
         color="favorite"
-        disabled={isInvalid}
+        disabled={isInvalid || loading}
       />
       {loading && (
         <IonItem>
