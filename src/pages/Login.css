@@ -1,3 +1,7 @@
+#login-page {
+  position: absolute;
+}
+
 .submit-btn,
 .confirmar-btn,
 .back-to-main,
@@ -126,15 +130,27 @@ ion-textarea {
   border: solid 2px var(--ion-color-favorite);
   font-weight: bold;
   text-align: center;
-  height: 6vh;
+  /* height: 6vh; */
   margin-bottom: 3vh !important;
   font-size: 4vh !important;
 }
 
-.native-input.sc-ion-input-md:-webkit-autofill,
+/* .native-input.sc-ion-input-md:-webkit-autofill,
 .native-input.sc-ion-input-md {
   font-size: 4vh;
-}
+} */
+
+/* @media (min-width: 1200px) { */
+  .native-input.sc-ion-input-md:-webkit-autofill,
+  .native-input.sc-ion-input-md {
+    font-size: 1em;
+  }
+
+  ion-input,
+  ion-textarea {
+    height: 1.4em;
+  }
+/* } */
 
 .datosdeinteresado ion-item {
   font-size: 2.5vh;

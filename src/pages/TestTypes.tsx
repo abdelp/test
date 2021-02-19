@@ -69,9 +69,7 @@ const TestTypesPage: React.FC = () => {
   };
 
   const goToTest = (test: any) => {
-    const { categoria, ticket, usuario_testeado } = cookies;
-
-    console.log(test);
+    const { categoria, usuario_testeado } = cookies;
 
     checkExamDate(test)
       .then((result) => {

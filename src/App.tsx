@@ -64,7 +64,7 @@ const App: React.FC = (props: any) => {
         sincronizarResultados(ticket.text);
       }
     });
-  }, []);
+  }, [props.cookies]);
 
   setupConfig({
     swipeBackEnabled: false, // also prevent swiping back on either platform

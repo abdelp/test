@@ -104,7 +104,7 @@ const LocationTestPage: React.FC = (props: any) => {
     return () => {
       clearTimeout(rotationInterval);
     };
-  }, [state]);
+  }, [state, history]);
 
   return (
     <IonPage>
