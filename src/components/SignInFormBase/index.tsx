@@ -50,8 +50,6 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
           setShowLogin(false);
         }
 
-        console.log('deslogueado por aca')
-
         history.replace(ROUTES.REGIST_USER);
       } else {
         setState((state: any) => ({
@@ -83,6 +81,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
           value={username}
           onIonChange={onChange}
           placeholder="USUARIO"
+          max="20"
           autofocus
         />
       </IonItem>
