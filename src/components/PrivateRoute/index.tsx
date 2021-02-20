@@ -9,20 +9,18 @@ const PrivateRoute: React.FC = ({
   component: Component,
   cookies,
   ...rest
-}): any => {
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        return cookies.get("usuario") ? (
-          <Component {...props} />
-        ) : (
-          <LoginPage />
-        );
-      }}
-    />
-  );
-};
+}): any => (
+  <Route
+    {...rest}
+    render={(props) => {
+      return cookies.get("usuario") ? (
+        <Component {...props} />
+      ) : (
+        <LoginPage />
+      );
+    }}
+  />
+);
 
 PrivateRoute.propTypes = {
   cookies: instanceOf(Cookies).isRequired,

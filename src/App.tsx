@@ -78,7 +78,7 @@ const App: React.FC = (props: any) => {
           <IonSplitPane contentId="main" when={false}>
             <Menu />
             <IonRouterOutlet id="main">
-              <Route path="/regist-user" component={RegistUserPage} exact />
+              <PrivateRoute path="/regist-user" component={RegistUserPage} exact />
               <PrivateRoute
                 path="/page/test-types"
                 component={TestTypesPage}
@@ -146,28 +146,13 @@ const App: React.FC = (props: any) => {
                 exact
               />
               <PrivateRoute path="/page/report" component={ReportPage} exact />
-              <PrivateRoute path="/" exact>
-                {props.cookies.get("usuario") ? (
-                  <RegistUserPage />
-                ) : (
-                  <LoginPage />
-                )}
-              </PrivateRoute>
+              <PrivateRoute path="/" component={RegistUserPage} exact />
             </IonRouterOutlet>
           </IonSplitPane>
-          {/*
-            // @ts-ignore */}
           <UnloggedRoute
             path="/login"
             component={LoginPage}
             exact
-            // render={() => {
-            //   return props.cookies.get("usuario") ? (
-            //     <RegistUserPage />
-            //   ) : (
-            //     <LoginPage />
-            //   );
-            // }}
           ></UnloggedRoute>
         </IonReactRouter>
       </IonApp>
