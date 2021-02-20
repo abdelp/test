@@ -50,6 +50,8 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
           setShowLogin(false);
         }
 
+        console.log('deslogueado por aca')
+
         history.replace(ROUTES.REGIST_USER);
       } else {
         setState((state: any) => ({

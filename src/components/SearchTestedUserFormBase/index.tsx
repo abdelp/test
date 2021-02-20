@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IonItem, IonInput } from "@ionic/react";
 
 const SearchTestedUserFormBase = ({
@@ -7,6 +7,14 @@ const SearchTestedUserFormBase = ({
   nroDocumento,
   error,
 }: any) => {
+
+  useEffect(() => {
+    console.log('mounted child: []');
+    return () => {
+      console.log('unmounted child: []');
+    }
+  }, []);
+
   return (
     <form className="ion-padding login-list" onSubmit={onSubmit}>
       <IonItem lines="none">

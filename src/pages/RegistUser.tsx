@@ -10,7 +10,7 @@ import {
   IonSpinner,
   IonAlert,
 } from "@ionic/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import to from "await-to-js";
 
 import { withRouter } from "react-router-dom";
@@ -28,13 +28,15 @@ import {
 
 import { UserProps } from "../interfaces";
 
+const initialState = {
+  nroDocumento: "",
+  user: null,
+  loading: false,
+  error: null,
+};
+
 const RegistUserPage: React.FC<UserProps> = ({ history }) => {
-  const [state, setState]: any = useState<any>({
-    nroDocumento: "",
-    user: null,
-    loading: false,
-    error: null,
-  });
+  const [state, setState]: any = useState<any>({...initialState});
   const [showAlert, setShowAlert]: any = useState<any>({
     show: false,
     message: "",
@@ -58,7 +60,7 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
 
     const [err, result] = await to(
       obtenerDatosUsuarioTesteado(
-        cookies.usuario.ticket.text,
+        cookies.usuario.ticket,
         state.nroDocumento,
         "cedula"
       )
@@ -119,6 +121,14 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
 
     return;
   };
+
+  useEffect(() => {
+    console.log('mounted parent: []')
+
+    return () => {
+      console.log('unmounted parent: []')
+    }
+  }, []);
 
   const { nroDocumento, user, error, loading } = state;
 

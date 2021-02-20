@@ -161,13 +161,13 @@ const App: React.FC = (props: any) => {
             path="/login"
             component={LoginPage}
             exact
-            render={() => {
-              return props.cookies.get("usuario") ? (
-                <RegistUserPage />
-              ) : (
-                <LoginPage />
-              );
-            }}
+            // render={() => {
+            //   return props.cookies.get("usuario") ? (
+            //     <RegistUserPage />
+            //   ) : (
+            //     <LoginPage />
+            //   );
+            // }}
           ></UnloggedRoute>
         </IonReactRouter>
       </IonApp>

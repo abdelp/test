@@ -14,15 +14,17 @@ import {
   IonImg,
 } from "@ionic/react";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import "./Menu.css";
 import { useCookies } from "react-cookie";
-import { useHistory } from "react-router-dom";
+import { useHistory, withRouter } from "react-router-dom";
 import SignInFormBase from "../components/SignInFormBase";
 import { withCookies } from "react-cookie";
 import iconoFinalizar from "../assets/menu-check.svg";
 import iconoCerrar from "../assets/menu-power.svg";
+import * as ROUTES from '../constants/routes';
+import { compose } from 'recompose';
 interface AppPage {
   url: string;
   iosIcon: string;
@@ -37,10 +39,10 @@ const capitalize = (string: string) =>
 
 const Menu: React.FC = (props: any) => {
   const location = useLocation();
-  const history = useHistory();
   const [showLogin, setShowLogin] = useState<any>();
   const [username, setUsername] = useState<string>();
   const [cookies, setCookie, removeCookie] = useCookies(["usuario"]);
+  const menu = useRef(null);
 
   useEffect(() => {
     const usuario = props.cookies.get("usuario");
@@ -55,7 +57,11 @@ const Menu: React.FC = (props: any) => {
     removeCookie("usuario", { path: "/" });
     removeCookie("categoria", { path: "/" });
     removeCookie("usuario_testeado", { path: "/" });
-    history.replace("/login");
+
+    {/*
+    //@ts-ignore */}
+    console.log(menu.current.toggle());
+    props.history.replace("/");
   };
 
   const logoutAction = () => {
@@ -68,7 +74,7 @@ const Menu: React.FC = (props: any) => {
   };
 
   return (
-    <IonMenu contentId="main" type="overlay" swipeGesture={false}>
+    <IonMenu ref={menu} contentId="main" type="overlay" swipeGesture={false}>
       <IonHeader>
         <IonToolbar color="favorite">
           <IonTitle className="titulo-de-menu">Menu</IonTitle>
@@ -134,4 +140,4 @@ const Menu: React.FC = (props: any) => {
   );
 };
 
-export default withCookies(Menu);
+export default compose(withCookies, withRouter)(Menu);
