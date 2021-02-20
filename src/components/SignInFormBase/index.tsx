@@ -93,6 +93,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
           type="password"
           onIonChange={onChange}
           placeholder="CONTRASEÑA"
+          max="14"
         />
       </IonItem>
 
