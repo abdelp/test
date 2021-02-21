@@ -4,7 +4,6 @@ import { Route } from "react-router-dom";
 import { withCookies, Cookies } from "react-cookie";
 import { instanceOf } from "prop-types";
 import LoginPage from "../../pages/Login";
-import TestTypesPage from "../../pages/TestTypes";
 
 const PrivateRoute: React.FC = ({
   component: Component,
@@ -15,9 +14,7 @@ const PrivateRoute: React.FC = ({
     {...rest}
     render={(props) => {
       return cookies.get("usuario") ? (
-        cookies.get("usuario_testeado") ?
-          <TestTypesPage /> :
-          <Component {...props} />
+        <Component {...props} />
       ) : (
         <LoginPage />
       );
