@@ -146,7 +146,7 @@ const App: React.FC = (props: any) => {
                 exact
               />
               <PrivateRoute path="/page/report" component={ReportPage} exact />
-              <PrivateRoute path="/" component={RegistUserPage} exact restricted>
+              <PrivateRoute path="/" component={RegistUserPage} exact restricted={true}>
               </PrivateRoute>
             </IonRouterOutlet>
           </IonSplitPane>
