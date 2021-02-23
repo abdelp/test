@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import {
   IonContent,
   IonIcon,
@@ -17,10 +19,9 @@ import {
 import React, { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import "./Menu.css";
-import { useCookies } from "react-cookie";
-import { useHistory, withRouter } from "react-router-dom";
-import SignInFormBase from "../components/SignInFormBase";
 import { withCookies } from "react-cookie";
+import { withRouter } from "react-router-dom";
+import SignInFormBase from "../components/SignInFormBase";
 import iconoFinalizar from "../assets/menu-check.svg";
 import iconoCerrar from "../assets/menu-power.svg";
 import * as ROUTES from '../constants/routes';
@@ -41,7 +42,6 @@ const Menu: React.FC = (props: any) => {
   const location = useLocation();
   const [showLogin, setShowLogin] = useState<any>();
   const [username, setUsername] = useState<string>();
-  const [cookies, setCookie, removeCookie] = useCookies(["usuario"]);
   const menu = useRef(null);
 
   useEffect(() => {
@@ -54,13 +54,11 @@ const Menu: React.FC = (props: any) => {
   });
 
   const logoutUser = () => {
-    removeCookie("usuario", { path: "/" });
-    removeCookie("categoria", { path: "/" });
-    removeCookie("usuario_testeado", { path: "/" });
+    props.cookies.remove("usuario", { path: "/" });
+    props.cookies.remove("categoria", { path: "/" });
+    props.cookies.remove("usuario_testeado", { path: "/" });
 
-    {/*
-    //@ts-ignore */}
-    console.log(menu.current.toggle());
+    menu.current.toggle();
     props.history.replace("/");
   };
 
