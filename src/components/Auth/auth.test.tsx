@@ -144,37 +144,37 @@ describe("signInWithUsernameAndPassword", () => {
         </soap:Body>
       </soap:Envelope>`;
 
-      const expectedResult = {
-        codError: "6",
-        entidad: null,
-        mensaje: "Usuario y/o contraseña incorrecta",
-        ticket: null
-      };
+    const expectedResult = {
+      codError: "6",
+      entidad: null,
+      mensaje: "Usuario y/o contraseña incorrecta",
+      ticket: null,
+    };
 
-      const PostResponse = {
-        data,
-        status: 200,
-        statusText: "OK",
-        headers: {},
-        url: "",
-      };
+    const PostResponse = {
+      data,
+      status: 200,
+      statusText: "OK",
+      headers: {},
+      url: "",
+    };
 
-      it("con el plugin nativo HTTP", async () => {
-        mockedHTTP.post.mockResolvedValueOnce(PostResponse);
-  
-        await expect(
-          signInWithUsernameAndPassword("username", "password")
-        ).resolves.toEqual(expectedResult);
-      });
-  
-      it("con axios", async () => {
-        mockedHTTP.post.mockRejectedValueOnce("cordova_not_available");
-        mockedAxios.post.mockResolvedValueOnce(PostResponse);
-  
-        await expect(
-          signInWithUsernameAndPassword("username", "password")
-        ).resolves.toEqual(expectedResult);
-      });
+    it("con el plugin nativo HTTP", async () => {
+      mockedHTTP.post.mockResolvedValueOnce(PostResponse);
+
+      await expect(
+        signInWithUsernameAndPassword("username", "password")
+      ).resolves.toEqual(expectedResult);
+    });
+
+    it("con axios", async () => {
+      mockedHTTP.post.mockRejectedValueOnce("cordova_not_available");
+      mockedAxios.post.mockResolvedValueOnce(PostResponse);
+
+      await expect(
+        signInWithUsernameAndPassword("username", "password")
+      ).resolves.toEqual(expectedResult);
+    });
   });
 
   describe("loguea erroneamente al usuario", () => {

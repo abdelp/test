@@ -12,7 +12,7 @@ import {
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { getExamDate } from "../APIs";
-import { useCookies } from "react-cookie";
+import { withCookies } from "react-cookie";
 import AuthenticateFormBase from "../components/AuthenticateFormBase";
 
 import "./TestTypes.css";
@@ -22,10 +22,11 @@ import pruebaPsiquicaBtnImg from "../assets/icono-prueba-psiquica.svg";
 import pruebaPracticaBtnImg from "../assets/icono-prueba-practica.svg";
 import declaracionJuradaBtnImg from "../assets/declaracion-jurada.svg";
 
-const TestTypesPage: React.FC = () => {
+const TestTypesPage: React.FC<any> = ({ cookies }) => {
   const history = useHistory();
-  const [cookies] = useCookies(["user"]);
-  const { categoria, ticket, usuario_testeado } = cookies;
+  const categoria = cookies.get("categoria");
+  const { ticket } = cookies.get("usuario");
+  const usuario_testeado = cookies.get("usuario_testeado");
   const [showLogin, setShowLogin] = useState<any>();
 
   let ci = "",
@@ -245,4 +246,4 @@ const TestTypesPage: React.FC = () => {
   );
 };
 
-export default TestTypesPage;
+export default withCookies(TestTypesPage);

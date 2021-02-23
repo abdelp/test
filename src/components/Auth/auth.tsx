@@ -67,7 +67,9 @@ const signInWithUsernameAndPassword = async (
       textKey: "text",
     });
 
-    const mensaje = MensajesError.filter((error: any) => error.CodError.text === codError)[0].Mensaje.text;
+    const mensaje = MensajesError.filter(
+      (error: any) => error.CodError.text === codError
+    )[0].Mensaje.text;
 
     return { codError, entidad, mensaje, ticket };
   } catch (e) {

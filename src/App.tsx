@@ -78,7 +78,12 @@ const App: React.FC = (props: any) => {
           <IonSplitPane contentId="main" when={false}>
             <Menu />
             <IonRouterOutlet id="main">
-              <PrivateRoute path="/regist-user" component={RegistUserPage} exact restricted={true} />
+              <PrivateRoute
+                path="/regist-user"
+                component={RegistUserPage}
+                exact
+                restricted={true}
+              />
               <PrivateRoute
                 path="/page/test-types"
                 component={TestTypesPage}
@@ -146,8 +151,12 @@ const App: React.FC = (props: any) => {
                 exact
               />
               <PrivateRoute path="/page/report" component={ReportPage} exact />
-              <PrivateRoute path="/" component={RegistUserPage} exact restricted={true}>
-              </PrivateRoute>
+              <PrivateRoute
+                path="/"
+                component={RegistUserPage}
+                exact
+                restricted={true}
+              ></PrivateRoute>
             </IonRouterOutlet>
           </IonSplitPane>
           <UnloggedRoute

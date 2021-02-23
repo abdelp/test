@@ -20,13 +20,13 @@ const UnloggedRoute: React.FC = ({
       render={() => {
         if (cookies.get("usuario")) {
           if (cookies.get("usuario_testeado") && restricted) {
-            return <TestTypesPage />
+            return <TestTypesPage />;
           } else {
-            return <RegistUserPage />
+            return <RegistUserPage />;
           }
-         } else {
-          return <LoginPage />
-         }
+        } else {
+          return <LoginPage />;
+        }
       }}
     />
   );

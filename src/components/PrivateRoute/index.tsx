@@ -17,13 +17,13 @@ const PrivateRoute: React.FC = ({
     render={(props) => {
       if (cookies.get("usuario")) {
         if (cookies.get("usuario_testeado") && restricted) {
-          return <TestTypesPage />
+          return <TestTypesPage />;
         } else {
-          return <Component {...props} />
+          return <Component {...props} />;
         }
-       } else {
-        return <LoginPage />
-       }
+      } else {
+        return <LoginPage />;
+      }
     }}
   />
 );

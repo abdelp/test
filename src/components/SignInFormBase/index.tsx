@@ -63,7 +63,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
       setState((state: any) => ({
         ...state,
         loading: false,
-        error: error.message || 'Error de conexión',
+        error: error.message || "Error de conexión",
       }));
     }
   };

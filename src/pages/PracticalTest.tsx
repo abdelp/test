@@ -22,9 +22,7 @@ import { instanceOf } from "prop-types";
 import { withCookies, Cookies } from "react-cookie";
 import _ from "lodash";
 import to from "await-to-js";
-import {
-  actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente,
-} from "../utils/db";
+import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from "../utils/db";
 import "./PracticalTest.css";
 
 const PracticalTestPage: React.FC = (props: any) => {

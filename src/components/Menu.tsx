@@ -24,8 +24,8 @@ import { withRouter } from "react-router-dom";
 import SignInFormBase from "../components/SignInFormBase";
 import iconoFinalizar from "../assets/menu-check.svg";
 import iconoCerrar from "../assets/menu-power.svg";
-import * as ROUTES from '../constants/routes';
-import { compose } from 'recompose';
+import * as ROUTES from "../constants/routes";
+import { compose } from "recompose";
 interface AppPage {
   url: string;
   iosIcon: string;
