@@ -10,9 +10,10 @@ import {
   IonPopover,
 } from "@ionic/react";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { getExamDate } from "../APIs";
 import { withCookies } from "react-cookie";
+import { compose } from "recompose";
 import AuthenticateFormBase from "../components/AuthenticateFormBase";
 
 import "./TestTypes.css";
@@ -22,8 +23,7 @@ import pruebaPsiquicaBtnImg from "../assets/icono-prueba-psiquica.svg";
 import pruebaPracticaBtnImg from "../assets/icono-prueba-practica.svg";
 import declaracionJuradaBtnImg from "../assets/declaracion-jurada.svg";
 
-const TestTypesPage: React.FC<any> = ({ cookies }) => {
-  const history = useHistory();
+const TestTypesPage: React.FC<any> = ({ cookies, history }) => {
   const categoria = cookies.get("categoria");
   const { ticket } = cookies.get("usuario");
   const usuario_testeado = cookies.get("usuario_testeado");
@@ -246,4 +246,4 @@ const TestTypesPage: React.FC<any> = ({ cookies }) => {
   );
 };
 
-export default withCookies(TestTypesPage);
+export default compose(withCookies, withRouter)(TestTypesPage);

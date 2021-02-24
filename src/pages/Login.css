@@ -286,8 +286,8 @@ ion-menu.md ion-item {
 }
 
 .radio-label-container {
-  width: calc(100% - 275.141px);
   display: flex;
+  /* min-width: calc(100% - 275.141px); */
 }
 
 .alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
