@@ -7,34 +7,30 @@
   --ion-color-tint: var(--ion-color-yellow-tint);
 }
 
+.question-container {
+  flex-wrap: wrap;
+}
+
+.radio-label-container {
+  width: 100%;
+}
+
 .question-label {
   white-space: normal !important;
   overflow: visible;
 }
-/*
-.confirmar-btn {
-  background-image: url('../assets/confirmar_btn.svg') !important;
-  --background-image: url('../assets/confirmar_btn.svg') !important;
-  background-size: auto auto !important;
-  --background-size: auto auto !important;
-  background-repeat: no-repeat;
-  width: 90%;
-  max-width: 496px;
-  background-position: center;
-  --background-repeat: no-repeat;
-  box-shadow: none;
-  --box-shadow: none;
-  margin-bottom: 3em;
-}
-*/
-.question-label, .radio-label {
-  font-size: 1.6em !important;
+
+@media (min-width: 576px) {
+  .question-container {
+    flex-wrap: nowrap;
+  }
+
+  .question-label, .radio-label {
+    font-size: 1.6em !important;
+  }
 }
 
 ion-list ion-radio {
   width: 5vw;
   height: 5vw;
-}
-.radio-row{
-  /*margin-bottom: 3vh; */
 }

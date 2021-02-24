@@ -197,9 +197,9 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
               }
             >
               <div
+                className="question-container"
                 style={{
                   display: "flex",
-                  flexWrap: "wrap",
                   justifyContent: "space-between",
                   width: "100%",
                 }}
