@@ -15,6 +15,7 @@ import {
   IonAlert,
   IonPopover,
   IonSpinner,
+  IonInput,
 } from "@ionic/react";
 import { useHistory } from "react-router-dom";
 import to from "await-to-js";
@@ -225,7 +226,7 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
           ))}
 
           <IonItem lines="none">
-            <IonTextarea
+            <IonInput
               placeholder="Otros datos..."
               value={questions[questions.length - 1]?.descripcion || ""}
               disabled={disableText}
@@ -236,7 +237,7 @@ const DeclaracionJuradaPage: React.FC = (props: any) => {
                   return state;
                 })
               }
-            ></IonTextarea>
+            />
           </IonItem>
         </IonList>
         <IonItem className="ion-text-center" lines="none">
