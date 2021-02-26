@@ -186,11 +186,12 @@ const DirectionsTest: React.FC = (props: any) => {
       </IonHeader>
       <IonContent>
         <div className="grilla">
-          <div className="container contenedor-direcciones">
+          <div className="contenedor-direcciones">
             <div className="row">
               <IonButton
                 className="flechita cf_arriba"
                 onClick={() => checkAnswer(0)}
+                disabled={showCorrectSymbol || showIncorrectSymbol}
               >
                 <IonImg className="flechaarriba" src={flecha} />{" "}
               </IonButton>
@@ -200,6 +201,7 @@ const DirectionsTest: React.FC = (props: any) => {
                 <IonButton
                   className="flechita cf_izquierda"
                   onClick={() => checkAnswer(1)}
+                  disabled={showCorrectSymbol || showIncorrectSymbol}
                 >
                   <IonImg className="flechaizquierda" src={flecha} />{" "}
                 </IonButton>
@@ -209,6 +211,7 @@ const DirectionsTest: React.FC = (props: any) => {
                 <IonButton
                   className="flechita cf_derecha"
                   onClick={() => checkAnswer(2)}
+                  disabled={showCorrectSymbol || showIncorrectSymbol}
                 >
                   <IonImg className="flechaderecha" src={flecha} />{" "}
                 </IonButton>
@@ -218,6 +221,7 @@ const DirectionsTest: React.FC = (props: any) => {
               <IonButton
                 className="flechita cf_abajo"
                 onClick={() => checkAnswer(3)}
+                disabled={showCorrectSymbol || showIncorrectSymbol}
               >
                 <IonImg className="flechaabajo" src={flecha} />{" "}
               </IonButton>
