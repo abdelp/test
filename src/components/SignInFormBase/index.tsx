@@ -26,7 +26,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
     event.preventDefault();
 
     setState((state: any) => ({ ...state, loading: true }));
-    let error: any, result;
+    let error: any, result: any;
 
     [error, result] = await to(
       signInWithUsernameAndPassword(username, password)
@@ -52,14 +52,10 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
 
         history.replace(ROUTES.REGIST_USER);
       } else {
-        const {
-          Mensaje: { text: errorMessage },
-        } = result?.ListaMensajes.MensajesError[parseInt(result.codError)];
-
         setState((state: any) => ({
           ...state,
           loading: false,
-          error: errorMessage,
+          error: result?.mensaje,
         }));
       }
     } else {
@@ -67,7 +63,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
       setState((state: any) => ({
         ...state,
         loading: false,
-        error: error.message,
+        error: error.message || "Error de conexión",
       }));
     }
   };
@@ -85,6 +81,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
           value={username}
           onIonChange={onChange}
           placeholder="USUARIO"
+          max="20"
           autofocus
         />
       </IonItem>
@@ -96,6 +93,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
           type="password"
           onIonChange={onChange}
           placeholder="CONTRASEÑA"
+          max="14"
         />
       </IonItem>
 
@@ -104,7 +102,7 @@ const SignInFormBase = ({ history, cookies, setShowLogin }: any) => {
         className="submit-btn"
         value="ACEPTAR"
         color="favorite"
-        disabled={isInvalid}
+        disabled={isInvalid || loading}
       />
       {loading && (
         <IonItem>

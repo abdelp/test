@@ -22,11 +22,7 @@ import { instanceOf } from "prop-types";
 import { withCookies, Cookies } from "react-cookie";
 import _ from "lodash";
 import to from "await-to-js";
-import { get } from "idb-keyval";
-import {
-  obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente,
-  actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente,
-} from "../utils/db";
+import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from "../utils/db";
 import "./PracticalTest.css";
 
 const PracticalTestPage: React.FC = (props: any) => {
@@ -56,29 +52,11 @@ const PracticalTestPage: React.FC = (props: any) => {
   const confirmar = async () => {
     setState((state: any) => ({ ...state, showAlert: false }));
 
-    /*
-     * poner webservice
-     */
-
     if (!incompleteForm()) {
       setState((state: any) => ({ ...state, loading: true }));
       let err: any, result: any;
-
-      [err, result] = await to(get("usuarios_testeados"));
-
-      if (err) {
-        setState((state: any) => ({ ...state, loading: false }));
-        return err;
-      }
-
       const { cookies } = props;
       const { nroDocumento, idAntecedente } = cookies.get("usuario_testeado");
-      const usuarioTesteado = await obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
-        nroDocumento,
-        "cedula",
-        idAntecedente
-      );
-
       const categoria = cookies.get("categoria");
 
       const examen = {

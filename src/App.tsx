@@ -64,7 +64,7 @@ const App: React.FC = (props: any) => {
         sincronizarResultados(ticket.text);
       }
     });
-  }, []);
+  }, [props.cookies]);
 
   setupConfig({
     swipeBackEnabled: false, // also prevent swiping back on either platform
@@ -78,7 +78,12 @@ const App: React.FC = (props: any) => {
           <IonSplitPane contentId="main" when={false}>
             <Menu />
             <IonRouterOutlet id="main">
-              <Route path="/regist-user" component={RegistUserPage} exact />
+              <PrivateRoute
+                path="/regist-user"
+                component={RegistUserPage}
+                exact
+                restricted={true}
+              />
               <PrivateRoute
                 path="/page/test-types"
                 component={TestTypesPage}
@@ -146,28 +151,19 @@ const App: React.FC = (props: any) => {
                 exact
               />
               <PrivateRoute path="/page/report" component={ReportPage} exact />
-              <PrivateRoute path="/" exact>
-                {props.cookies.get("usuario") ? (
-                  <RegistUserPage />
-                ) : (
-                  <LoginPage />
-                )}
-              </PrivateRoute>
+              <PrivateRoute
+                path="/"
+                component={RegistUserPage}
+                exact
+                restricted={true}
+              ></PrivateRoute>
             </IonRouterOutlet>
           </IonSplitPane>
-          {/*
-            // @ts-ignore */}
           <UnloggedRoute
             path="/login"
             component={LoginPage}
+            restricted={true}
             exact
-            render={() => {
-              return props.cookies.get("usuario") ? (
-                <RegistUserPage />
-              ) : (
-                <LoginPage />
-              );
-            }}
           ></UnloggedRoute>
         </IonReactRouter>
       </IonApp>

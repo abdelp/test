@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  IonItem,
-  IonLabel,
-  IonList,
-  IonListHeader,
-  IonTitle,
-} from "@ionic/react";
+import { IonItem, IonLabel, IonList } from "@ionic/react";
 
 const DataList = ({ user }: any) => {
   return (

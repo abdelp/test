@@ -6,7 +6,6 @@ import {
   IonTitle,
   IonToolbar,
   IonButton,
-  IonAlert,
 } from "@ionic/react";
 import { useHistory } from "react-router-dom";
 import { withCookies } from "react-cookie";
@@ -61,8 +60,6 @@ const defaultState = {
 const MemorizeNumbers: React.FC = (props: any) => {
   const [state, setState] = useState<any>({ ..._.cloneDeep(defaultState) });
   const history = useHistory();
-  let continuar: boolean = false;
-  const [showAlert, setShowAlert] = useState(false);
 
   const randomNumber = () => Math.floor(Math.random() * (9 - 0) + 0);
 
@@ -77,7 +74,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
       turnoUsuario,
       numerosElegidos,
       roundFinished,
-      btns,
     } = state;
     let { round } = state;
     let rotationInterval: any;
@@ -87,7 +83,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
         if (round === 3) {
           rotationInterval = window.setTimeout(() => {
             const { cookies } = props;
-            const ticket = cookies.get("ticket");
             const categoria = cookies.get("categoria");
             const usuarioTesteado = cookies.get("usuario_testeado");
             const { nroDocumento, idAntecedente } = usuarioTesteado;
@@ -152,7 +147,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
             let randNum: any = randomNumber().toString();
 
             while (
-              numerosAElegir[round - 1].findIndex((n: any) => n == randNum) !=
+              numerosAElegir[round - 1].findIndex((n: any) => n == randNum) !==
               -1
             ) {
               randNum = randomNumber().toString();
@@ -166,7 +161,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
                 numerosAElegir,
               }));
             });
-          } else if (mensaje != "" && mensaje != "Atención") {
+          } else if (mensaje !== "" && mensaje !== "Atención") {
             rotationInterval = window.setTimeout(() => {
               setState((state: any) => ({ ...state, mensaje: "" }));
             }, 2000);
@@ -242,7 +237,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
     return result;
   };
 
-  const { min, sec, btns, showButtons } = state;
+  const { btns, showButtons } = state;
 
   return (
     <IonPage>
@@ -254,32 +249,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonAlert
-          isOpen={showAlert}
-          onDidDismiss={() => setShowAlert(false)}
-          cssClass="my-custom-class"
-          header={"Confirmación"}
-          message={
-            "No has seleccionado ninguna opción. ¿Estás segurdo que deseas continuar?"
-          }
-          buttons={[
-            {
-              text: "Cancelar",
-              role: "cancel",
-              cssClass: "secondary",
-              handler: () => {
-                console.log("Cancelado");
-              },
-            },
-            {
-              text: "Ok",
-              handler: () => {
-                continuar = true;
-                // nextQuestion();
-              },
-            },
-          ]}
-        />
         <div className="grilla" style={{ flexDirection: "column" }}>
           <div
             className="number-board"

@@ -19,7 +19,8 @@ import "./RegistUser.css";
 import SearchTestedUserFormBase from "../components/SearchTestedUserFormBase";
 import DataList from "../components/DataList";
 
-import { useCookies } from "react-cookie";
+import { withCookies } from "react-cookie";
+import { compose } from "recompose";
 
 import {
   obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente,
@@ -28,18 +29,19 @@ import {
 
 import { UserProps } from "../interfaces";
 
-const RegistUserPage: React.FC<UserProps> = ({ history }) => {
-  const [state, setState]: any = useState<any>({
-    nroDocumento: "",
-    user: null,
-    loading: false,
-    error: null,
-  });
+const initialState = {
+  nroDocumento: "",
+  user: null,
+  loading: false,
+  error: null,
+};
+
+const RegistUserPage: React.FC<any> = ({ history, cookies }) => {
+  const [state, setState]: any = useState<any>({ ...initialState });
   const [showAlert, setShowAlert]: any = useState<any>({
     show: false,
     message: "",
   });
-  const [cookies, setCookie] = useCookies(["usuario_testeado"]);
 
   const handleChange = (event: any) =>
     setState((state: any) => ({
@@ -58,7 +60,7 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
 
     const [err, result] = await to(
       obtenerDatosUsuarioTesteado(
-        cookies.usuario.ticket.text,
+        cookies.get("usuario").ticket,
         state.nroDocumento,
         "cedula"
       )
@@ -96,7 +98,7 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
     } else {
       if (!result) agregarUsuarioTesteado(state.user);
 
-      setCookie(
+      cookies.set(
         "usuario_testeado",
         {
           nombres: state.user.nombres,
@@ -106,10 +108,16 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
           categoria: state.user.categoria,
           tramite: state.user.tramite,
         },
-        { path: "/" }
+        {
+          path: "/",
+          // , expires: new Date(Date.now()+2592000)
+        }
       );
 
-      setCookie("categoria", state.user.categoria, { path: "/" });
+      cookies.set("categoria", state.user.categoria, {
+        path: "/",
+        // , expires: new Date(Date.now()+2592000)
+      });
 
       history.replace({
         pathname: "/page/test-types",
@@ -183,4 +191,4 @@ const RegistUserPage: React.FC<UserProps> = ({ history }) => {
   );
 };
 
-export default withRouter(RegistUserPage);
+export default compose(withRouter, withCookies)(RegistUserPage);

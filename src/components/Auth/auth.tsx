@@ -52,10 +52,10 @@ const signInWithUsernameAndPassword = async (
         ["soap:Body"]: {
           AutenticarExaminadorResponse: {
             AutenticarExaminadorResult: {
-              CodError: { text: codError },
-              Entidad: { text: entidad },
-              ListaMensajes,
-              Ticket: { text: ticket },
+              CodError: { text: codError } = { text: null },
+              Entidad: { text: entidad } = { text: null },
+              ListaMensajes: { MensajesError },
+              Ticket: { text: ticket } = { text: null },
             },
           },
         },
@@ -67,7 +67,11 @@ const signInWithUsernameAndPassword = async (
       textKey: "text",
     });
 
-    return { codError, entidad, ListaMensajes, ticket };
+    const mensaje = MensajesError.filter(
+      (error: any) => error.CodError.text === codError
+    )[0].Mensaje.text;
+
+    return { codError, entidad, mensaje, ticket };
   } catch (e) {
     throw e;
   }

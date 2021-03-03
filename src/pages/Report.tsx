@@ -216,7 +216,7 @@ const ReportPage: React.FC = ({ cookies }: any) => {
 
     if (testsArray.every(examPassed)) {
       aprobado = true;
-      let [error, result] = await to(
+      let [error] = await to(
         actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
           usuario.nroDocumento,
           "cedula",
