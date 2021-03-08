@@ -44,7 +44,7 @@ const agregarUsuarioTesteado = async (usuario: any) => {
 const eliminarUsuarioTesteadoPorNroDocumentoYAntecedente = async (
   nroDocumento: string,
   tipoDocumento: string,
-  idAntecedente: number
+  idAntecedente: string
 ) => {
   try {
     const TABLA = "usuarios_testeados";
@@ -70,7 +70,7 @@ const eliminarUsuarioTesteadoPorNroDocumentoYAntecedente = async (
 const obtenerIndiceUsuarioTesteadoPorNroDocumentoYAntecedente = async (
   nroDocumento: string,
   tipoDocumento: string,
-  idAntecedente: number
+  idAntecedente: string
 ) => {
   try {
     const TABLA = "usuarios_testeados";
@@ -89,7 +89,7 @@ const obtenerIndiceUsuarioTesteadoPorNroDocumentoYAntecedente = async (
 const obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente = async (
   nroDocumento: string,
   tipoDocumento: string,
-  idAntecedente: number
+  idAntecedente: string
 ) => {
   try {
     const TABLA = "usuarios_testeados";
@@ -109,7 +109,7 @@ const obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente = async (
 const actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente = async (
   nroDocumento: string,
   tipoDocumento: string,
-  idAntecedente: number,
+  idAntecedente: string,
   datos: any
 ) => {
   try {
