@@ -52,6 +52,8 @@ const ReportPage: React.FC = ({ cookies }: any) => {
     title: "",
   });
 
+  let mostrarCompleto = false;
+
   useEffect(() => {
     const { nroDocumento, idAntecedente } = cookies.get("usuario_testeado");
     obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
@@ -70,9 +72,8 @@ const ReportPage: React.FC = ({ cookies }: any) => {
     };
   }, []);
 
-  const returnMenu = () => {
+  const returnMenu = () =>
     history.replace("/page/test-types");
-  };
 
   const examPassed = (examPercentage: any) => examPercentage >= 70;
 
@@ -90,6 +91,7 @@ const ReportPage: React.FC = ({ cookies }: any) => {
       porcentajeTeorico = 0;
 
     if (categoria !== "EXTRANJERO" && usuario.tramite !== "RENOVACIÓN") {
+      mostrarCompleto = true;
       respuestasPractico = usuario.examenes[categoria].practico.declaracion
         .map((i: any) => i.items.map((si: any) => si.respuesta))
         .flat();
@@ -228,9 +230,12 @@ const ReportPage: React.FC = ({ cookies }: any) => {
       const { ticket } = cookies.get("usuario");
       const { idAntecedente } = cookies.get("usuario_testeado");
 
-      let [err, enviado] = await to(
-        enviarResultado(ticket.text, "", idAntecedente, true)
-      );
+      let err;
+
+      let enviado = {codError: "0"};
+      // let [err, enviado] = await to(
+      //   enviarResultado(ticket.text, "", idAntecedente, true)
+      // );
 
       if (err) {
         const mensaje = "No se pudo enviar el resultado";
@@ -338,6 +343,7 @@ const ReportPage: React.FC = ({ cookies }: any) => {
                 </div>
               </div>
             </IonItem>
+            {mostrarCompleto && <>
             <IonTitle className="report-title">
               Prueba Práctica - porcentaje mínimo para aprobación 70%
             </IonTitle>
@@ -355,121 +361,123 @@ const ReportPage: React.FC = ({ cookies }: any) => {
                 </div>
               </div>
             </IonItem>
-            <IonTitle className="report-title">
-              Prueba Teórica - Porcentaje mínimo para aprobación 70%
-            </IonTitle>
-            <IonItem>
-              <div className="percentage-container">
-                <div className="percentage-text">
-                  <p>conocimientos sobre conducción</p>
-                  <p>señalización</p>
-                  <p>legislación</p>
-                  <p>accidentes y modo de prevenirlos</p>
-                </div>
-                <div className="percentage-number" id="file">
-                  <div className="w3-light-grey w3-round celeste">
-                    <div
-                      className="w3-container w3-blue w3-round "
-                      style={{
-                        width: `${porcentajes.teorico}%`,
-                        height: "100%",
-                      }}
-                    ></div>
+              <IonTitle className="report-title">
+                Prueba Teórica - Porcentaje mínimo para aprobación 70%
+              </IonTitle>
+              <IonItem>
+                <div className="percentage-container">
+                  <div className="percentage-text">
+                    <p>conocimientos sobre conducción</p>
+                    <p>señalización</p>
+                    <p>legislación</p>
+                    <p>accidentes y modo de prevenirlos</p>
                   </div>
-                  <b>{porcentajes.teorico}%</b>
+                  <div className="percentage-number" id="file">
+                    <div className="w3-light-grey w3-round celeste">
+                      <div
+                        className="w3-container w3-blue w3-round "
+                        style={{
+                          width: `${porcentajes.teorico}%`,
+                          height: "100%",
+                        }}
+                      ></div>
+                    </div>
+                    <b>{porcentajes.teorico}%</b>
+                  </div>
+                </div>
+              </IonItem>
+              </>
+              }
+              <IonTitle className="report-title">
+                Prueba psíquica - Porcentaje mínimo para aprobación 70%
+              </IonTitle>
+              <div className="reporte-psiquica">
+                <div className="percentage-container">
+                  <div className="percentage-text">
+                    <p>prueba 1</p>
+                  </div>
+                  <div className="percentage-number" id="file">
+                    <div className="w3-light-grey w3-round rojo">
+                      <div
+                        className="w3-container w3-blue w3-round"
+                        style={{
+                          width: `${porcentajes.testMemorizarNumeros}%`,
+                          height: "100%",
+                        }}
+                      ></div>
+                    </div>
+                    <b>{porcentajes.testMemorizarNumeros}%</b>
+                  </div>
+                </div>
+                <div className="percentage-container">
+                  <div className="percentage-text">
+                    <p>prueba 2</p>
+                  </div>
+                  <div className="percentage-number" id="file">
+                    <div className="w3-light-grey w3-round rojo">
+                      <div
+                        className="w3-container w3-blue w3-round "
+                        style={{
+                          width: `${porcentajes.testColores}%`,
+                          height: "100%",
+                        }}
+                      ></div>
+                    </div>
+                    <b>{porcentajes.testColores}%</b>
+                  </div>
+                </div>
+                <div className="percentage-container">
+                  <div className="percentage-text">
+                    <p>prueba 3</p>
+                  </div>
+                  <div className="percentage-number" id="file">
+                    <div className="w3-light-grey w3-round rojo">
+                      <div
+                        className="w3-container w3-blue w3-round"
+                        style={{
+                          width: `${porcentajes.testDirecciones}%`,
+                          height: "100%",
+                        }}
+                      ></div>
+                    </div>
+                    <b>{porcentajes.testDirecciones}%</b>
+                  </div>
+                </div>
+                <div className="percentage-container">
+                  <div className="percentage-text">
+                    <p>prueba 4</p>
+                  </div>
+                  <div className="percentage-number" id="file">
+                    <div className="w3-light-grey w3-round rojo">
+                      <div
+                        className="w3-container w3-blue w3-round "
+                        style={{
+                          width: `${porcentajes.testNumerosGrandes}%`,
+                          height: "100%",
+                        }}
+                      ></div>
+                    </div>
+                    <b>{porcentajes.testNumerosGrandes}%</b>
+                  </div>
+                </div>
+                <div className="percentage-container">
+                  <div className="percentage-text">
+                    <p>prueba 5</p>
+                  </div>
+                  <div className="percentage-number" id="file">
+                    <div className="w3-light-grey w3-round rojo">
+                      <div
+                        className="w3-container w3-blue w3-round "
+                        style={{
+                          width: `${porcentajes.testPosicionesBloques}%`,
+                          height: "100%",
+                        }}
+                      ></div>
+                    </div>
+                    <b>{porcentajes.testPosicionesBloques}%</b>
+                  </div>
                 </div>
               </div>
-            </IonItem>
-            <IonTitle className="report-title">
-              Prueba psíquica - Porcentaje mínimo para aprobación 70%
-            </IonTitle>
-            <div className="reporte-psiquica">
-              <div className="percentage-container">
-                <div className="percentage-text">
-                  <p>prueba 1</p>
-                </div>
-                <div className="percentage-number" id="file">
-                  <div className="w3-light-grey w3-round rojo">
-                    <div
-                      className="w3-container w3-blue w3-round"
-                      style={{
-                        width: `${porcentajes.testMemorizarNumeros}%`,
-                        height: "100%",
-                      }}
-                    ></div>
-                  </div>
-                  <b>{porcentajes.testMemorizarNumeros}%</b>
-                </div>
-              </div>
-              <div className="percentage-container">
-                <div className="percentage-text">
-                  <p>prueba 2</p>
-                </div>
-                <div className="percentage-number" id="file">
-                  <div className="w3-light-grey w3-round rojo">
-                    <div
-                      className="w3-container w3-blue w3-round "
-                      style={{
-                        width: `${porcentajes.testColores}%`,
-                        height: "100%",
-                      }}
-                    ></div>
-                  </div>
-                  <b>{porcentajes.testColores}%</b>
-                </div>
-              </div>
-              <div className="percentage-container">
-                <div className="percentage-text">
-                  <p>prueba 3</p>
-                </div>
-                <div className="percentage-number" id="file">
-                  <div className="w3-light-grey w3-round rojo">
-                    <div
-                      className="w3-container w3-blue w3-round"
-                      style={{
-                        width: `${porcentajes.testDirecciones}%`,
-                        height: "100%",
-                      }}
-                    ></div>
-                  </div>
-                  <b>{porcentajes.testDirecciones}%</b>
-                </div>
-              </div>
-              <div className="percentage-container">
-                <div className="percentage-text">
-                  <p>prueba 4</p>
-                </div>
-                <div className="percentage-number" id="file">
-                  <div className="w3-light-grey w3-round rojo">
-                    <div
-                      className="w3-container w3-blue w3-round "
-                      style={{
-                        width: `${porcentajes.testNumerosGrandes}%`,
-                        height: "100%",
-                      }}
-                    ></div>
-                  </div>
-                  <b>{porcentajes.testNumerosGrandes}%</b>
-                </div>
-              </div>
-              <div className="percentage-container">
-                <div className="percentage-text">
-                  <p>prueba 5</p>
-                </div>
-                <div className="percentage-number" id="file">
-                  <div className="w3-light-grey w3-round rojo">
-                    <div
-                      className="w3-container w3-blue w3-round "
-                      style={{
-                        width: `${porcentajes.testPosicionesBloques}%`,
-                        height: "100%",
-                      }}
-                    ></div>
-                  </div>
-                  <b>{porcentajes.testPosicionesBloques}%</b>
-                </div>
-              </div>
-            </div>
             <IonButton
               className="back-to-main"
               color="favorite"
