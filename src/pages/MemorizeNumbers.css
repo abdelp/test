@@ -30,6 +30,10 @@
   width: 30vw;
 }
 
+.grilla {
+  flex-direction: "column";
+}
+
 .display-container {
   display: flex;
   justify-content: center;

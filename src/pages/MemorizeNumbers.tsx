@@ -254,7 +254,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
             <p className={claseDeMensaje(mensaje)}>{mensaje}</p>
           </div>
         </div>
-        <div className="grilla" style={{ flexDirection: "column" }}>
+        <div className="grilla">
           <div
             className="number-board"
             style={{
