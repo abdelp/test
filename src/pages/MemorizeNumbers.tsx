@@ -64,7 +64,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
   const randomNumber = () => Math.floor(Math.random() * (9 - 0) + 0);
 
   useEffect(() => {
-    setState((state: any) => ({ ...state, ..._.cloneDeep(defaultState) }));
+    setState((state: any) => ({ ...state, ..._.cloneDeep(defaultState), mensaje: "Atención", round: 1 }));
   }, []);
 
   useEffect(() => {
@@ -170,6 +170,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
               ...state,
               mensaje: "Tu turno",
               turnoUsuario: true,
+              showButtons: true
             }));
           }
         }
@@ -240,7 +241,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
   const { btns, showButtons } = state;
 
   return (
-    <IonPage>
+    <IonPage id="memorize-numbers">
       <IonHeader>
         <IonToolbar color="alert">
           <IonTitle className="ion-text-uppercase ion-text-center title">
@@ -254,7 +255,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
             <p className={claseDeMensaje(mensaje)}>{mensaje}</p>
           </div>
         </div>
-        <div className="grilla">
+        <div className="grid">
           <div
             className="number-board"
             style={{
@@ -315,19 +316,19 @@ const MemorizeNumbers: React.FC = (props: any) => {
               </div>
             )}
           </div>
-          <div className="btn-container" style={{ display: "flex" }}>
-            {!round && (
-              <IonButton
-                className="btn-empezar"
-                color="favorite"
-                onClick={empezar}
-                style={{ margin: "-40vh auto auto auto" }}
-              >
-                empezar
-              </IonButton>
-            )}
-          </div>
         </div>
+        {/* <div className="btn-container" style={{ display: "flex" }}>
+          {!round && (
+            <IonButton
+              className="btn-empezar"
+              color="favorite"
+              onClick={empezar}
+              style={{ margin: "-40vh auto auto auto" }}
+            >
+              empezar
+            </IonButton>
+          )}
+        </div> */}
       </IonContent>
     </IonPage>
   );

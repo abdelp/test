@@ -28,10 +28,20 @@
 
 .number-column{
   width: 30vw;
+  text-align: "center";
+  display: "flex";
+  flex-direction: "column";
 }
 
-.grilla {
+#memorize-numbers .grid {
   flex-direction: "column";
+  /* height: 100%; */
+}
+
+.number-board {
+  display: "flex";
+  justify-content: "center";
+  margin: "auto";
 }
 
 .display-container {
