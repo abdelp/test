@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState, useEffect } from "react";
 import {
   IonContent,
@@ -12,6 +13,8 @@ import { withCookies } from "react-cookie";
 import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from "../utils/db";
 import "./MemorizeNumbers.css";
 import _ from "lodash";
+
+import NumberColumn from '../components/NumberColumn';
 
 const btnsInitialState = [
   {
@@ -265,70 +268,19 @@ const MemorizeNumbers: React.FC = (props: any) => {
             }}
           >
             {showButtons && (
-              <div
-                className="number-column"
-                style={{
-                  textAlign: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                {btns.slice(0, 5).map((b: any) => {
-                  return (
-                    <IonButton
-                      key={b.num}
-                      expand="block"
-                      className="number-btn"
-                      color={b.color}
-                      onClick={() => pickNumber(b.num)}
-                      disabled={mensaje !== "Tu turno" ? true : false}
-                    >
-                      {b.num}
-                    </IonButton>
-                  );
-                })}
-              </div>
-            )}
-
-            {showButtons && (
-              <div
-                className="number-column"
-                style={{
-                  textAlign: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                {btns.slice(5).map((b: any) => {
-                  return (
-                    <IonButton
-                      key={b.num}
-                      className="number-btn"
-                      expand="block"
-                      color={b.color}
-                      onClick={() => pickNumber(b.num)}
-                      disabled={mensaje !== "Tu turno" ? true : false}
-                    >
-                      {b.num}
-                    </IonButton>
-                  );
-                })}
-              </div>
+              <>
+                <NumberColumn
+                  btns={btns.slice(0, 5)}
+                  pickNumber={pickNumber}
+                />
+                <NumberColumn
+                  btns={btns.slice(5)}
+                  pickNumber={pickNumber}
+                />
+              </>
             )}
           </div>
         </div>
-        {/* <div className="btn-container" style={{ display: "flex" }}>
-          {!round && (
-            <IonButton
-              className="btn-empezar"
-              color="favorite"
-              onClick={empezar}
-              style={{ margin: "-40vh auto auto auto" }}
-            >
-              empezar
-            </IonButton>
-          )}
-        </div> */}
       </IonContent>
     </IonPage>
   );
