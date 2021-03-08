@@ -13,8 +13,7 @@ import { withCookies } from "react-cookie";
 import { actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente } from "../utils/db";
 import "./MemorizeNumbers.css";
 import _ from "lodash";
-
-import NumberColumn from '../components/NumberColumn';
+import NumberBoard from "../components/NumberBoard";
 
 const btnsInitialState = [
   {
@@ -259,27 +258,9 @@ const MemorizeNumbers: React.FC = (props: any) => {
           </div>
         </div>
         <div className="grid">
-          <div
-            className="number-board"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              margin: "auto",
-            }}
-          >
-            {showButtons && (
-              <>
-                <NumberColumn
-                  btns={btns.slice(0, 5)}
-                  pickNumber={pickNumber}
-                />
-                <NumberColumn
-                  btns={btns.slice(5)}
-                  pickNumber={pickNumber}
-                />
-              </>
-            )}
-          </div>
+          {showButtons && (
+            <NumberBoard btns={btns} pickNumber={pickNumber} />
+          )}
         </div>
       </IonContent>
     </IonPage>
