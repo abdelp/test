@@ -230,12 +230,11 @@ const ReportPage: React.FC = ({ cookies }: any) => {
       const { ticket } = cookies.get("usuario");
       const { idAntecedente } = cookies.get("usuario_testeado");
 
-      let err;
-
-      let enviado = {codError: "0"};
-      // let [err, enviado] = await to(
-      //   enviarResultado(ticket.text, "", idAntecedente, true)
-      // );
+      // let err;
+      // let enviado = {codError: "0"};
+      let [err, enviado] = await to(
+        enviarResultado(ticket.text, "", idAntecedente, true)
+      );
 
       if (err) {
         const mensaje = "No se pudo enviar el resultado";
