@@ -34,7 +34,7 @@ const TestTypesPage: React.FC<any> = ({ cookies, history }) => {
 
   if (usuario_testeado) {
     ci = usuario_testeado.ci;
-    renovacion = usuario_testeado.renovacion;
+    renovacion = usuario_testeado.tramite === 'RENOVACIÓN' || usuario_testeado.categoria === 'EXTRANJERO';
   }
 
   /* extend to also use local database to check date */
@@ -80,9 +80,6 @@ const TestTypesPage: React.FC<any> = ({ cookies, history }) => {
               pathname: "/page/declaracion-jurada",
             });
           } else if (test === "practica") {
-            // history.push({
-            //   pathname: '/page/test-practico'
-            // });
             setShowLogin(true);
           } else if (test === "teórica") {
             history.push({
@@ -198,48 +195,6 @@ const TestTypesPage: React.FC<any> = ({ cookies, history }) => {
               </div>
             )}
           </div>
-          {/* <IonCard>
-            <IonCardHeader color="light-blue">
-              <IonCardTitle className="ion-text-uppercase">prueba teorica</IonCardTitle>
-            </IonCardHeader>
-
-            <IonCardContent className="ion-text-center">
-              <br/>
-              <IonButton
-                className="ion-text-uppercase"
-                color="light-blue"
-                onClick={() => goToTest('teórica')}
-              >seleccionar</IonButton>
-            </IonCardContent>
-          </IonCard>
-
-          <IonCard>
-            <IonCardHeader color="alert">
-              <IonCardTitle className="ion-text-uppercase">prueba psiquica</IonCardTitle>
-            </IonCardHeader>
-
-            <IonCardContent className="ion-text-center">
-              <br/>
-              <IonButton
-                className="ion-text-uppercase"
-                color="danger"
-                onClick={() => goToTest('psiquica')}>seleccionar</IonButton>
-            </IonCardContent>
-          </IonCard>
-
-          <IonCard>
-            <IonCardHeader color="orange">
-              <IonCardTitle className="ion-text-uppercase">prueba practica</IonCardTitle>
-            </IonCardHeader>
-
-            <IonCardContent className="ion-text-center">
-              <br/>
-              <IonButton
-                className="ion-text-uppercase"
-                color="orange"
-                onClick={goToTest}>seleccionar</IonButton>
-            </IonCardContent>
-          </IonCard> */}
         </div>
       </IonContent>
     </IonPage>
