@@ -66,7 +66,12 @@ const MemorizeNumbers: React.FC = (props: any) => {
   const randomNumber = () => Math.floor(Math.random() * (9 - 0) + 0);
 
   useEffect(() => {
-    setState((state: any) => ({ ...state, ..._.cloneDeep(defaultState), mensaje: "Atención", round: 1 }));
+    setState((state: any) => ({
+      ...state,
+      ..._.cloneDeep(defaultState),
+      mensaje: "Atención",
+      round: 1,
+    }));
   }, []);
 
   useEffect(() => {
@@ -172,7 +177,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
               ...state,
               mensaje: "Tu turno",
               turnoUsuario: true,
-              showButtons: true
+              showButtons: true,
             }));
           }
         }
@@ -258,9 +263,7 @@ const MemorizeNumbers: React.FC = (props: any) => {
           </div>
         </div>
         <div className="grid">
-          {showButtons && (
-            <NumberBoard btns={btns} pickNumber={pickNumber} />
-          )}
+          {showButtons && <NumberBoard btns={btns} pickNumber={pickNumber} />}
         </div>
       </IonContent>
     </IonPage>

@@ -34,7 +34,9 @@ const TestTypesPage: React.FC<any> = ({ cookies, history }) => {
 
   if (usuario_testeado) {
     ci = usuario_testeado.ci;
-    renovacion = usuario_testeado.tramite === 'RENOVACIÓN' || usuario_testeado.categoria === 'EXTRANJERO';
+    renovacion =
+      usuario_testeado.tramite === "RENOVACIÓN" ||
+      usuario_testeado.categoria === "EXTRANJERO";
   }
 
   /* extend to also use local database to check date */
