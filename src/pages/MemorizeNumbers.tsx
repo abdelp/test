@@ -249,6 +249,11 @@ const MemorizeNumbers: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        <div className="display-container">
+          <div className="number-display">
+            <p className={claseDeMensaje(mensaje)}>{mensaje}</p>
+          </div>
+        </div>
         <div className="grilla" style={{ flexDirection: "column" }}>
           <div
             className="number-board"
@@ -281,14 +286,6 @@ const MemorizeNumbers: React.FC = (props: any) => {
                     </IonButton>
                   );
                 })}
-              </div>
-            )}
-
-            {!showButtons && (
-              <div className="display-container">
-                <div className="number-display">
-                  <p className={claseDeMensaje(mensaje)}>{mensaje}</p>
-                </div>
               </div>
             )}
 
