@@ -59,6 +59,9 @@ const defaultState = {
   btns: btnsInitialState.map((v) => ({ ...v })),
 };
 
+const isNumber = (n) =>
+  !isNaN(parseFloat(n)) && isFinite(n);
+
 const MemorizeNumbers: React.FC = (props: any) => {
   const [state, setState] = useState<any>({ ..._.cloneDeep(defaultState) });
   const history = useHistory();
@@ -259,11 +262,20 @@ const MemorizeNumbers: React.FC = (props: any) => {
       <IonContent>
         <div className="display-container">
           <div className="number-display">
-            <p className={claseDeMensaje(mensaje)}>{mensaje}</p>
+            {!isNumber(mensaje) &&
+              <p className={claseDeMensaje(mensaje)}>{mensaje}</p>
+            }
           </div>
         </div>
         <div className="grid">
           {showButtons && <NumberBoard btns={btns} pickNumber={pickNumber} />}
+          {isNumber(mensaje) && 
+            <div className="display-container">
+              <div className="number-display">
+                <p className={claseDeMensaje(mensaje)}>{mensaje}</p>
+              </div>
+            </div>
+          }
         </div>
       </IonContent>
     </IonPage>
