@@ -260,8 +260,8 @@ const MemorizeNumbers: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <div className="display-container">
-          <div className="number-display">
+        <div className="your-turn-display-container">
+          <div className="your-turn-display">
             {!isNumber(mensaje) &&
               <p className={claseDeMensaje(mensaje)}>{mensaje}</p>
             }
