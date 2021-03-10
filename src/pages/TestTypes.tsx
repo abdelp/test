@@ -128,7 +128,7 @@ const TestTypesPage: React.FC<any> = ({ cookies, history }) => {
       </IonHeader>
 
       <IonContent>
-        <IonPopover cssClass="login-popover ion-text-center" isOpen={showLogin}>
+        <IonPopover cssClass="login-popover ion-text-center" isOpen={showLogin} onDidDismiss={() => setShowLogin(false)}>
           {/*
             //@ts-ignore */}
           <AuthenticateFormBase setShowLogin={setShowLogin} />

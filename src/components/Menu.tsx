@@ -79,7 +79,9 @@ const Menu: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonPopover cssClass="login-popover ion-text-center" isOpen={showLogin}>
+        <IonPopover cssClass="login-popover ion-text-center" isOpen={showLogin} 
+        onDidDismiss={() => setShowLogin(false)}
+        >
           {/*
             //@ts-ignore */}
           <SignInFormBase setShowLogin={setShowLogin} />
