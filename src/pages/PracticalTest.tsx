@@ -29,89 +29,61 @@ import {
 } from "../utils/db";
 import "./PracticalTest.css";
 
+import retrovisor from '../assets/retrovisor.png';
+import palancaCambio from '../assets/palanca-cambio.png';
+import panel from '../assets/car-panel.png';
+import acelerador from '../assets/acelerador.png';
+import carrilCorrecto from '../assets/carril-correcto.png';
+
+const opciones =
+  [
+    {id: 1, texto: "Ajusta el ángulo de los espejos retrovisores", img: retrovisor, elegido: false},
+    {id: 2, texto: "Revisa el tablero o panel", img: panel, elegido: false},
+    {id: 3, texto: "Revisa el juego libre de embrague", img: palancaCambio, elegido: false},
+    {id: 4, texto: "Prueba el acelerador", img: acelerador, elegido: false},
+    {id: 5, texto: "Entra al carril correcto", img: carrilCorrecto, elegido: false},
+    {id: 6, texto: "Ajusta el ángulo de los espejos retrovisores", img: retrovisor, elegido: false},
+    {id: 7, texto: "Revisa el tablero o panel", img: panel, elegido: false},
+    {id: 8, texto: "Revisa el juego libre de embrague", img: palancaCambio, elegido: false},
+    {id: 9, texto: "Prueba el acelerador", img: acelerador, elegido: false},
+    {id: 10, texto: "Entra al carril correcto", img: carrilCorrecto, elegido: false},
+    {id: 11, texto: "Ajusta el ángulo de los espejos retrovisores", img: retrovisor, elegido: false},
+    {id: 12, texto: "Revisa el tablero o panel", img: panel, elegido: false},
+    {id: 13, texto: "Revisa el juego libre de embrague", img: palancaCambio, elegido: false},
+    {id: 14, texto: "Prueba el acelerador", img: acelerador, elegido: false},
+    {id: 15, texto: "Entra al carril correcto", img: carrilCorrecto, elegido: false},
+    {id: 16, texto: "Ajusta el ángulo de los espejos retrovisores", img: retrovisor, elegido: false},
+    {id: 17, texto: "Revisa el tablero o panel", img: panel, elegido: false},
+    {id: 18, texto: "Revisa el juego libre de embrague", img: palancaCambio, elegido: false},
+    {id: 19, texto: "Prueba el acelerador", img: acelerador, elegido: false},
+    {id: 20, texto: "Entra al carril correcto", img: carrilCorrecto, elegido: false}
+
+  ];
+
 const PracticalTestPage: React.FC = (props: any) => {
-  const [questions, setQuestions] = useState<any>([]);
-  const [state, setState] = useState<any>({
-    showAlert: false,
-    showAlertNotCompleted: false,
-  });
-  const history = useHistory();
+  const [state, setState] = useState('');
 
-  const incompleteForm = () => {
-    const incomplete = questions.some((q: any) => {
-      return q.items.some((i: any) => typeof i.respuesta === "undefined");
-    });
+  const handleClick = (val: number) => {
+    const op = opciones[opciones.findIndex(o => o.id === val)];
 
-    return incomplete;
-  };
+    op.elegido = !op.elegido;
+
+    setState(op.texto);
+  }
 
   useEffect(() => {
-    getPracticalTestItems()
-      .then((result) => {
-        setQuestions(_.cloneDeep(result));
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    let interval: any = null;
 
-  const confirmar = async () => {
-    setState((state: any) => ({ ...state, showAlert: false }));
-
-    /*
-     * poner webservice
-     */
-
-    if (!incompleteForm()) {
-      setState((state: any) => ({ ...state, loading: true }));
-      let err: any, result: any;
-
-      [err, result] = await to(get("usuarios_testeados"));
-
-      if (err) {
-        setState((state: any) => ({ ...state, loading: false }));
-        return err;
-      }
-
-      const { cookies } = props;
-      const { nroDocumento, idAntecedente } = cookies.get("usuario_testeado");
-      const usuarioTesteado = await obtenerDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
-        nroDocumento,
-        "cedula",
-        idAntecedente
-      );
-
-      const categoria = cookies.get("categoria");
-
-      const examen = {
-        examenes: {
-          [categoria]: {
-            practico: { fecha: new Date(), declaracion: questions },
-          },
-        },
-      };
-
-      [err, result] = await to(
-        actualizarDatosUsuarioTesteadoPorNroDocumentoYAntecedente(
-          nroDocumento,
-          "cedula",
-          idAntecedente,
-          examen
-        )
-      );
-
-      setTimeout(() => {
-        setState((state: any) => ({ ...state, loading: false }));
-        history.replace({
-          pathname: "/page/report",
-          state: { nroDocumento },
-        });
-      }, 2000);
-    } else {
-      setState((state: any) => ({ ...state, showAlertNotCompleted: true }));
-      return;
+    if(state !== "") {
+      interval = setInterval(() => {
+        setState("")
+      }, 1000);
     }
-  };
 
-  const { loading, showAlert, showAlertNotCompleted } = state;
+    return () => {
+      clearInterval(interval);
+    }
+  }, [state]);
 
   return (
     <IonPage>
@@ -121,125 +93,22 @@ const PracticalTestPage: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        {loading && (
-          <IonPopover
-            cssClass="loading-popover ion-text-center"
-            isOpen={loading}
-          >
-            <IonSpinner style={{ margin: "2em" }}></IonSpinner>
-          </IonPopover>
-        )}
-
-        <IonAlert
-          isOpen={showAlert}
-          cssClass="my-custom-class"
-          header={"Confirmación"}
-          message={"¿Estás seguro que deseas confirmar?"}
-          buttons={[
+        <div className="option-message">
+          {state}
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column'}}>
+          <div className='row-option' style={{display: 'flex', flexWrap: 'wrap'}}>
             {
-              text: "Cancelar",
-              role: "cancel",
-              cssClass: "secondary",
-            },
-            {
-              text: "Sí",
-              handler: () => {
-                confirmar();
-              },
-            },
-          ]}
-        />
-
-        <IonAlert
-          isOpen={showAlertNotCompleted}
-          cssClass="my-custom-class"
-          header={"Error"}
-          message={
-            "No se han completado todas las declaraciones. Favor, verificar que todas estén respondidas."
-          }
-          buttons={[
-            {
-              text: "Ok",
-              role: "cancel",
-            },
-          ]}
-        />
-
-        <IonList className="practical-test-list">
-          {questions.map((q: any) => (
-            <div key={q.id}>
-              <div style={{ width: "100%", minWidth: "300px" }}>
-                <IonTitle className="question-label ion-text-wrap">
-                  <strong>{q.titulo}</strong>
-                </IonTitle>
-              </div>
-              {q.items.map((item: any, idx: any) => (
-                <IonRadioGroup
-                  className="one-question"
-                  key={item.id}
-                  value={
-                    questions[q.id - 1]?.items[item.id - 1]?.respuesta || null
-                  }
-                  onIonChange={(e) =>
-                    setQuestions((state: any) => {
-                      const idx: any = state.findIndex(
-                        (obj: any) => obj.id === q.id
-                      );
-                      const questionIdx: any = state[idx]["items"].findIndex(
-                        (obj: any) => obj.id === item.id
-                      );
-                      state[idx]["items"][questionIdx].respuesta =
-                        e.detail.value;
-
-                      return state;
-                    })
-                  }
-                >
-                  <div className="radio-label-container">
-                    <IonItem lines="none">
-                      <IonLabel className="question-label ion-text-wrap">
-                        {item.pregunta}
-                      </IonLabel>
-                    </IonItem>
-                  </div>
-                  <div className="radio-row" style={{ display: "flex" }}>
-                    <IonItem className="radio-label" lines="none">
-                      <IonLabel>Sí</IonLabel>
-                      <IonRadio slot="end" value="true" color="success" />
-                    </IonItem>
-
-                    <IonItem className="radio-label" lines="none">
-                      <IonLabel>No</IonLabel>
-                      <IonRadio slot="end" value="false" color="danger" />
-                    </IonItem>
-                  </div>
-                </IonRadioGroup>
-              ))}
-            </div>
-          ))}
-          <IonItem lines="none">
-            <IonTextarea
-              placeholder="Otros datos..."
-              value={questions[questions.length - 1]?.descripcion || ""}
-              onIonChange={(e) =>
-                setQuestions((state: any) => {
-                  state[state.length - 1].descripcion = e.detail.value;
-
-                  return state;
+              opciones.map(o => {
+                return (
+                  <IonButton className="opt-btnn" key={o.id} color={o.elegido ? 'favorite' : 'light'} onClick={() => handleClick(o.id)}>
+                    <img src={o.img}/> {o.elegido}
+                  </IonButton>
+                )
                 })
               }
-            ></IonTextarea>
-          </IonItem>
-        </IonList>
-        <IonButton
-          style={{ margin: "2em auto" }}
-          className="confirmar-btn"
-          color="none"
-          size="large"
-          onClick={(state) => setState({ ...state, showAlert: true })}
-        >
-          CONFIRMAR
-        </IonButton>
+          </div>
+       </div>
       </IonContent>
     </IonPage>
   );

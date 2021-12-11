@@ -14,3 +14,29 @@ strong {
 ion-radio[slot="end"] {
   margin-inline-start: 10px;
 }
+
+.row-option div {
+
+}
+
+.option-message {
+  padding: 5px;
+  background-color: #d5d5d5;
+  border-radius: 5px;
+  text-align: center;
+  margin: 5px;
+  height: 80px;
+  font-size: 3em;
+}
+
+.opt-btnn {
+  padding: 5px;
+  flex-grow: 1;
+  flex-basis: 0;
+  text-align: center;
+  flex: 1 0 21%;
+}
+
+.opt-btnn img {
+  max-height: 80%;
+}
